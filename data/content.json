@@ -1,0 +1,500 @@
+{
+  "en": {
+    "common": {
+      "portfolio": "Portfolio.",
+      "footerTitle": "Portfolio 2024",
+      "footerSubtitle": "Frontend Developer · Growth Marketer · Content Creator",
+      "footerLocation": "Taipei",
+      "homeHint": "Click anywhere to bounce · Drag tags to move"
+    },
+    "nav": {
+      "engineer": "Engineer",
+      "marketer": "Marketer",
+      "creator": "Creator"
+    },
+    "engineer": {
+      "hero": {
+        "badge": "Creative Developer",
+        "title": "Logic meets",
+        "titleHighlight": "Emotion.",
+        "description": "Building Interfaces, Telling Stories.",
+        "descriptionSub": "Front-end Engineer with 8 years of Marketing strategy experience.",
+        "ctaText": "View Case Studies"
+      },
+      "philosophy": {
+        "title": "The Engineering Philosophy",
+        "quote": "I build digital bridges between complex code and human emotion.",
+        "content": "I pivoted from 8 years of marketing to engineering because I wanted to master the how. Today, I use my strategic background to build components that aren't just clean code, but conversion-optimized interactions."
+      },
+      "experience": {
+        "title": "Experience",
+        "subtitle": "The technical journey.",
+        "items": [
+          {
+            "period": "2022 — Present",
+            "role": "Frontend Engineer",
+            "company": "Creative Tech Studio",
+            "description": "Focusing on high-performance web apps using Next.js and Tailwind. Implemented Headless UI design systems."
+          },
+          {
+            "period": "2014 — 2022",
+            "role": "Senior Marketing Strategist",
+            "company": "Global Digital Agency",
+            "description": "Led digital transformation strategies. This previous life allows me to communicate effectively with product managers."
+          }
+        ]
+      },
+      "now": {
+        "title": "The \"Now\" Page",
+        "subtitle": "Current Technical Focus.",
+        "items": [
+          {
+            "icon": "Cpu",
+            "title": "Technical Deep Dive",
+            "description": "Moving beyond React to understand system-level programming. Currently building small CLIs with Rust to grasp memory management."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Reading",
+            "description": "Re-reading \"Clean Architecture\" to write more maintainable, scalable frontend codebases."
+          }
+        ]
+      },
+      "projects": {
+        "title": "Engineering Case Studies",
+        "subtitle": "Problem solving through code.",
+        "challengeLabel": "The Challenge",
+        "solutionLabel": "The Solution",
+        "outcomeLabel": "The Outcome",
+        "items": [
+          {
+            "icon": "Layout",
+            "title": "E-commerce Analytics Dashboard",
+            "tech": "Next.js • Tailwind • SWR",
+            "techColor": "blue",
+            "challenge": "Clients struggled with slow load times when visualizing 50k+ data points.",
+            "solution": "Implemented server-side aggregation and virtualized lists using `react-window`.",
+            "outcome": "Reduced TTI by 40% and increased data comprehension.",
+            "outcomeHighlight": "40%"
+          },
+          {
+            "icon": "Smartphone",
+            "title": "Headless Commerce",
+            "tech": "React • Framer Motion • Shopify",
+            "techColor": "purple",
+            "challenge": "Merge rich storytelling (CMS) with transactional utility (Shopify) without jarring reloads.",
+            "solution": null,
+            "outcome": "Bounce rate dropped by 25% due to seamless transitions.",
+            "outcomeHighlight": "25%"
+          }
+        ]
+      },
+      "techStack": {
+        "title": "Tech Stack",
+        "subtitle": "The Engineer's Toolkit.",
+        "items": [
+          { "icon": "Code2", "name": "React", "hoverColor": "blue-500" },
+          { "icon": "Zap", "name": "Next.js", "hoverColor": "yellow-500" },
+          { "icon": "Box", "name": "Rust", "hoverColor": "orange-500" },
+          { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" }
+        ]
+      },
+      "contact": {
+        "title": "Ready to build something robust?",
+        "description": "Looking for engineering roles that value both code quality and user experience.",
+        "email": "engineer@example.com"
+      }
+    },
+    "marketer": {
+      "hero": {
+        "badge": "Marketing Strategist",
+        "title": "Insight meets",
+        "titleHighlight": "Impact.",
+        "description": "Driving Growth, Crafting Narratives.",
+        "descriptionSub": "Senior Strategist with a developer's technical edge.",
+        "ctaText": "View Campaigns"
+      },
+      "philosophy": {
+        "title": "The Strategic Philosophy",
+        "quote": "I don't just optimize funnels; I design user journeys that feel human.",
+        "content": "With 8 years of experience in Digital Transformation and Brand Strategy, I know that data without story is noise. My unique advantage? I can not only plan the strategy but understand the technical feasibility of execution, bridging the gap between CMOs and CTOs."
+      },
+      "experience": {
+        "title": "Career Path",
+        "subtitle": "Growth driven by experience.",
+        "items": [
+          {
+            "period": "2014 — 2022",
+            "role": "Senior Marketing Strategist",
+            "company": "Global Digital Agency",
+            "description": "Specialized in CRO, User Journey Mapping, and Brand Positioning for FMCG clients."
+          }
+        ]
+      },
+      "projects": {
+        "title": "Strategy Case Studies",
+        "subtitle": "Growth driven by data.",
+        "problemLabel": "Problem",
+        "resultLabel": "Result",
+        "items": [
+          {
+            "icon": "BarChart",
+            "title": "FMCG Digital Transformation",
+            "tech": "CRO • User Journey • Automation",
+            "techColor": "amber",
+            "bgColor": "amber",
+            "problem": "Legacy brand with < 0.5% conversion rate on D2C channels.",
+            "result": "Redesigned funnel based on data, achieving a 200% increase in conversion.",
+            "resultHighlight": "200% increase in conversion"
+          },
+          {
+            "icon": "Globe",
+            "title": "Global Rebranding Campaign",
+            "tech": "Brand Strategy • Content • SEO",
+            "techColor": "purple",
+            "bgColor": "purple",
+            "problem": "Disjointed brand messaging across APAC markets.",
+            "result": "Unified content strategy that increased organic traffic by 45%."
+          }
+        ]
+      },
+      "marketingStack": {
+        "title": "Marketing Stack",
+        "subtitle": "The Strategist's Toolkit.",
+        "items": [
+          { "icon": "LineChart", "name": "Google Analytics 4", "hoverColor": "amber-600" },
+          { "icon": "Search", "name": "SEO / Ahrefs", "hoverColor": "green-600" },
+          { "icon": "Users", "name": "CRM (HubSpot)", "hoverColor": "orange-500" },
+          { "icon": "PenTool", "name": "Copywriting", "hoverColor": "purple-600" }
+        ]
+      },
+      "contact": {
+        "title": "Need a strategy that converts?",
+        "description": "Let's discuss how we can tell your brand's story effectively.",
+        "email": "strategy@example.com"
+      }
+    },
+    "creator": {
+      "hero": {
+        "badge": "Life & Creativity",
+        "title": "Tiny Daily",
+        "titleHighlight": "Life.",
+        "description": "Between work and life,",
+        "descriptionSub": "exploring healing, companionship, and self-growth.",
+        "ctaPrimary": "Listen to Podcast",
+        "ctaSecondary": "Follow Daily"
+      },
+      "about": {
+        "title": "About Tiny Daily Life",
+        "quote": "Beyond the fast-paced tech industry, I believe the tiny moments in life are the real treasures.",
+        "content": "This is my space for sharing life, healing, and growth. No KPIs, no OKRs, just authentic daily moments, occasional insights, and a curiosity and love for life."
+      },
+      "podcast": {
+        "badge": "Podcast",
+        "title": "Tiny Daily Life",
+        "titleSub": "/ 微小日常",
+        "description": "A space about life, healing, and companionship. Here, we talk about daily life, feelings, and stories that data can't capture.",
+        "platforms": [
+          { "name": "Apple Podcasts", "color": "gray" },
+          { "name": "Spotify", "color": "green" }
+        ],
+        "episodesTitle": "Latest Episodes",
+        "episodes": [
+          { "title": "EP.12 Finding Your Rhythm in the Busy Life", "duration": "32:15" },
+          { "title": "EP.11 Lessons Learned on the Career Change Journey", "duration": "45:30" },
+          { "title": "EP.10 How to Stay Creative at Work?", "duration": "28:45" }
+        ]
+      },
+      "interests": {
+        "title": "Daily Interests",
+        "subtitle": "Life exploration beyond work",
+        "items": [
+          { "icon": "Coffee", "name": "Coffee", "hoverColor": "amber-600" },
+          { "icon": "Camera", "name": "Photography", "hoverColor": "blue-500" },
+          { "icon": "Music", "name": "Music", "hoverColor": "purple-500" },
+          { "icon": "BookOpen", "name": "Reading", "hoverColor": "green-500" }
+        ],
+        "socialTitle": "Follow My Social",
+        "socialLinks": [
+          { "platform": "Instagram", "url": "https://instagram.com", "gradient": "from-purple-500 to-pink-500" },
+          { "platform": "YouTube", "url": "https://youtube.com", "color": "red-500" }
+        ]
+      },
+      "values": {
+        "title": "Life Values",
+        "subtitle": "Things I believe in",
+        "items": [
+          {
+            "icon": "Heart",
+            "title": "Authenticity Over Perfection",
+            "description": "Not chasing the perfect image, just being the real me."
+          },
+          {
+            "icon": "Sparkles",
+            "title": "Power of Tiny Moments",
+            "description": "Great changes often start from tiny daily choices."
+          },
+          {
+            "icon": "Coffee",
+            "title": "The Art of Slowing Down",
+            "description": "In a fast-paced world, learning to enjoy every present moment."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Want to chat?",
+        "description": "Whether it's collaboration, life talk, or just saying hi, feel free to reach out.",
+        "email": "hello@tinydailylife.com"
+      }
+    }
+  },
+  "zh": {
+    "common": {
+      "portfolio": "作品集.",
+      "footerTitle": "作品集 2024",
+      "footerSubtitle": "前端工程師 · 成長行銷 · 內容創作者",
+      "footerLocation": "台北",
+      "homeHint": "點擊空白處彈跳 · 拖曳標籤移動"
+    },
+    "nav": {
+      "engineer": "工程師",
+      "marketer": "行銷人",
+      "creator": "創作者"
+    },
+    "engineer": {
+      "hero": {
+        "badge": "創意開發者",
+        "title": "邏輯遇見",
+        "titleHighlight": "情感。",
+        "description": "建構介面，訴說故事。",
+        "descriptionSub": "擁有 8 年行銷策略經驗的前端工程師。",
+        "ctaText": "查看案例研究"
+      },
+      "philosophy": {
+        "title": "工程師哲學",
+        "quote": "我在複雜程式碼與人類情感之間搭建數位橋樑。",
+        "content": "我從 8 年的行銷工作轉向工程，因為我想要精通「如何實現」。如今，我運用策略背景來打造不僅是乾淨程式碼，更是轉換率優化互動的組件。"
+      },
+      "experience": {
+        "title": "工作經歷",
+        "subtitle": "技術旅程。",
+        "items": [
+          {
+            "period": "2022 — 至今",
+            "role": "前端工程師",
+            "company": "創意科技工作室",
+            "description": "專注於使用 Next.js 和 Tailwind 開發高效能網頁應用。實作 Headless UI 設計系統。"
+          },
+          {
+            "period": "2014 — 2022",
+            "role": "資深行銷策略師",
+            "company": "全球數位代理商",
+            "description": "領導數位轉型策略。這段過往經歷讓我能與產品經理有效溝通。"
+          }
+        ]
+      },
+      "now": {
+        "title": "「現在」頁面",
+        "subtitle": "目前技術焦點。",
+        "items": [
+          {
+            "icon": "Cpu",
+            "title": "技術深潛",
+            "description": "跨越 React，理解系統層級程式設計。目前正在用 Rust 建構小型 CLI 工具，學習記憶體管理。"
+          },
+          {
+            "icon": "BookOpen",
+            "title": "閱讀中",
+            "description": "重讀《Clean Architecture》，撰寫更易維護、可擴展的前端程式碼。"
+          }
+        ]
+      },
+      "projects": {
+        "title": "工程案例研究",
+        "subtitle": "用程式碼解決問題。",
+        "challengeLabel": "挑戰",
+        "solutionLabel": "解決方案",
+        "outcomeLabel": "成果",
+        "items": [
+          {
+            "icon": "Layout",
+            "title": "電商數據分析儀表板",
+            "tech": "Next.js • Tailwind • SWR",
+            "techColor": "blue",
+            "challenge": "客戶在視覺化 50k+ 資料點時遇到載入緩慢問題。",
+            "solution": "實作伺服器端聚合與使用 `react-window` 虛擬化列表。",
+            "outcome": "TTI 減少 40%，數據理解度提升。",
+            "outcomeHighlight": "40%"
+          },
+          {
+            "icon": "Smartphone",
+            "title": "Headless 電商平台",
+            "tech": "React • Framer Motion • Shopify",
+            "techColor": "purple",
+            "challenge": "在不造成突兀換頁的情況下，融合豐富敘事（CMS）與交易功能（Shopify）。",
+            "solution": null,
+            "outcome": "跳出率下降 25%，歸功於無縫轉場。",
+            "outcomeHighlight": "25%"
+          }
+        ]
+      },
+      "techStack": {
+        "title": "技術棧",
+        "subtitle": "工程師的工具箱。",
+        "items": [
+          { "icon": "Code2", "name": "React", "hoverColor": "blue-500" },
+          { "icon": "Zap", "name": "Next.js", "hoverColor": "yellow-500" },
+          { "icon": "Box", "name": "Rust", "hoverColor": "orange-500" },
+          { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" }
+        ]
+      },
+      "contact": {
+        "title": "準備好打造強健的產品了嗎？",
+        "description": "尋找重視程式碼品質與使用者體驗的工程職位。",
+        "email": "engineer@example.com"
+      }
+    },
+    "marketer": {
+      "hero": {
+        "badge": "行銷策略師",
+        "title": "洞察遇見",
+        "titleHighlight": "影響力。",
+        "description": "驅動成長，編織敘事。",
+        "descriptionSub": "具備開發者技術優勢的資深策略師。",
+        "ctaText": "查看行銷活動"
+      },
+      "philosophy": {
+        "title": "策略哲學",
+        "quote": "我不只優化漏斗；我設計讓人感到人性化的用戶旅程。",
+        "content": "憑藉 8 年數位轉型和品牌策略經驗，我深知沒有故事的數據只是噪音。我的獨特優勢？我不僅能規劃策略，還能理解執行的技術可行性，在 CMO 和 CTO 之間搭建橋樑。"
+      },
+      "experience": {
+        "title": "職涯經歷",
+        "subtitle": "經驗驅動成長。",
+        "items": [
+          {
+            "period": "2014 — 2022",
+            "role": "資深行銷策略師",
+            "company": "全球數位代理商",
+            "description": "專精於 CRO、用戶旅程規劃，以及 FMCG 客戶的品牌定位。"
+          }
+        ]
+      },
+      "projects": {
+        "title": "策略案例研究",
+        "subtitle": "數據驅動成長。",
+        "problemLabel": "問題",
+        "resultLabel": "結果",
+        "items": [
+          {
+            "icon": "BarChart",
+            "title": "FMCG 數位轉型",
+            "tech": "CRO • 用戶旅程 • 自動化",
+            "techColor": "amber",
+            "bgColor": "amber",
+            "problem": "傳統品牌在 D2C 通路的轉換率不到 0.5%。",
+            "result": "根據數據重新設計漏斗，達成轉換率提升 200%。",
+            "resultHighlight": "轉換率提升 200%"
+          },
+          {
+            "icon": "Globe",
+            "title": "全球品牌重塑活動",
+            "tech": "品牌策略 • 內容 • SEO",
+            "techColor": "purple",
+            "bgColor": "purple",
+            "problem": "亞太市場的品牌訊息不一致。",
+            "result": "統一內容策略，自然流量增加 45%。"
+          }
+        ]
+      },
+      "marketingStack": {
+        "title": "行銷工具棧",
+        "subtitle": "策略師的工具箱。",
+        "items": [
+          { "icon": "LineChart", "name": "Google Analytics 4", "hoverColor": "amber-600" },
+          { "icon": "Search", "name": "SEO / Ahrefs", "hoverColor": "green-600" },
+          { "icon": "Users", "name": "CRM (HubSpot)", "hoverColor": "orange-500" },
+          { "icon": "PenTool", "name": "文案撰寫", "hoverColor": "purple-600" }
+        ]
+      },
+      "contact": {
+        "title": "需要能帶來轉換的策略嗎？",
+        "description": "讓我們討論如何有效講述您的品牌故事。",
+        "email": "strategy@example.com"
+      }
+    },
+    "creator": {
+      "hero": {
+        "badge": "生活與創作",
+        "title": "微小日常",
+        "titleHighlight": "生活。",
+        "description": "在工作與生活之間，",
+        "descriptionSub": "探索療癒、陪伴與自我成長的旅程。",
+        "ctaPrimary": "收聽 Podcast",
+        "ctaSecondary": "追蹤日常"
+      },
+      "about": {
+        "title": "關於微小日常",
+        "quote": "在快節奏的科技業工作之餘，我相信生活中的微小時刻才是真正的寶藏。",
+        "content": "這裡是我分享生活、療癒與成長的空間。不談 KPI，不講 OKR，只有真實的日常、偶爾的感悟，以及對生活的好奇與熱愛。"
+      },
+      "podcast": {
+        "badge": "Podcast",
+        "title": "微小日常",
+        "titleSub": "/ Tiny Daily Life",
+        "description": "一個關於生活、療癒與陪伴的空間。在這裡，我們聊日常、聊感受、聊那些數據無法捕捉的故事。",
+        "platforms": [
+          { "name": "Apple Podcasts", "color": "gray" },
+          { "name": "Spotify", "color": "green" }
+        ],
+        "episodesTitle": "最新單集",
+        "episodes": [
+          { "title": "EP.12 在忙碌中找到自己的節奏", "duration": "32:15" },
+          { "title": "EP.11 那些轉職路上學到的事", "duration": "45:30" },
+          { "title": "EP.10 如何在工作中保持創意？", "duration": "28:45" }
+        ]
+      },
+      "interests": {
+        "title": "日常興趣",
+        "subtitle": "工作以外的生活探索",
+        "items": [
+          { "icon": "Coffee", "name": "咖啡", "hoverColor": "amber-600" },
+          { "icon": "Camera", "name": "攝影", "hoverColor": "blue-500" },
+          { "icon": "Music", "name": "音樂", "hoverColor": "purple-500" },
+          { "icon": "BookOpen", "name": "閱讀", "hoverColor": "green-500" }
+        ],
+        "socialTitle": "追蹤我的社群",
+        "socialLinks": [
+          { "platform": "Instagram", "url": "https://instagram.com", "gradient": "from-purple-500 to-pink-500" },
+          { "platform": "YouTube", "url": "https://youtube.com", "color": "red-500" }
+        ]
+      },
+      "values": {
+        "title": "生活信念",
+        "subtitle": "我相信的事情",
+        "items": [
+          {
+            "icon": "Heart",
+            "title": "真實勝過完美",
+            "description": "不追求完美的人設，只做真實的自己。"
+          },
+          {
+            "icon": "Sparkles",
+            "title": "微小時刻的力量",
+            "description": "偉大的改變往往始於日常中的微小選擇。"
+          },
+          {
+            "icon": "Coffee",
+            "title": "慢下來的藝術",
+            "description": "在快節奏的世界中，學會享受當下的每一刻。"
+          }
+        ]
+      },
+      "contact": {
+        "title": "想聊聊嗎？",
+        "description": "無論是合作邀約、聊聊生活，或只是想打個招呼，都歡迎來信。",
+        "email": "hello@tinydailylife.com"
+      }
+    }
+  }
+}
