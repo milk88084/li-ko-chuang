@@ -2,10 +2,12 @@
   "en": {
     "common": {
       "portfolio": "Portfolio.",
+      "description": "Building Interfaces, Telling Stories.",
       "footerTitle": "Portfolio 2024",
       "footerSubtitle": "Frontend Developer · Growth Marketer · Content Creator",
       "footerLocation": "Taipei",
-      "homeHint": "Click anywhere to bounce · Drag tags to move"
+      "homeHint": "Click anywhere to bounce · Drag tags to move",
+      "explore": "EXPLORE"
     },
     "nav": {
       "engineer": "Engineer",
@@ -250,11 +252,13 @@
   },
   "zh": {
     "common": {
-      "portfolio": "作品集.",
+      "portfolio": "LOGO",
+      "description": "建構介面，訴說故事。",
       "footerTitle": "作品集 2024",
       "footerSubtitle": "前端工程師 · 成長行銷 · 內容創作者",
       "footerLocation": "台北",
-      "homeHint": "點擊空白處彈跳 · 拖曳標籤移動"
+      "homeHint": "點擊空白處彈跳 · 拖曳標籤移動",
+      "explore": "探索"
     },
     "nav": {
       "engineer": "工程師",

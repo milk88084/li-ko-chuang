@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
-import { Sun, Moon, Globe } from "lucide-react";
+import { Sun, Moon, Globe, ArrowDown } from "lucide-react";
 import Matter from "matter-js";
 import { useLanguage } from "@/providers/LanguageProvider";
 import content from "@/data/content.json";
@@ -23,18 +23,22 @@ function useIsMounted() {
 
 // 專業標籤數據 - variant: "filled" | "outlined"
 const skillTags = [
-  { id: 1, text: "ENGINEER", size: "lg", variant: "filled" },
-  { id: 2, text: "MARKETER", size: "lg", variant: "outlined" },
-  { id: 3, text: "CREATOR", size: "lg", variant: "filled" },
-  { id: 4, text: "FULL STACK", size: "md", variant: "outlined" },
-  { id: 5, text: "REACT", size: "sm", variant: "filled" },
-  { id: 6, text: "NEXT.JS", size: "sm", variant: "outlined" },
-  { id: 7, text: "GROWTH", size: "md", variant: "filled" },
-  { id: 8, text: "UI/UX", size: "sm", variant: "outlined" },
-  { id: 9, text: "TYPESCRIPT", size: "md", variant: "filled" },
-  { id: 10, text: "BRANDING", size: "md", variant: "outlined" },
-  { id: 11, text: "SEO", size: "sm", variant: "filled" },
-  { id: 12, text: "DATA", size: "sm", variant: "outlined" },
+  { id: 1, text: "💻ENGINEER",zh:"💻工程師", size: "lg", variant: "filled" },
+  { id: 2, text: "💼MARKETER",zh:"💼行銷人", size: "lg", variant: "filled" },
+  { id: 3, text: "💡CREATOR",zh:"💡創作者", size: "lg", variant: "filled" },
+  { id: 13, text: "🖌️DESIGNER",zh:"🖌️設計師", size: "lg", variant: "filled" },
+  { id: 4, text: "SOCIAL MEDIA",zh:"自媒體經營者", size: "md", variant: "outlined" },
+  { id: 5, text: "REACT",zh:"React", size: "md", variant: "outlined" },
+  { id: 6, text: "NEXT.JS",zh:"Next.js", size: "md", variant: "outlined" },
+  { id: 7, text: "GROWTH",zh:"成長", size: "sm", variant: "outlined" },
+  { id: 8, text: "UI/UX",zh:"用戶體驗設計", size: "md", variant: "outlined" },
+  { id: 9, text: "JAVASCRIPT",zh:"JavaScript", size: "md", variant: "outlined" },
+  { id: 16, text: "TYPESCRIPT",zh:"TypeScript", size: "md", variant: "outlined" },
+  { id: 10, text: "BRANDING",zh:"品牌行銷", size: "md", variant: "outlined" },
+  { id: 11, text: "PODCAST HOST",zh:"Podcast 主持人", size: "sm", variant: "outlined" },
+  { id: 12, text: "VIBE CODING",zh:"Vibe Coding", size: "md", variant: "outlined" },
+  { id: 14, text: "VIDEO EDITOR",zh:"影片剪輯", size: "md", variant: "outlined" },
+  { id: 15, text: "OPEN MINDS",zh:"開放思維", size: "sm", variant: "outlined" },
 ];
 
 // 導航項目 - 現在由 language context 決定
@@ -279,20 +283,10 @@ export default function Home() {
     };
   }, [mounted]);
 
-  // Render a consistent initial state for SSR
   if (!mounted) {
     return (
       <main className="h-screen md:max-h-screen md:overflow-hidden relative overflow-hidden bg-[#FBFBFD] dark:bg-black transition-colors duration-300">
-        {/* Navigation skeleton */}
-        <nav className="fixed w-full top-0 z-50 backdrop-blur-md border-b bg-[#FBFBFD]/80 dark:bg-black/80 border-gray-100/50 dark:border-white/10 transition-all duration-300">
-          <div className=" mx-auto px-6 h-16 flex items-center justify-between">
-            <div className="font-semibold text-sm tracking-tight text-gray-900 dark:text-white opacity-0">
-              Portfolio.
-            </div>
-          </div>
-        </nav>
-
-        {/* Main Title */}
+       
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
           <div className="text-center px-4">
             <h1 className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] text-[#3250FE] opacity-0">
@@ -313,7 +307,6 @@ export default function Home() {
         isDark ? "bg-black" : "bg-[#FBFBFD]"
       }`}
     >
-      {/* Navigation - matching other pages style */}
       <nav
         className={`fixed w-full top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
           isDark
@@ -322,7 +315,6 @@ export default function Home() {
         }`}
       >
         <div className=" mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
           <Link
             href="/"
             className={`font-semibold text-sm tracking-tight transition-opacity cursor-pointer hover:opacity-70 ${
@@ -331,10 +323,7 @@ export default function Home() {
           >
             {t.common.portfolio}
           </Link>
-
-          {/* Nav Links + Theme Toggle */}
           <div className="flex items-center gap-2 md:gap-4">
-            {/* Page Switcher */}
             <div
               className={`flex items-center p-1 rounded-lg ${
                 isDark ? "bg-white/10" : "bg-gray-100"
@@ -354,8 +343,6 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-
-            {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full transition-colors cursor-pointer text-xs font-medium ${
@@ -368,8 +355,6 @@ export default function Home() {
               <Globe className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">{language === 'en' ? 'EN' : '中'}</span>
             </button>
-
-            {/* Theme Toggle */}
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
               className={`p-2 rounded-full transition-colors cursor-pointer ${
@@ -386,9 +371,7 @@ export default function Home() {
           </div>
         </div>
       </nav>
-
-      {/* Main Title */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
         <div className="text-center px-4">
           <h1
             className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 opacity-100 translate-y-0 text-[#3250FE]"
@@ -400,23 +383,28 @@ export default function Home() {
           >
             CHUANG
           </h1>
+          <p className={`text-sm font-medium tracking-wider mt-4 ${isDark ? "text-gray-400" : "text-gray-600"}`}>{t.common.description}</p>
+          <Link 
+            href="/engineer"
+            className={`mt-6 inline-flex flex-col items-center gap-2 cursor-pointer transition-all hover:scale-110 pointer-events-auto relative z-30 ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+          >
+            <span className="text-xs font-medium tracking-wider">{t.common.explore}</span>
+            <ArrowDown className="w-5 h-5 animate-bounce" />
+          </Link>
         </div>
       </div>
-
-      {/* Physics Container - handles all mouse interactions */}
       <div
         ref={sceneRef}
         className="absolute inset-0 z-20"
         style={{ cursor: cursorStyle }}
       >
-        {/* Render tags based on physics positions */}
         {skillTags.map((tag) => {
           const pos = positions.get(tag.id);
           if (!pos) return null;
-
           const config = sizeConfig[tag.size as keyof typeof sizeConfig];
           const isFilled = tag.variant === "filled";
-
           return (
             <div
               key={tag.id}
@@ -442,36 +430,10 @@ export default function Home() {
                   : "none",
               }}
             >
-              {tag.text}
+              {language === 'zh' ? tag.zh : tag.text}
             </div>
           );
         })}
-      </div>
-
-      {/* Bottom Info */}
-      <div
-        className="absolute bottom-0 left-0 right-0 z-30 px-4 py-4 md:px-10 md:py-6 pointer-events-none"
-      >
-        <div
-          className={`max-w-[1600px] mx-auto flex justify-between items-end text-[9px] md:text-[11px] tracking-[0.15em] uppercase font-medium ${
-            isDark ? "text-gray-500" : "text-gray-400"
-          }`}
-        >
-          <span>{t.common.footerTitle}</span>
-          <span className={`hidden md:block ${isDark ? "text-gray-600" : "text-gray-300"}`}>
-            {t.common.footerSubtitle}
-          </span>
-          <span>{t.common.footerLocation}</span>
-        </div>
-      </div>
-
-      {/* Instructions hint */}
-      <div
-        className={`absolute bottom-16 left-1/2 -translate-x-1/2 z-30 text-[10px] md:text-xs tracking-wider pointer-events-none ${
-          isDark ? "text-gray-600" : "text-gray-400"
-        }`}
-      >
-        {t.common.homeHint} ✨
       </div>
     </main>
   );
