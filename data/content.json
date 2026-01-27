@@ -250,255 +250,266 @@
       }
     }
   },
-  "zh": {
-    "common": {
-      "portfolio": "LOGO",
-      "description": "建構介面，訴說故事。",
-      "footerTitle": "作品集 2024",
-      "footerSubtitle": "前端工程師 · 成長行銷 · 內容創作者",
-      "footerLocation": "台北",
-      "homeHint": "點擊空白處彈跳 · 拖曳標籤移動",
-      "explore": "探索"
-    },
-    "nav": {
-      "engineer": "工程師",
-      "marketer": "行銷人",
-      "creator": "創作者"
-    },
-    "engineer": {
-      "hero": {
-        "badge": "創意開發者",
-        "title": "邏輯遇見",
-        "titleHighlight": "情感。",
+  
+    "zh": {
+      "common": {
+        "portfolio": "MAX",
         "description": "建構介面，訴說故事。",
-        "descriptionSub": "擁有 8 年行銷策略經驗的前端工程師。",
-        "ctaText": "查看案例研究"
+        "footerTitle": "Li Ko Chuang 2026",
+        "footerSubtitle": "前端工程師 · 專案管理 · 行銷背景",
+        "footerLocation": "台北, 台灣",
+        "homeHint": "點擊空白處彈跳 · 拖曳標籤移動",
+        "explore": "探索"
       },
-      "philosophy": {
-        "title": "工程師哲學",
-        "quote": "我在複雜程式碼與人類情感之間搭建數位橋樑。",
-        "content": "我從 8 年的行銷工作轉向工程，因為我想要精通「如何實現」。如今，我運用策略背景來打造不僅是乾淨程式碼，更是轉換率優化互動的組件。"
+      "nav": {
+        "engineer": "工程師",
+        "marketer": "品牌行銷",
+        "creator": "創作者"
       },
-      "experience": {
-        "title": "工作經歷",
-        "subtitle": "技術旅程。",
-        "items": [
-          {
-            "period": "2022 — 至今",
-            "role": "前端工程師",
-            "company": "創意科技工作室",
-            "description": "專注於使用 Next.js 和 Tailwind 開發高效能網頁應用。實作 Headless UI 設計系統。"
-          },
-          {
-            "period": "2014 — 2022",
-            "role": "資深行銷策略師",
-            "company": "全球數位代理商",
-            "description": "領導數位轉型策略。這段過往經歷讓我能與產品經理有效溝通。"
+      "engineer": {
+        "hero": {
+          "badge": "前端工程師",
+          "title": "邏輯遇見",
+          "titleHighlight": "體驗。",
+          "description": "專注於 React 生態系的網頁開發。",
+          "descriptionSub": "擁有 8 年以上行銷與專案管理背景，能將產品思維融入技術開發的前端工程師。",
+          "ctaText": "查看專案開發"
+        },
+        "philosophy": {
+          "title": "工程師哲學",
+          "quote": "橋接技術開發與產品思維。",
+          "content": "我擁有 1.5 年以上的前端開發經驗，並結合過去 5 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。"
+        },
+        "experience": {
+          "title": "工作經歷",
+          "subtitle": "技術旅程。",
+          "items": [
+            {
+              "period": "2024/07 — 至今",
+              "role": "前端工程師",
+              "company": "奕盛資訊 (YiSheng Information)",
+              "description": "開發 Agent Fabric AI 聊天機器人平台與 LandScape 數據平台。使用 React, TypeScript, Redux, Vite 進行全端整合與即時互動實作。"
+            },
+            {
+              "period": "2024/01 — 2024/06",
+              "role": "前端工程師",
+              "company": "Aiworks (AppWorks School)",
+              "description": "開發 PainShelter SPA 平台與重構 STYLISH 電商網站。使用 React, Firebase, GSAP 打造沉浸式體驗。"
+            }
+          ]
+        },
+        "now": {
+          "title": "「現在」頁面",
+          "subtitle": "目前技術焦點。",
+          "items": [
+            {
+              "icon": "Cpu",
+              "title": "React 生態系深耕",
+              "description": "專注於 Next.js 架構優化與複雜狀態管理（Zustand, Jotai, Redux）的實作應用。"
+            },
+            {
+              "icon": "BookOpen",
+              "title": "持續學習",
+              "description": "探索系統架構設計，並持續精進 TypeScript 與現代化前端工具鏈（Vite, Docker）。"
+            }
+          ]
+        },
+        "projects": {
+          "title": "工程案例研究",
+          "subtitle": "用程式碼解決問題。",
+          "challengeLabel": "挑戰",
+          "solutionLabel": "解決方案",
+          "outcomeLabel": "成果",
+          "items": [
+            {
+              "icon": "MessageSquare",
+              "title": "Agent Fabric AI 平台",
+              "tech": "React • Redux • Vite",
+              "techColor": "blue",
+              "challenge": "需整合 RESTful APIs 連接 AI 模型，並實現即時互動與任務自動化。",
+              "solution": "建立模組化 UI 元件與直觀的訊息階層設計。",
+              "outcome": "成功打造 GPT-like 的對話介面與知識庫系統。",
+              "outcomeHighlight": "AI 整合"
+            },
+            {
+              "icon": "Layout",
+              "title": "LandScape 數據平台",
+              "tech": "Next.js • Jotai • Tailwind",
+              "techColor": "purple",
+              "challenge": "需快速建構基礎設施並實現響應式設計 (RWD)。",
+              "solution": "使用 Next.js 架構配合 Jotai 進行狀態管理，利用 Tailwind CSS 加速開發。",
+              "outcome": "建立了可擴展的 SPA 架構與高效的 RWD 實作。",
+              "outcomeHighlight": "RWD"
+            },
+            {
+              "icon": "Smile",
+              "title": "PainShelter 敘事平台",
+              "tech": "React • Firebase • GSAP",
+              "techColor": "orange",
+              "challenge": "需處理複雜動畫與多頁面狀態管理，打造沉浸式體驗。",
+              "solution": "使用 Zustand 管理狀態，並整合 GSAP 實現流暢動畫。",
+              "outcome": "成功交付具備豐富敘事體驗的單頁應用 (SPA)。",
+              "outcomeHighlight": "沈浸式"
+            }
+          ]
+        },
+        "techStack": {
+          "title": "技術棧",
+          "subtitle": "工程師的工具箱。",
+          "items": [
+            { "icon": "Code2", "name": "React.js", "hoverColor": "blue-500" },
+            { "icon": "Zap", "name": "Next.js", "hoverColor": "black-500" },
+            { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" },
+            { "icon": "Wind", "name": "Tailwind CSS", "hoverColor": "cyan-500" }
+          ]
+        },
+        "contact": {
+          "title": "準備好打造強健的產品了嗎？",
+          "description": "尋找重視程式碼品質與使用者體驗的工程職位。",
+          "email": "milk88084@gmail.com"
+        }
+      },
+      "marketer": {
+        "hero": {
+          "badge": "專案管理與策略",
+          "title": "數據遇見",
+          "titleHighlight": "洞察。",
+          "description": "驅動成長，優化流程。",
+          "descriptionSub": "具備 5 年行銷與政府標案管理經驗，擅長跨部門溝通。",
+          "ctaText": "查看過往經歷"
+        },
+        "philosophy": {
+          "title": "策略哲學",
+          "quote": "數據分析與人性化溝通的結合。",
+          "content": "憑藉 5 年的行銷與專案管理經驗，我深知如何利用數據工具追蹤成效，並透過有效的溝通協調，確保專案在預算內精準執行。"
+        },
+        "experience": {
+          "title": "職涯經歷",
+          "subtitle": "管理與分析經驗。",
+          "items": [
+            {
+              "period": "2021/12 — 2024/01",
+              "role": "倡議專員 (Advocacy Specialist)",
+              "company": "勵馨基金會",
+              "description": "管理政府標案與預算執行。利用數據分析工具追蹤網站使用情況，優化使用者互動策略。"
+            }
+          ]
+        },
+        "projects": {
+          "title": "策略與管理案例",
+          "subtitle": "數據驅動與專案執行。",
+          "problemLabel": "任務",
+          "resultLabel": "成果",
+          "items": [
+            {
+              "icon": "FileText",
+              "title": "政府標案管理",
+              "tech": "專案管理 • 預算控管",
+              "techColor": "amber",
+              "bgColor": "amber",
+              "problem": "需管理複雜的政府標案流程與預算執行。",
+              "result": "成功執行專案預算，確保標案順利進行與結案。",
+              "resultHighlight": "專案執行"
+            },
+            {
+              "icon": "BarChart",
+              "title": "網站數據優化",
+              "tech": "數據分析 • 用戶互動",
+              "techColor": "purple",
+              "bgColor": "purple",
+              "problem": "需要追蹤並提升網站的使用者參與度。",
+              "result": "透過數據分析工具監測流量，制定優化策略提升互動。",
+              "resultHighlight": "數據驅動"
+            }
+          ]
+        },
+        "marketingStack": {
+          "title": "管理工具棧",
+          "subtitle": "策略師的工具箱。",
+          "items": [
+            { "icon": "LineChart", "name": "數據分析", "hoverColor": "amber-600" },
+            { "icon": "Users", "name": "專案管理", "hoverColor": "green-600" },
+            { "icon": "FileText", "name": "標案撰寫", "hoverColor": "orange-500" },
+            { "icon": "MessageCircle", "name": "跨部門溝通", "hoverColor": "purple-600" }
+          ]
+        },
+        "contact": {
+          "title": "需要能落地執行的策略嗎？",
+          "description": "結合技術與行銷思維，協助團隊達成目標。",
+          "email": "milk88084@gmail.com"
+        }
+      },
+      "creator": {
+        "hero": {
+          "badge": "生活與創作",
+          "title": "微小日常",
+          "titleHighlight": "生活。",
+          "description": "在工作與生活之間，",
+          "descriptionSub": "探索療癒、陪伴與自我成長的旅程。",
+          "ctaPrimary": "收聽 Podcast",
+          "ctaSecondary": "追蹤日常"
+        },
+        "about": {
+          "title": "關於微小日常",
+          "quote": "在快節奏的科技業工作之餘，我相信生活中的微小時刻才是真正的寶藏。",
+          "content": "這裡是我分享生活、療癒與成長的空間。不談 KPI，不講 OKR，只有真實的日常、偶爾的感悟，以及對生活的好奇與熱愛。"
+        },
+        "podcast": {
+          "badge": "Podcast",
+          "title": "微小日常",
+          "titleSub": "/ Tiny Daily Life",
+          "description": "一個關於生活、療癒與陪伴的空間。在這裡，我們聊日常、聊感受、聊那些數據無法捕捉的故事。",
+          "platforms": [
+            { "name": "Apple Podcasts", "color": "gray" },
+            { "name": "Spotify", "color": "green" }
+          ],
+          "episodesTitle": "最新單集",
+          "episodes": [
+            { "title": "EP.12 在忙碌中找到自己的節奏", "duration": "32:15" },
+            { "title": "EP.11 那些轉職路上學到的事", "duration": "45:30" },
+            { "title": "EP.10 如何在工作中保持創意？", "duration": "28:45" }
+          ]
+        },
+        "interests": {
+          "title": "日常興趣",
+          "subtitle": "工作以外的生活探索",
+          "items": [
+            { "icon": "Coffee", "name": "咖啡", "hoverColor": "amber-600" },
+            { "icon": "Camera", "name": "攝影", "hoverColor": "blue-500" },
+            { "icon": "Music", "name": "音樂", "hoverColor": "purple-500" },
+            { "icon": "BookOpen", "name": "閱讀", "hoverColor": "green-500" }
+          ],
+          "socialTitle": "追蹤我的社群",
+          "socialLinks": [
+            { "platform": "Instagram", "url": "https://instagram.com", "gradient": "from-purple-500 to-pink-500" },
+            { "platform": "YouTube", "url": "https://youtube.com", "color": "red-500" }
+          ]
+        },
+        "values": {
+          "title": "生活信念",
+          "subtitle": "我相信的事情",
+          "items": [
+            {
+              "icon": "Heart",
+              "title": "真實勝過完美",
+              "description": "不追求完美的人設，只做真實的自己。"
+            },
+            {
+              "icon": "Sparkles",
+              "title": "微小時刻的力量",
+              "description": "偉大的改變往往始於日常中的微小選擇。"
+            },
+            {
+              "icon": "Coffee",
+              "title": "慢下來的藝術",
+              "description": "在快節奏的世界中，學會享受當下的每一刻。"
+            }
+          ]
+        },
+        "contact": {
+          "title": "想聊聊嗎？",
+          "description": "無論是合作邀約、聊聊生活，或只是想打個招呼，都歡迎來"
           }
-        ]
-      },
-      "now": {
-        "title": "「現在」頁面",
-        "subtitle": "目前技術焦點。",
-        "items": [
-          {
-            "icon": "Cpu",
-            "title": "技術深潛",
-            "description": "跨越 React，理解系統層級程式設計。目前正在用 Rust 建構小型 CLI 工具，學習記憶體管理。"
-          },
-          {
-            "icon": "BookOpen",
-            "title": "閱讀中",
-            "description": "重讀《Clean Architecture》，撰寫更易維護、可擴展的前端程式碼。"
           }
-        ]
-      },
-      "projects": {
-        "title": "工程案例研究",
-        "subtitle": "用程式碼解決問題。",
-        "challengeLabel": "挑戰",
-        "solutionLabel": "解決方案",
-        "outcomeLabel": "成果",
-        "items": [
-          {
-            "icon": "Layout",
-            "title": "電商數據分析儀表板",
-            "tech": "Next.js • Tailwind • SWR",
-            "techColor": "blue",
-            "challenge": "客戶在視覺化 50k+ 資料點時遇到載入緩慢問題。",
-            "solution": "實作伺服器端聚合與使用 `react-window` 虛擬化列表。",
-            "outcome": "TTI 減少 40%，數據理解度提升。",
-            "outcomeHighlight": "40%"
-          },
-          {
-            "icon": "Smartphone",
-            "title": "Headless 電商平台",
-            "tech": "React • Framer Motion • Shopify",
-            "techColor": "purple",
-            "challenge": "在不造成突兀換頁的情況下，融合豐富敘事（CMS）與交易功能（Shopify）。",
-            "solution": null,
-            "outcome": "跳出率下降 25%，歸功於無縫轉場。",
-            "outcomeHighlight": "25%"
           }
-        ]
-      },
-      "techStack": {
-        "title": "技術棧",
-        "subtitle": "工程師的工具箱。",
-        "items": [
-          { "icon": "Code2", "name": "React", "hoverColor": "blue-500" },
-          { "icon": "Zap", "name": "Next.js", "hoverColor": "yellow-500" },
-          { "icon": "Box", "name": "Rust", "hoverColor": "orange-500" },
-          { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" }
-        ]
-      },
-      "contact": {
-        "title": "準備好打造強健的產品了嗎？",
-        "description": "尋找重視程式碼品質與使用者體驗的工程職位。",
-        "email": "engineer@example.com"
-      }
-    },
-    "marketer": {
-      "hero": {
-        "badge": "行銷策略師",
-        "title": "洞察遇見",
-        "titleHighlight": "影響力。",
-        "description": "驅動成長，編織敘事。",
-        "descriptionSub": "具備開發者技術優勢的資深策略師。",
-        "ctaText": "查看行銷活動"
-      },
-      "philosophy": {
-        "title": "策略哲學",
-        "quote": "我不只優化漏斗；我設計讓人感到人性化的用戶旅程。",
-        "content": "憑藉 8 年數位轉型和品牌策略經驗，我深知沒有故事的數據只是噪音。我的獨特優勢？我不僅能規劃策略，還能理解執行的技術可行性，在 CMO 和 CTO 之間搭建橋樑。"
-      },
-      "experience": {
-        "title": "職涯經歷",
-        "subtitle": "經驗驅動成長。",
-        "items": [
-          {
-            "period": "2014 — 2022",
-            "role": "資深行銷策略師",
-            "company": "全球數位代理商",
-            "description": "專精於 CRO、用戶旅程規劃，以及 FMCG 客戶的品牌定位。"
-          }
-        ]
-      },
-      "projects": {
-        "title": "策略案例研究",
-        "subtitle": "數據驅動成長。",
-        "problemLabel": "問題",
-        "resultLabel": "結果",
-        "items": [
-          {
-            "icon": "BarChart",
-            "title": "FMCG 數位轉型",
-            "tech": "CRO • 用戶旅程 • 自動化",
-            "techColor": "amber",
-            "bgColor": "amber",
-            "problem": "傳統品牌在 D2C 通路的轉換率不到 0.5%。",
-            "result": "根據數據重新設計漏斗，達成轉換率提升 200%。",
-            "resultHighlight": "轉換率提升 200%"
-          },
-          {
-            "icon": "Globe",
-            "title": "全球品牌重塑活動",
-            "tech": "品牌策略 • 內容 • SEO",
-            "techColor": "purple",
-            "bgColor": "purple",
-            "problem": "亞太市場的品牌訊息不一致。",
-            "result": "統一內容策略，自然流量增加 45%。"
-          }
-        ]
-      },
-      "marketingStack": {
-        "title": "行銷工具棧",
-        "subtitle": "策略師的工具箱。",
-        "items": [
-          { "icon": "LineChart", "name": "Google Analytics 4", "hoverColor": "amber-600" },
-          { "icon": "Search", "name": "SEO / Ahrefs", "hoverColor": "green-600" },
-          { "icon": "Users", "name": "CRM (HubSpot)", "hoverColor": "orange-500" },
-          { "icon": "PenTool", "name": "文案撰寫", "hoverColor": "purple-600" }
-        ]
-      },
-      "contact": {
-        "title": "需要能帶來轉換的策略嗎？",
-        "description": "讓我們討論如何有效講述您的品牌故事。",
-        "email": "strategy@example.com"
-      }
-    },
-    "creator": {
-      "hero": {
-        "badge": "生活與創作",
-        "title": "微小日常",
-        "titleHighlight": "生活。",
-        "description": "在工作與生活之間，",
-        "descriptionSub": "探索療癒、陪伴與自我成長的旅程。",
-        "ctaPrimary": "收聽 Podcast",
-        "ctaSecondary": "追蹤日常"
-      },
-      "about": {
-        "title": "關於微小日常",
-        "quote": "在快節奏的科技業工作之餘，我相信生活中的微小時刻才是真正的寶藏。",
-        "content": "這裡是我分享生活、療癒與成長的空間。不談 KPI，不講 OKR，只有真實的日常、偶爾的感悟，以及對生活的好奇與熱愛。"
-      },
-      "podcast": {
-        "badge": "Podcast",
-        "title": "微小日常",
-        "titleSub": "/ Tiny Daily Life",
-        "description": "一個關於生活、療癒與陪伴的空間。在這裡，我們聊日常、聊感受、聊那些數據無法捕捉的故事。",
-        "platforms": [
-          { "name": "Apple Podcasts", "color": "gray" },
-          { "name": "Spotify", "color": "green" }
-        ],
-        "episodesTitle": "最新單集",
-        "episodes": [
-          { "title": "EP.12 在忙碌中找到自己的節奏", "duration": "32:15" },
-          { "title": "EP.11 那些轉職路上學到的事", "duration": "45:30" },
-          { "title": "EP.10 如何在工作中保持創意？", "duration": "28:45" }
-        ]
-      },
-      "interests": {
-        "title": "日常興趣",
-        "subtitle": "工作以外的生活探索",
-        "items": [
-          { "icon": "Coffee", "name": "咖啡", "hoverColor": "amber-600" },
-          { "icon": "Camera", "name": "攝影", "hoverColor": "blue-500" },
-          { "icon": "Music", "name": "音樂", "hoverColor": "purple-500" },
-          { "icon": "BookOpen", "name": "閱讀", "hoverColor": "green-500" }
-        ],
-        "socialTitle": "追蹤我的社群",
-        "socialLinks": [
-          { "platform": "Instagram", "url": "https://instagram.com", "gradient": "from-purple-500 to-pink-500" },
-          { "platform": "YouTube", "url": "https://youtube.com", "color": "red-500" }
-        ]
-      },
-      "values": {
-        "title": "生活信念",
-        "subtitle": "我相信的事情",
-        "items": [
-          {
-            "icon": "Heart",
-            "title": "真實勝過完美",
-            "description": "不追求完美的人設，只做真實的自己。"
-          },
-          {
-            "icon": "Sparkles",
-            "title": "微小時刻的力量",
-            "description": "偉大的改變往往始於日常中的微小選擇。"
-          },
-          {
-            "icon": "Coffee",
-            "title": "慢下來的藝術",
-            "description": "在快節奏的世界中，學會享受當下的每一刻。"
-          }
-        ]
-      },
-      "contact": {
-        "title": "想聊聊嗎？",
-        "description": "無論是合作邀約、聊聊生活，或只是想打個招呼，都歡迎來信。",
-        "email": "hello@tinydailylife.com"
-      }
-    }
-  }
 }
