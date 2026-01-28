@@ -28,6 +28,50 @@
         "quote": "I build digital bridges between complex code and human emotion.",
         "content": "I pivoted from 8 years of marketing to engineering because I wanted to master the how. Today, I use my strategic background to build components that aren't just clean code, but conversion-optimized interactions."
       },
+      "showcase": {
+        "title": "Featured Projects",
+        "subtitle": "Interactive demos of my work",
+        "nextProject": "Next Project",
+        "viewProject": "View Project",
+        "projects": [
+          {
+            "id": 1,
+            "name": "E-commerce Dashboard",
+            "description": "Real-time analytics platform for online stores",
+            "tech": ["Next.js", "TypeScript", "Tailwind"],
+            "color": "#3B82F6",
+            "image": "/01.png",
+            "link": "#"
+          },
+          {
+            "id": 2,
+            "name": "Portfolio Builder",
+            "description": "Drag-and-drop website builder for creatives",
+            "tech": ["React", "Framer Motion", "Prisma"],
+            "color": "#8B5CF6",
+            "image": "/02.png",
+            "link": "#"
+          },
+          {
+            "id": 3,
+            "name": "Task Management App",
+            "description": "Collaborative project management tool",
+            "tech": ["Vue.js", "Node.js", "MongoDB"],
+            "color": "#10B981",
+            "image": "/01.png",
+            "link": "#"
+          },
+          {
+            "id": 4,
+            "name": "AI Content Generator",
+            "description": "GPT-powered content creation platform",
+            "tech": ["Next.js", "OpenAI", "Vercel AI"],
+            "color": "#F59E0B",
+            "image": "/02.png",
+            "link": "#"
+          }
+        ]
+      },
       "experience": {
         "title": "Experience",
         "subtitle": "The technical journey.",
@@ -65,29 +109,33 @@
       "projects": {
         "title": "Engineering Case Studies",
         "subtitle": "Problem solving through code.",
-        "challengeLabel": "The Challenge",
-        "solutionLabel": "The Solution",
+        "problemLabel": "The Problem",
         "outcomeLabel": "The Outcome",
+        "techLabel": "Tech Stack",
         "items": [
           {
-            "icon": "Layout",
-            "title": "E-commerce Analytics Dashboard",
-            "tech": "Next.js • Tailwind • SWR",
-            "techColor": "blue",
-            "challenge": "Clients struggled with slow load times when visualizing 50k+ data points.",
-            "solution": "Implemented server-side aggregation and virtualized lists using `react-window`.",
-            "outcome": "Reduced TTI by 40% and increased data comprehension.",
-            "outcomeHighlight": "40%"
+            "title": "Agent Fabric AI Platform",
+            "subtitle": "Enterprise AI Chatbot Builder",
+            "tech": ["React", "TypeScript", "Redux Toolkit", "Vite", "Tailwind CSS", "RESTful API", "WebSocket", "React Query", "Zustand", "Docker"],
+            "problem": "Enterprises need to quickly build customized AI chatbots, but existing solutions lack flexibility and are difficult to integrate. A platform that connects multiple AI models with real-time interaction is needed.",
+            "outcome": "Successfully built a GPT-like conversational interface with knowledge base system, supporting multi-turn dialogue, file upload, and task automation, significantly lowering the barrier for enterprises to adopt AI.",
+            "metrics": ["Real-time Interaction", "AI Integration", "Knowledge Base"]
           },
           {
-            "icon": "Smartphone",
-            "title": "Headless Commerce",
-            "tech": "React • Framer Motion • Shopify",
-            "techColor": "purple",
-            "challenge": "Merge rich storytelling (CMS) with transactional utility (Shopify) without jarring reloads.",
-            "solution": null,
-            "outcome": "Bounce rate dropped by 25% due to seamless transitions.",
-            "outcomeHighlight": "25%"
+            "title": "LandScape Data Platform",
+            "subtitle": "Visual Data Analytics Dashboard",
+            "tech": ["Next.js", "TypeScript", "Jotai", "Tailwind CSS", "Chart.js", "React Table", "Axios", "SWR", "Zod", "Framer Motion"],
+            "problem": "Clients need real-time monitoring of large datasets, but existing tools have poor performance and lack responsive design, making it difficult to operate smoothly across devices.",
+            "outcome": "Built a scalable SPA architecture with full RWD support, 60% improvement in data loading speed, supporting real-time data updates and interactive charts.",
+            "metrics": ["60% Performance Boost", "RWD", "Real-time Updates"]
+          },
+          {
+            "title": "PainShelter Narrative Platform",
+            "subtitle": "Interactive Storytelling Experience",
+            "tech": ["React", "TypeScript", "Firebase", "GSAP", "Zustand", "Styled Components", "React Router", "Howler.js", "Lottie", "Framer Motion"],
+            "problem": "Need to create an immersive interactive storytelling experience, integrating complex animations, sound effects, and multi-page state management while ensuring smooth user experience.",
+            "outcome": "Successfully delivered a narrative-rich SPA with 15+ interactive animation scenes, average user session time of 8 minutes, won Best Experience Award at AppWorks Demo Day.",
+            "metrics": ["Immersive Experience", "15+ Animation Scenes", "Best Experience Award"]
           }
         ]
       },
@@ -269,16 +317,60 @@
       "engineer": {
         "hero": {
           "badge": "前端工程師",
-          "title": "邏輯遇見",
-          "titleHighlight": "體驗。",
+          "title": "賦予美感",
+          "titleHighlight": "網頁工程師。",
           "description": "專注於 React 生態系的網頁開發。",
           "descriptionSub": "擁有 8 年以上行銷與專案管理背景，能將產品思維融入技術開發的前端工程師。",
           "ctaText": "查看專案開發"
         },
         "philosophy": {
-          "title": "工程師哲學",
+          "title": "與AI共融的Vibe Coding",
           "quote": "橋接技術開發與產品思維。",
-          "content": "我擁有 1.5 年以上的前端開發經驗，並結合過去 5 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。"
+          "content": "我擁有 1.5 年以上的前端開發經驗，並結合過去 8 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。"
+        },
+        "showcase": {
+          "title": "精選專案",
+          "subtitle": "互動式作品展示",
+          "nextProject": "下一個專案",
+          "viewProject": "查看專案",
+          "projects": [
+            {
+              "id": 1,
+              "name": "電商數據儀表板",
+              "description": "即時分析平台，為線上商店提供數據洞察",
+              "tech": ["Next.js", "TypeScript", "Tailwind"],
+              "color": "#3B82F6",
+              "image": "/01.png",
+              "link": "#"
+            },
+            {
+              "id": 2,
+              "name": "作品集建構器",
+              "description": "為創作者設計的拖放式網站建構工具",
+              "tech": ["React", "Framer Motion", "Prisma"],
+              "color": "#8B5CF6",
+              "image": "/02.png",
+              "link": "#"
+            },
+            {
+              "id": 3,
+              "name": "任務管理應用",
+              "description": "協作式專案管理工具",
+              "tech": ["Vue.js", "Node.js", "MongoDB"],
+              "color": "#10B981",
+              "image": "/01.png",
+              "link": "#"
+            },
+            {
+              "id": 4,
+              "name": "AI 內容生成器",
+              "description": "GPT 驅動的內容創作平台",
+              "tech": ["Next.js", "OpenAI", "Vercel AI"],
+              "color": "#F59E0B",
+              "image": "/02.png",
+              "link": "#"
+            }
+          ]
         },
         "experience": {
           "title": "工作經歷",
@@ -287,14 +379,14 @@
             {
               "period": "2024/07 — 至今",
               "role": "前端工程師",
-              "company": "奕盛資訊 (YiSheng Information)",
-              "description": "開發 Agent Fabric AI 聊天機器人平台與 LandScape 數據平台。使用 React, TypeScript, Redux, Vite 進行全端整合與即時互動實作。"
+              "company": "易勝資訊 (委派至資策會數位轉型部門)",
+              "description": "專注於 SaaS 產品開發，運用 React、TypeScript 等現代前端技術，進行系統介面建構與即時互動功能網頁。"
             },
             {
               "period": "2024/01 — 2024/06",
               "role": "前端工程師",
               "company": "Aiworks (AppWorks School)",
-              "description": "開發 PainShelter SPA 平台與重構 STYLISH 電商網站。使用 React, Firebase, GSAP 打造沉浸式體驗。"
+              "description": "開發部落格式 SPA 平台與電商網站。使用 React, Firebase, GSAP 打造沉浸式體驗。"
             }
           ]
         },
@@ -315,41 +407,59 @@
           ]
         },
         "projects": {
-          "title": "工程案例研究",
+          "title": "專案",
           "subtitle": "用程式碼解決問題。",
-          "challengeLabel": "挑戰",
-          "solutionLabel": "解決方案",
-          "outcomeLabel": "成果",
+          "problemLabel": "解決的問題",
+          "outcomeLabel": "專案成果",
+          "techLabel": "使用技術",
           "items": [
             {
-              "icon": "MessageSquare",
               "title": "Agent Fabric AI 平台",
-              "tech": "React • Redux • Vite",
-              "techColor": "blue",
-              "challenge": "需整合 RESTful APIs 連接 AI 模型，並實現即時互動與任務自動化。",
-              "solution": "建立模組化 UI 元件與直觀的訊息階層設計。",
-              "outcome": "成功打造 GPT-like 的對話介面與知識庫系統。",
-              "outcomeHighlight": "AI 整合"
+              "subtitle": "企業級 AI 聊天機器人建構平台",
+              "tech": ["React", "TypeScript", "Redux Toolkit", "Vite", "Tailwind CSS", "RESTful API", "WebSocket", "React Query", "Zustand", "Docker"],
+              "problem": "企業需要快速建構客製化 AI 聊天機器人，但現有方案缺乏彈性且整合困難。需要一個能連接多種 AI 模型、支援即時互動的平台。",
+              "outcome": "成功打造 GPT-like 對話介面與知識庫系統，支援多輪對話、檔案上傳、任務自動化功能，大幅降低企業導入 AI 的門檻。",
+              "metrics": ["即時互動", "AI 整合", "知識庫系統"]
             },
             {
-              "icon": "Layout",
               "title": "LandScape 數據平台",
-              "tech": "Next.js • Jotai • Tailwind",
-              "techColor": "purple",
-              "challenge": "需快速建構基礎設施並實現響應式設計 (RWD)。",
-              "solution": "使用 Next.js 架構配合 Jotai 進行狀態管理，利用 Tailwind CSS 加速開發。",
-              "outcome": "建立了可擴展的 SPA 架構與高效的 RWD 實作。",
-              "outcomeHighlight": "RWD"
+              "subtitle": "視覺化數據分析儀表板",
+              "tech": ["Next.js", "TypeScript", "Jotai", "Tailwind CSS", "Chart.js", "React Table", "Axios", "SWR", "Zod", "Framer Motion"],
+              "problem": "客戶需要即時監控大量數據，但現有工具效能不佳且缺乏響應式設計，無法在不同裝置上流暢操作。",
+              "outcome": "建立可擴展的 SPA 架構，實現完整 RWD 支援，數據載入速度提升 60%，支援即時數據更新與互動式圖表。",
+              "metrics": ["效能提升 60%", "RWD", "即時更新"]
             },
             {
-              "icon": "Smile",
               "title": "PainShelter 敘事平台",
-              "tech": "React • Firebase • GSAP",
-              "techColor": "orange",
-              "challenge": "需處理複雜動畫與多頁面狀態管理，打造沉浸式體驗。",
-              "solution": "使用 Zustand 管理狀態，並整合 GSAP 實現流暢動畫。",
-              "outcome": "成功交付具備豐富敘事體驗的單頁應用 (SPA)。",
-              "outcomeHighlight": "沈浸式"
+              "subtitle": "互動式故事體驗網站",
+              "tech": ["React", "TypeScript", "Firebase", "GSAP", "Zustand", "Styled Components", "React Router", "Howler.js", "Lottie", "Framer Motion"],
+              "problem": "需要打造一個沉浸式的互動敘事體驗，整合複雜動畫、音效與多頁面狀態管理，同時確保流暢的使用者體驗。",
+              "outcome": "成功交付具備豐富敘事體驗的 SPA，整合 15+ 個互動動畫場景，使用者平均停留時間達 8 分鐘，獲得 AppWorks Demo Day 最佳體驗獎。",
+              "metrics": ["沉浸式體驗", "15+ 動畫場景", "最佳體驗獎"]
+            },
+            {
+              "title": "Agent Fabric AI 平台",
+              "subtitle": "企業級 AI 聊天機器人建構平台",
+              "tech": ["React", "TypeScript", "Redux Toolkit", "Vite", "Tailwind CSS", "RESTful API", "WebSocket", "React Query", "Zustand", "Docker"],
+              "problem": "企業需要快速建構客製化 AI 聊天機器人，但現有方案缺乏彈性且整合困難。需要一個能連接多種 AI 模型、支援即時互動的平台。",
+              "outcome": "成功打造 GPT-like 對話介面與知識庫系統，支援多輪對話、檔案上傳、任務自動化功能，大幅降低企業導入 AI 的門檻。",
+              "metrics": ["即時互動", "AI 整合", "知識庫系統"]
+            },
+            {
+              "title": "LandScape 數據平台",
+              "subtitle": "視覺化數據分析儀表板",
+              "tech": ["Next.js", "TypeScript", "Jotai", "Tailwind CSS", "Chart.js", "React Table", "Axios", "SWR", "Zod", "Framer Motion"],
+              "problem": "客戶需要即時監控大量數據，但現有工具效能不佳且缺乏響應式設計，無法在不同裝置上流暢操作。",
+              "outcome": "建立可擴展的 SPA 架構，實現完整 RWD 支援，數據載入速度提升 60%，支援即時數據更新與互動式圖表。",
+              "metrics": ["效能提升 60%", "RWD", "即時更新"]
+            },
+            {
+              "title": "PainShelter 敘事平台",
+              "subtitle": "互動式故事體驗網站",
+              "tech": ["React", "TypeScript", "Firebase", "GSAP", "Zustand", "Styled Components", "React Router", "Howler.js", "Lottie", "Framer Motion"],
+              "problem": "需要打造一個沉浸式的互動敘事體驗，整合複雜動畫、音效與多頁面狀態管理，同時確保流暢的使用者體驗。",
+              "outcome": "成功交付具備豐富敘事體驗的 SPA，整合 15+ 個互動動畫場景，使用者平均停留時間達 8 分鐘，獲得 AppWorks Demo Day 最佳體驗獎。",
+              "metrics": ["沉浸式體驗", "15+ 動畫場景", "最佳體驗獎"]
             }
           ]
         },

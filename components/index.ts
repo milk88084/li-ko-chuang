@@ -8,3 +8,5 @@ export { CreatorView } from './CreatorView';
 export { EngineerContent } from './EngineerContent';
 export { MarketerContent } from './MarketerContent';
 export { CreatorContent } from './CreatorContent';
+export { ProjectShowcase } from './ProjectShowcase';
+export { ProjectTimeline } from './ProjectTimeline';

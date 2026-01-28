@@ -13,6 +13,9 @@ import {
 } from 'lucide-react';
 import content from '@/data/content.json';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { useTheme } from 'next-themes';
+import { ProjectShowcase } from './ProjectShowcase';
+import { ProjectTimeline } from './ProjectTimeline';
 
 type ContentType = typeof content;
 type LanguageKey = keyof ContentType;
@@ -30,8 +33,10 @@ const iconMap = {
 
 export function EngineerView() {
   const { language } = useLanguage();
+  const { resolvedTheme } = useTheme();
   const t = content[language as LanguageKey];
   const data = t.engineer;
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <main id="view-engineer">
@@ -78,6 +83,26 @@ export function EngineerView() {
               {data.philosophy.content}
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Project Showcase */}
+      <section id="eng-showcase" className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
+              {data.showcase.title}
+            </h2>
+            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
+              {data.showcase.subtitle}
+            </p>
+          </div>
+          <ProjectShowcase 
+            projects={data.showcase.projects}
+            nextProjectLabel={data.showcase.nextProject}
+            viewProjectLabel={data.showcase.viewProject}
+            isDark={isDark}
+          />
         </div>
       </section>
 
@@ -154,74 +179,6 @@ export function EngineerView() {
         </div>
       </section>
 
-      {/* Projects */}
-      <section
-        id="eng-projects"
-        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
-              {data.projects.title}
-            </h2>
-            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-              {data.projects.subtitle}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-            {data.projects.items.map((project, index) => {
-              const IconComponent = iconMap[project.icon as keyof typeof iconMap];
-              return (
-                <article key={index} className="group block bg-white dark:bg-[#1C1C1E] rounded-3xl overflow-hidden border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-xl dark:shadow-none transition-all duration-300">
-                  <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
-                    <div className="absolute inset-0 bg-gradient-to-tr from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 group-hover:scale-105 transition-transform duration-500"></div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
-                      {IconComponent && <IconComponent className="w-12 h-12 text-gray-400 dark:text-gray-500" />}
-                    </div>
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      {project.title}
-                    </h3>
-                    <p className={`text-xs font-mono text-${project.techColor}-600 dark:text-${project.techColor}-400 mb-6 bg-${project.techColor}-50 dark:bg-${project.techColor}-900/30 inline-block px-2 py-1 rounded`}>
-                      {project.tech}
-                    </p>
-                    <div className="space-y-4 text-sm">
-                      <div>
-                        <strong className="text-gray-900 dark:text-gray-200 block mb-1">
-                          {data.projects.challengeLabel}
-                        </strong>
-                        <p className="text-gray-600 dark:text-gray-400 font-light">
-                          {project.challenge}
-                        </p>
-                      </div>
-                      {project.solution && (
-                        <div>
-                          <strong className="text-gray-900 dark:text-gray-200 block mb-1">
-                            {data.projects.solutionLabel}
-                          </strong>
-                          <p className="text-gray-600 dark:text-gray-400 font-light">
-                            {project.solution}
-                          </p>
-                        </div>
-                      )}
-                      <div className="pt-2 border-t border-gray-100 dark:border-white/10 mt-4">
-                        <strong className="text-gray-900 dark:text-gray-200 block mb-1">
-                          {data.projects.outcomeLabel}
-                        </strong>
-                        <p className="text-gray-600 dark:text-gray-400 font-light">
-                          {project.outcome}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Tech Stack */}
       <section className="py-24 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
@@ -246,6 +203,32 @@ export function EngineerView() {
           </div>
         </div>
       </section>
+
+      {/* Projects */}
+      <section
+        id="eng-projects"
+        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
+      >
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
+              {data.projects.title}
+            </h2>
+            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
+              {data.projects.subtitle}
+            </p>
+          </div>
+          <ProjectTimeline
+            projects={data.projects.items}
+            problemLabel={data.projects.problemLabel}
+            outcomeLabel={data.projects.outcomeLabel}
+            techLabel={data.projects.techLabel}
+            isDark={isDark}
+          />
+        </div>
+      </section>
+
+      
 
       {/* Contact CTA */}
       <section className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 text-center relative z-10 transition-colors duration-300">
