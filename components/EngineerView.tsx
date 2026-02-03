@@ -1,5 +1,6 @@
-'use client';
+"use client";
 
+import { useState, useCallback } from "react";
 import {
   Code2,
   Cpu,
@@ -10,12 +11,12 @@ import {
   Box,
   Type,
   ArrowUpRight,
-} from 'lucide-react';
-import content from '@/data/content.json';
-import { useLanguage } from '@/providers/LanguageProvider';
-import { useTheme } from 'next-themes';
-import { ProjectShowcase } from './ProjectShowcase';
-import { ProjectTimeline } from './ProjectTimeline';
+} from "lucide-react";
+import content from "@/data/content.json";
+import { useLanguage } from "@/providers/LanguageProvider";
+import { useTheme } from "next-themes";
+import { ProjectShowcase } from "./ProjectShowcase";
+import { ProjectTimeline } from "./ProjectTimeline";
 
 type ContentType = typeof content;
 type LanguageKey = keyof ContentType;
@@ -36,7 +37,19 @@ export function EngineerView() {
   const { resolvedTheme } = useTheme();
   const t = content[language as LanguageKey];
   const data = t.engineer;
-  const isDark = resolvedTheme === 'dark';
+  const isDark = resolvedTheme === "dark";
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+
+  const handleShowcaseProjectChange = useCallback((index: number) => {
+    setActiveProjectIndex(index);
+    // 滾動到 ProjectTimeline 區塊，加入延遲確保 DOM 更新
+    setTimeout(() => {
+      const timelineSection = document.getElementById("eng-projects");
+      if (timelineSection) {
+        timelineSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  }, []);
 
   return (
     <main id="view-engineer">
@@ -47,7 +60,10 @@ export function EngineerView() {
             {data.hero.badge}
           </p>
           <h1 className="fade-in-up delay-100 text-5xl md:text-7xl font-semibold tracking-tight leading-tight text-gray-900 dark:text-white drop-shadow-sm">
-            {data.hero.title} <span className="text-gray-400 dark:text-gray-500">{data.hero.titleHighlight}</span>
+            {data.hero.title}{" "}
+            <span className="text-gray-400 dark:text-gray-500">
+              {data.hero.titleHighlight}
+            </span>
           </h1>
           <p className="fade-in-up delay-200 text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto font-light">
             {data.hero.description} <br className="hidden md:block" />
@@ -79,29 +95,28 @@ export function EngineerView() {
             <p className="mb-6 text-xl text-gray-800 dark:text-gray-200">
               &ldquo;{data.philosophy.quote}&rdquo;
             </p>
-            <p>
-              {data.philosophy.content}
-            </p>
+            <p>{data.philosophy.content}</p>
           </div>
         </div>
       </section>
 
       {/* Project Showcase */}
-      <section id="eng-showcase" className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
+      <section
+        id="eng-showcase"
+        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="mb-16 text-center">
             <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
               {data.showcase.title}
             </h2>
-            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-              {data.showcase.subtitle}
-            </p>
           </div>
-          <ProjectShowcase 
+          <ProjectShowcase
             projects={data.showcase.projects}
             nextProjectLabel={data.showcase.nextProject}
             viewProjectLabel={data.showcase.viewProject}
             isDark={isDark}
+            onProjectChange={handleShowcaseProjectChange}
           />
         </div>
       </section>
@@ -122,13 +137,18 @@ export function EngineerView() {
           </div>
           <div className="space-y-12 relative border-l border-gray-200 dark:border-gray-700 ml-3 md:ml-0 pl-8 md:pl-0">
             {data.experience.items.map((item, index) => (
-              <div key={index} className="relative md:grid md:grid-cols-[1fr_3fr] md:gap-10">
+              <div
+                key={index}
+                className="relative md:grid md:grid-cols-[1fr_3fr] md:gap-10"
+              >
                 <div className="hidden md:block text-right pt-1">
                   <span className="text-sm font-medium text-gray-900 dark:text-white">
                     {item.period}
                   </span>
                 </div>
-                <div className={`absolute -left-[37px] top-2 h-4 w-4 rounded-full border-4 border-gray-50 dark:border-[#050505] ${index === 0 ? 'bg-gray-900 dark:bg-white' : 'bg-gray-300 dark:bg-gray-600'} md:hidden`}></div>
+                <div
+                  className={`absolute -left-[37px] top-2 h-4 w-4 rounded-full border-4 border-gray-50 dark:border-[#050505] ${index === 0 ? "bg-gray-900 dark:bg-white" : "bg-gray-300 dark:bg-gray-600"} md:hidden`}
+                ></div>
                 <div>
                   <span className="md:hidden text-xs font-semibold uppercase tracking-wide text-gray-500 mb-1 block">
                     {item.period}
@@ -150,7 +170,10 @@ export function EngineerView() {
       </section>
 
       {/* Now Page */}
-      <section id="eng-now" className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300">
+      <section
+        id="eng-now"
+        className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
+      >
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -165,9 +188,15 @@ export function EngineerView() {
             {data.now.items.map((item, index) => {
               const IconComponent = iconMap[item.icon as keyof typeof iconMap];
               return (
-                <div key={index} className="bg-gray-50 dark:bg-[#1C1C1E] p-6 rounded-xl border border-gray-100 dark:border-white/10 transition-colors duration-300">
+                <div
+                  key={index}
+                  className="bg-gray-50 dark:bg-[#1C1C1E] p-6 rounded-xl border border-gray-100 dark:border-white/10 transition-colors duration-300"
+                >
                   <h4 className="font-medium text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                    {IconComponent && <IconComponent className="w-4 h-4 text-gray-400" />} {item.title}
+                    {IconComponent && (
+                      <IconComponent className="w-4 h-4 text-gray-400" />
+                    )}{" "}
+                    {item.title}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed">
                     {item.description}
@@ -194,9 +223,18 @@ export function EngineerView() {
             {data.techStack.items.map((item, index) => {
               const IconComponent = iconMap[item.icon as keyof typeof iconMap];
               return (
-                <div key={index} className="bg-gray-50 dark:bg-[#1C1C1E] p-6 rounded-2xl border border-gray-100 dark:border-white/10 flex flex-col items-center justify-center group transition-colors duration-300">
-                  {IconComponent && <IconComponent className={`w-8 h-8 mb-3 text-gray-400 group-hover:text-${item.hoverColor} transition-colors`} />}
-                  <span className="text-gray-900 dark:text-white font-medium">{item.name}</span>
+                <div
+                  key={index}
+                  className="bg-gray-50 dark:bg-[#1C1C1E] p-6 rounded-2xl border border-gray-100 dark:border-white/10 flex flex-col items-center justify-center group transition-colors duration-300"
+                >
+                  {IconComponent && (
+                    <IconComponent
+                      className={`w-8 h-8 mb-3 text-gray-400 group-hover:text-${item.hoverColor} transition-colors`}
+                    />
+                  )}
+                  <span className="text-gray-900 dark:text-white font-medium">
+                    {item.name}
+                  </span>
                 </div>
               );
             })}
@@ -224,11 +262,10 @@ export function EngineerView() {
             outcomeLabel={data.projects.outcomeLabel}
             techLabel={data.projects.techLabel}
             isDark={isDark}
+            activeProjectIndex={activeProjectIndex}
           />
         </div>
       </section>
-
-      
 
       {/* Contact CTA */}
       <section className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 text-center relative z-10 transition-colors duration-300">

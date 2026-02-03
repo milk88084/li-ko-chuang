@@ -17,28 +17,71 @@ function useIsMounted() {
   return useSyncExternalStore(
     emptySubscribe,
     () => true,
-    () => false
+    () => false,
   );
 }
 
 // 專業標籤數據 - variant: "filled" | "outlined"
 const skillTags = [
-  { id: 1, text: "💻ENGINEER",zh:"💻工程師", size: "lg", variant: "filled" },
-  { id: 2, text: "💼MARKETER",zh:"💼行銷人", size: "lg", variant: "filled" },
-  { id: 3, text: "💡CREATOR",zh:"💡創作者", size: "lg", variant: "filled" },
-  { id: 13, text: "🖌️DESIGNER",zh:"🖌️設計師", size: "lg", variant: "filled" },
-  { id: 4, text: "SOCIAL MEDIA",zh:"自媒體經營者", size: "md", variant: "outlined" },
-  { id: 5, text: "REACT",zh:"React", size: "md", variant: "outlined" },
-  { id: 6, text: "NEXT.JS",zh:"Next.js", size: "md", variant: "outlined" },
-  { id: 7, text: "GROWTH",zh:"成長", size: "sm", variant: "outlined" },
-  { id: 8, text: "UI/UX",zh:"用戶體驗設計", size: "md", variant: "outlined" },
-  { id: 9, text: "JAVASCRIPT",zh:"JavaScript", size: "md", variant: "outlined" },
-  { id: 16, text: "TYPESCRIPT",zh:"TypeScript", size: "md", variant: "outlined" },
-  { id: 10, text: "BRANDING",zh:"品牌行銷", size: "md", variant: "outlined" },
-  { id: 11, text: "PODCAST HOST",zh:"Podcast 主持人", size: "sm", variant: "outlined" },
-  { id: 12, text: "VIBE CODING",zh:"Vibe Coding", size: "md", variant: "outlined" },
-  { id: 14, text: "VIDEO EDITOR",zh:"影片剪輯", size: "md", variant: "outlined" },
-  { id: 15, text: "OPEN MINDS",zh:"開放思維", size: "sm", variant: "outlined" },
+  { id: 1, text: "💻ENGINEER", zh: "💻工程師", size: "lg", variant: "filled" },
+  { id: 2, text: "💼MARKETER", zh: "💼行銷人", size: "lg", variant: "filled" },
+  { id: 3, text: "💡CREATOR", zh: "💡創作者", size: "lg", variant: "filled" },
+  { id: 13, text: "🖌️DESIGNER", zh: "🖌️設計師", size: "lg", variant: "filled" },
+  {
+    id: 4,
+    text: "SOCIAL MEDIA",
+    zh: "自媒體經營者",
+    size: "md",
+    variant: "outlined",
+  },
+  { id: 5, text: "REACT", zh: "React", size: "md", variant: "outlined" },
+  { id: 6, text: "NEXT.JS", zh: "Next.js", size: "md", variant: "outlined" },
+  { id: 7, text: "GROWTH", zh: "成長", size: "sm", variant: "outlined" },
+  { id: 8, text: "UI/UX", zh: "用戶體驗設計", size: "md", variant: "outlined" },
+  {
+    id: 9,
+    text: "JAVASCRIPT",
+    zh: "JavaScript",
+    size: "md",
+    variant: "outlined",
+  },
+  {
+    id: 16,
+    text: "TYPESCRIPT",
+    zh: "TypeScript",
+    size: "md",
+    variant: "outlined",
+  },
+  { id: 10, text: "BRANDING", zh: "品牌行銷", size: "md", variant: "outlined" },
+  { id: 17, text: "N8N", zh: "N8N", size: "md", variant: "outlined" },
+  {
+    id: 11,
+    text: "PODCAST HOST",
+    zh: "Podcast 主持人",
+    size: "sm",
+    variant: "outlined",
+  },
+  {
+    id: 12,
+    text: "VIBE CODING",
+    zh: "Vibe Coding",
+    size: "md",
+    variant: "outlined",
+  },
+  {
+    id: 14,
+    text: "VIDEO EDITOR",
+    zh: "影片剪輯",
+    size: "md",
+    variant: "outlined",
+  },
+  {
+    id: 15,
+    text: "OPEN MINDS",
+    zh: "開放思維",
+    size: "sm",
+    variant: "outlined",
+  },
 ];
 
 // 導航項目 - 現在由 language context 決定
@@ -60,14 +103,16 @@ export default function Home() {
   const [positions, setPositions] = useState<
     Map<number, { x: number; y: number; angle: number }>
   >(new Map());
-  const [cursorStyle, setCursorStyle] = useState<"default" | "grab" | "grabbing">("default");
+  const [cursorStyle, setCursorStyle] = useState<
+    "default" | "grab" | "grabbing"
+  >("default");
 
   // Only use theme after mounted to avoid hydration mismatch
   const isDark = mounted ? resolvedTheme === "dark" : false;
-  
+
   // Get translated content
   const t = content[language as LanguageKey];
-  
+
   // Navigation items with translations
   const navItems = [
     { id: "engineer", label: t.nav.engineer, href: "/engineer" },
@@ -91,22 +136,40 @@ export default function Home() {
     // Create walls
     const wallThickness = 60;
     let walls = [
-      Matter.Bodies.rectangle(width / 2, height + wallThickness / 2, width + 200, wallThickness, {
-        isStatic: true,
-        friction: 0.8,
-        restitution: 0.3,
-        label: "wall",
-      }),
-      Matter.Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, {
-        isStatic: true,
-        friction: 0.5,
-        label: "wall",
-      }),
-      Matter.Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, {
-        isStatic: true,
-        friction: 0.5,
-        label: "wall",
-      }),
+      Matter.Bodies.rectangle(
+        width / 2,
+        height + wallThickness / 2,
+        width + 200,
+        wallThickness,
+        {
+          isStatic: true,
+          friction: 0.8,
+          restitution: 0.3,
+          label: "wall",
+        },
+      ),
+      Matter.Bodies.rectangle(
+        -wallThickness / 2,
+        height / 2,
+        wallThickness,
+        height * 2,
+        {
+          isStatic: true,
+          friction: 0.5,
+          label: "wall",
+        },
+      ),
+      Matter.Bodies.rectangle(
+        width + wallThickness / 2,
+        height / 2,
+        wallThickness,
+        height * 2,
+        {
+          isStatic: true,
+          friction: 0.5,
+          label: "wall",
+        },
+      ),
     ];
     Matter.Composite.add(engine.world, walls);
 
@@ -177,10 +240,12 @@ export default function Home() {
       // Check if clicking on a tag body
       const bodiesAtPoint = Matter.Query.point(
         Matter.Composite.allBodies(engine.world),
-        { x: mouseX, y: mouseY }
+        { x: mouseX, y: mouseY },
       );
 
-      const clickedOnTag = bodiesAtPoint.some((b) => b.label?.startsWith("tag-"));
+      const clickedOnTag = bodiesAtPoint.some((b) =>
+        b.label?.startsWith("tag-"),
+      );
 
       // If not clicking on a tag, bounce tags at similar X position
       if (!clickedOnTag) {
@@ -190,7 +255,8 @@ export default function Home() {
           const xDistance = Math.abs(body.position.x - mouseX);
 
           if (xDistance < xTolerance) {
-            const forceMagnitude = Math.max(0, (xTolerance - xDistance) / xTolerance) * 0.15;
+            const forceMagnitude =
+              Math.max(0, (xTolerance - xDistance) / xTolerance) * 0.15;
 
             Matter.Body.applyForce(body, body.position, {
               x: (Math.random() - 0.5) * forceMagnitude * 0.3,
@@ -214,7 +280,7 @@ export default function Home() {
       // Check if mouse is over any tag body
       const bodiesAtPoint = Matter.Query.point(
         Matter.Composite.allBodies(engine.world),
-        { x: mouseX, y: mouseY }
+        { x: mouseX, y: mouseY },
       );
 
       const isOverTag = bodiesAtPoint.some((b) => b.label?.startsWith("tag-"));
@@ -231,7 +297,10 @@ export default function Home() {
     // Animation frame for DOM updates
     let animationId: number;
     const updatePositions = () => {
-      const newPositions = new Map<number, { x: number; y: number; angle: number }>();
+      const newPositions = new Map<
+        number,
+        { x: number; y: number; angle: number }
+      >();
       bodiesRef.current.forEach((body, id) => {
         newPositions.set(id, {
           x: body.position.x,
@@ -251,22 +320,40 @@ export default function Home() {
 
       Matter.Composite.remove(engine.world, walls);
       walls = [
-        Matter.Bodies.rectangle(newWidth / 2, newHeight + wallThickness / 2, newWidth + 200, wallThickness, {
-          isStatic: true,
-          friction: 0.8,
-          restitution: 0.3,
-          label: "wall",
-        }),
-        Matter.Bodies.rectangle(-wallThickness / 2, newHeight / 2, wallThickness, newHeight * 2, {
-          isStatic: true,
-          friction: 0.5,
-          label: "wall",
-        }),
-        Matter.Bodies.rectangle(newWidth + wallThickness / 2, newHeight / 2, wallThickness, newHeight * 2, {
-          isStatic: true,
-          friction: 0.5,
-          label: "wall",
-        }),
+        Matter.Bodies.rectangle(
+          newWidth / 2,
+          newHeight + wallThickness / 2,
+          newWidth + 200,
+          wallThickness,
+          {
+            isStatic: true,
+            friction: 0.8,
+            restitution: 0.3,
+            label: "wall",
+          },
+        ),
+        Matter.Bodies.rectangle(
+          -wallThickness / 2,
+          newHeight / 2,
+          wallThickness,
+          newHeight * 2,
+          {
+            isStatic: true,
+            friction: 0.5,
+            label: "wall",
+          },
+        ),
+        Matter.Bodies.rectangle(
+          newWidth + wallThickness / 2,
+          newHeight / 2,
+          wallThickness,
+          newHeight * 2,
+          {
+            isStatic: true,
+            friction: 0.5,
+            label: "wall",
+          },
+        ),
       ];
       Matter.Composite.add(engine.world, walls);
     };
@@ -286,7 +373,6 @@ export default function Home() {
   if (!mounted) {
     return (
       <main className="h-screen md:max-h-screen md:overflow-hidden relative overflow-hidden bg-[#FBFBFD] dark:bg-black transition-colors duration-300">
-       
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
           <div className="text-center px-4">
             <h1 className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] text-[#3250FE] opacity-0">
@@ -346,14 +432,16 @@ export default function Home() {
             <button
               onClick={toggleLanguage}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full transition-colors cursor-pointer text-xs font-medium ${
-                isDark 
-                  ? "text-gray-300 hover:bg-white/10" 
+                isDark
+                  ? "text-gray-300 hover:bg-white/10"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
               aria-label="Toggle Language"
             >
               <Globe className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{language === 'en' ? 'EN' : '中'}</span>
+              <span className="hidden sm:inline">
+                {language === "en" ? "EN" : "中"}
+              </span>
             </button>
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
@@ -373,24 +461,26 @@ export default function Home() {
       </nav>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
         <div className="text-center px-4">
-          <h1
-            className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 opacity-100 translate-y-0 text-[#3250FE]"
-          >
+          <h1 className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 opacity-100 translate-y-0 text-[#3250FE]">
             LI KO
           </h1>
-          <h1
-            className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 delay-150 opacity-100 translate-y-0 text-[#3250FE]"
-          >
+          <h1 className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 delay-150 opacity-100 translate-y-0 text-[#3250FE]">
             CHUANG
           </h1>
-          <p className={`text-sm font-medium tracking-wider mt-4 ${isDark ? "text-gray-400" : "text-gray-600"}`}>{t.common.description}</p>
-          <Link 
+          <p
+            className={`text-sm font-medium tracking-wider mt-4 ${isDark ? "text-gray-400" : "text-gray-600"}`}
+          >
+            {t.common.description}
+          </p>
+          <Link
             href="/engineer"
             className={`mt-6 inline-flex flex-col items-center gap-2 cursor-pointer transition-all hover:scale-110 pointer-events-auto relative z-30 ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            <span className="text-xs font-medium tracking-wider">{t.common.explore}</span>
+            <span className="text-xs font-medium tracking-wider">
+              {t.common.explore}
+            </span>
             <ArrowDown className="w-5 h-5 animate-bounce" />
           </Link>
         </div>
@@ -430,7 +520,7 @@ export default function Home() {
                   : "none",
               }}
             >
-              {language === 'zh' ? tag.zh : tag.text}
+              {language === "zh" ? tag.zh : tag.text}
             </div>
           );
         })}

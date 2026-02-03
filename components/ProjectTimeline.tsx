@@ -18,6 +18,7 @@ interface ProjectTimelineProps {
   outcomeLabel: string;
   techLabel: string;
   isDark?: boolean;
+  activeProjectIndex?: number;
 }
 
 export function ProjectTimeline({
@@ -26,6 +27,7 @@ export function ProjectTimeline({
   outcomeLabel,
   techLabel,
   isDark = false,
+  activeProjectIndex,
 }: ProjectTimelineProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -41,6 +43,20 @@ export function ProjectTimeline({
     setActiveIndex(index);
     setTimeout(() => setIsAnimating(false), 400);
   };
+
+  // Sync with external activeProjectIndex
+  useEffect(() => {
+    if (
+      activeProjectIndex !== undefined &&
+      activeProjectIndex !== activeIndex &&
+      !isAnimating
+    ) {
+      setIsAnimating(true);
+      setActiveIndex(activeProjectIndex);
+      setTimeout(() => setIsAnimating(false), 400);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeProjectIndex]);
 
   const handlePrev = () => {
     if (activeIndex > 0) {

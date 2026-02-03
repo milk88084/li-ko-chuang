@@ -40,7 +40,8 @@
             "description": "Real-time analytics platform for online stores",
             "tech": ["Next.js", "TypeScript", "Tailwind"],
             "color": "#3B82F6",
-            "image": "/01.png",
+            "img": "/01.png",
+            "video": "/01_AI快研究.mp4",
             "link": "#"
           },
           {
@@ -49,7 +50,8 @@
             "description": "Drag-and-drop website builder for creatives",
             "tech": ["React", "Framer Motion", "Prisma"],
             "color": "#8B5CF6",
-            "image": "/02.png",
+            "img": "/02.png",
+            "video": "/02_Landscape.mp4",
             "link": "#"
           },
           {
@@ -58,7 +60,8 @@
             "description": "Collaborative project management tool",
             "tech": ["Vue.js", "Node.js", "MongoDB"],
             "color": "#10B981",
-            "image": "/01.png",
+            "img": "/01.png",
+            "video": "/03_數位聊天室.mp4",
             "link": "#"
           },
           {
@@ -67,7 +70,8 @@
             "description": "GPT-powered content creation platform",
             "tech": ["Next.js", "OpenAI", "Vercel AI"],
             "color": "#F59E0B",
-            "image": "/02.png",
+            "img": "/02.png",
+            "video": "/04_Agent_Fabric.mp4",
             "link": "#"
           }
         ]
@@ -116,15 +120,41 @@
           {
             "title": "Agent Fabric AI Platform",
             "subtitle": "Enterprise AI Chatbot Builder",
-            "tech": ["React", "TypeScript", "Redux Toolkit", "Vite", "Tailwind CSS", "RESTful API", "WebSocket", "React Query", "Zustand", "Docker"],
+            "tech": [
+              "React",
+              "TypeScript",
+              "Redux Toolkit",
+              "Vite",
+              "Tailwind CSS",
+              "RESTful API",
+              "WebSocket",
+              "React Query",
+              "Zustand",
+              "Docker"
+            ],
             "problem": "Enterprises need to quickly build customized AI chatbots, but existing solutions lack flexibility and are difficult to integrate. A platform that connects multiple AI models with real-time interaction is needed.",
             "outcome": "Successfully built a GPT-like conversational interface with knowledge base system, supporting multi-turn dialogue, file upload, and task automation, significantly lowering the barrier for enterprises to adopt AI.",
-            "metrics": ["Real-time Interaction", "AI Integration", "Knowledge Base"]
+            "metrics": [
+              "Real-time Interaction",
+              "AI Integration",
+              "Knowledge Base"
+            ]
           },
           {
             "title": "LandScape Data Platform",
             "subtitle": "Visual Data Analytics Dashboard",
-            "tech": ["Next.js", "TypeScript", "Jotai", "Tailwind CSS", "Chart.js", "React Table", "Axios", "SWR", "Zod", "Framer Motion"],
+            "tech": [
+              "Next.js",
+              "TypeScript",
+              "Jotai",
+              "Tailwind CSS",
+              "Chart.js",
+              "React Table",
+              "Axios",
+              "SWR",
+              "Zod",
+              "Framer Motion"
+            ],
             "problem": "Clients need real-time monitoring of large datasets, but existing tools have poor performance and lack responsive design, making it difficult to operate smoothly across devices.",
             "outcome": "Built a scalable SPA architecture with full RWD support, 60% improvement in data loading speed, supporting real-time data updates and interactive charts.",
             "metrics": ["60% Performance Boost", "RWD", "Real-time Updates"]
@@ -132,10 +162,25 @@
           {
             "title": "PainShelter Narrative Platform",
             "subtitle": "Interactive Storytelling Experience",
-            "tech": ["React", "TypeScript", "Firebase", "GSAP", "Zustand", "Styled Components", "React Router", "Howler.js", "Lottie", "Framer Motion"],
+            "tech": [
+              "React",
+              "TypeScript",
+              "Firebase",
+              "GSAP",
+              "Zustand",
+              "Styled Components",
+              "React Router",
+              "Howler.js",
+              "Lottie",
+              "Framer Motion"
+            ],
             "problem": "Need to create an immersive interactive storytelling experience, integrating complex animations, sound effects, and multi-page state management while ensuring smooth user experience.",
             "outcome": "Successfully delivered a narrative-rich SPA with 15+ interactive animation scenes, average user session time of 8 minutes, won Best Experience Award at AppWorks Demo Day.",
-            "metrics": ["Immersive Experience", "15+ Animation Scenes", "Best Experience Award"]
+            "metrics": [
+              "Immersive Experience",
+              "15+ Animation Scenes",
+              "Best Experience Award"
+            ]
           }
         ]
       },
@@ -212,10 +257,26 @@
         "title": "Marketing Stack",
         "subtitle": "The Strategist's Toolkit.",
         "items": [
-          { "icon": "LineChart", "name": "Google Analytics 4", "hoverColor": "amber-600" },
-          { "icon": "Search", "name": "SEO / Ahrefs", "hoverColor": "green-600" },
-          { "icon": "Users", "name": "CRM (HubSpot)", "hoverColor": "orange-500" },
-          { "icon": "PenTool", "name": "Copywriting", "hoverColor": "purple-600" }
+          {
+            "icon": "LineChart",
+            "name": "Google Analytics 4",
+            "hoverColor": "amber-600"
+          },
+          {
+            "icon": "Search",
+            "name": "SEO / Ahrefs",
+            "hoverColor": "green-600"
+          },
+          {
+            "icon": "Users",
+            "name": "CRM (HubSpot)",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "PenTool",
+            "name": "Copywriting",
+            "hoverColor": "purple-600"
+          }
         ]
       },
       "contact": {
@@ -250,9 +311,18 @@
         ],
         "episodesTitle": "Latest Episodes",
         "episodes": [
-          { "title": "EP.12 Finding Your Rhythm in the Busy Life", "duration": "32:15" },
-          { "title": "EP.11 Lessons Learned on the Career Change Journey", "duration": "45:30" },
-          { "title": "EP.10 How to Stay Creative at Work?", "duration": "28:45" }
+          {
+            "title": "EP.12 Finding Your Rhythm in the Busy Life",
+            "duration": "32:15"
+          },
+          {
+            "title": "EP.11 Lessons Learned on the Career Change Journey",
+            "duration": "45:30"
+          },
+          {
+            "title": "EP.10 How to Stay Creative at Work?",
+            "duration": "28:45"
+          }
         ]
       },
       "interests": {
@@ -266,8 +336,16 @@
         ],
         "socialTitle": "Follow My Social",
         "socialLinks": [
-          { "platform": "Instagram", "url": "https://instagram.com", "gradient": "from-purple-500 to-pink-500" },
-          { "platform": "YouTube", "url": "https://youtube.com", "color": "red-500" }
+          {
+            "platform": "Instagram",
+            "url": "https://instagram.com",
+            "gradient": "from-purple-500 to-pink-500"
+          },
+          {
+            "platform": "YouTube",
+            "url": "https://youtube.com",
+            "color": "red-500"
+          }
         ]
       },
       "values": {
@@ -298,328 +376,431 @@
       }
     }
   },
-  
-    "zh": {
-      "common": {
-        "portfolio": "MAX",
-        "description": "建構介面，訴說故事。",
-        "footerTitle": "Li Ko Chuang 2026",
-        "footerSubtitle": "前端工程師 · 專案管理 · 行銷背景",
-        "footerLocation": "台北, 台灣",
-        "homeHint": "點擊空白處彈跳 · 拖曳標籤移動",
-        "explore": "探索"
+
+  "zh": {
+    "common": {
+      "portfolio": "MAX",
+      "description": "建構介面，訴說故事。",
+      "footerTitle": "Li Ko Chuang 2026",
+      "footerSubtitle": "前端工程師 · 專案管理 · 行銷背景",
+      "footerLocation": "台北, 台灣",
+      "homeHint": "點擊空白處彈跳 · 拖曳標籤移動",
+      "explore": "探索"
+    },
+    "nav": {
+      "engineer": "工程師",
+      "marketer": "品牌行銷",
+      "creator": "創作者"
+    },
+    "engineer": {
+      "hero": {
+        "badge": "前端工程師",
+        "title": "賦予美感",
+        "titleHighlight": "跨領域工程師",
+        "description": "擁有 PM 視角，致力於構建符合市場需求的產品。",
+        "descriptionSub": "擁有 8 年以上行銷與專案管理背景，能將產品思維融入技術開發的前端工程師。",
+        "ctaText": "開始"
       },
-      "nav": {
-        "engineer": "工程師",
-        "marketer": "品牌行銷",
-        "creator": "創作者"
+      "philosophy": {
+        "title": "與AI共融的Vibe Coding",
+        "quote": "橋接技術開發與產品思維。",
+        "content": "我擁有 1.5 年以上的前端開發經驗，並結合過去 8 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。"
       },
-      "engineer": {
-        "hero": {
-          "badge": "前端工程師",
-          "title": "賦予美感",
-          "titleHighlight": "網頁工程師。",
-          "description": "專注於 React 生態系的網頁開發。",
-          "descriptionSub": "擁有 8 年以上行銷與專案管理背景，能將產品思維融入技術開發的前端工程師。",
-          "ctaText": "查看專案開發"
-        },
-        "philosophy": {
-          "title": "與AI共融的Vibe Coding",
-          "quote": "橋接技術開發與產品思維。",
-          "content": "我擁有 1.5 年以上的前端開發經驗，並結合過去 8 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。"
-        },
-        "showcase": {
-          "title": "精選專案",
-          "subtitle": "互動式作品展示",
-          "nextProject": "下一個專案",
-          "viewProject": "查看專案",
-          "projects": [
-            {
-              "id": 1,
-              "name": "電商數據儀表板",
-              "description": "即時分析平台，為線上商店提供數據洞察",
-              "tech": ["Next.js", "TypeScript", "Tailwind"],
-              "color": "#3B82F6",
-              "image": "/01.png",
-              "link": "#"
-            },
-            {
-              "id": 2,
-              "name": "作品集建構器",
-              "description": "為創作者設計的拖放式網站建構工具",
-              "tech": ["React", "Framer Motion", "Prisma"],
-              "color": "#8B5CF6",
-              "image": "/02.png",
-              "link": "#"
-            },
-            {
-              "id": 3,
-              "name": "任務管理應用",
-              "description": "協作式專案管理工具",
-              "tech": ["Vue.js", "Node.js", "MongoDB"],
-              "color": "#10B981",
-              "image": "/01.png",
-              "link": "#"
-            },
-            {
-              "id": 4,
-              "name": "AI 內容生成器",
-              "description": "GPT 驅動的內容創作平台",
-              "tech": ["Next.js", "OpenAI", "Vercel AI"],
-              "color": "#F59E0B",
-              "image": "/02.png",
-              "link": "#"
-            }
-          ]
-        },
-        "experience": {
-          "title": "工作經歷",
-          "subtitle": "技術旅程。",
-          "items": [
-            {
-              "period": "2024/07 — 至今",
-              "role": "前端工程師",
-              "company": "易勝資訊 (委派至資策會數位轉型部門)",
-              "description": "專注於 SaaS 產品開發，運用 React、TypeScript 等現代前端技術，進行系統介面建構與即時互動功能網頁。"
-            },
-            {
-              "period": "2024/01 — 2024/06",
-              "role": "前端工程師",
-              "company": "Aiworks (AppWorks School)",
-              "description": "開發部落格式 SPA 平台與電商網站。使用 React, Firebase, GSAP 打造沉浸式體驗。"
-            }
-          ]
-        },
-        "now": {
-          "title": "「現在」頁面",
-          "subtitle": "目前技術焦點。",
-          "items": [
-            {
-              "icon": "Cpu",
-              "title": "React 生態系深耕",
-              "description": "專注於 Next.js 架構優化與複雜狀態管理（Zustand, Jotai, Redux）的實作應用。"
-            },
-            {
-              "icon": "BookOpen",
-              "title": "持續學習",
-              "description": "探索系統架構設計，並持續精進 TypeScript 與現代化前端工具鏈（Vite, Docker）。"
-            }
-          ]
-        },
-        "projects": {
-          "title": "專案",
-          "subtitle": "用程式碼解決問題。",
-          "problemLabel": "解決的問題",
-          "outcomeLabel": "專案成果",
-          "techLabel": "使用技術",
-          "items": [
-            {
-              "title": "Agent Fabric AI 平台",
-              "subtitle": "企業級 AI 聊天機器人建構平台",
-              "tech": ["React", "TypeScript", "Redux Toolkit", "Vite", "Tailwind CSS", "RESTful API", "WebSocket", "React Query", "Zustand", "Docker"],
-              "problem": "企業需要快速建構客製化 AI 聊天機器人，但現有方案缺乏彈性且整合困難。需要一個能連接多種 AI 模型、支援即時互動的平台。",
-              "outcome": "成功打造 GPT-like 對話介面與知識庫系統，支援多輪對話、檔案上傳、任務自動化功能，大幅降低企業導入 AI 的門檻。",
-              "metrics": ["即時互動", "AI 整合", "知識庫系統"]
-            },
-            {
-              "title": "LandScape 數據平台",
-              "subtitle": "視覺化數據分析儀表板",
-              "tech": ["Next.js", "TypeScript", "Jotai", "Tailwind CSS", "Chart.js", "React Table", "Axios", "SWR", "Zod", "Framer Motion"],
-              "problem": "客戶需要即時監控大量數據，但現有工具效能不佳且缺乏響應式設計，無法在不同裝置上流暢操作。",
-              "outcome": "建立可擴展的 SPA 架構，實現完整 RWD 支援，數據載入速度提升 60%，支援即時數據更新與互動式圖表。",
-              "metrics": ["效能提升 60%", "RWD", "即時更新"]
-            },
-            {
-              "title": "PainShelter 敘事平台",
-              "subtitle": "互動式故事體驗網站",
-              "tech": ["React", "TypeScript", "Firebase", "GSAP", "Zustand", "Styled Components", "React Router", "Howler.js", "Lottie", "Framer Motion"],
-              "problem": "需要打造一個沉浸式的互動敘事體驗，整合複雜動畫、音效與多頁面狀態管理，同時確保流暢的使用者體驗。",
-              "outcome": "成功交付具備豐富敘事體驗的 SPA，整合 15+ 個互動動畫場景，使用者平均停留時間達 8 分鐘，獲得 AppWorks Demo Day 最佳體驗獎。",
-              "metrics": ["沉浸式體驗", "15+ 動畫場景", "最佳體驗獎"]
-            },
-            {
-              "title": "Agent Fabric AI 平台",
-              "subtitle": "企業級 AI 聊天機器人建構平台",
-              "tech": ["React", "TypeScript", "Redux Toolkit", "Vite", "Tailwind CSS", "RESTful API", "WebSocket", "React Query", "Zustand", "Docker"],
-              "problem": "企業需要快速建構客製化 AI 聊天機器人，但現有方案缺乏彈性且整合困難。需要一個能連接多種 AI 模型、支援即時互動的平台。",
-              "outcome": "成功打造 GPT-like 對話介面與知識庫系統，支援多輪對話、檔案上傳、任務自動化功能，大幅降低企業導入 AI 的門檻。",
-              "metrics": ["即時互動", "AI 整合", "知識庫系統"]
-            },
-            {
-              "title": "LandScape 數據平台",
-              "subtitle": "視覺化數據分析儀表板",
-              "tech": ["Next.js", "TypeScript", "Jotai", "Tailwind CSS", "Chart.js", "React Table", "Axios", "SWR", "Zod", "Framer Motion"],
-              "problem": "客戶需要即時監控大量數據，但現有工具效能不佳且缺乏響應式設計，無法在不同裝置上流暢操作。",
-              "outcome": "建立可擴展的 SPA 架構，實現完整 RWD 支援，數據載入速度提升 60%，支援即時數據更新與互動式圖表。",
-              "metrics": ["效能提升 60%", "RWD", "即時更新"]
-            },
-            {
-              "title": "PainShelter 敘事平台",
-              "subtitle": "互動式故事體驗網站",
-              "tech": ["React", "TypeScript", "Firebase", "GSAP", "Zustand", "Styled Components", "React Router", "Howler.js", "Lottie", "Framer Motion"],
-              "problem": "需要打造一個沉浸式的互動敘事體驗，整合複雜動畫、音效與多頁面狀態管理，同時確保流暢的使用者體驗。",
-              "outcome": "成功交付具備豐富敘事體驗的 SPA，整合 15+ 個互動動畫場景，使用者平均停留時間達 8 分鐘，獲得 AppWorks Demo Day 最佳體驗獎。",
-              "metrics": ["沉浸式體驗", "15+ 動畫場景", "最佳體驗獎"]
-            }
-          ]
-        },
-        "techStack": {
-          "title": "技術棧",
-          "subtitle": "工程師的工具箱。",
-          "items": [
-            { "icon": "Code2", "name": "React.js", "hoverColor": "blue-500" },
-            { "icon": "Zap", "name": "Next.js", "hoverColor": "black-500" },
-            { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" },
-            { "icon": "Wind", "name": "Tailwind CSS", "hoverColor": "cyan-500" }
-          ]
-        },
-        "contact": {
-          "title": "準備好打造強健的產品了嗎？",
-          "description": "尋找重視程式碼品質與使用者體驗的工程職位。",
-          "email": "milk88084@gmail.com"
-        }
-      },
-      "marketer": {
-        "hero": {
-          "badge": "專案管理與策略",
-          "title": "數據遇見",
-          "titleHighlight": "洞察。",
-          "description": "驅動成長，優化流程。",
-          "descriptionSub": "具備 5 年行銷與政府標案管理經驗，擅長跨部門溝通。",
-          "ctaText": "查看過往經歷"
-        },
-        "philosophy": {
-          "title": "策略哲學",
-          "quote": "數據分析與人性化溝通的結合。",
-          "content": "憑藉 5 年的行銷與專案管理經驗，我深知如何利用數據工具追蹤成效，並透過有效的溝通協調，確保專案在預算內精準執行。"
-        },
-        "experience": {
-          "title": "職涯經歷",
-          "subtitle": "管理與分析經驗。",
-          "items": [
-            {
-              "period": "2021/12 — 2024/01",
-              "role": "倡議專員 (Advocacy Specialist)",
-              "company": "勵馨基金會",
-              "description": "管理政府標案與預算執行。利用數據分析工具追蹤網站使用情況，優化使用者互動策略。"
-            }
-          ]
-        },
-        "projects": {
-          "title": "策略與管理案例",
-          "subtitle": "數據驅動與專案執行。",
-          "problemLabel": "任務",
-          "resultLabel": "成果",
-          "items": [
-            {
-              "icon": "FileText",
-              "title": "政府標案管理",
-              "tech": "專案管理 • 預算控管",
-              "techColor": "amber",
-              "bgColor": "amber",
-              "problem": "需管理複雜的政府標案流程與預算執行。",
-              "result": "成功執行專案預算，確保標案順利進行與結案。",
-              "resultHighlight": "專案執行"
-            },
-            {
-              "icon": "BarChart",
-              "title": "網站數據優化",
-              "tech": "數據分析 • 用戶互動",
-              "techColor": "purple",
-              "bgColor": "purple",
-              "problem": "需要追蹤並提升網站的使用者參與度。",
-              "result": "透過數據分析工具監測流量，制定優化策略提升互動。",
-              "resultHighlight": "數據驅動"
-            }
-          ]
-        },
-        "marketingStack": {
-          "title": "管理工具棧",
-          "subtitle": "策略師的工具箱。",
-          "items": [
-            { "icon": "LineChart", "name": "數據分析", "hoverColor": "amber-600" },
-            { "icon": "Users", "name": "專案管理", "hoverColor": "green-600" },
-            { "icon": "FileText", "name": "標案撰寫", "hoverColor": "orange-500" },
-            { "icon": "MessageCircle", "name": "跨部門溝通", "hoverColor": "purple-600" }
-          ]
-        },
-        "contact": {
-          "title": "需要能落地執行的策略嗎？",
-          "description": "結合技術與行銷思維，協助團隊達成目標。",
-          "email": "milk88084@gmail.com"
-        }
-      },
-      "creator": {
-        "hero": {
-          "badge": "生活與創作",
-          "title": "微小日常",
-          "titleHighlight": "生活。",
-          "description": "在工作與生活之間，",
-          "descriptionSub": "探索療癒、陪伴與自我成長的旅程。",
-          "ctaPrimary": "收聽 Podcast",
-          "ctaSecondary": "追蹤日常"
-        },
-        "about": {
-          "title": "關於微小日常",
-          "quote": "在快節奏的科技業工作之餘，我相信生活中的微小時刻才是真正的寶藏。",
-          "content": "這裡是我分享生活、療癒與成長的空間。不談 KPI，不講 OKR，只有真實的日常、偶爾的感悟，以及對生活的好奇與熱愛。"
-        },
-        "podcast": {
-          "badge": "Podcast",
-          "title": "微小日常",
-          "titleSub": "/ Tiny Daily Life",
-          "description": "一個關於生活、療癒與陪伴的空間。在這裡，我們聊日常、聊感受、聊那些數據無法捕捉的故事。",
-          "platforms": [
-            { "name": "Apple Podcasts", "color": "gray" },
-            { "name": "Spotify", "color": "green" }
-          ],
-          "episodesTitle": "最新單集",
-          "episodes": [
-            { "title": "EP.12 在忙碌中找到自己的節奏", "duration": "32:15" },
-            { "title": "EP.11 那些轉職路上學到的事", "duration": "45:30" },
-            { "title": "EP.10 如何在工作中保持創意？", "duration": "28:45" }
-          ]
-        },
-        "interests": {
-          "title": "日常興趣",
-          "subtitle": "工作以外的生活探索",
-          "items": [
-            { "icon": "Coffee", "name": "咖啡", "hoverColor": "amber-600" },
-            { "icon": "Camera", "name": "攝影", "hoverColor": "blue-500" },
-            { "icon": "Music", "name": "音樂", "hoverColor": "purple-500" },
-            { "icon": "BookOpen", "name": "閱讀", "hoverColor": "green-500" }
-          ],
-          "socialTitle": "追蹤我的社群",
-          "socialLinks": [
-            { "platform": "Instagram", "url": "https://instagram.com", "gradient": "from-purple-500 to-pink-500" },
-            { "platform": "YouTube", "url": "https://youtube.com", "color": "red-500" }
-          ]
-        },
-        "values": {
-          "title": "生活信念",
-          "subtitle": "我相信的事情",
-          "items": [
-            {
-              "icon": "Heart",
-              "title": "真實勝過完美",
-              "description": "不追求完美的人設，只做真實的自己。"
-            },
-            {
-              "icon": "Sparkles",
-              "title": "微小時刻的力量",
-              "description": "偉大的改變往往始於日常中的微小選擇。"
-            },
-            {
-              "icon": "Coffee",
-              "title": "慢下來的藝術",
-              "description": "在快節奏的世界中，學會享受當下的每一刻。"
-            }
-          ]
-        },
-        "contact": {
-          "title": "想聊聊嗎？",
-          "description": "無論是合作邀約、聊聊生活，或只是想打個招呼，都歡迎來"
+      "showcase": {
+        "title": "精選專案",
+        "subtitle": "互動式作品展示",
+        "nextProject": "下一個專案",
+        "viewProject": "查看專案",
+        "projects": [
+          {
+            "id": 1,
+            "name": "國內市場趨勢追蹤平台",
+            "description": "尋找市場趨勢，掌握市場脈動",
+            "tech": [
+              "Next.js",
+              "React",
+              "TypeScript",
+              "Jotai",
+              "Tailwind CSS",
+              "Redux Toolkit",
+              "Docker",
+              "RWD"
+            ],
+            "color": "#F59E0B",
+            "img": "/01_AI快研究.png",
+            "video": "/01_AI快研究.mp4",
+            "link": "#"
+          },
+          {
+            "id": 2,
+            "name": "數位聊天室",
+            "description": "依環境變數切換不同數位工具的聊天室",
+            "tech": [
+              "Next.js",
+              "React",
+              "Redux Toolkit",
+              "TypeScript",
+              "Sass",
+              "Mui material",
+              "Docker",
+              "RWD"
+            ],
+            "color": "#10B981",
+            "img": "/02_Landscape.png",
+            "video": "/02_Landscape.mp4",
+            "link": "#"
+          },
+          {
+            "id": 3,
+            "name": "台灣資訊服務業者資料庫",
+            "description": "串接經濟部資料庫，提供台灣資訊服務業者的查詢與篩選功能",
+            "tech": [
+              "React",
+              "TypeScript",
+              "axios",
+              "Restful API",
+              "Tailwind CSS",
+              "Jotai",
+              "husky",
+              "Docker",
+              "RWD"
+            ],
+            "color": "#8B5CF6",
+            "img": "/03_數位聊天室.png",
+            "video": "/03_數位聊天室.mp4",
+            "link": "#"
+          },
+          {
+            "id": 4,
+            "name": "AI Agent 協作平台",
+            "description": "建立機器人聊天室，掛載個人知識庫，提供個人化服務，提高工作效率",
+            "tech": [
+              "React",
+              "TypeScript",
+              "Sass",
+              "axios",
+              "Restful API",
+              "React Router",
+              "Docker",
+              "RWD"
+            ],
+            "color": "#3B82F6",
+            "img": "/04_Agent_Fabric.png",
+            "video": "/04_Agent_Fabric.mp4",
+            "link": "#"
           }
+        ]
+      },
+      "experience": {
+        "title": "工作經歷",
+        "subtitle": "技術旅程。",
+        "items": [
+          {
+            "period": "2024/07 — 至今",
+            "role": "前端工程師",
+            "company": "易勝資訊 (委派至資策會數位轉型部門)",
+            "description": "專注於 SaaS 產品開發，運用 React、TypeScript 等現代前端技術，進行系統介面建構與即時互動功能網頁。"
+          },
+          {
+            "period": "2024/01 — 2024/06",
+            "role": "前端工程師",
+            "company": "Aiworks (AppWorks School)",
+            "description": "開發部落格式 SPA 平台與電商網站。使用 React, Firebase, GSAP 打造沉浸式體驗。"
           }
+        ]
+      },
+      "now": {
+        "title": "「現在」頁面",
+        "subtitle": "目前技術焦點。",
+        "items": [
+          {
+            "icon": "Cpu",
+            "title": "React 生態系深耕",
+            "description": "專注於 Next.js 架構優化與複雜狀態管理（Zustand, Jotai, Redux）的實作應用。"
+          },
+          {
+            "icon": "BookOpen",
+            "title": "持續學習",
+            "description": "探索系統架構設計，並持續精進 TypeScript 與現代化前端工具鏈（Vite, Docker）。"
           }
+        ]
+      },
+      "projects": {
+        "title": "專案",
+        "subtitle": "用程式碼解決問題。",
+        "problemLabel": "解決的問題",
+        "outcomeLabel": "專案成果",
+        "techLabel": "使用技術",
+        "items": [
+          {
+            "title": "國內市場趨勢追蹤平台",
+            "subtitle": "依據網路爬蟲領域關鍵字、監測Github Hugging Face等相關成長數據，對應國內公司資訊，依照微光、新興、主流趨勢，提供相對應政策",
+            "tech": [
+              "Next.js",
+              "React",
+              "TypeScript",
+              "Jotai",
+              "Tailwind CSS",
+              "Redux Toolkit",
+              "Docker",
+              "RWD"
+            ],
+            "problem": "需整合異質數據源（網路爬蟲、API、內部資料庫），且數據更新頻繁，對系統效能造成巨大挑戰。",
+            "outcome": "建立「技術-廠商」關聯資料庫，智慧媒合國際趨勢與國內供應鏈，為政府與投資人提供具體的策略建議地圖。",
+            "metrics": [
+              "新聞快訊",
+              "登入功能",
+              "收藏功能",
+              "電子報訂閱",
+              "趨勢分析",
+              "深度研究"
+            ]
+          },
+          {
+            "title": "數位聊天室",
+            "subtitle": "依環境變數切換不同數位工具的聊天室",
+            "tech": [
+              "Next.js",
+              "React",
+              "Redux Toolkit",
+              "TypeScript",
+              "Sass",
+              "Mui material",
+              "RWD"
+            ],
+            "problem": "面對不同業務端的聊天需求，缺乏一套能夠快速抽換設定的通用解決方案。",
+            "outcome": "開發具備高度彈性的聊天平台，利用環境變數控制 API 端點與 UI 風格，成功支援多組內部工具的即時通訊需求。",
+            "metrics": [
+              "知識庫串接",
+              "歷史紀錄",
+              "語音輸入",
+              "多模型切換",
+              "登入系統"
+            ]
+          },
+          {
+            "title": "台灣資訊服務業者資料庫",
+            "subtitle": "串接經濟部資料庫，提供台灣資訊服務業者的查詢與篩選功能",
+            "tech": [
+              "React",
+              "TypeScript",
+              "axios",
+              "Restful API",
+              "Tailwind CSS",
+              "Jotai",
+              "husky",
+              "RWD"
+            ],
+            "problem": "企業尋找資訊服務商如同大海撈針，缺乏透明的資訊與比較基準；缺乏直覺的篩選與搜尋機制，使用者必須手動比對資料，耗時且效率低落。",
+            "outcome": "成功串接經濟部 API，運用 React 與 Jotai 打造高效能的響應式查詢平台，實現即時多條件篩選，大幅優化資訊檢索體驗。",
+            "metrics": [
+              "登入系統",
+              "多條件篩選",
+              "對話式搜尋",
+              "機器人聊天搜尋系統"
+            ]
+          },
+          {
+            "title": "AI Agent 協作平台",
+            "subtitle": "類Dify串接AI工具平台",
+            "tech": [
+              "React",
+              "TypeScript",
+              "sass",
+              "axios",
+              "Restful API",
+              "React Router",
+              "RWD"
+            ],
+            "problem": "企業需要快速建構客製化 AI 聊天機器人，但現有方案缺乏彈性且整合困難。需要一個能連接多種 AI 模型、支援即時互動的平台。",
+            "outcome": "成功打造 GPT-like 對話介面與知識庫系統，支援多輪對話、檔案上傳、任務自動化功能，大幅降低企業導入 AI 的門檻。",
+            "metrics": [
+              "機器人聊天",
+              "知識庫串接",
+              "多模型切換",
+              "檔案上傳",
+              "登入系統"
+            ]
+          }
+        ]
+      },
+      "techStack": {
+        "title": "技術棧",
+        "subtitle": "工程師的工具箱。",
+        "items": [
+          { "icon": "Code2", "name": "React.js", "hoverColor": "blue-500" },
+          { "icon": "Zap", "name": "Next.js", "hoverColor": "black-500" },
+          { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" },
+          { "icon": "Wind", "name": "Tailwind CSS", "hoverColor": "cyan-500" }
+        ]
+      },
+      "contact": {
+        "title": "準備好打造強健的產品了嗎？",
+        "description": "尋找重視程式碼品質與使用者體驗的工程職位。",
+        "email": "milk88084@gmail.com"
+      }
+    },
+    "marketer": {
+      "hero": {
+        "badge": "專案管理與策略",
+        "title": "數據遇見",
+        "titleHighlight": "洞察。",
+        "description": "驅動成長，優化流程。",
+        "descriptionSub": "具備 5 年行銷與政府標案管理經驗，擅長跨部門溝通。",
+        "ctaText": "查看過往經歷"
+      },
+      "philosophy": {
+        "title": "策略哲學",
+        "quote": "數據分析與人性化溝通的結合。",
+        "content": "憑藉 5 年的行銷與專案管理經驗，我深知如何利用數據工具追蹤成效，並透過有效的溝通協調，確保專案在預算內精準執行。"
+      },
+      "experience": {
+        "title": "職涯經歷",
+        "subtitle": "管理與分析經驗。",
+        "items": [
+          {
+            "period": "2021/12 — 2024/01",
+            "role": "倡議專員 (Advocacy Specialist)",
+            "company": "勵馨基金會",
+            "description": "管理政府標案與預算執行。利用數據分析工具追蹤網站使用情況，優化使用者互動策略。"
+          }
+        ]
+      },
+      "projects": {
+        "title": "策略與管理案例",
+        "subtitle": "數據驅動與專案執行。",
+        "problemLabel": "任務",
+        "resultLabel": "成果",
+        "items": [
+          {
+            "icon": "FileText",
+            "title": "政府標案管理",
+            "tech": "專案管理 • 預算控管",
+            "techColor": "amber",
+            "bgColor": "amber",
+            "problem": "需管理複雜的政府標案流程與預算執行。",
+            "result": "成功執行專案預算，確保標案順利進行與結案。",
+            "resultHighlight": "專案執行"
+          },
+          {
+            "icon": "BarChart",
+            "title": "網站數據優化",
+            "tech": "數據分析 • 用戶互動",
+            "techColor": "purple",
+            "bgColor": "purple",
+            "problem": "需要追蹤並提升網站的使用者參與度。",
+            "result": "透過數據分析工具監測流量，制定優化策略提升互動。",
+            "resultHighlight": "數據驅動"
+          }
+        ]
+      },
+      "marketingStack": {
+        "title": "管理工具棧",
+        "subtitle": "策略師的工具箱。",
+        "items": [
+          {
+            "icon": "LineChart",
+            "name": "數據分析",
+            "hoverColor": "amber-600"
+          },
+          { "icon": "Users", "name": "專案管理", "hoverColor": "green-600" },
+          {
+            "icon": "FileText",
+            "name": "標案撰寫",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "MessageCircle",
+            "name": "跨部門溝通",
+            "hoverColor": "purple-600"
+          }
+        ]
+      },
+      "contact": {
+        "title": "需要能落地執行的策略嗎？",
+        "description": "結合技術與行銷思維，協助團隊達成目標。",
+        "email": "milk88084@gmail.com"
+      }
+    },
+    "creator": {
+      "hero": {
+        "badge": "生活與創作",
+        "title": "微小日常",
+        "titleHighlight": "生活。",
+        "description": "在工作與生活之間，",
+        "descriptionSub": "探索療癒、陪伴與自我成長的旅程。",
+        "ctaPrimary": "收聽 Podcast",
+        "ctaSecondary": "追蹤日常"
+      },
+      "about": {
+        "title": "關於微小日常",
+        "quote": "在快節奏的科技業工作之餘，我相信生活中的微小時刻才是真正的寶藏。",
+        "content": "這裡是我分享生活、療癒與成長的空間。不談 KPI，不講 OKR，只有真實的日常、偶爾的感悟，以及對生活的好奇與熱愛。"
+      },
+      "podcast": {
+        "badge": "Podcast",
+        "title": "微小日常",
+        "titleSub": "/ Tiny Daily Life",
+        "description": "一個關於生活、療癒與陪伴的空間。在這裡，我們聊日常、聊感受、聊那些數據無法捕捉的故事。",
+        "platforms": [
+          { "name": "Apple Podcasts", "color": "gray" },
+          { "name": "Spotify", "color": "green" }
+        ],
+        "episodesTitle": "最新單集",
+        "episodes": [
+          { "title": "EP.12 在忙碌中找到自己的節奏", "duration": "32:15" },
+          { "title": "EP.11 那些轉職路上學到的事", "duration": "45:30" },
+          { "title": "EP.10 如何在工作中保持創意？", "duration": "28:45" }
+        ]
+      },
+      "interests": {
+        "title": "日常興趣",
+        "subtitle": "工作以外的生活探索",
+        "items": [
+          { "icon": "Coffee", "name": "咖啡", "hoverColor": "amber-600" },
+          { "icon": "Camera", "name": "攝影", "hoverColor": "blue-500" },
+          { "icon": "Music", "name": "音樂", "hoverColor": "purple-500" },
+          { "icon": "BookOpen", "name": "閱讀", "hoverColor": "green-500" }
+        ],
+        "socialTitle": "追蹤我的社群",
+        "socialLinks": [
+          {
+            "platform": "Instagram",
+            "url": "https://instagram.com",
+            "gradient": "from-purple-500 to-pink-500"
+          },
+          {
+            "platform": "YouTube",
+            "url": "https://youtube.com",
+            "color": "red-500"
+          }
+        ]
+      },
+      "values": {
+        "title": "生活信念",
+        "subtitle": "我相信的事情",
+        "items": [
+          {
+            "icon": "Heart",
+            "title": "真實勝過完美",
+            "description": "不追求完美的人設，只做真實的自己。"
+          },
+          {
+            "icon": "Sparkles",
+            "title": "微小時刻的力量",
+            "description": "偉大的改變往往始於日常中的微小選擇。"
+          },
+          {
+            "icon": "Coffee",
+            "title": "慢下來的藝術",
+            "description": "在快節奏的世界中，學會享受當下的每一刻。"
+          }
+        ]
+      },
+      "contact": {
+        "title": "想聊聊嗎？",
+        "description": "無論是合作邀約、聊聊生活，或只是想打個招呼，都歡迎來"
+      }
+    }
+  }
 }
