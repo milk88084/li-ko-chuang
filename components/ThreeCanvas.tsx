@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useCallback } from 'react';
-import * as THREE from 'three';
-import { useTheme } from 'next-themes';
+import { useEffect, useRef, useCallback } from "react";
+import * as THREE from "three";
+import { useTheme } from "next-themes";
 
 interface ThreeCanvasProps {
-  visualType: 'engineer' | 'marketer' | 'creator';
+  visualType: "engineer" | "marketer" | "creator";
 }
 
 export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
-  
+
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
@@ -19,11 +19,13 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
   const marketerGroupRef = useRef<THREE.Group | null>(null);
   const creatorGroupRef = useRef<THREE.Group | null>(null);
   const linesRef = useRef<THREE.Line[]>([]);
+  const marketerNodesRef = useRef<THREE.Mesh[]>([]);
+  const marketerLinksRef = useRef<THREE.LineSegments | null>(null);
   const rippleRingsRef = useRef<THREE.Mesh[]>([]);
   const particlesRef = useRef<THREE.Points | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const animationRef = useRef<number | null>(null);
-  
+
   const visualTypeRef = useRef(visualType);
   const themeRef = useRef(resolvedTheme);
 
@@ -36,37 +38,32 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
   }, [resolvedTheme]);
 
   const getLineColor = useCallback(() => {
-    return themeRef.current === 'dark' ? 0x60a5fa : 0x3b82f6;
+    return themeRef.current === "dark" ? 0x60a5fa : 0x3b82f6;
   }, []);
 
   const getRippleColor = useCallback(() => {
-    return themeRef.current === 'dark' ? 0xfcd34d : 0xd97706;
+    return themeRef.current === "dark" ? 0xfcd34d : 0xd97706;
   }, []);
 
   const getParticleColor = useCallback(() => {
-    return themeRef.current === 'dark' ? 0xf472b6 : 0xec4899;
+    return themeRef.current === "dark" ? 0xf472b6 : 0xec4899;
   }, []);
 
   const updateEngineerColors = useCallback(() => {
     const colorHex = getLineColor();
-    const isDark = themeRef.current === 'dark';
+    const isDark = themeRef.current === "dark";
     linesRef.current.forEach((line) => {
       (line.material as THREE.LineBasicMaterial).color.setHex(colorHex);
       (line.material as THREE.LineBasicMaterial).opacity = isDark ? 0.5 : 0.3;
     });
   }, [getLineColor]);
 
-  const updateRippleColors = useCallback(() => {
-    const colorHex = getRippleColor();
-    rippleRingsRef.current.forEach((ring) => {
-      (ring.material as THREE.MeshBasicMaterial).color.setHex(colorHex);
-    });
-  }, [getRippleColor]);
-
   const updateParticleColors = useCallback(() => {
     if (particlesRef.current) {
       const colorHex = getParticleColor();
-      (particlesRef.current.material as THREE.PointsMaterial).color.setHex(colorHex);
+      (particlesRef.current.material as THREE.PointsMaterial).color.setHex(
+        colorHex,
+      );
     }
   }, [getParticleColor]);
 
@@ -83,7 +80,7 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       75,
       window.innerWidth / window.innerHeight,
       0.1,
-      1000
+      1000,
     );
     camera.position.z = 50;
     camera.position.y = 5;
@@ -126,33 +123,56 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       }
     };
 
-    // Create Marketer Ripples
-    const createMarketerRipples = (group: THREE.Group) => {
-      const ringCount = 12;
-      const geometry = new THREE.RingGeometry(1.8, 2.0, 64);
+    // Create Marketer Synergy Network (Event/Project Management vibe)
+    const createMarketerVisuals = (group: THREE.Group) => {
+      const nodeCount = 40;
+      const sphereGeometry = new THREE.SphereGeometry(0.4, 12, 12);
 
-      for (let i = 0; i < ringCount; i++) {
-        const material = new THREE.MeshBasicMaterial({
+      // 1. Creative Nodes (Milestones/Tasks)
+      for (let i = 0; i < nodeCount; i++) {
+        const material = new THREE.MeshPhongMaterial({
           color: getRippleColor(),
           transparent: true,
-          opacity: 0,
-          side: THREE.DoubleSide,
+          opacity: 0.7,
+          emissive: getRippleColor(),
+          emissiveIntensity: 0.5,
         });
 
-        const ring = new THREE.Mesh(geometry, material);
-        const startX = -60 + (i / ringCount) * 120;
+        const node = new THREE.Mesh(sphereGeometry, material);
+        node.position.set(
+          (Math.random() - 0.5) * 80,
+          (Math.random() - 0.5) * 60,
+          (Math.random() - 0.5) * 40,
+        );
 
-        ring.position.set(startX, 0, 0);
-        ring.position.z = (Math.random() - 0.5) * 10;
-
-        ring.userData = {
-          baseSpeed: 0.1 + Math.random() * 0.05,
-          phaseOffset: Math.random() * Math.PI * 2,
+        node.userData = {
+          velocity: new THREE.Vector3(
+            (Math.random() - 0.5) * 0.05,
+            (Math.random() - 0.5) * 0.05,
+            (Math.random() - 0.5) * 0.05,
+          ),
+          originalPos: node.position.clone(),
         };
 
-        rippleRingsRef.current.push(ring);
-        group.add(ring);
+        marketerNodesRef.current.push(node);
+        group.add(node);
       }
+
+      // 2. Connector Lines Setup
+      const lineMaterial = new THREE.LineBasicMaterial({
+        color: getRippleColor(),
+        transparent: true,
+        opacity: 0.15,
+      });
+      const lineGeometry = new THREE.BufferGeometry();
+      const marketerLinks = new THREE.LineSegments(lineGeometry, lineMaterial);
+      marketerLinksRef.current = marketerLinks;
+      group.add(marketerLinks);
+
+      // Add warmth lighting
+      const light = new THREE.PointLight(getRippleColor(), 1.5, 120);
+      light.position.set(0, 0, 20);
+      group.add(light);
     };
 
     // Create Creator Particles (floating particles for creative/personal vibe)
@@ -168,12 +188,15 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
         velocities.push(
           (Math.random() - 0.5) * 0.02,
           (Math.random() - 0.5) * 0.02,
-          (Math.random() - 0.5) * 0.01
+          (Math.random() - 0.5) * 0.01,
         );
       }
 
       const geometry = new THREE.BufferGeometry();
-      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(positions, 3),
+      );
       geometry.userData = { velocities };
 
       const material = new THREE.PointsMaterial({
@@ -198,7 +221,7 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
     // Marketer Group
     const marketerGroup = new THREE.Group();
     marketerGroupRef.current = marketerGroup;
-    createMarketerRipples(marketerGroup);
+    createMarketerVisuals(marketerGroup);
     scene.add(marketerGroup);
 
     // Creator Group
@@ -208,9 +231,9 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
     scene.add(creatorGroup);
 
     // Set initial visibility
-    engineerGroup.visible = visualTypeRef.current === 'engineer';
-    marketerGroup.visible = visualTypeRef.current === 'marketer';
-    creatorGroup.visible = visualTypeRef.current === 'creator';
+    engineerGroup.visible = visualTypeRef.current === "engineer";
+    marketerGroup.visible = visualTypeRef.current === "marketer";
+    creatorGroup.visible = visualTypeRef.current === "creator";
 
     // Event listeners
     const handleResize = () => {
@@ -225,8 +248,8 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       mouseRef.current.y = (event.clientY - window.innerHeight / 2) * 0.1;
     };
 
-    window.addEventListener('resize', handleResize);
-    document.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("resize", handleResize);
+    document.addEventListener("mousemove", handleMouseMove);
 
     // Animation loop
     const animate = () => {
@@ -236,19 +259,21 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
 
       // Update visibility
       if (engineerGroupRef.current) {
-        engineerGroupRef.current.visible = currentType === 'engineer';
+        engineerGroupRef.current.visible = currentType === "engineer";
       }
       if (marketerGroupRef.current) {
-        marketerGroupRef.current.visible = currentType === 'marketer';
+        marketerGroupRef.current.visible = currentType === "marketer";
       }
       if (creatorGroupRef.current) {
-        creatorGroupRef.current.visible = currentType === 'creator';
+        creatorGroupRef.current.visible = currentType === "creator";
       }
 
-      if (currentType === 'engineer' && engineerGroupRef.current?.visible) {
+      if (currentType === "engineer" && engineerGroupRef.current?.visible) {
         // Engineer animation - flowing lines
         linesRef.current.forEach((line) => {
-          const positions = (line.geometry.attributes.position as THREE.BufferAttribute).array as Float32Array;
+          const positions = (
+            line.geometry.attributes.position as THREE.BufferAttribute
+          ).array as Float32Array;
           const offset = (line.userData as { offset: number }).offset;
           for (let j = 0; j < positions.length; j += 3) {
             const x = positions[j];
@@ -257,50 +282,79 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
           line.geometry.attributes.position.needsUpdate = true;
         });
         engineerGroupRef.current.rotation.y = Math.sin(time * 0.1) * 0.1;
-      } else if (currentType === 'marketer' && marketerGroupRef.current?.visible) {
-        // Marketer animation - flowing ripples
-        const minX = -60;
-        const maxX = 60;
-        const totalDist = maxX - minX;
+      } else if (
+        currentType === "marketer" &&
+        marketerGroupRef.current?.visible
+      ) {
+        // Marketer animation - Synergy Network
+        const positions: number[] = [];
+        const nodes = marketerNodesRef.current;
+        const maxDistance = 15;
 
-        rippleRingsRef.current.forEach((ring) => {
-          ring.position.x += 0.2;
+        nodes.forEach((node, i) => {
+          const userData = node.userData as {
+            velocity: THREE.Vector3;
+            originalPos: THREE.Vector3;
+          };
 
-          if (ring.position.x > maxX) {
-            ring.position.x = minX;
+          // Move nodes
+          node.position.add(userData.velocity);
+
+          // Boundaries bounce
+          if (Math.abs(node.position.x) > 45) userData.velocity.x *= -1;
+          if (Math.abs(node.position.y) > 35) userData.velocity.y *= -1;
+          if (Math.abs(node.position.z) > 25) userData.velocity.z *= -1;
+
+          // Mouse attraction
+          const mouseV = new THREE.Vector3(
+            mouseRef.current.x * 0.2,
+            -mouseRef.current.y * 0.2,
+            0,
+          );
+          const distToMouse = node.position.distanceTo(mouseV);
+          if (distToMouse < 20) {
+            const dir = new THREE.Vector3()
+              .subVectors(mouseV, node.position)
+              .normalize();
+            node.position.addScaledVector(dir, 0.05);
           }
 
-          let progress = (ring.position.x - minX) / totalDist;
-          progress = Math.max(0, Math.min(1, progress));
-
-          const scale = 0.5 + progress * 3.5;
-          ring.scale.set(scale, scale, 1);
-
-          let opacity = 0;
-          if (progress < 0.2) {
-            opacity = progress / 0.2;
-          } else if (progress > 0.7) {
-            opacity = 1 - (progress - 0.7) / 0.3;
-          } else {
-            opacity = 1;
+          // Build connection lines
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dist = node.position.distanceTo(nodes[j].position);
+            if (dist < maxDistance) {
+              positions.push(node.position.x, node.position.y, node.position.z);
+              positions.push(
+                nodes[j].position.x,
+                nodes[j].position.y,
+                nodes[j].position.z,
+              );
+            }
           }
-          (ring.material as THREE.MeshBasicMaterial).opacity = opacity * 0.6;
-
-          const targetY = mouseRef.current.y * 0.05;
-          ring.position.y += (targetY - ring.position.y) * 0.05;
-          ring.position.y += Math.sin(time * 2 + (ring.userData as { phaseOffset: number }).phaseOffset) * 0.02;
-
-          ring.rotation.x = mouseRef.current.y * 0.001;
-          ring.rotation.y = mouseRef.current.x * 0.001;
         });
-      } else if (currentType === 'creator' && creatorGroupRef.current?.visible && particlesRef.current) {
+
+        if (marketerLinksRef.current) {
+          marketerLinksRef.current.geometry.setAttribute(
+            "position",
+            new THREE.Float32BufferAttribute(positions, 3),
+          );
+          marketerLinksRef.current.geometry.attributes.position.needsUpdate = true;
+        }
+      } else if (
+        currentType === "creator" &&
+        creatorGroupRef.current?.visible &&
+        particlesRef.current
+      ) {
         // Creator animation - floating particles
-        const positions = particlesRef.current.geometry.attributes.position.array as Float32Array;
-        const velocities = particlesRef.current.geometry.userData.velocities as number[];
+        const positions = particlesRef.current.geometry.attributes.position
+          .array as Float32Array;
+        const velocities = particlesRef.current.geometry.userData
+          .velocities as number[];
 
         for (let i = 0; i < positions.length / 3; i++) {
           positions[i * 3] += velocities[i * 3] + Math.sin(time + i) * 0.01;
-          positions[i * 3 + 1] += velocities[i * 3 + 1] + Math.cos(time + i) * 0.01;
+          positions[i * 3 + 1] +=
+            velocities[i * 3 + 1] + Math.cos(time + i) * 0.01;
           positions[i * 3 + 2] += velocities[i * 3 + 2];
 
           // Boundary check and wrap around
@@ -323,9 +377,9 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      window.removeEventListener('resize', handleResize);
-      document.removeEventListener('mousemove', handleMouseMove);
-      
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousemove", handleMouseMove);
+
       // Cleanup
       linesRef.current.forEach((line) => {
         line.geometry.dispose();
@@ -339,12 +393,12 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
         particlesRef.current.geometry.dispose();
         (particlesRef.current.material as THREE.Material).dispose();
       }
-      
+
       renderer.dispose();
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
-      
+
       linesRef.current = [];
       rippleRingsRef.current = [];
       particlesRef.current = null;
@@ -353,14 +407,29 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
 
   // Update colors when theme changes
   useEffect(() => {
-    if (visualType === 'engineer') {
+    if (visualType === "engineer") {
       updateEngineerColors();
-    } else if (visualType === 'marketer') {
-      updateRippleColors();
+    } else if (visualType === "marketer") {
+      const colorHex = getRippleColor();
+      marketerNodesRef.current.forEach((node) => {
+        (node.material as THREE.MeshPhongMaterial).color.setHex(colorHex);
+        (node.material as THREE.MeshPhongMaterial).emissive.setHex(colorHex);
+      });
+      if (marketerLinksRef.current) {
+        (
+          marketerLinksRef.current.material as THREE.LineBasicMaterial
+        ).color.setHex(colorHex);
+      }
     } else {
       updateParticleColors();
     }
-  }, [resolvedTheme, visualType, updateEngineerColors, updateRippleColors, updateParticleColors]);
+  }, [
+    resolvedTheme,
+    visualType,
+    updateEngineerColors,
+    updateParticleColors,
+    getRippleColor,
+  ]);
 
   return <div id="canvas-container" ref={containerRef} />;
 }
