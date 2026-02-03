@@ -1,26 +1,33 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { ThemeProvider } from '@/providers/ThemeProvider';
-import { LanguageProvider } from '@/providers/LanguageProvider';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { LanguageProvider } from "@/providers/LanguageProvider";
 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: 'Logic meets Emotion | Portfolio',
-  description:
-    'Front-end Engineer & Podcaster bridging logic and emotion. Specializing in React, Next.js, and user-centric interfaces.',
-  keywords: ['React', 'Next.js', 'Marketing Strategy', 'UI/UX', 'Rust', 'Frontend Engineer', 'Podcast'],
-  authors: [{ name: 'Li Ko Chuang' }],
+  title: "Li Ko Chuang | Portfolio",
+  description: "Building Interfaces, Telling Stories.",
+  keywords: [
+    "React",
+    "Next.js",
+    "Marketing Strategy",
+    "UI/UX",
+    "Rust",
+    "Frontend Engineer",
+    "Podcast",
+  ],
+  authors: [{ name: "Li Ko Chuang" }],
   openGraph: {
-    title: 'Logic meets Emotion | Portfolio',
+    title: "Logic meets Emotion | Portfolio",
     description:
-      'Front-end Engineer & Podcaster bridging logic and emotion. Specializing in React, Next.js, and user-centric interfaces.',
-    type: 'website',
+      "Front-end Engineer & Podcaster bridging logic and emotion. Specializing in React, Next.js, and user-centric interfaces.",
+    type: "website",
   },
 };
 
@@ -36,15 +43,22 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Person',
-              name: 'Li Ko Chuang',
-              jobTitle: 'Front-end Engineer',
-              knowsAbout: ['React', 'Next.js', 'Marketing Strategy', 'UI/UX', 'Rust', 'Podcast'],
-              url: 'https://yourportfolio.com',
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Li Ko Chuang",
+              jobTitle: "Front-end Engineer",
+              knowsAbout: [
+                "React",
+                "Next.js",
+                "Marketing Strategy",
+                "UI/UX",
+                "Rust",
+                "Podcast",
+              ],
+              url: "https://yourportfolio.com",
               sameAs: [
-                'https://www.linkedin.com/in/yourprofile',
-                'https://github.com/yourusername',
+                "https://www.linkedin.com/in/yourprofile",
+                "https://github.com/yourusername",
               ],
             }),
           }}
@@ -55,9 +69,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

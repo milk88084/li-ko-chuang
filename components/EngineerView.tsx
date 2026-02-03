@@ -11,6 +11,22 @@ import {
   Box,
   Type,
   ArrowUpRight,
+  Globe,
+  Palette,
+  FileJson,
+  Shield,
+  CheckCircle2,
+  Link,
+  Workflow,
+  Atom,
+  Waves,
+  Wind,
+  Brush,
+  GitBranch,
+  MousePointer2,
+  Sparkles,
+  Database,
+  Terminal,
 } from "lucide-react";
 import content from "@/data/content.json";
 import { useLanguage } from "@/providers/LanguageProvider";
@@ -30,6 +46,23 @@ const iconMap = {
   Zap,
   Box,
   Type,
+  ArrowUpRight,
+  Globe,
+  Palette,
+  FileJson,
+  Shield,
+  CheckCircle2,
+  Link,
+  Workflow,
+  Atom,
+  Waves,
+  Wind,
+  Brush,
+  GitBranch,
+  MousePointer2,
+  Sparkles,
+  Database,
+  Terminal,
 };
 
 export function EngineerView() {
@@ -209,35 +242,99 @@ export function EngineerView() {
       </section>
 
       {/* Tech Stack */}
-      <section className="py-24 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              {data.techStack.title}
-            </h2>
-            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-              {data.techStack.subtitle}
-            </p>
+      <section className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            {data.techStack.title}
+          </h2>
+          <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
+            {data.techStack.subtitle}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-8">
+          {/* First Row: Moving Right */}
+          <div className="flex whitespace-nowrap overflow-hidden">
+            <div className="flex animate-marquee-right gap-6 px-3 w-max">
+              {[
+                ...data.techStack.items.slice(
+                  0,
+                  Math.ceil(data.techStack.items.length / 2),
+                ),
+                ...data.techStack.items.slice(
+                  0,
+                  Math.ceil(data.techStack.items.length / 2),
+                ),
+              ].map((item, index) => {
+                const IconComponent =
+                  iconMap[item.icon as keyof typeof iconMap];
+                return (
+                  <div
+                    key={`row1-${index}`}
+                    className="group relative bg-[#0a0a0a]/5 dark:bg-white/5 px-8 py-6 rounded-2xl border border-gray-900/10 dark:border-white/5 flex items-center gap-4 transition-all duration-500 min-w-[200px] hover:scale-105 cursor-default overflow-hidden hover:border-gray-900/20 dark:hover:border-white/20"
+                  >
+                    <div className="relative z-10 p-2.5 rounded-xl bg-white dark:bg-white/5 group-hover:bg-white dark:group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
+                      {IconComponent && (
+                        <IconComponent className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                      )}
+                    </div>
+                    <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
+                      {item.name}
+                    </span>
+                    {/* Subtle Glow Background */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
+                      style={{
+                        background: item.hoverColor
+                          ? `var(--color-${item.hoverColor})`
+                          : "#3b82f6",
+                      }}
+                    ></div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {data.techStack.items.map((item, index) => {
-              const IconComponent = iconMap[item.icon as keyof typeof iconMap];
-              return (
-                <div
-                  key={index}
-                  className="bg-gray-50 dark:bg-[#1C1C1E] p-6 rounded-2xl border border-gray-100 dark:border-white/10 flex flex-col items-center justify-center group transition-colors duration-300"
-                >
-                  {IconComponent && (
-                    <IconComponent
-                      className={`w-8 h-8 mb-3 text-gray-400 group-hover:text-${item.hoverColor} transition-colors`}
-                    />
-                  )}
-                  <span className="text-gray-900 dark:text-white font-medium">
-                    {item.name}
-                  </span>
-                </div>
-              );
-            })}
+
+          {/* Second Row: Moving Left */}
+          <div className="flex whitespace-nowrap overflow-hidden">
+            <div className="flex animate-marquee-left gap-6 px-3 w-max">
+              {[
+                ...data.techStack.items.slice(
+                  Math.ceil(data.techStack.items.length / 2),
+                ),
+                ...data.techStack.items.slice(
+                  Math.ceil(data.techStack.items.length / 2),
+                ),
+              ].map((item, index) => {
+                const IconComponent =
+                  iconMap[item.icon as keyof typeof iconMap];
+                return (
+                  <div
+                    key={`row2-${index}`}
+                    className="group relative bg-[#0a0a0a]/5 dark:bg-white/5 px-8 py-6 rounded-2xl border border-gray-900/10 dark:border-white/5 flex items-center gap-4 transition-all duration-500 min-w-[200px] hover:scale-105 cursor-default overflow-hidden hover:border-gray-900/20 dark:hover:border-white/20"
+                  >
+                    <div className="relative z-10 p-2.5 rounded-xl bg-white dark:bg-white/5 group-hover:bg-white dark:group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
+                      {IconComponent && (
+                        <IconComponent className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                      )}
+                    </div>
+                    <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
+                      {item.name}
+                    </span>
+                    {/* Subtle Glow Background */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
+                      style={{
+                        background: item.hoverColor
+                          ? `var(--color-${item.hoverColor})`
+                          : "#3b82f6",
+                      }}
+                    ></div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

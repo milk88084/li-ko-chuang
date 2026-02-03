@@ -248,7 +248,7 @@ export function ProjectShowcase({
             {/* Next Project */}
             <button
               onClick={nextProject}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm transition-all hover:scale-105 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm transition-all hover:scale-105 cursor-pointer ${
                 isDark
                   ? "bg-white text-black hover:bg-gray-200"
                   : "bg-gray-900 text-white hover:bg-gray-800"

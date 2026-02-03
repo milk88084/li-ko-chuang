@@ -1,13 +1,13 @@
 {
   "en": {
     "common": {
-      "portfolio": "Portfolio.",
+      "portfolio": "MAX",
       "description": "Building Interfaces, Telling Stories.",
-      "footerTitle": "Portfolio 2024",
-      "footerSubtitle": "Frontend Developer · Growth Marketer · Content Creator",
-      "footerLocation": "Taipei",
+      "footerTitle": "Li Ko Chuang 2026",
+      "footerSubtitle": "Frontend Engineer · Project Management · Marketing Background",
+      "footerLocation": "Taipei, Taiwan",
       "homeHint": "Click anywhere to bounce · Drag tags to move",
-      "explore": "EXPLORE"
+      "explore": "Explore"
     },
     "nav": {
       "engineer": "Engineer",
@@ -16,61 +16,98 @@
     },
     "engineer": {
       "hero": {
-        "badge": "Creative Developer",
-        "title": "Logic meets",
-        "titleHighlight": "Emotion.",
-        "description": "Building Interfaces, Telling Stories.",
-        "descriptionSub": "Front-end Engineer with 8 years of Marketing strategy experience.",
-        "ctaText": "View Case Studies"
+        "badge": "Frontend Engineer",
+        "title": "Design-sense",
+        "titleHighlight": "Cross-disciplinary Engineer",
+        "description": "PM vision, committed to building products that meet market needs.",
+        "descriptionSub": "Building products with a PM's perspective, frontend engineer with over 8 years of marketing and project management background.",
+        "ctaText": "Explore"
       },
       "philosophy": {
-        "title": "The Engineering Philosophy",
-        "quote": "I build digital bridges between complex code and human emotion.",
-        "content": "I pivoted from 8 years of marketing to engineering because I wanted to master the how. Today, I use my strategic background to build components that aren't just clean code, but conversion-optimized interactions."
+        "title": "Vibe Coding in the AI Era",
+        "quote": "Bridging technical development and product thinking.",
+        "content": "With over 1.5 years of frontend development experience combined with 8 years of marketing background, I not only write scalable code but also optimize products from user experience and business goal perspectives."
       },
       "showcase": {
         "title": "Featured Projects",
-        "subtitle": "Interactive demos of my work",
+        "subtitle": "Interactive Demo Showcase",
         "nextProject": "Next Project",
         "viewProject": "View Project",
         "projects": [
           {
             "id": 1,
-            "name": "E-commerce Dashboard",
-            "description": "Real-time analytics platform for online stores",
-            "tech": ["Next.js", "TypeScript", "Tailwind"],
-            "color": "#3B82F6",
-            "img": "/01.png",
+            "name": "Market Trend Tracking Platform",
+            "description": "Finding market trends, mastering market pulses",
+            "tech": [
+              "Next.js",
+              "React",
+              "TypeScript",
+              "Jotai",
+              "Tailwind CSS",
+              "Redux Toolkit",
+              "Docker",
+              "RWD"
+            ],
+            "color": "#F59E0B",
+            "img": "/01_AI快研究.png",
             "video": "/01_AI快研究.mp4",
             "link": "#"
           },
           {
             "id": 2,
-            "name": "Portfolio Builder",
-            "description": "Drag-and-drop website builder for creatives",
-            "tech": ["React", "Framer Motion", "Prisma"],
-            "color": "#8B5CF6",
-            "img": "/02.png",
+            "name": "Digital Chatroom",
+            "description": "Chatroom switching tools based on environment variables",
+            "tech": [
+              "Next.js",
+              "React",
+              "Redux Toolkit",
+              "TypeScript",
+              "Sass",
+              "Mui material",
+              "Docker",
+              "RWD"
+            ],
+            "color": "#10B981",
+            "img": "/02_Landscape.png",
             "video": "/02_Landscape.mp4",
             "link": "#"
           },
           {
             "id": 3,
-            "name": "Task Management App",
-            "description": "Collaborative project management tool",
-            "tech": ["Vue.js", "Node.js", "MongoDB"],
-            "color": "#10B981",
-            "img": "/01.png",
+            "name": "Taiwan Info Service Provider Database",
+            "description": "Connecting to MOEA database for searching and filtering providers",
+            "tech": [
+              "React",
+              "TypeScript",
+              "axios",
+              "Restful API",
+              "Tailwind CSS",
+              "Jotai",
+              "husky",
+              "Docker",
+              "RWD"
+            ],
+            "color": "#8B5CF6",
+            "img": "/03_數位聊天室.png",
             "video": "/03_數位聊天室.mp4",
             "link": "#"
           },
           {
             "id": 4,
-            "name": "AI Content Generator",
-            "description": "GPT-powered content creation platform",
-            "tech": ["Next.js", "OpenAI", "Vercel AI"],
-            "color": "#F59E0B",
-            "img": "/02.png",
+            "name": "AI Agent Collaboration Platform",
+            "description": "Personalized chatbot with knowledge base integration",
+            "tech": [
+              "React",
+              "TypeScript",
+              "Sass",
+              "axios",
+              "Restful API",
+              "React Router",
+              "Docker",
+              "RWD"
+            ],
+            "color": "#3B82F6",
+            "img": "/04_Agent_Fabric.png",
             "video": "/04_Agent_Fabric.mp4",
             "link": "#"
           }
@@ -78,108 +115,143 @@
       },
       "experience": {
         "title": "Experience",
-        "subtitle": "The technical journey.",
+        "subtitle": "Technical Journey.",
         "items": [
           {
-            "period": "2022 — Present",
+            "period": "2024/07 — Present",
             "role": "Frontend Engineer",
-            "company": "Creative Tech Studio",
-            "description": "Focusing on high-performance web apps using Next.js and Tailwind. Implemented Headless UI design systems."
+            "company": "E-Sheng Information (Assigned to III Digital Transformation Dept.)",
+            "description": "Focusing on SaaS product development, using React, Next.js, and TypeScript to build system interfaces and real-time interactive web pages."
           },
           {
-            "period": "2014 — 2022",
-            "role": "Senior Marketing Strategist",
-            "company": "Global Digital Agency",
-            "description": "Led digital transformation strategies. This previous life allows me to communicate effectively with product managers."
+            "period": "2024/01 — 2024/06",
+            "role": "Frontend Engineer",
+            "company": "Aiworks (AppWorks School)",
+            "description": "Developed blog SPA platforms and e-commerce websites. Used React, Firebase, GSAP to create immersive experiences."
           }
         ]
       },
       "now": {
-        "title": "The \"Now\" Page",
-        "subtitle": "Current Technical Focus.",
+        "title": "Current Focus",
+        "subtitle": "Full-stack Development X Vibe Coding",
         "items": [
           {
-            "icon": "Cpu",
-            "title": "Technical Deep Dive",
-            "description": "Moving beyond React to understand system-level programming. Currently building small CLIs with Rust to grasp memory management."
+            "icon": "Code2",
+            "title": "React Ecosystem",
+            "description": "Deep dive into Next.js architecture and complex state management implementation (Zustand, Jotai, Redux)."
           },
           {
-            "icon": "BookOpen",
-            "title": "Reading",
-            "description": "Re-reading \"Clean Architecture\" to write more maintainable, scalable frontend codebases."
+            "icon": "Terminal",
+            "title": "Backend Fundamentals",
+            "description": "Learning API design, database design, and security considerations."
+          },
+          {
+            "icon": "Workflow",
+            "title": "Automation",
+            "description": "Strengthening n8n automation flow systems."
+          },
+          {
+            "icon": "Database",
+            "title": "Database Design",
+            "description": "Learning database architecture, index design, and security."
           }
         ]
       },
       "projects": {
-        "title": "Engineering Case Studies",
-        "subtitle": "Problem solving through code.",
+        "title": "Projects",
+        "subtitle": "Solving problems with code.",
         "problemLabel": "The Problem",
         "outcomeLabel": "The Outcome",
         "techLabel": "Tech Stack",
         "items": [
           {
-            "title": "Agent Fabric AI Platform",
-            "subtitle": "Enterprise AI Chatbot Builder",
-            "tech": [
-              "React",
-              "TypeScript",
-              "Redux Toolkit",
-              "Vite",
-              "Tailwind CSS",
-              "RESTful API",
-              "WebSocket",
-              "React Query",
-              "Zustand",
-              "Docker"
-            ],
-            "problem": "Enterprises need to quickly build customized AI chatbots, but existing solutions lack flexibility and are difficult to integrate. A platform that connects multiple AI models with real-time interaction is needed.",
-            "outcome": "Successfully built a GPT-like conversational interface with knowledge base system, supporting multi-turn dialogue, file upload, and task automation, significantly lowering the barrier for enterprises to adopt AI.",
-            "metrics": [
-              "Real-time Interaction",
-              "AI Integration",
-              "Knowledge Base"
-            ]
-          },
-          {
-            "title": "LandScape Data Platform",
-            "subtitle": "Visual Data Analytics Dashboard",
+            "title": "Market Trend Tracking Platform",
+            "subtitle": "Monitoring growth data from GitHub, Hugging Face, etc., to provide policy suggestions.",
             "tech": [
               "Next.js",
+              "React",
               "TypeScript",
               "Jotai",
               "Tailwind CSS",
-              "Chart.js",
-              "React Table",
-              "Axios",
-              "SWR",
-              "Zod",
-              "Framer Motion"
+              "Redux Toolkit",
+              "Docker",
+              "RWD"
             ],
-            "problem": "Clients need real-time monitoring of large datasets, but existing tools have poor performance and lack responsive design, making it difficult to operate smoothly across devices.",
-            "outcome": "Built a scalable SPA architecture with full RWD support, 60% improvement in data loading speed, supporting real-time data updates and interactive charts.",
-            "metrics": ["60% Performance Boost", "RWD", "Real-time Updates"]
+            "problem": "Integrating heterogeneous data sources with frequent updates posed a significant challenge to system performance.",
+            "outcome": "Built a relational database mapping tech to vendors, matching international trends with domestic supply chains for strategic advising.",
+            "metrics": [
+              "News Briefs",
+              "Auth System",
+              "Favorites",
+              "Subscription",
+              "Trend Analysis",
+              "Deep Research"
+            ]
           },
           {
-            "title": "PainShelter Narrative Platform",
-            "subtitle": "Interactive Storytelling Experience",
+            "title": "Digital Chatroom",
+            "subtitle": "Configurable chatroom switching via environment variables.",
+            "tech": [
+              "Next.js",
+              "React",
+              "Redux Toolkit",
+              "TypeScript",
+              "Sass",
+              "Mui material",
+              "RWD"
+            ],
+            "problem": "Facing diverse chat needs across business units, lacking a universal swappable solution.",
+            "outcome": "Developed a flexible chat platform using env vars to control endpoints and styles, supporting multiple internal tools.",
+            "metrics": [
+              "Knowledge Base",
+              "History",
+              "Voice Input",
+              "Model Switching",
+              "Auth System"
+            ]
+          },
+          {
+            "title": "Taiwan Info Service Database",
+            "subtitle": "Connecting to MOEA database for searching and filtering providers.",
             "tech": [
               "React",
               "TypeScript",
-              "Firebase",
-              "GSAP",
-              "Zustand",
-              "Styled Components",
-              "React Router",
-              "Howler.js",
-              "Lottie",
-              "Framer Motion"
+              "axios",
+              "Restful API",
+              "Tailwind CSS",
+              "Jotai",
+              "husky",
+              "RWD"
             ],
-            "problem": "Need to create an immersive interactive storytelling experience, integrating complex animations, sound effects, and multi-page state management while ensuring smooth user experience.",
-            "outcome": "Successfully delivered a narrative-rich SPA with 15+ interactive animation scenes, average user session time of 8 minutes, won Best Experience Award at AppWorks Demo Day.",
+            "problem": "Difficulty in finding info service providers due to lack of transparency and intuitive filtering mechanisms.",
+            "outcome": "Connected to MOEA API, built a high-performance responsive platform with React and Jotai, optimizing info retrieval.",
             "metrics": [
-              "Immersive Experience",
-              "15+ Animation Scenes",
-              "Best Experience Award"
+              "Auth System",
+              "Multi-criteria Filter",
+              "Conversational Search",
+              "AI Bot Search"
+            ]
+          },
+          {
+            "title": "AI Agent Collaboration Platform",
+            "subtitle": "Dify-like AI tool integration platform.",
+            "tech": [
+              "React",
+              "TypeScript",
+              "sass",
+              "axios",
+              "Restful API",
+              "React Router",
+              "RWD"
+            ],
+            "problem": "Enterprises need quick, custom AI bot construction, but existing solutions lack flexibility.",
+            "outcome": "Created a GPT-like interface with knowledge base support, multi-turn dialogue, and task automation.",
+            "metrics": [
+              "Bot Chat",
+              "Knowledge Base",
+              "Model Switching",
+              "File Upload",
+              "Auth System"
             ]
           }
         ]
@@ -188,101 +260,138 @@
         "title": "Tech Stack",
         "subtitle": "The Engineer's Toolkit.",
         "items": [
-          { "icon": "Code2", "name": "React", "hoverColor": "blue-500" },
-          { "icon": "Zap", "name": "Next.js", "hoverColor": "yellow-500" },
-          { "icon": "Box", "name": "Rust", "hoverColor": "orange-500" },
-          { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" }
+          { "icon": "Code2", "name": "React.js", "hoverColor": "blue-500" },
+          { "icon": "Zap", "name": "Next.js", "hoverColor": "black-500" },
+          { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" },
+          { "icon": "Globe", "name": "HTML", "hoverColor": "orange-500" },
+          { "icon": "Palette", "name": "CSS", "hoverColor": "blue-400" },
+          {
+            "icon": "FileJson",
+            "name": "JavaScript",
+            "hoverColor": "yellow-400"
+          },
+          { "icon": "Shield", "name": "Husky", "hoverColor": "red-500" },
+          { "icon": "CheckCircle2", "name": "Jest", "hoverColor": "red-600" },
+          { "icon": "Link", "name": "Axios", "hoverColor": "purple-500" },
+          {
+            "icon": "Workflow",
+            "name": "Redux Toolkit",
+            "hoverColor": "purple-600"
+          },
+          { "icon": "Atom", "name": "Jotai", "hoverColor": "gray-500" },
+          { "icon": "Waves", "name": "Zustand", "hoverColor": "amber-700" },
+          { "icon": "Wind", "name": "Tailwind CSS", "hoverColor": "cyan-500" },
+          { "icon": "Brush", "name": "Sass", "hoverColor": "pink-400" },
+          { "icon": "Zap", "name": "Vite", "hoverColor": "yellow-500" },
+          { "icon": "Box", "name": "Docker", "hoverColor": "blue-600" },
+          { "icon": "GitBranch", "name": "Git", "hoverColor": "orange-600" },
+          {
+            "icon": "Sparkles",
+            "name": "Firebase",
+            "hoverColor": "indigo-500"
+          },
+          {
+            "icon": "MousePointer2",
+            "name": "Cursor",
+            "hoverColor": "blue-500"
+          },
+          {
+            "icon": "Sparkles",
+            "name": "AntiGravity",
+            "hoverColor": "indigo-500"
+          }
         ]
       },
       "contact": {
-        "title": "Ready to build something robust?",
-        "description": "Looking for engineering roles that value both code quality and user experience.",
-        "email": "engineer@example.com"
+        "title": "Contact Me",
+        "description": "Feel free to reach out for collaborations or any questions.",
+        "email": "milk88084@gmail.com"
       }
     },
     "marketer": {
       "hero": {
-        "badge": "Marketing Strategist",
-        "title": "Insight meets",
-        "titleHighlight": "Impact.",
-        "description": "Driving Growth, Crafting Narratives.",
-        "descriptionSub": "Senior Strategist with a developer's technical edge.",
-        "ctaText": "View Campaigns"
+        "badge": "Project Management & Strategy",
+        "title": "Data meets",
+        "titleHighlight": "Insight.",
+        "description": "Driving Growth, Optimizing Processes.",
+        "descriptionSub": "Senior Strategist with 5 years of experience in marketing and government bidding.",
+        "ctaText": "View Experience"
       },
       "philosophy": {
         "title": "The Strategic Philosophy",
-        "quote": "I don't just optimize funnels; I design user journeys that feel human.",
-        "content": "With 8 years of experience in Digital Transformation and Brand Strategy, I know that data without story is noise. My unique advantage? I can not only plan the strategy but understand the technical feasibility of execution, bridging the gap between CMOs and CTOs."
+        "quote": "Combining data analysis with personalized communication.",
+        "content": "With 5 years of marketing and project management experience, I know how to use data tools to track performance and ensure projects are executed on time and within budget."
       },
       "experience": {
         "title": "Career Path",
-        "subtitle": "Growth driven by experience.",
+        "subtitle": "Management and Analysis Experience.",
         "items": [
           {
-            "period": "2014 — 2022",
-            "role": "Senior Marketing Strategist",
-            "company": "Global Digital Agency",
-            "description": "Specialized in CRO, User Journey Mapping, and Brand Positioning for FMCG clients."
+            "period": "2021/12 — 2024/01",
+            "role": "Advocacy Specialist",
+            "company": "The Garden of Hope Foundation",
+            "description": "Managing government bids and budget execution. Tracking website usage and optimizing interaction strategies."
           }
         ]
       },
       "projects": {
         "title": "Strategy Case Studies",
-        "subtitle": "Growth driven by data.",
-        "problemLabel": "Problem",
+        "subtitle": "Data-driven execution.",
+        "problemLabel": "Mission",
         "resultLabel": "Result",
         "items": [
           {
-            "icon": "BarChart",
-            "title": "FMCG Digital Transformation",
-            "tech": "CRO • User Journey • Automation",
+            "icon": "FileText",
+            "title": "Gov Bid Management",
+            "tech": "Project Management • Budget Control",
             "techColor": "amber",
             "bgColor": "amber",
-            "problem": "Legacy brand with < 0.5% conversion rate on D2C channels.",
-            "result": "Redesigned funnel based on data, achieving a 200% increase in conversion.",
-            "resultHighlight": "200% increase in conversion"
+            "problem": "Managing complex government bidding processes and budget execution.",
+            "result": "Successfully executed project budgets and ensured smooth project completion.",
+            "resultHighlight": "Project Execution"
           },
           {
-            "icon": "Globe",
-            "title": "Global Rebranding Campaign",
-            "tech": "Brand Strategy • Content • SEO",
+            "icon": "BarChart",
+            "title": "Site Data Optimization",
+            "tech": "Data Analytics • User Engagement",
             "techColor": "purple",
             "bgColor": "purple",
-            "problem": "Disjointed brand messaging across APAC markets.",
-            "result": "Unified content strategy that increased organic traffic by 45%."
+            "problem": "Need to track and improve user engagement on the website.",
+            "result": "Monitored traffic via data tools and formulated strategies to boost interaction.",
+            "resultHighlight": "Data-driven"
           }
         ]
       },
       "marketingStack": {
-        "title": "Marketing Stack",
+        "title": "Management Stack",
         "subtitle": "The Strategist's Toolkit.",
         "items": [
           {
             "icon": "LineChart",
-            "name": "Google Analytics 4",
+            "name": "Data Analysis",
             "hoverColor": "amber-600"
           },
           {
-            "icon": "Search",
-            "name": "SEO / Ahrefs",
+            "icon": "Users",
+            "name": "Project Management",
             "hoverColor": "green-600"
           },
           {
-            "icon": "Users",
-            "name": "CRM (HubSpot)",
+            "icon": "FileText",
+            "name": "Bid Writing",
             "hoverColor": "orange-500"
           },
           {
-            "icon": "PenTool",
-            "name": "Copywriting",
+            "icon": "MessageCircle",
+            "name": "Cross-dept. Comm.",
             "hoverColor": "purple-600"
           }
         ]
       },
       "contact": {
-        "title": "Need a strategy that converts?",
-        "description": "Let's discuss how we can tell your brand's story effectively.",
-        "email": "strategy@example.com"
+        "title": "Need an actionable strategy?",
+        "description": "Combining technical and marketing thinking to help teams reach their goals.",
+        "email": "milk88084@gmail.com"
       }
     },
     "creator": {
@@ -291,20 +400,20 @@
         "title": "Tiny Daily",
         "titleHighlight": "Life.",
         "description": "Between work and life,",
-        "descriptionSub": "exploring healing, companionship, and self-growth.",
+        "descriptionSub": "exploring healing, companionship, and self-growth journey.",
         "ctaPrimary": "Listen to Podcast",
         "ctaSecondary": "Follow Daily"
       },
       "about": {
         "title": "About Tiny Daily Life",
-        "quote": "Beyond the fast-paced tech industry, I believe the tiny moments in life are the real treasures.",
-        "content": "This is my space for sharing life, healing, and growth. No KPIs, no OKRs, just authentic daily moments, occasional insights, and a curiosity and love for life."
+        "quote": "Beyond the fast-paced tech world, tiny moments are the real treasures.",
+        "content": "A space for sharing life and growth. No KPIs, no OKRs, just authentic daily moments and curiosity for life."
       },
       "podcast": {
         "badge": "Podcast",
         "title": "Tiny Daily Life",
-        "titleSub": "/ 微小日常",
-        "description": "A space about life, healing, and companionship. Here, we talk about daily life, feelings, and stories that data can't capture.",
+        "titleSub": "/ Tiny Daily Life",
+        "description": "A space about life, healing, and companionship. Talking about daily feelings that data can't capture.",
         "platforms": [
           { "name": "Apple Podcasts", "color": "gray" },
           { "name": "Spotify", "color": "green" }
@@ -312,22 +421,16 @@
         "episodesTitle": "Latest Episodes",
         "episodes": [
           {
-            "title": "EP.12 Finding Your Rhythm in the Busy Life",
+            "title": "EP.12 Finding Your Rhythm in Busy Life",
             "duration": "32:15"
           },
-          {
-            "title": "EP.11 Lessons Learned on the Career Change Journey",
-            "duration": "45:30"
-          },
-          {
-            "title": "EP.10 How to Stay Creative at Work?",
-            "duration": "28:45"
-          }
+          { "title": "EP.11 Lessons on Career Change", "duration": "45:30" },
+          { "title": "EP.10 Staying Creative at Work", "duration": "28:45" }
         ]
       },
       "interests": {
         "title": "Daily Interests",
-        "subtitle": "Life exploration beyond work",
+        "subtitle": "Exploring life beyond work",
         "items": [
           { "icon": "Coffee", "name": "Coffee", "hoverColor": "amber-600" },
           { "icon": "Camera", "name": "Photography", "hoverColor": "blue-500" },
@@ -355,24 +458,23 @@
           {
             "icon": "Heart",
             "title": "Authenticity Over Perfection",
-            "description": "Not chasing the perfect image, just being the real me."
+            "description": "Being real instead of chasing a perfect image."
           },
           {
             "icon": "Sparkles",
             "title": "Power of Tiny Moments",
-            "description": "Great changes often start from tiny daily choices."
+            "description": "Great changes start from tiny daily choices."
           },
           {
             "icon": "Coffee",
             "title": "The Art of Slowing Down",
-            "description": "In a fast-paced world, learning to enjoy every present moment."
+            "description": "Learning to enjoy every present moment in a fast world."
           }
         ]
       },
       "contact": {
         "title": "Want to chat?",
-        "description": "Whether it's collaboration, life talk, or just saying hi, feel free to reach out.",
-        "email": "hello@tinydailylife.com"
+        "description": "Whether it's collaboration or just hi, feel free to reach out."
       }
     }
   },
@@ -395,11 +497,11 @@
     "engineer": {
       "hero": {
         "badge": "前端工程師",
-        "title": "賦予美感",
+        "title": "設計感",
         "titleHighlight": "跨領域工程師",
         "description": "擁有 PM 視角，致力於構建符合市場需求的產品。",
         "descriptionSub": "擁有 8 年以上行銷與專案管理背景，能將產品思維融入技術開發的前端工程師。",
-        "ctaText": "開始"
+        "ctaText": "探索"
       },
       "philosophy": {
         "title": "與AI共融的Vibe Coding",
@@ -499,7 +601,7 @@
             "period": "2024/07 — 至今",
             "role": "前端工程師",
             "company": "易勝資訊 (委派至資策會數位轉型部門)",
-            "description": "專注於 SaaS 產品開發，運用 React、TypeScript 等現代前端技術，進行系統介面建構與即時互動功能網頁。"
+            "description": "專注於 SaaS 產品開發，運用 React 、Next.js、TypeScript 等現代前端技術，進行系統介面建構與即時互動功能網頁。"
           },
           {
             "period": "2024/01 — 2024/06",
@@ -510,18 +612,28 @@
         ]
       },
       "now": {
-        "title": "「現在」頁面",
-        "subtitle": "目前技術焦點。",
+        "title": "目前技術焦點",
+        "subtitle": "全端開發 X Vibe Coding",
         "items": [
           {
-            "icon": "Cpu",
+            "icon": "Code2",
             "title": "React 生態系深耕",
             "description": "專注於 Next.js 架構優化與複雜狀態管理（Zustand, Jotai, Redux）的實作應用。"
           },
           {
-            "icon": "BookOpen",
-            "title": "持續學習",
-            "description": "探索系統架構設計，並持續精進 TypeScript 與現代化前端工具鏈（Vite, Docker）。"
+            "icon": "Terminal",
+            "title": "後端基礎開發",
+            "description": "學習後端基礎開發，包括 API 設計、資料庫設計、安全性考量等。"
+          },
+          {
+            "icon": "Workflow",
+            "title": "自動化流程",
+            "description": "強化 n8n 自動化流程系統。"
+          },
+          {
+            "icon": "Database",
+            "title": "資料庫設計",
+            "description": "學習資料庫設計，包括資料庫架構、索引設計、安全性考量等。"
           }
         ]
       },
@@ -631,12 +743,48 @@
           { "icon": "Code2", "name": "React.js", "hoverColor": "blue-500" },
           { "icon": "Zap", "name": "Next.js", "hoverColor": "black-500" },
           { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" },
-          { "icon": "Wind", "name": "Tailwind CSS", "hoverColor": "cyan-500" }
+          { "icon": "Globe", "name": "HTML", "hoverColor": "orange-500" },
+          { "icon": "Palette", "name": "CSS", "hoverColor": "blue-400" },
+          {
+            "icon": "FileJson",
+            "name": "JavaScript",
+            "hoverColor": "yellow-400"
+          },
+          { "icon": "Shield", "name": "Husky", "hoverColor": "red-500" },
+          { "icon": "CheckCircle2", "name": "Jest", "hoverColor": "red-600" },
+          { "icon": "Link", "name": "Axios", "hoverColor": "purple-500" },
+          {
+            "icon": "Workflow",
+            "name": "Redux Toolkit",
+            "hoverColor": "purple-600"
+          },
+          { "icon": "Atom", "name": "Jotai", "hoverColor": "gray-500" },
+          { "icon": "Waves", "name": "Zustand", "hoverColor": "amber-700" },
+          { "icon": "Wind", "name": "Tailwind CSS", "hoverColor": "cyan-500" },
+          { "icon": "Brush", "name": "Sass", "hoverColor": "pink-400" },
+          { "icon": "Zap", "name": "Vite", "hoverColor": "yellow-500" },
+          { "icon": "Box", "name": "Docker", "hoverColor": "blue-600" },
+          { "icon": "GitBranch", "name": "Git", "hoverColor": "orange-600" },
+          {
+            "icon": "Sparkles",
+            "name": "Firebase",
+            "hoverColor": "indigo-500"
+          },
+          {
+            "icon": "MousePointer2",
+            "name": "Cursor",
+            "hoverColor": "blue-500"
+          },
+          {
+            "icon": "Sparkles",
+            "name": "AntiGravity",
+            "hoverColor": "indigo-500"
+          }
         ]
       },
       "contact": {
-        "title": "準備好打造強健的產品了嗎？",
-        "description": "尋找重視程式碼品質與使用者體驗的工程職位。",
+        "title": "聯絡我",
+        "description": "有合作意向或任何問題，請隨時聯繫我。",
         "email": "milk88084@gmail.com"
       }
     },

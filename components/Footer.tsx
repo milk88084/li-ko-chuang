@@ -1,9 +1,17 @@
-'use client';
+"use client";
 
-import { Linkedin, Mail, Github, BookOpen, Instagram, Podcast, Twitter } from 'lucide-react';
+import {
+  Linkedin,
+  Mail,
+  Github,
+  BookOpen,
+  Instagram,
+  Podcast,
+  AtSign,
+} from "lucide-react";
 
 interface FooterProps {
-  currentPage: 'engineer' | 'marketer' | 'creator';
+  currentPage: "engineer" | "marketer" | "creator";
 }
 
 export function Footer({ currentPage }: FooterProps) {
@@ -11,49 +19,49 @@ export function Footer({ currentPage }: FooterProps) {
   const getLinks = () => {
     const baseLinks = [
       {
-        href: '#',
+        href: "https://www.linkedin.com/in/kochuang/",
         icon: Linkedin,
-        label: 'LinkedIn',
+        label: "LinkedIn",
       },
       {
-        href: 'mailto:hello@example.com',
+        href: "mailto:milk88084@gmail.com",
         icon: Mail,
-        label: 'Email',
+        label: "Email",
       },
     ];
 
-    if (currentPage === 'engineer') {
+    if (currentPage === "engineer") {
       return [
         {
-          href: 'https://github.com/yourusername',
+          href: "https://github.com/milk88084",
           icon: Github,
-          label: 'GitHub',
+          label: "GitHub",
         },
         {
-          href: 'https://medium.com/@yourusername',
+          href: "https://medium.com/@dearno.3",
           icon: BookOpen,
-          label: 'Medium',
+          label: "Medium",
         },
         {
-          href: 'https://medium.com/@yourusername',
-          icon: Twitter,
-          label: 'Threads',
+          href: "https://www.threads.net/@93.70.21",
+          icon: AtSign,
+          label: "Threads",
         },
         ...baseLinks,
       ];
     }
 
-    if (currentPage === 'creator') {
+    if (currentPage === "creator") {
       return [
         {
-          href: 'https://instagram.com/yourusername',
+          href: "https://instagram.com/yourusername",
           icon: Instagram,
-          label: 'Instagram',
+          label: "Instagram",
         },
         {
-          href: '#podcast',
+          href: "#podcast",
           icon: Podcast,
-          label: 'Podcast',
+          label: "Podcast",
         },
         ...baseLinks,
       ];
@@ -71,7 +79,7 @@ export function Footer({ currentPage }: FooterProps) {
     >
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-sm text-gray-400 dark:text-gray-500">
-          &copy; 2024 Tiny Daily Life. Designed with intent.
+          &copy; 2026
         </div>
 
         <div className="flex gap-6 flex-wrap justify-center">
@@ -79,8 +87,10 @@ export function Footer({ currentPage }: FooterProps) {
             <a
               key={link.label}
               href={link.href}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={
+                link.href.startsWith("http") ? "noopener noreferrer" : undefined
+              }
               className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2 text-sm group"
               aria-label={link.label}
             >
