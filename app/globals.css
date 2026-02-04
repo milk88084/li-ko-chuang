@@ -34,11 +34,13 @@
 /* Base Styles */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
   font-family:
     "Inter",
     -apple-system,

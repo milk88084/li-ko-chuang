@@ -222,7 +222,7 @@ export function CreatorView() {
 
           {/* Player Embed */}
           <div id="podcast-player" className="mt-12 fade-in">
-            <div className="bg-white dark:bg-[#1C1C1E] rounded-3xl border border-gray-100 dark:border-white/10 overflow-hidden shadow-xl aspect-16/6 min-h-[175px]">
+            <div className="bg-white dark:bg-[#1C1C1E] rounded-3xl border border-gray-100 dark:border-white/10 overflow-hidden shadow-xl aspect-[4/3] md:aspect-[16/6] min-h-[175px]">
               {activeEmbedUrl && (
                 <iframe
                   allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"

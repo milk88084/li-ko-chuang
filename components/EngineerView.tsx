@@ -87,36 +87,39 @@ export function EngineerView() {
   return (
     <main id="view-engineer">
       {/* Hero - Transparent background to show 3D canvas */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 relative z-10 bg-transparent">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <p className="fade-in-up text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-4 bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full inline-block backdrop-blur-sm">
+      <section className="h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative z-10 bg-transparent overflow-hidden">
+        <div className="max-w-3xl mx-auto space-y-6 md:space-y-8 relative">
+          <p className="fade-in-up text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-2 md:mb-4 bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full inline-block backdrop-blur-sm">
             {data.hero.badge}
           </p>
-          <h1 className="fade-in-up delay-100 text-5xl md:text-7xl font-semibold tracking-tight leading-tight text-gray-900 dark:text-white drop-shadow-sm">
+          <h1 className="fade-in-up delay-100 text-4xl md:text-7xl font-bold tracking-tight leading-tight text-gray-900 dark:text-white drop-shadow-sm">
             {data.hero.title}{" "}
-            <span className="text-gray-400 dark:text-gray-500">
+            <span className="text-gray-400 dark:text-gray-500 inline-block">
               {data.hero.titleHighlight}
             </span>
           </h1>
-          <p className="fade-in-up delay-200 text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto font-light">
+          <p className="fade-in-up delay-200 text-base md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto font-light px-4">
             {data.hero.description} <br className="hidden md:block" />
             {data.hero.descriptionSub}
           </p>
 
-          <div className="fade-in-up delay-300 flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <div className="fade-in-up delay-300 flex flex-col sm:flex-row gap-4 justify-center pt-4 md:pt-2">
             <a
-              href="#eng-projects"
+              href="#eng-intro"
               className="group bg-gray-900 dark:bg-white text-white dark:text-black px-8 py-3 rounded-full text-sm font-medium transition-all hover:bg-gray-800 dark:hover:bg-gray-200 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-gray-200/50 dark:shadow-none"
             >
               {data.hero.ctaText}
-              <Code2 className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              <Code2 className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
       </section>
 
       {/* Philosophy */}
-      <section className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300">
+      <section
+        id="eng-intro"
+        className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
+      >
         <div className="max-w-3xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">

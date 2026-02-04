@@ -400,18 +400,19 @@ export default function Home() {
             : "bg-[#FBFBFD]/80 border-gray-100/50"
         }`}
       >
-        <div className=" mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-2 overflow-hidden">
           <Link
             href="/"
-            className={`font-semibold text-sm tracking-tight transition-opacity cursor-pointer hover:opacity-70 ${
+            className={`font-bold text-sm tracking-tight transition-opacity cursor-pointer hover:opacity-70 shrink-0 ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            {t.common.portfolio}
+            <span className="sm:hidden text-lg">LK.</span>
+            <span className="hidden sm:inline">{t.common.portfolio}</span>
           </Link>
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-1.5 md:gap-4 min-w-0">
             <div
-              className={`flex items-center p-1 rounded-lg ${
+              className={`flex items-center p-0.5 md:p-1 rounded-lg shrink-0 scale-90 sm:scale-100 origin-right ${
                 isDark ? "bg-white/10" : "bg-gray-100"
               }`}
             >
@@ -419,7 +420,7 @@ export default function Home() {
                 <Link
                   key={item.id}
                   href={item.href}
-                  className={`px-2 md:px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-200 cursor-pointer ${
+                  className={`px-1.5 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-medium rounded-md transition-all duration-200 cursor-pointer ${
                     isDark
                       ? "text-gray-400 hover:text-white"
                       : "text-gray-500 hover:text-gray-900"
@@ -431,29 +432,29 @@ export default function Home() {
             </div>
             <button
               onClick={toggleLanguage}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full transition-colors cursor-pointer text-xs font-medium ${
+              className={`flex items-center gap-1 px-2 py-1.5 rounded-full transition-colors cursor-pointer text-[10px] md:text-xs font-medium shrink-0 ${
                 isDark
                   ? "text-gray-300 hover:bg-white/10"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
               aria-label="Toggle Language"
             >
-              <Globe className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">
+              <Globe className="w-3 md:w-3.5 h-3 md:h-3.5" />
+              <span className="hidden xs:inline">
                 {language === "en" ? "EN" : "中"}
               </span>
             </button>
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
-              className={`p-2 rounded-full transition-colors cursor-pointer ${
+              className={`p-1.5 md:p-2 rounded-full transition-colors cursor-pointer shrink-0 ${
                 isDark ? "hover:bg-white/10" : "hover:bg-gray-100"
               }`}
               aria-label="Toggle Dark Mode"
             >
               {isDark ? (
-                <Sun className="w-4 h-4 text-white" />
+                <Sun className="w-3.5 md:w-4 h-3.5 md:h-4 text-white" />
               ) : (
-                <Moon className="w-4 h-4 text-gray-900" />
+                <Moon className="w-3.5 md:w-4 h-3.5 md:h-4 text-gray-900" />
               )}
             </button>
           </div>
@@ -461,10 +462,10 @@ export default function Home() {
       </nav>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
         <div className="text-center px-4">
-          <h1 className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 opacity-100 translate-y-0 text-[#3250FE]">
+          <h1 className="text-[13vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 opacity-100 translate-y-0 text-[#3250FE]">
             LI KO
           </h1>
-          <h1 className="text-[15vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 delay-150 opacity-100 translate-y-0 text-[#3250FE]">
+          <h1 className="text-[13vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-all duration-1000 delay-150 opacity-100 translate-y-0 text-[#3250FE]">
             CHUANG
           </h1>
           <p
