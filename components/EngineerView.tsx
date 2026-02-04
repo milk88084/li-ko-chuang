@@ -75,7 +75,6 @@ export function EngineerView() {
 
   const handleShowcaseProjectChange = useCallback((index: number) => {
     setActiveProjectIndex(index);
-    // 滾動到 ProjectTimeline 區塊，加入延遲確保 DOM 更新
     setTimeout(() => {
       const timelineSection = document.getElementById("eng-projects");
       if (timelineSection) {
@@ -86,7 +85,6 @@ export function EngineerView() {
 
   return (
     <main id="view-engineer">
-      {/* Hero - Transparent background to show 3D canvas */}
       <section className="h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative z-10 bg-transparent overflow-hidden">
         <div className="max-w-3xl mx-auto space-y-6 md:space-y-8 relative">
           <p className="fade-in-up text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-2 md:mb-4 bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full inline-block backdrop-blur-sm">
@@ -115,7 +113,6 @@ export function EngineerView() {
         </div>
       </section>
 
-      {/* Philosophy */}
       <section
         id="eng-intro"
         className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
@@ -136,7 +133,6 @@ export function EngineerView() {
         </div>
       </section>
 
-      {/* Project Showcase */}
       <section
         id="eng-showcase"
         className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
@@ -157,7 +153,6 @@ export function EngineerView() {
         </div>
       </section>
 
-      {/* Experience */}
       <section
         id="eng-work"
         className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
@@ -205,7 +200,6 @@ export function EngineerView() {
         </div>
       </section>
 
-      {/* Now Page */}
       <section
         id="eng-now"
         className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
@@ -244,7 +238,6 @@ export function EngineerView() {
         </div>
       </section>
 
-      {/* Tech Stack */}
       <section className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -256,7 +249,6 @@ export function EngineerView() {
         </div>
 
         <div className="flex flex-col gap-8">
-          {/* First Row: Moving Right */}
           <div className="flex whitespace-nowrap overflow-hidden">
             <div className="flex animate-marquee-right gap-6 px-3 w-max">
               {[
@@ -284,7 +276,6 @@ export function EngineerView() {
                     <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
                       {item.name}
                     </span>
-                    {/* Subtle Glow Background */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
                       style={{
@@ -299,7 +290,6 @@ export function EngineerView() {
             </div>
           </div>
 
-          {/* Second Row: Moving Left */}
           <div className="flex whitespace-nowrap overflow-hidden">
             <div className="flex animate-marquee-left gap-6 px-3 w-max">
               {[
@@ -325,7 +315,6 @@ export function EngineerView() {
                     <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
                       {item.name}
                     </span>
-                    {/* Subtle Glow Background */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
                       style={{
@@ -342,7 +331,6 @@ export function EngineerView() {
         </div>
       </section>
 
-      {/* Projects */}
       <section
         id="eng-projects"
         className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
@@ -367,7 +355,6 @@ export function EngineerView() {
         </div>
       </section>
 
-      {/* Contact CTA */}
       <section className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 text-center relative z-10 transition-colors duration-300">
         <div className="max-w-2xl mx-auto space-y-8">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">

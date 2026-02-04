@@ -28,7 +28,6 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   const [language, setLanguageState] = useState<Language>("en");
 
   useEffect(() => {
-    // Check localStorage for saved language preference
     const savedLanguage = localStorage.getItem("language") as Language;
     if (savedLanguage && (savedLanguage === "en" || savedLanguage === "zh")) {
       setLanguageState(savedLanguage);
@@ -47,7 +46,6 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     setLanguage(newLang);
   };
 
-  // Always provide the context - default to 'en' for SSR
   return (
     <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
       {children}

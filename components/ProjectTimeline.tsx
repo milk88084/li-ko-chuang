@@ -44,7 +44,6 @@ export function ProjectTimeline({
     setTimeout(() => setIsAnimating(false), 400);
   };
 
-  // Sync with external activeProjectIndex
   useEffect(() => {
     if (
       activeProjectIndex !== undefined &&
@@ -55,7 +54,6 @@ export function ProjectTimeline({
       setActiveIndex(activeProjectIndex);
       setTimeout(() => setIsAnimating(false), 400);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeProjectIndex]);
 
   const handlePrev = () => {
@@ -70,7 +68,6 @@ export function ProjectTimeline({
     }
   };
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") handlePrev();
@@ -80,7 +77,6 @@ export function ProjectTimeline({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeIndex]);
 
-  // Scroll active project into view
   useEffect(() => {
     if (itemRefs.current[activeIndex] && selectorRef.current) {
       const selector = selectorRef.current;
@@ -97,7 +93,6 @@ export function ProjectTimeline({
     }
   }, [activeIndex]);
 
-  // Mouse Drag to Scroll
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftState, setScrollLeftState] = useState(0);
@@ -127,9 +122,7 @@ export function ProjectTimeline({
 
   return (
     <div className="w-full">
-      {/* Project Selector - Horizontal scrollable on mobile */}
       <div className="relative mb-8">
-        {/* Navigation Arrows */}
         <button
           onClick={handlePrev}
           disabled={activeIndex === 0}
@@ -154,7 +147,6 @@ export function ProjectTimeline({
           <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Project Cards */}
         <div
           ref={selectorRef}
           onMouseDown={handleMouseDown}
@@ -185,7 +177,6 @@ export function ProjectTimeline({
               <span className="text-sm font-medium whitespace-nowrap">
                 {project.title}
               </span>
-              {/* Active indicator */}
               {index === activeIndex && (
                 <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-blue-500" />
               )}
@@ -194,7 +185,6 @@ export function ProjectTimeline({
         </div>
       </div>
 
-      {/* Project Detail */}
       <div
         ref={contentRef}
         className={`relative overflow-hidden rounded-2xl border transition-all duration-300 ${
@@ -208,7 +198,6 @@ export function ProjectTimeline({
               : "opacity-100 translate-y-0"
           }`}
         >
-          {/* Header */}
           <div
             className={`p-6 md:p-8 border-b ${isDark ? "border-white/5" : "border-gray-100"}`}
           >
@@ -234,7 +223,6 @@ export function ProjectTimeline({
                 </p>
               </div>
 
-              {/* Metrics */}
               <div className="flex flex-wrap gap-2">
                 {activeProject.metrics.map((metric, i) => (
                   <span
@@ -252,10 +240,8 @@ export function ProjectTimeline({
             </div>
           </div>
 
-          {/* Content */}
           <div className="p-6 md:p-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-              {/* Problem */}
               <div
                 className={`rounded-xl p-5 ${isDark ? "bg-black/30" : "bg-gray-50"}`}
               >
@@ -274,7 +260,6 @@ export function ProjectTimeline({
                 </p>
               </div>
 
-              {/* Outcome */}
               <div
                 className={`rounded-xl p-5 ${isDark ? "bg-black/30" : "bg-gray-50"}`}
               >
@@ -294,7 +279,6 @@ export function ProjectTimeline({
               </div>
             </div>
 
-            {/* Tech Stack */}
             <div>
               <h4
                 className={`text-xs font-semibold uppercase tracking-wider mb-4 ${
@@ -322,7 +306,6 @@ export function ProjectTimeline({
         </div>
       </div>
 
-      {/* Progress indicator */}
       <div className="flex justify-center gap-1.5 mt-6">
         {projects.map((_, index) => (
           <button

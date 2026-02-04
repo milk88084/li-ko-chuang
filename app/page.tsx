@@ -11,7 +11,6 @@ import content from "@/data/content.json";
 type ContentType = typeof content;
 type LanguageKey = keyof ContentType;
 
-// Safe hook for checking if component is mounted (avoids hydration mismatch)
 const emptySubscribe = () => () => {};
 function useIsMounted() {
   return useSyncExternalStore(
@@ -21,7 +20,6 @@ function useIsMounted() {
   );
 }
 
-// 專業標籤數據 - variant: "filled" | "outlined"
 const skillTags = [
   { id: 1, text: "💻ENGINEER", zh: "💻工程師", size: "lg", variant: "filled" },
   { id: 2, text: "💼MARKETER", zh: "💼行銷人", size: "lg", variant: "filled" },
@@ -84,9 +82,6 @@ const skillTags = [
   },
 ];
 
-// 導航項目 - 現在由 language context 決定
-
-// 尺寸配置
 const sizeConfig = {
   sm: { width: 80, height: 32, fontSize: "10px" },
   md: { width: 110, height: 38, fontSize: "12px" },
@@ -107,13 +102,10 @@ export default function Home() {
     "default" | "grab" | "grabbing"
   >("default");
 
-  // Only use theme after mounted to avoid hydration mismatch
   const isDark = mounted ? resolvedTheme === "dark" : false;
 
-  // Get translated content
   const t = content[language as LanguageKey];
 
-  // Navigation items with translations
   const navItems = [
     { id: "engineer", label: t.nav.engineer, href: "/engineer" },
     { id: "marketer", label: t.nav.marketer, href: "/marketer" },
@@ -127,13 +119,11 @@ export default function Home() {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    // Create engine
     const engine = Matter.Engine.create({
       gravity: { x: 0, y: 1 },
     });
     engineRef.current = engine;
 
-    // Create walls
     const wallThickness = 60;
     let walls = [
       Matter.Bodies.rectangle(
@@ -173,7 +163,6 @@ export default function Home() {
     ];
     Matter.Composite.add(engine.world, walls);
 
-    // Create bodies for each tag
     const newBodies = new Map<number, Matter.Body>();
     skillTags.forEach((tag, index) => {
       const config = sizeConfig[tag.size as keyof typeof sizeConfig];
@@ -200,7 +189,6 @@ export default function Home() {
     });
     bodiesRef.current = newBodies;
 
-    // Mouse setup
     const mouse = Matter.Mouse.create(container);
     const mouseConstraint = Matter.MouseConstraint.create(engine, {
       mouse: mouse,
@@ -211,10 +199,8 @@ export default function Home() {
     });
     Matter.Composite.add(engine.world, mouseConstraint);
 
-    // Track dragging state
     let isDragging = false;
 
-    // Start drag - only when mouse is over a tag body
     Matter.Events.on(mouseConstraint, "startdrag", (event) => {
       const eventBody = (event as unknown as { body: Matter.Body }).body;
       if (eventBody && eventBody.label?.startsWith("tag-")) {
@@ -223,13 +209,11 @@ export default function Home() {
       }
     });
 
-    // End drag
     Matter.Events.on(mouseConstraint, "enddrag", () => {
       isDragging = false;
       setCursorStyle("default");
     });
 
-    // Handle mouse click on empty space - bounce tags at similar X position
     const handleClick = (e: MouseEvent) => {
       if (isDragging) return;
 
@@ -237,7 +221,6 @@ export default function Home() {
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
 
-      // Check if clicking on a tag body
       const bodiesAtPoint = Matter.Query.point(
         Matter.Composite.allBodies(engine.world),
         { x: mouseX, y: mouseY },
@@ -247,7 +230,6 @@ export default function Home() {
         b.label?.startsWith("tag-"),
       );
 
-      // If not clicking on a tag, bounce tags at similar X position
       if (!clickedOnTag) {
         const xTolerance = 120;
 
@@ -269,7 +251,6 @@ export default function Home() {
       }
     };
 
-    // Handle mouse move - update cursor when hovering over tags
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging) return;
 
@@ -277,7 +258,6 @@ export default function Home() {
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
 
-      // Check if mouse is over any tag body
       const bodiesAtPoint = Matter.Query.point(
         Matter.Composite.allBodies(engine.world),
         { x: mouseX, y: mouseY },
@@ -290,11 +270,9 @@ export default function Home() {
     container.addEventListener("click", handleClick);
     container.addEventListener("mousemove", handleMouseMove);
 
-    // Update loop
     const runner = Matter.Runner.create();
     Matter.Runner.run(runner, engine);
 
-    // Animation frame for DOM updates
     let animationId: number;
     const updatePositions = () => {
       const newPositions = new Map<
@@ -313,7 +291,6 @@ export default function Home() {
     };
     updatePositions();
 
-    // Handle resize
     const handleResize = () => {
       const newWidth = window.innerWidth;
       const newHeight = window.innerHeight;

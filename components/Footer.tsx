@@ -15,7 +15,6 @@ interface FooterProps {
 }
 
 export function Footer({ currentPage }: FooterProps) {
-  // 根據頁面顯示不同的連結
   const getLinks = () => {
     const baseLinks = [
       {

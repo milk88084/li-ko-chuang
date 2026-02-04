@@ -51,7 +51,6 @@ export function CreatorView() {
 
   const podcastData = data.podcast as any;
 
-  // Podcast Embed State
   const initialEmbed = podcastData.podcastLink
     ? podcastData.podcastLink.replace(
         "podcasts.apple.com",
@@ -68,7 +67,6 @@ export function CreatorView() {
     );
     setActiveEmbedUrl(embedLink);
 
-    // Scroll to player smoothly
     const playerElement = document.getElementById("podcast-player");
     if (playerElement) {
       playerElement.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -77,9 +75,7 @@ export function CreatorView() {
 
   return (
     <main id="view-creator">
-      {/* Hero - Transparent background to show 3D canvas */}
       <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 relative z-10 bg-transparent overflow-hidden">
-        {/* Background Decorative Blobs */}
         <div className="absolute top-1/4 -left-20 w-80 h-80 bg-pink-500/10 rounded-full blur-[120px] pointer-events-none animate-blob"></div>
         <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none animate-blob animation-delay-2000"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-400/5 rounded-full blur-[140px] pointer-events-none"></div>
@@ -128,7 +124,6 @@ export function CreatorView() {
         </div>
       </section>
 
-      {/* About / Life Philosophy */}
       <section className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300">
         <div className="max-w-3xl mx-auto">
           <div className="mb-12">
@@ -147,14 +142,12 @@ export function CreatorView() {
         </div>
       </section>
 
-      {/* Podcast Section */}
       <section
         id="podcast"
         className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
       >
         <div className="max-w-4xl mx-auto">
           <div className="bg-white dark:bg-[#1C1C1E] rounded-[2rem] p-8 md:p-12 border border-gray-200/50 dark:border-white/10 shadow-xl shadow-gray-100/50 dark:shadow-none overflow-hidden relative group transition-colors duration-300">
-            {/* Hover Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-pink-50/50 dark:via-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none transform -skew-x-12 translate-x-full group-hover:-translate-x-full"></div>
 
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
@@ -220,7 +213,6 @@ export function CreatorView() {
             </div>
           </div>
 
-          {/* Player Embed */}
           <div id="podcast-player" className="mt-12 fade-in">
             <div className="bg-white dark:bg-[#1C1C1E] rounded-3xl border border-gray-100 dark:border-white/10 overflow-hidden shadow-xl aspect-[4/3] md:aspect-[16/6] min-h-[175px]">
               {activeEmbedUrl && (
@@ -241,7 +233,6 @@ export function CreatorView() {
             </div>
           </div>
 
-          {/* Recent Episodes */}
           <div className="mt-12 space-y-6">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               {data.podcast.episodesTitle}
@@ -292,7 +283,6 @@ export function CreatorView() {
         </div>
 
         <div className="flex flex-col gap-8 mb-16">
-          {/* First Row: Moving Right */}
           <div className="flex whitespace-nowrap overflow-hidden">
             <div className="flex animate-marquee-right gap-6 px-3 w-max">
               {[
@@ -316,7 +306,6 @@ export function CreatorView() {
                     <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
                       {item.name}
                     </span>
-                    {/* Subtle Glow Background */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
                       style={{
@@ -331,7 +320,6 @@ export function CreatorView() {
             </div>
           </div>
 
-          {/* Second Row: Moving Left */}
           <div className="flex whitespace-nowrap overflow-hidden">
             <div className="flex animate-marquee-left gap-6 px-3 w-max">
               {[
@@ -357,7 +345,6 @@ export function CreatorView() {
                       <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
                         {item.name}
                       </span>
-                      {/* Subtle Glow Background */}
                       <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
                         style={{
@@ -372,11 +359,8 @@ export function CreatorView() {
             </div>
           </div>
         </div>
-
-        {/* Social Links */}
       </section>
 
-      {/* Life Values */}
       <section className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
@@ -416,10 +400,8 @@ export function CreatorView() {
         </div>
       </section>
 
-      {/* Contact CTA */}
       <section className="py-32 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          {/* Contact Header */}
           <div className="max-w-2xl text-center space-y-6 mb-16">
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
               {data.contact.title}
@@ -429,7 +411,6 @@ export function CreatorView() {
             </p>
           </div>
 
-          {/* Social Links */}
           <div className="w-full">
             <div className="flex flex-col items-center gap-8">
               <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-pink-500/80 dark:text-pink-400/80">
@@ -455,7 +436,6 @@ export function CreatorView() {
                             : "bg-gray-900 dark:bg-white dark:text-black"
                       }`}
                     >
-                      {/* Glossy Overlay */}
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                       {isInstagram && (
                         <Instagram className="w-5 h-5 relative z-10" />
@@ -466,7 +446,6 @@ export function CreatorView() {
                       {!isInstagram && !isYoutube && (
                         <Instagram className="w-5 h-5 relative z-10" />
                       )}{" "}
-                      {/* Fallback Icon */}
                       <span className="font-semibold tracking-wide relative z-10">
                         {social.platform}
                       </span>

@@ -72,7 +72,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
 
     const container = containerRef.current;
 
-    // Scene setup
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
@@ -93,7 +92,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Create Engineer Lines
     const createEngineerLines = (group: THREE.Group) => {
       const lineCount = 15;
       const pointsCount = 50;
@@ -123,12 +121,10 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       }
     };
 
-    // Create Marketer Synergy Network (Event/Project Management vibe)
     const createMarketerVisuals = (group: THREE.Group) => {
       const nodeCount = 40;
       const sphereGeometry = new THREE.SphereGeometry(0.4, 12, 12);
 
-      // 1. Creative Nodes (Milestones/Tasks)
       for (let i = 0; i < nodeCount; i++) {
         const material = new THREE.MeshPhongMaterial({
           color: getRippleColor(),
@@ -158,7 +154,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
         group.add(node);
       }
 
-      // 2. Connector Lines Setup
       const lineMaterial = new THREE.LineBasicMaterial({
         color: getRippleColor(),
         transparent: true,
@@ -169,13 +164,11 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       marketerLinksRef.current = marketerLinks;
       group.add(marketerLinks);
 
-      // Add warmth lighting
       const light = new THREE.PointLight(getRippleColor(), 1.5, 120);
       light.position.set(0, 0, 20);
       group.add(light);
     };
 
-    // Create Creator Particles (floating particles for creative/personal vibe)
     const createCreatorParticles = (group: THREE.Group) => {
       const particleCount = 200;
       const positions = new Float32Array(particleCount * 3);
@@ -212,30 +205,25 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       group.add(particles);
     };
 
-    // Engineer Group
     const engineerGroup = new THREE.Group();
     engineerGroupRef.current = engineerGroup;
     createEngineerLines(engineerGroup);
     scene.add(engineerGroup);
 
-    // Marketer Group
     const marketerGroup = new THREE.Group();
     marketerGroupRef.current = marketerGroup;
     createMarketerVisuals(marketerGroup);
     scene.add(marketerGroup);
 
-    // Creator Group
     const creatorGroup = new THREE.Group();
     creatorGroupRef.current = creatorGroup;
     createCreatorParticles(creatorGroup);
     scene.add(creatorGroup);
 
-    // Set initial visibility
     engineerGroup.visible = visualTypeRef.current === "engineer";
     marketerGroup.visible = visualTypeRef.current === "marketer";
     creatorGroup.visible = visualTypeRef.current === "creator";
 
-    // Event listeners
     const handleResize = () => {
       if (!cameraRef.current || !rendererRef.current) return;
       cameraRef.current.aspect = window.innerWidth / window.innerHeight;
@@ -251,13 +239,11 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
     window.addEventListener("resize", handleResize);
     document.addEventListener("mousemove", handleMouseMove);
 
-    // Animation loop
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
       const time = Date.now() * 0.001;
       const currentType = visualTypeRef.current;
 
-      // Update visibility
       if (engineerGroupRef.current) {
         engineerGroupRef.current.visible = currentType === "engineer";
       }
@@ -269,7 +255,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       }
 
       if (currentType === "engineer" && engineerGroupRef.current?.visible) {
-        // Engineer animation - flowing lines
         linesRef.current.forEach((line) => {
           const positions = (
             line.geometry.attributes.position as THREE.BufferAttribute
@@ -286,7 +271,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
         currentType === "marketer" &&
         marketerGroupRef.current?.visible
       ) {
-        // Marketer animation - Synergy Network
         const positions: number[] = [];
         const nodes = marketerNodesRef.current;
         const maxDistance = 15;
@@ -297,15 +281,12 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
             originalPos: THREE.Vector3;
           };
 
-          // Move nodes
           node.position.add(userData.velocity);
 
-          // Boundaries bounce
           if (Math.abs(node.position.x) > 45) userData.velocity.x *= -1;
           if (Math.abs(node.position.y) > 35) userData.velocity.y *= -1;
           if (Math.abs(node.position.z) > 25) userData.velocity.z *= -1;
 
-          // Mouse attraction
           const mouseV = new THREE.Vector3(
             mouseRef.current.x * 0.2,
             -mouseRef.current.y * 0.2,
@@ -319,7 +300,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
             node.position.addScaledVector(dir, 0.05);
           }
 
-          // Build connection lines
           for (let j = i + 1; j < nodes.length; j++) {
             const dist = node.position.distanceTo(nodes[j].position);
             if (dist < maxDistance) {
@@ -345,7 +325,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
         creatorGroupRef.current?.visible &&
         particlesRef.current
       ) {
-        // Creator animation - floating particles
         const positions = particlesRef.current.geometry.attributes.position
           .array as Float32Array;
         const velocities = particlesRef.current.geometry.userData
@@ -357,7 +336,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
             velocities[i * 3 + 1] + Math.cos(time + i) * 0.01;
           positions[i * 3 + 2] += velocities[i * 3 + 2];
 
-          // Boundary check and wrap around
           if (Math.abs(positions[i * 3]) > 50) positions[i * 3] *= -0.9;
           if (Math.abs(positions[i * 3 + 1]) > 50) positions[i * 3 + 1] *= -0.9;
           if (Math.abs(positions[i * 3 + 2]) > 25) positions[i * 3 + 2] *= -0.9;
@@ -380,7 +358,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("mousemove", handleMouseMove);
 
-      // Cleanup
       linesRef.current.forEach((line) => {
         line.geometry.dispose();
         (line.material as THREE.Material).dispose();
@@ -405,7 +382,6 @@ export function ThreeCanvas({ visualType }: ThreeCanvasProps) {
     };
   }, [getLineColor, getRippleColor, getParticleColor]);
 
-  // Update colors when theme changes
   useEffect(() => {
     if (visualType === "engineer") {
       updateEngineerColors();

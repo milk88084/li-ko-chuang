@@ -50,10 +50,7 @@ export function MarketerView() {
 
   return (
     <main id="view-marketing">
-      {/* Hero - Transparent background to show 3D canvas */}
-      {/* Hero - Transparent background to show 3D canvas */}
       <section className="h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative z-10 bg-transparent overflow-hidden">
-        {/* Background Decorative Elements */}
         <div className="absolute top-1/4 -left-20 w-80 h-80 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-amber-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -98,7 +95,6 @@ export function MarketerView() {
         </div>
       </section>
 
-      {/* Philosophy */}
       <section
         id="marketer-intro"
         className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
@@ -119,7 +115,6 @@ export function MarketerView() {
         </div>
       </section>
 
-      {/* Marketing Experience */}
       <section className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
         <div className="max-w-3xl mx-auto">
           <div className="mb-16">
@@ -162,7 +157,6 @@ export function MarketerView() {
         </div>
       </section>
 
-      {/* Marketing Projects */}
       <section
         id="mkt-projects"
         className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
@@ -228,7 +222,6 @@ export function MarketerView() {
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                       {project.title}
                     </h3>
-                    {/* Project Tech Tag */}
                     {(() => {
                       const colorMap: Record<string, string> = {
                         amber:
@@ -272,7 +265,6 @@ export function MarketerView() {
         </div>
       </section>
 
-      {/* Marketing Stack */}
       <section className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -284,7 +276,6 @@ export function MarketerView() {
         </div>
 
         <div className="flex flex-col gap-8">
-          {/* First Row: Moving Right */}
           <div className="flex whitespace-nowrap overflow-hidden">
             <div className="flex animate-marquee-right gap-6 px-3 w-max">
               {[
@@ -308,7 +299,6 @@ export function MarketerView() {
                     <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
                       {item.name}
                     </span>
-                    {/* Subtle Glow Background */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
                       style={{
@@ -323,7 +313,6 @@ export function MarketerView() {
             </div>
           </div>
 
-          {/* Second Row: Moving Left */}
           <div className="flex whitespace-nowrap overflow-hidden">
             <div className="flex animate-marquee-left gap-6 px-3 w-max">
               {[
@@ -349,7 +338,6 @@ export function MarketerView() {
                       <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
                         {item.name}
                       </span>
-                      {/* Subtle Glow Background */}
                       <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
                         style={{
@@ -366,7 +354,6 @@ export function MarketerView() {
         </div>
       </section>
 
-      {/* Marketing Contact CTA */}
       <section className="py-24 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 text-center relative z-10 transition-colors duration-300">
         <div className="max-w-2xl mx-auto space-y-8">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">

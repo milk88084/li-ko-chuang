@@ -52,7 +52,6 @@ export function ProjectShowcase({
     onProjectChange?.(currentIndex);
   };
 
-  // Auto-play functionality
   useEffect(() => {
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -70,18 +69,15 @@ export function ProjectShowcase({
   return (
     <div className="w-full">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
-        {/* Device Frame */}
         <div className="flex-1 flex justify-center items-center order-1 lg:order-1">
           <div className="relative">
             {deviceType === "desktop" ? (
-              // Desktop Frame
               <div className="relative">
                 <div
                   className={`w-[320px] md:w-[480px] lg:w-[560px] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ${
                     isDark ? "bg-[#1C1C1E]" : "bg-gray-900"
                   }`}
                 >
-                  {/* Browser Header */}
                   <div
                     className={`h-8 md:h-10 flex items-center px-4 gap-2 ${isDark ? "bg-[#2C2C2E]" : "bg-gray-800"}`}
                   >
@@ -94,7 +90,6 @@ export function ProjectShowcase({
                       className={`flex-1 mx-4 h-5 md:h-6 rounded-md ${isDark ? "bg-[#3C3C3E]" : "bg-gray-700"}`}
                     ></div>
                   </div>
-                  {/* Screen Content */}
                   <div className="aspect-16/10 relative overflow-hidden">
                     <Image
                       src={currentProject.img}
@@ -104,7 +99,6 @@ export function ProjectShowcase({
                     />
                   </div>
                 </div>
-                {/* Desktop Stand */}
                 <div
                   className={`w-24 md:w-32 h-6 md:h-8 mx-auto rounded-b-lg ${isDark ? "bg-[#2C2C2E]" : "bg-gray-800"}`}
                 ></div>
@@ -113,18 +107,15 @@ export function ProjectShowcase({
                 ></div>
               </div>
             ) : (
-              // Mobile Frame
               <div
                 className={`w-[200px] md:w-[240px] rounded-[2.5rem] p-2 md:p-3 shadow-2xl transition-all duration-500 ${
                   isDark ? "bg-[#1C1C1E]" : "bg-gray-900"
                 }`}
               >
-                {/* Notch */}
                 <div className="relative">
                   <div
                     className={`absolute top-0 left-1/2 -translate-x-1/2 w-20 md:w-24 h-5 md:h-6 rounded-b-2xl z-10 ${isDark ? "bg-[#1C1C1E]" : "bg-gray-900"}`}
                   ></div>
-                  {/* Screen Content */}
                   <div className="aspect-9/19 rounded-4xl overflow-hidden relative">
                     <video
                       src={currentProject.video}
@@ -141,9 +132,7 @@ export function ProjectShowcase({
           </div>
         </div>
 
-        {/* Project Info */}
         <div className="flex-1 order-2 lg:order-2 text-center lg:text-left">
-          {/* Project Number */}
           <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
             <span
               className="text-5xl md:text-6xl font-bold transition-colors duration-500"
@@ -158,7 +147,6 @@ export function ProjectShowcase({
             </span>
           </div>
 
-          {/* Project Name */}
           <h3
             className={`text-2xl md:text-3xl font-bold mb-3 transition-all duration-500 ${
               isDark ? "text-white" : "text-gray-900"
@@ -167,7 +155,6 @@ export function ProjectShowcase({
             {currentProject.name}
           </h3>
 
-          {/* Project Description */}
           <p
             className={`text-base md:text-lg mb-6 font-light ${
               isDark ? "text-gray-400" : "text-gray-600"
@@ -176,7 +163,6 @@ export function ProjectShowcase({
             {currentProject.description}
           </p>
 
-          {/* Tech Stack */}
           <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
             {currentProject.tech.map((tech, i) => (
               <span
@@ -192,7 +178,6 @@ export function ProjectShowcase({
             ))}
           </div>
 
-          {/* Progress Bar */}
           <div
             className={`h-1 rounded-full mb-6 overflow-hidden ${
               isDark ? "bg-white/10" : "bg-gray-200"
@@ -207,9 +192,7 @@ export function ProjectShowcase({
             ></div>
           </div>
 
-          {/* Controls */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-            {/* Device Toggle */}
             <div
               className={`flex rounded-full p-1 ${isDark ? "bg-white/10" : "bg-gray-100"}`}
             >
@@ -245,7 +228,6 @@ export function ProjectShowcase({
               </button>
             </div>
 
-            {/* Next Project */}
             <button
               onClick={nextProject}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm transition-all hover:scale-105 cursor-pointer ${
@@ -258,7 +240,6 @@ export function ProjectShowcase({
               <ChevronRight className="w-4 h-4" />
             </button>
 
-            {/* View Project */}
             <a
               href={currentProject.link}
               onClick={handleViewProject}
@@ -273,7 +254,6 @@ export function ProjectShowcase({
             </a>
           </div>
 
-          {/* Project Dots */}
           <div className="flex gap-2 mt-8 justify-center lg:justify-start">
             {projects.map((project, index) => (
               <button

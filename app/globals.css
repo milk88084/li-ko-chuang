@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-/* Tailwind CSS v4 - Enable class-based dark mode */
 @variant dark (&:where(.dark, .dark *));
 
-/* Custom Theme Variables */
 :root {
   --background: #fbfbfd;
   --foreground: #1d1d1f;
@@ -31,7 +29,6 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-/* Base Styles */
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -60,7 +57,6 @@ body {
     color 0.3s ease;
 }
 
-/* Canvas Container - Fixed positioning for 3D background */
 #canvas-container {
   position: fixed;
   top: 0;
@@ -72,14 +68,12 @@ body {
   pointer-events: none;
 }
 
-/* Ensure WebGL canvas is visible */
 #canvas-container canvas {
   display: block;
   width: 100% !important;
   height: 100% !important;
 }
 
-/* Animations */
 .fade-in-up {
   animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -105,7 +99,6 @@ body {
   }
 }
 
-/* Selection Styles */
 ::selection {
   background-color: #1d1d1f;
   color: #fff;
@@ -116,21 +109,19 @@ body {
   color: #000;
 }
 
-/* Ensure sections have proper backgrounds */
 section {
   position: relative;
 }
-/* Custom Scrollbar Utilities */
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Marquee Animations */
 @keyframes marquee-left {
   0% {
     transform: translateX(0);
@@ -162,7 +153,6 @@ section {
   animation-play-state: paused;
 }
 
-/* Mouse Wheel Animation */
 @keyframes mouse-wheel {
   0% {
     transform: translateY(0);
@@ -174,7 +164,6 @@ section {
   }
 }
 
-/* Blob Animation */
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
@@ -202,7 +191,6 @@ section {
   animation: mouse-wheel 1.5s ease-in-out infinite;
 }
 
-/* Simple Fade In */
 @keyframes fadeIn {
   from {
     opacity: 0;
