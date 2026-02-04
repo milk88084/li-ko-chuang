@@ -4,9 +4,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Globe } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useLanguage } from "@/providers/LanguageProvider";
 import content from "@/data/content.json";
+
+const emptySubscribe = () => () => {};
+function useIsMounted() {
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
+}
 
 interface NavigationProps {
   currentPage: "engineer" | "marketer" | "creator";
@@ -16,13 +25,9 @@ type ContentType = typeof content;
 type LanguageKey = keyof ContentType;
 
 export function Navigation({ currentPage }: NavigationProps) {
+  const isMounted = useIsMounted();
   const { resolvedTheme, setTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleThemeToggle = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -85,7 +90,7 @@ export function Navigation({ currentPage }: NavigationProps) {
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
             aria-label="Toggle Dark Mode"
           >
-            {mounted && resolvedTheme === "dark" ? (
+            {isMounted && resolvedTheme === "dark" ? (
               <Sun className="w-4 h-4 text-white" />
             ) : (
               <Moon className="w-4 h-4 text-gray-900" />

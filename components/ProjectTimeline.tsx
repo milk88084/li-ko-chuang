@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Project {
@@ -37,12 +37,15 @@ export function ProjectTimeline({
 
   const activeProject = projects[activeIndex];
 
-  const handleProjectChange = (index: number) => {
-    if (index === activeIndex || isAnimating) return;
-    setIsAnimating(true);
-    setActiveIndex(index);
-    setTimeout(() => setIsAnimating(false), 400);
-  };
+  const handleProjectChange = useCallback(
+    (index: number) => {
+      if (index === activeIndex || isAnimating) return;
+      setIsAnimating(true);
+      setActiveIndex(index);
+      setTimeout(() => setIsAnimating(false), 400);
+    },
+    [activeIndex, isAnimating],
+  );
 
   useEffect(() => {
     if (
@@ -50,23 +53,24 @@ export function ProjectTimeline({
       activeProjectIndex !== activeIndex &&
       !isAnimating
     ) {
-      setIsAnimating(true);
-      setActiveIndex(activeProjectIndex);
-      setTimeout(() => setIsAnimating(false), 400);
+      const timer = setTimeout(() => {
+        handleProjectChange(activeProjectIndex);
+      }, 0);
+      return () => clearTimeout(timer);
     }
-  }, [activeProjectIndex]);
+  }, [activeProjectIndex, activeIndex, isAnimating, handleProjectChange]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (activeIndex > 0) {
       handleProjectChange(activeIndex - 1);
     }
-  };
+  }, [activeIndex, handleProjectChange]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (activeIndex < projects.length - 1) {
       handleProjectChange(activeIndex + 1);
     }
-  };
+  }, [activeIndex, projects.length, handleProjectChange]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -75,7 +79,7 @@ export function ProjectTimeline({
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex]);
+  }, [handlePrev, handleNext]);
 
   useEffect(() => {
     if (itemRefs.current[activeIndex] && selectorRef.current) {

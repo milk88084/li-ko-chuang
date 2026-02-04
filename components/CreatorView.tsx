@@ -25,6 +25,25 @@ import { useLanguage } from "@/providers/LanguageProvider";
 type ContentType = typeof content;
 type LanguageKey = keyof ContentType;
 
+interface Episode {
+  title: string;
+  duration: string;
+  link: string;
+}
+
+interface PodcastData {
+  badge: string;
+  title: string;
+  titleSub: string;
+  image: string;
+  description: string;
+  podcastLink: string;
+  spotifyLink: string;
+  platforms: { name: string; color: string }[];
+  episodesTitle: string;
+  episodes: Episode[];
+}
+
 const iconMap = {
   Mic,
   Play,
@@ -49,7 +68,7 @@ export function CreatorView() {
   const t = content[language as LanguageKey];
   const data = t.creator;
 
-  const podcastData = data.podcast as any;
+  const podcastData: PodcastData = data.podcast;
 
   const initialEmbed = podcastData.podcastLink
     ? podcastData.podcastLink.replace(
@@ -147,8 +166,8 @@ export function CreatorView() {
         className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
       >
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white dark:bg-[#1C1C1E] rounded-[2rem] p-8 md:p-12 border border-gray-200/50 dark:border-white/10 shadow-xl shadow-gray-100/50 dark:shadow-none overflow-hidden relative group transition-colors duration-300">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-pink-50/50 dark:via-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none transform -skew-x-12 translate-x-full group-hover:-translate-x-full"></div>
+          <div className="bg-white dark:bg-[#1C1C1E] rounded-4xl p-8 md:p-12 border border-gray-200/50 dark:border-white/10 shadow-xl shadow-gray-100/50 dark:shadow-none overflow-hidden relative group transition-colors duration-300">
+            <div className="absolute inset-0 bg-linear-to-r from-transparent via-pink-50/50 dark:via-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none transform -skew-x-12 translate-x-full group-hover:-translate-x-full"></div>
 
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
               <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-inner shrink-0 border border-pink-100 dark:border-white/10 relative">
@@ -214,7 +233,7 @@ export function CreatorView() {
           </div>
 
           <div id="podcast-player" className="mt-12 fade-in">
-            <div className="bg-white dark:bg-[#1C1C1E] rounded-3xl border border-gray-100 dark:border-white/10 overflow-hidden shadow-xl aspect-[4/3] md:aspect-[16/6] min-h-[175px]">
+            <div className="bg-white dark:bg-[#1C1C1E] rounded-3xl border border-gray-100 dark:border-white/10 overflow-hidden shadow-xl aspect-4/3 md:aspect-16/6 min-h-[175px]">
               {activeEmbedUrl && (
                 <iframe
                   allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
@@ -241,9 +260,7 @@ export function CreatorView() {
               {data.podcast.episodes.map((episode, index) => (
                 <button
                   key={index}
-                  onClick={(e) =>
-                    handleEpisodeClick(e, (episode as any).link || "")
-                  }
+                  onClick={(e) => handleEpisodeClick(e, episode.link || "")}
                   className="w-full flex items-center justify-between p-4 bg-white dark:bg-[#1C1C1E] rounded-xl border border-gray-100 dark:border-white/10 hover:shadow-md transition-all group text-left"
                 >
                   <div className="flex items-center gap-4">
@@ -380,7 +397,7 @@ export function CreatorView() {
                   key={index}
                   className="flex gap-6 p-6 bg-white dark:bg-[#1C1C1E] rounded-2xl border border-gray-100 dark:border-white/10 transition-colors duration-300"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-pink-50 dark:bg-pink-900/30 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-pink-50 dark:bg-pink-900/30 flex items-center justify-center shrink-0">
                     {IconComponent && (
                       <IconComponent className="w-6 h-6 text-pink-500" />
                     )}
