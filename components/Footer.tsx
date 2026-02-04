@@ -54,12 +54,12 @@ export function Footer({ currentPage }: FooterProps) {
     if (currentPage === "creator") {
       return [
         {
-          href: "https://instagram.com/yourusername",
+          href: "https://www.instagram.com/little.by.little.official/",
           icon: Instagram,
           label: "Instagram",
         },
         {
-          href: "#podcast",
+          href: "https://podcasts.apple.com/tw/podcast/%E5%BE%AE%E5%B0%8F%E6%97%A5%E5%B8%B8/id1529054627",
           icon: Podcast,
           label: "Podcast",
         },

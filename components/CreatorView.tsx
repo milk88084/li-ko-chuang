@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Mic,
@@ -13,9 +13,14 @@ import {
   BookOpen,
   ArrowUpRight,
   Quote,
-} from 'lucide-react';
-import content from '@/data/content.json';
-import { useLanguage } from '@/providers/LanguageProvider';
+  Film,
+  Activity,
+  Palette,
+  Trophy,
+} from "lucide-react";
+import Image from "next/image";
+import content from "@/data/content.json";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 type ContentType = typeof content;
 type LanguageKey = keyof ContentType;
@@ -31,43 +36,93 @@ const iconMap = {
   Camera,
   Music,
   BookOpen,
+  Film,
+  Activity,
+  Palette,
+  Trophy,
 };
+
+import { useState } from "react";
 
 export function CreatorView() {
   const { language } = useLanguage();
   const t = content[language as LanguageKey];
   const data = t.creator;
 
+  const podcastData = data.podcast as any;
+
+  // Podcast Embed State
+  const initialEmbed = podcastData.podcastLink
+    ? podcastData.podcastLink.replace(
+        "podcasts.apple.com",
+        "embed.podcasts.apple.com",
+      )
+    : "";
+  const [activeEmbedUrl, setActiveEmbedUrl] = useState(initialEmbed);
+
+  const handleEpisodeClick = (e: React.MouseEvent, link: string) => {
+    e.preventDefault();
+    const embedLink = link.replace(
+      "podcasts.apple.com",
+      "embed.podcasts.apple.com",
+    );
+    setActiveEmbedUrl(embedLink);
+
+    // Scroll to player smoothly
+    const playerElement = document.getElementById("podcast-player");
+    if (playerElement) {
+      playerElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
   return (
     <main id="view-creator">
       {/* Hero - Transparent background to show 3D canvas */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 relative z-10 bg-transparent">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <p className="fade-in-up text-xs font-semibold uppercase tracking-widest text-pink-500 dark:text-pink-400 mb-4 bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full inline-block backdrop-blur-sm">
-            {data.hero.badge}
-          </p>
-          <h1 className="fade-in-up delay-100 text-5xl md:text-7xl font-semibold tracking-tight leading-tight text-gray-900 dark:text-white drop-shadow-sm">
-            {data.hero.title} <span className="text-pink-500 dark:text-pink-400">{data.hero.titleHighlight}</span>
-          </h1>
-          <p className="fade-in-up delay-200 text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto font-light">
-            {data.hero.description}<br className="hidden md:block" />
-            {data.hero.descriptionSub}
-          </p>
+      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 relative z-10 bg-transparent overflow-hidden">
+        {/* Background Decorative Blobs */}
+        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-pink-500/10 rounded-full blur-[120px] pointer-events-none animate-blob"></div>
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-400/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-          <div className="fade-in-up delay-300 flex flex-col sm:flex-row gap-4 justify-center pt-8">
+        <div className="max-w-4xl mx-auto space-y-10 relative">
+          <div className="fade-in-up flex justify-center">
+            <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.2em] bg-pink-500/10 dark:bg-pink-400/10 text-pink-600 dark:text-pink-400 border border-pink-500/20 backdrop-blur-md shadow-sm">
+              {data.hero.badge}
+            </span>
+          </div>
+
+          <div className="space-y-4">
+            <h1 className="fade-in-up delay-100 text-6xl md:text-8xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.1]">
+              {data.hero.title} <br />
+              <span className="relative inline-block">
+                <span className="relative z-10 text-transparent bg-clip-text bg-linear-to-r from-pink-600 to-purple-500 dark:from-pink-400 dark:to-purple-300">
+                  {data.hero.titleHighlight}
+                </span>
+                <div className="absolute -bottom-2 left-0 w-full h-3 bg-pink-500/10 -rotate-1"></div>
+              </span>
+            </h1>
+
+            <p className="fade-in-up delay-200 text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto font-light">
+              <span className="text-gray-900 dark:text-white font-medium">
+                {data.hero.description}
+              </span>
+              <br className="hidden md:block" />
+              <span className="text-gray-500 dark:text-gray-500">
+                {data.hero.descriptionSub}
+              </span>
+            </p>
+          </div>
+
+          <div className="fade-in-up delay-300 flex flex-col sm:flex-row gap-6 justify-center pt-8">
             <a
               href="#podcast"
-              className="group bg-pink-500 dark:bg-pink-500 text-white px-8 py-3 rounded-full text-sm font-medium transition-all hover:bg-pink-600 dark:hover:bg-pink-400 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-pink-200/50 dark:shadow-none"
+              className="group relative px-10 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full text-base font-semibold transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-pink-500/20 overflow-hidden"
             >
-              {data.hero.ctaPrimary}
-              <Mic className="w-4 h-4 group-hover:scale-110 transition-transform" />
-            </a>
-            <a
-              href="#social"
-              className="group bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-8 py-3 rounded-full text-sm font-medium transition-all hover:bg-gray-100 dark:hover:bg-gray-700 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 border border-gray-200 dark:border-gray-700"
-            >
-              {data.hero.ctaSecondary}
-              <Instagram className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <div className="absolute inset-0 bg-linear-to-r from-pink-600 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                {data.hero.ctaPrimary}
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              </span>
             </a>
           </div>
         </div>
@@ -84,12 +139,10 @@ export function CreatorView() {
           </div>
           <div className="prose prose-lg prose-gray dark:prose-invert text-gray-600 dark:text-gray-400 font-light leading-loose">
             <p className="mb-6 text-xl text-gray-800 dark:text-gray-200 flex items-start gap-3">
-              <Quote className="w-6 h-6 text-pink-400 flex-shrink-0 mt-1" />
+              <Quote className="w-6 h-6 text-pink-400 shrink-0 mt-1" />
               {data.about.quote}
             </p>
-            <p>
-              {data.about.content}
-            </p>
+            <p>{data.about.content}</p>
           </div>
         </div>
       </section>
@@ -105,8 +158,16 @@ export function CreatorView() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-pink-50/50 dark:via-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none transform -skew-x-12 translate-x-full group-hover:-translate-x-full"></div>
 
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
-              <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl bg-gradient-to-br from-pink-100 to-pink-300 dark:from-pink-900 dark:to-pink-800 shadow-inner flex items-center justify-center flex-shrink-0 border border-pink-100 dark:border-white/10">
-                <Mic className="w-12 h-12 text-pink-500 dark:text-pink-300" />
+              <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-inner shrink-0 border border-pink-100 dark:border-white/10 relative">
+                <Image
+                  src={
+                    podcastData.image ||
+                    "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1000&auto=format&fit=crop"
+                  }
+                  alt={data.podcast.title}
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               <div className="text-center md:text-left space-y-4">
@@ -118,7 +179,7 @@ export function CreatorView() {
                 </div>
 
                 <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white tracking-tight">
-                  {data.podcast.title}{' '}
+                  {data.podcast.title}{" "}
                   <span className="text-gray-300 dark:text-gray-600 font-light">
                     {data.podcast.titleSub}
                   </span>
@@ -129,20 +190,54 @@ export function CreatorView() {
                 </p>
 
                 <div className="pt-4 flex flex-wrap justify-center md:justify-start gap-3">
-                  <a
-                    href="#"
-                    className="px-6 py-2 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors flex items-center gap-2"
-                  >
-                    <Play className="w-3 h-3 fill-current" /> Apple Podcasts
-                  </a>
-                  <a
-                    href="#"
-                    className="px-6 py-2 bg-green-500 text-white rounded-full text-sm font-medium hover:bg-green-600 transition-colors flex items-center gap-2"
-                  >
-                    <Play className="w-3 h-3 fill-current" /> Spotify
-                  </a>
+                  {podcastData.podcastLink && (
+                    <button
+                      onClick={() =>
+                        setActiveEmbedUrl(
+                          podcastData.podcastLink.replace(
+                            "podcasts.apple.com",
+                            "embed.podcasts.apple.com",
+                          ),
+                        )
+                      }
+                      className="px-6 py-2 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors flex items-center gap-2"
+                    >
+                      <Mic className="w-3 h-3" /> Show Info
+                    </button>
+                  )}
+                  {podcastData.spotifyLink && (
+                    <a
+                      href={podcastData.spotifyLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-2 bg-green-500 text-white rounded-full text-sm font-medium hover:bg-green-600 transition-colors flex items-center gap-2"
+                    >
+                      <Play className="w-3 h-3 fill-current" /> Spotify
+                    </a>
+                  )}
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Player Embed */}
+          <div id="podcast-player" className="mt-12 fade-in">
+            <div className="bg-white dark:bg-[#1C1C1E] rounded-3xl border border-gray-100 dark:border-white/10 overflow-hidden shadow-xl aspect-16/6 min-h-[175px]">
+              {activeEmbedUrl && (
+                <iframe
+                  allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                  frameBorder="0"
+                  height="100%"
+                  style={{
+                    width: "100%",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                    background: "transparent",
+                  }}
+                  sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                  src={activeEmbedUrl}
+                ></iframe>
+              )}
             </div>
           </div>
 
@@ -153,10 +248,12 @@ export function CreatorView() {
             </h3>
             <div className="grid gap-4">
               {data.podcast.episodes.map((episode, index) => (
-                <a
+                <button
                   key={index}
-                  href="#"
-                  className="flex items-center justify-between p-4 bg-white dark:bg-[#1C1C1E] rounded-xl border border-gray-100 dark:border-white/10 hover:shadow-md transition-all group"
+                  onClick={(e) =>
+                    handleEpisodeClick(e, (episode as any).link || "")
+                  }
+                  className="w-full flex items-center justify-between p-4 bg-white dark:bg-[#1C1C1E] rounded-xl border border-gray-100 dark:border-white/10 hover:shadow-md transition-all group text-left"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
@@ -166,68 +263,117 @@ export function CreatorView() {
                       {episode.title}
                     </span>
                   </div>
-                  <span className="text-sm text-gray-400">{episode.duration}</span>
-                </a>
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm text-gray-400">
+                      {episode.duration}
+                    </span>
+                    <div className="px-3 py-1 bg-pink-500/10 text-pink-500 text-[10px] font-bold uppercase rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Listen Now
+                    </div>
+                  </div>
+                </button>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Social Media / Interests */}
       <section
         id="social"
-        className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
+        className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-hidden"
       >
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              {data.interests.title}
-            </h2>
-            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-              {data.interests.subtitle}
-            </p>
+        <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            {data.interests.title}
+          </h2>
+          <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
+            {data.interests.subtitle}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-8 mb-16">
+          {/* First Row: Moving Right */}
+          <div className="flex whitespace-nowrap overflow-hidden">
+            <div className="flex animate-marquee-right gap-6 px-3 w-max">
+              {[
+                ...data.interests.items,
+                ...data.interests.items,
+                ...data.interests.items,
+                ...data.interests.items,
+              ].map((item, index) => {
+                const IconComponent =
+                  iconMap[item.icon as keyof typeof iconMap];
+                return (
+                  <div
+                    key={`row1-${index}`}
+                    className="group relative bg-[#0a0a0a]/5 dark:bg-white/5 px-8 py-6 rounded-2xl border border-gray-900/10 dark:border-white/5 flex items-center gap-4 transition-all duration-500 min-w-[240px] hover:scale-105 cursor-default overflow-hidden hover:border-gray-900/20 dark:hover:border-white/20"
+                  >
+                    <div className="relative z-10 p-2.5 rounded-xl bg-white dark:bg-white/5 group-hover:bg-white dark:group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
+                      {IconComponent && (
+                        <IconComponent className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                      )}
+                    </div>
+                    <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
+                      {item.name}
+                    </span>
+                    {/* Subtle Glow Background */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
+                      style={{
+                        background: item.hoverColor
+                          ? `var(--color-${item.hoverColor})`
+                          : "#f59e0b",
+                      }}
+                    ></div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
-            {data.interests.items.map((item, index) => {
-              const IconComponent = iconMap[item.icon as keyof typeof iconMap];
-              return (
-                <div key={index} className="bg-gray-50 dark:bg-[#1C1C1E] p-6 rounded-2xl border border-gray-100 dark:border-white/10 flex flex-col items-center justify-center group transition-colors duration-300">
-                  {IconComponent && <IconComponent className={`w-8 h-8 mb-3 text-gray-400 group-hover:text-${item.hoverColor} transition-colors`} />}
-                  <span className="text-gray-900 dark:text-white font-medium">{item.name}</span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Social Links */}
-          <div className="text-center">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-              {data.interests.socialTitle}
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:opacity-90 transition-opacity"
-              >
-                <Instagram className="w-5 h-5" />
-                <span className="font-medium">Instagram</span>
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-3 bg-red-500 text-white rounded-full hover:opacity-90 transition-opacity"
-              >
-                <Youtube className="w-5 h-5" />
-                <span className="font-medium">YouTube</span>
-              </a>
+          {/* Second Row: Moving Left */}
+          <div className="flex whitespace-nowrap overflow-hidden">
+            <div className="flex animate-marquee-left gap-6 px-3 w-max">
+              {[
+                ...data.interests.items,
+                ...data.interests.items,
+                ...data.interests.items,
+                ...data.interests.items,
+              ]
+                .reverse()
+                .map((item, index) => {
+                  const IconComponent =
+                    iconMap[item.icon as keyof typeof iconMap];
+                  return (
+                    <div
+                      key={`row2-${index}`}
+                      className="group relative bg-[#0a0a0a]/5 dark:bg-white/5 px-8 py-6 rounded-2xl border border-gray-900/10 dark:border-white/5 flex items-center gap-4 transition-all duration-500 min-w-[240px] hover:scale-105 cursor-default overflow-hidden hover:border-gray-900/20 dark:hover:border-white/20"
+                    >
+                      <div className="relative z-10 p-2.5 rounded-xl bg-white dark:bg-white/5 group-hover:bg-white dark:group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
+                        {IconComponent && (
+                          <IconComponent className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                        )}
+                      </div>
+                      <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
+                        {item.name}
+                      </span>
+                      {/* Subtle Glow Background */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
+                        style={{
+                          background: item.hoverColor
+                            ? `var(--color-${item.hoverColor})`
+                            : "#f59e0b",
+                        }}
+                      ></div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
+
+        {/* Social Links */}
       </section>
 
       {/* Life Values */}
@@ -251,7 +397,9 @@ export function CreatorView() {
                   className="flex gap-6 p-6 bg-white dark:bg-[#1C1C1E] rounded-2xl border border-gray-100 dark:border-white/10 transition-colors duration-300"
                 >
                   <div className="w-12 h-12 rounded-xl bg-pink-50 dark:bg-pink-900/30 flex items-center justify-center flex-shrink-0">
-                    {IconComponent && <IconComponent className="w-6 h-6 text-pink-500" />}
+                    {IconComponent && (
+                      <IconComponent className="w-6 h-6 text-pink-500" />
+                    )}
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
@@ -269,21 +417,65 @@ export function CreatorView() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-24 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 text-center relative z-10 transition-colors duration-300">
-        <div className="max-w-2xl mx-auto space-y-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            {data.contact.title}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 font-light text-lg">
-            {data.contact.description}
-          </p>
-          <a
-            href={`mailto:${data.contact.email}`}
-            className="inline-flex items-center gap-2 text-xl font-medium text-gray-900 dark:text-white hover:text-pink-500 dark:hover:text-pink-400 transition-colors border-b border-gray-900 dark:border-white hover:border-pink-500 dark:hover:border-pink-400 pb-1"
-          >
-            {data.contact.email}
-            <ArrowUpRight className="w-5 h-5" />
-          </a>
+      <section className="py-32 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
+          {/* Contact Header */}
+          <div className="max-w-2xl text-center space-y-6 mb-16">
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {data.contact.title}
+            </h2>
+            <p className="text-gray-500 dark:text-gray-400 text-lg font-light leading-relaxed">
+              {data.contact.description}
+            </p>
+          </div>
+
+          {/* Social Links */}
+          <div className="w-full">
+            <div className="flex flex-col items-center gap-8">
+              <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-pink-500/80 dark:text-pink-400/80">
+                {data.interests.socialTitle}
+              </h3>
+
+              <div className="flex flex-wrap justify-center gap-5">
+                {data.interests.socialLinks.map((social, index) => {
+                  const isInstagram = social.platform === "Instagram";
+                  const isYoutube = social.platform === "YouTube";
+
+                  return (
+                    <a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`group relative flex items-center gap-3 px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95 text-white overflow-hidden shadow-lg ${
+                        isInstagram
+                          ? "bg-linear-to-tr from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
+                          : isYoutube
+                            ? "bg-[#FF0000]"
+                            : "bg-gray-900 dark:bg-white dark:text-black"
+                      }`}
+                    >
+                      {/* Glossy Overlay */}
+                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      {isInstagram && (
+                        <Instagram className="w-5 h-5 relative z-10" />
+                      )}
+                      {isYoutube && (
+                        <Youtube className="w-5 h-5 relative z-10" />
+                      )}
+                      {!isInstagram && !isYoutube && (
+                        <Instagram className="w-5 h-5 relative z-10" />
+                      )}{" "}
+                      {/* Fallback Icon */}
+                      <span className="font-semibold tracking-wide relative z-10">
+                        {social.platform}
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
