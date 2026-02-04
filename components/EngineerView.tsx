@@ -351,6 +351,7 @@ export function EngineerView() {
             techLabel={data.projects.techLabel}
             isDark={isDark}
             activeProjectIndex={activeProjectIndex}
+            onProjectChange={setActiveProjectIndex}
           />
         </div>
       </section>

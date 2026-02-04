@@ -19,6 +19,7 @@ interface ProjectTimelineProps {
   techLabel: string;
   isDark?: boolean;
   activeProjectIndex?: number;
+  onProjectChange?: (index: number) => void;
 }
 
 export function ProjectTimeline({
@@ -28,6 +29,7 @@ export function ProjectTimeline({
   techLabel,
   isDark = false,
   activeProjectIndex,
+  onProjectChange,
 }: ProjectTimelineProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -42,9 +44,12 @@ export function ProjectTimeline({
       if (index === activeIndex || isAnimating) return;
       setIsAnimating(true);
       setActiveIndex(index);
+      if (onProjectChange) {
+        onProjectChange(index);
+      }
       setTimeout(() => setIsAnimating(false), 400);
     },
-    [activeIndex, isAnimating],
+    [activeIndex, isAnimating, onProjectChange],
   );
 
   useEffect(() => {
