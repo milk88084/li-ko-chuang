@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Globe } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -40,9 +41,15 @@ export function Navigation({ currentPage }: NavigationProps) {
       <div className=" mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="font-semibold text-sm tracking-tight text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
+          className="flex items-center hover:opacity-70 transition-opacity"
         >
-          {t.common.portfolio}
+          <Image
+            src="/favicon.ico"
+            alt="Logo"
+            width={32}
+            height={32}
+            className="rounded-lg shadow-sm"
+          />
         </Link>
 
         <div className="flex items-center gap-2 md:gap-4">

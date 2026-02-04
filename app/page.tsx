@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Globe, ArrowDown } from "lucide-react";
@@ -384,8 +385,13 @@ export default function Home() {
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            <span className="sm:hidden text-lg">LK.</span>
-            <span className="hidden sm:inline">{t.common.portfolio}</span>
+            <Image
+              src="/favicon.ico"
+              alt="Logo"
+              width={28}
+              height={28}
+              className="rounded-md shadow-sm"
+            />
           </Link>
           <div className="flex items-center gap-1.5 md:gap-4 min-w-0">
             <div

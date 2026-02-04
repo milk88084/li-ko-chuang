@@ -13,6 +13,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Li Ko Chuang | Portfolio",
   description: "Building Interfaces, Telling Stories.",
+  icons: {
+    icon: "/favicon.ico",
+  },
   keywords: [
     "React",
     "Next.js",
