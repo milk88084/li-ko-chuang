@@ -311,64 +311,102 @@
     "marketer": {
       "hero": {
         "badge": "Project Management & Strategy",
-        "title": "Event Project",
-        "titleHighlight": "Management.",
-        "description": "Driving Growth, Optimizing Processes.",
-        "descriptionSub": "Senior Strategist with 5 years of experience in marketing and government bidding.",
-        "ctaText": "View Experience"
+        "title": "Marketing Planning",
+        "titleHighlight": "Events",
+        "description": "Transforming complex requirements into actionable and successful projects.",
+        "descriptionSub": "5 years of experience in marketing and government bid management, specializing in cross-departmental communication.",
+        "ctaText": "Explore"
       },
       "philosophy": {
-        "title": "The Strategic Philosophy",
-        "quote": "Combining data analysis with personalized communication.",
-        "content": "With 5 years of marketing and project management experience, I know how to use data tools to track performance and ensure projects are executed on time and within budget."
+        "title": "Marketing Strategy Philosophy",
+        "quote": "Combining AI and data analysis to create high-performance marketing strategies.",
+        "content": "With 5 years of experience in marketing and project management, I know how to use data tools to track performance and ensure projects are executed precisely within budget through effective communication and coordination."
       },
       "experience": {
-        "title": "Career Path",
-        "subtitle": "Management and Analysis Experience.",
+        "title": "Career Experience",
+        "subtitle": "Management and Analysis Expertise.",
         "items": [
           {
             "period": "2021/12 — 2024/01",
             "role": "Advocacy Specialist",
             "company": "The Garden of Hope Foundation",
-            "description": "Managing government bids and budget execution. Tracking website usage and optimizing interaction strategies."
+            "description": "Managing government bids and budget execution, campus theme-based advocacy, and coordinate collaborations between schools and local enterprises."
+          },
+          {
+            "period": "2020/12 — 2021/06",
+            "role": "Member Development Group Leader",
+            "company": "Youth Urban Regeneration Association",
+            "description": "Managing member recruitment and event planning, offline forum planning, and live video production."
+          },
+          {
+            "period": "2017/07 — 2020/10",
+            "role": "Marketing Specialist",
+            "company": "The Garden of Hope Foundation",
+            "description": "Fundraising event planning (online/offline), strategic alliances, and social media management."
+          },
+          {
+            "period": "2015/11 — 2017/06",
+            "role": "Production Assistant",
+            "company": "Yu-Shun International",
+            "description": "Production assistant for commercials, TV programs, and web videos."
           }
         ]
       },
       "projects": {
-        "title": "Strategy Case Studies",
-        "subtitle": "Data-driven execution.",
+        "title": "Featured Projects",
+        "subtitle": "Past Case Studies",
         "problemLabel": "Mission",
         "resultLabel": "Result",
         "items": [
           {
             "icon": "FileText",
-            "title": "Gov Bid Management",
-            "tech": "Project Management • Budget Control",
+            "title": "Campus Gender Equality Program",
+            "tech": "Gov Bid",
             "techColor": "amber",
             "bgColor": "amber",
-            "problem": "Managing complex government bidding processes and budget execution.",
-            "result": "Successfully executed project budgets and ensured smooth project completion.",
-            "resultHighlight": "Project Execution"
+            "image": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "problem": "Traditional education lacks systematic gender and safety advocacy.",
+            "result": "Managed gov bids, coordinated 30+ seminars in 6 months, reaching 1,000+ students and staff."
           },
           {
-            "icon": "BarChart",
-            "title": "Site Data Optimization",
-            "tech": "Data Analytics • User Engagement",
+            "icon": "Users",
+            "title": "Dept. Store CSR Alliance",
+            "tech": "Strategic Alliance",
             "techColor": "purple",
             "bgColor": "purple",
-            "problem": "Need to track and improve user engagement on the website.",
-            "result": "Monitored traffic via data tools and formulated strategies to boost interaction.",
-            "resultHighlight": "Data-driven"
+            "image": "https://magazine.feg.com.tw/magazine/upload/article/358-21-2.jpg",
+            "problem": "Low awareness and fundraising difficulty for vulnerable groups like teen pregnancy.",
+            "result": "Partnered with Far Eastern Dept. Store, leveraging CSR resources to raise 100k+ in a single event."
+          },
+          {
+            "icon": "TrendingUp",
+            "title": "Digital Fundraising Project",
+            "tech": "Digital Marketing",
+            "techColor": "blue",
+            "bgColor": "blue",
+            "image": "https://images.unsplash.com/photo-1591522810850-58128c5fb089?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "problem": "Offline fundraising limited by geography, making it hard to scale.",
+            "result": "Implemented digital strategies, optimized donation paths, successfully raised 700k."
+          },
+          {
+            "icon": "Video",
+            "title": "Omni-channel Production",
+            "tech": "Multimedia",
+            "techColor": "pink",
+            "bgColor": "pink",
+            "image": "https://images.unsplash.com/photo-1757955622421-b75472080224?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "problem": "Lack of credible brand assets led to high trust costs for lead generation.",
+            "result": "Coordinated ad and video production, building brand trust and driving 3M+ in sales growth."
           }
         ]
       },
       "marketingStack": {
-        "title": "Management Stack",
-        "subtitle": "The Strategist's Toolkit.",
+        "title": "Core Competencies",
+        "subtitle": "Challenges and Innovation.",
         "items": [
           {
-            "icon": "LineChart",
-            "name": "Data Analysis",
+            "icon": "Presentation",
+            "name": "Event Planning",
             "hoverColor": "amber-600"
           },
           {
@@ -377,20 +415,50 @@
             "hoverColor": "green-600"
           },
           {
-            "icon": "FileText",
-            "name": "Bid Writing",
+            "icon": "Megaphone",
+            "name": "Press Release Writing",
             "hoverColor": "orange-500"
           },
           {
             "icon": "MessageCircle",
             "name": "Cross-dept. Comm.",
             "hoverColor": "purple-600"
+          },
+          {
+            "icon": "Store",
+            "name": "Business Development",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Send",
+            "name": "Bid Proposal",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Wallet",
+            "name": "Budget Control",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Share2",
+            "name": "Social Media",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Sparkles",
+            "name": "AI Proficient",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Handshake",
+            "name": "Partnerships",
+            "hoverColor": "orange-500"
           }
         ]
       },
       "contact": {
-        "title": "Need an actionable strategy?",
-        "description": "Combining technical and marketing thinking to help teams reach their goals.",
+        "title": "Contact Me",
+        "description": "If you have any initial thoughts on collaboration or questions, please feel free to reach out.",
         "email": "milk88084@gmail.com"
       }
     },
@@ -791,15 +859,15 @@
     "marketer": {
       "hero": {
         "badge": "專案管理與策略",
-        "title": "活動專案",
-        "titleHighlight": "管理。",
-        "description": "驅動成長，優化流程。",
+        "title": "行銷企劃",
+        "titleHighlight": "活動",
+        "description": "將複雜需求轉化為具體可執行的成功專案。",
         "descriptionSub": "具備 5 年行銷與政府標案管理經驗，擅長跨部門溝通。",
-        "ctaText": "查看過往經歷"
+        "ctaText": "探索"
       },
       "philosophy": {
-        "title": "策略哲學",
-        "quote": "數據分析與人性化溝通的結合。",
+        "title": "產品行銷思惟",
+        "quote": "結合AI與數據分析，打造高效能行銷策略。",
         "content": "憑藉 5 年的行銷與專案管理經驗，我深知如何利用數據工具追蹤成效，並透過有效的溝通協調，確保專案在預算內精準執行。"
       },
       "experience": {
@@ -808,65 +876,133 @@
         "items": [
           {
             "period": "2021/12 — 2024/01",
-            "role": "倡議專員 (Advocacy Specialist)",
+            "role": "倡議專員",
             "company": "勵馨基金會",
-            "description": "管理政府標案與預算執行。利用數據分析工具追蹤網站使用情況，優化使用者互動策略。"
+            "description": "管理政府標案與預算執行、校園主題式宣講活動、結合校園與在地企業合作。"
+          },
+          {
+            "period": "2020/12 — 2021/06",
+            "role": "會員發展組 組長",
+            "company": "社團法人青年都會再生協會",
+            "description": "管理會員招募與活動策劃、線下論壇活動策畫、直播影片製作。"
+          },
+          {
+            "period": "2017/07 — 2020/10",
+            "role": "行銷企劃",
+            "company": "勵馨基金會",
+            "description": "募款活動策劃、線上募款活動策劃、異業結盟、社群經營。"
+          },
+          {
+            "period": "2015/11 — 2017/06",
+            "role": "執行製作",
+            "company": "堉舜國際",
+            "description": "廣告、電視節目、網路影片執行製作。"
           }
         ]
       },
       "projects": {
-        "title": "策略與管理案例",
-        "subtitle": "數據驅動與專案執行。",
+        "title": "精選專案",
+        "subtitle": "過去專案案例",
         "problemLabel": "任務",
         "resultLabel": "成果",
         "items": [
           {
             "icon": "FileText",
-            "title": "政府標案管理",
-            "tech": "專案管理 • 預算控管",
+            "title": "校園性別平權宣講計畫",
+            "tech": "政府標案",
             "techColor": "amber",
             "bgColor": "amber",
-            "problem": "需管理複雜的政府標案流程與預算執行。",
-            "result": "成功執行專案預算，確保標案順利進行與結案。",
-            "resultHighlight": "專案執行"
+            "image": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "problem": "既有教育體系缺乏多元性別與自我保護的系統性宣導。",
+            "result": "承接並執行政府標案，半年內統籌 30+ 場講座，精準觸及超過 1,000 名學生與教職人員。"
           },
           {
-            "icon": "BarChart",
-            "title": "網站數據優化",
-            "tech": "數據分析 • 用戶互動",
+            "icon": "Users",
+            "title": "百貨 CSR 異業結盟",
+            "tech": "異業合作",
             "techColor": "purple",
             "bgColor": "purple",
-            "problem": "需要追蹤並提升網站的使用者參與度。",
-            "result": "透過數據分析工具監測流量，制定優化策略提升互動。",
-            "resultHighlight": "數據驅動"
+            "image": "https://magazine.feg.com.tw/magazine/upload/article/358-21-2.jpg",
+            "problem": "家暴與未成年懷孕等弱勢議題關注度低，推廣與募款困難。",
+            "result": "促成與遠東百貨跨界合作，結合企業 CSR 資源提升品牌能見度，單檔活動募得逾 10 萬元善款。"
+          },
+          {
+            "icon": "TrendingUp",
+            "title": "數位轉型募款專案",
+            "tech": "數位行銷",
+            "techColor": "blue",
+            "bgColor": "blue",
+            "image": "https://images.unsplash.com/photo-1591522810850-58128c5fb089?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "problem": "傳統線下募款受限於地域性，難以擴大受眾規模。",
+            "result": "導入數位行銷策略突破地域限制，優化線上捐款路徑，成功募資達 70 萬元。"
+          },
+          {
+            "icon": "Video",
+            "title": "全媒體內容行銷製作",
+            "tech": "多媒體製作",
+            "techColor": "pink",
+            "bgColor": "pink",
+            "image": "https://images.unsplash.com/photo-1757955622421-b75472080224?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "problem": "業務推廣缺乏具公信力的品牌素材，導致客戶信任成本高。",
+            "result": "統籌廣告與影音內容產製，建立品牌信賴資產，協助業務團隊創造約 300 萬業績成長。"
           }
         ]
       },
       "marketingStack": {
-        "title": "管理工具棧",
-        "subtitle": "策略師的工具箱。",
+        "title": "基本能力",
+        "subtitle": "挑戰與創新。",
         "items": [
           {
-            "icon": "LineChart",
-            "name": "數據分析",
+            "icon": "Presentation",
+            "name": "活動企劃",
             "hoverColor": "amber-600"
           },
           { "icon": "Users", "name": "專案管理", "hoverColor": "green-600" },
           {
-            "icon": "FileText",
-            "name": "標案撰寫",
+            "icon": "Megaphone",
+            "name": "新聞稿撰寫",
             "hoverColor": "orange-500"
           },
           {
             "icon": "MessageCircle",
             "name": "跨部門溝通",
             "hoverColor": "purple-600"
+          },
+          {
+            "icon": "Store",
+            "name": "店家開發",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Send",
+            "name": "標案提案",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Wallet",
+            "name": "預算控管",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Share2",
+            "name": "社群經營",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Sparkles",
+            "name": "善用AI工具",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Handshake",
+            "name": "異業結盟",
+            "hoverColor": "orange-500"
           }
         ]
       },
       "contact": {
-        "title": "需要能落地執行的策略嗎？",
-        "description": "結合技術與行銷思維，協助團隊達成目標。",
+        "title": "聯絡我",
+        "description": "有合作意向或任何問題，請隨時聯繫我。",
         "email": "milk88084@gmail.com"
       }
     },

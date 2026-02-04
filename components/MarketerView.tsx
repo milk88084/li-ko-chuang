@@ -7,9 +7,18 @@ import {
   LineChart,
   Search,
   Users,
-  PenTool,
   ArrowUpRight,
+  FileText,
+  MessageCircle,
+  Megaphone,
+  Store,
+  Send,
+  Wallet,
+  Share2,
+  Sparkles,
+  Handshake,
 } from "lucide-react";
+import Image from "next/image";
 import content from "@/data/content.json";
 import { useLanguage } from "@/providers/LanguageProvider";
 
@@ -23,7 +32,15 @@ const iconMap = {
   LineChart,
   Search,
   Users,
-  PenTool,
+  FileText,
+  MessageCircle,
+  Megaphone,
+  Store,
+  Send,
+  Wallet,
+  Share2,
+  Sparkles,
+  Handshake,
 };
 
 export function MarketerView() {
@@ -69,24 +86,14 @@ export function MarketerView() {
             </p>
           </div>
 
-          <div className="fade-in-up delay-300 flex flex-col sm:flex-row gap-6 justify-center pt-8">
+          <div className="fade-in-up delay-300 flex flex-col sm:flex-row gap-4 justify-center pt-8">
             <a
-              href="#mkt-projects"
-              className="group relative px-10 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full text-base font-semibold transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-amber-500/20 overflow-hidden"
+              href="#eng-projects"
+              className="group bg-gray-900 dark:bg-white text-white dark:text-black px-8 py-3 rounded-full text-sm font-medium transition-all hover:bg-gray-800 dark:hover:bg-gray-200 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-gray-200/50 dark:shadow-none"
             >
-              <div className="absolute inset-0 bg-linear-to-r from-amber-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <span className="relative z-10 flex items-center gap-2">
-                {data.hero.ctaText}
-                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </span>
+              {data.hero.ctaText}
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
             </a>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 fade-in delay-500">
-          <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center p-1.5 overflow-hidden">
-            <div className="w-1 h-2 bg-amber-500 rounded-full animate-mouse-wheel"></div>
           </div>
         </div>
       </section>
@@ -189,16 +196,30 @@ export function MarketerView() {
                   <div
                     className={`aspect-video w-full overflow-hidden ${bgColorClass} dark:bg-gray-800 relative`}
                   >
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-tr ${gradientClass} dark:from-gray-800 dark:to-gray-900 group-hover:scale-105 transition-transform duration-500`}
-                    ></div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
-                      {IconComponent && (
-                        <IconComponent
-                          className={`w-12 h-12 ${iconColorClass} dark:text-gray-500`}
+                    {project.image ? (
+                      <>
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
-                      )}
-                    </div>
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
+                      </>
+                    ) : (
+                      <>
+                        <div
+                          className={`absolute inset-0 bg-linear-to-tr ${gradientClass} dark:from-gray-800 dark:to-gray-900 group-hover:scale-105 transition-transform duration-500`}
+                        ></div>
+                        <div className="absolute inset-0 flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
+                          {IconComponent && (
+                            <IconComponent
+                              className={`w-12 h-12 ${iconColorClass} dark:text-gray-500`}
+                            />
+                          )}
+                        </div>
+                      </>
+                    )}
                   </div>
                   <div className="p-8">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -228,35 +249,95 @@ export function MarketerView() {
       </section>
 
       {/* Marketing Stack */}
-      <section className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              {data.marketingStack.title}
-            </h2>
-            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-              {data.marketingStack.subtitle}
-            </p>
+      <section className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            {data.marketingStack.title}
+          </h2>
+          <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
+            {data.marketingStack.subtitle}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-8">
+          {/* First Row: Moving Right */}
+          <div className="flex whitespace-nowrap overflow-hidden">
+            <div className="flex animate-marquee-right gap-6 px-3 w-max">
+              {[
+                ...data.marketingStack.items,
+                ...data.marketingStack.items,
+                ...data.marketingStack.items,
+                ...data.marketingStack.items,
+              ].map((item, index) => {
+                const IconComponent =
+                  iconMap[item.icon as keyof typeof iconMap];
+                return (
+                  <div
+                    key={`row1-${index}`}
+                    className="group relative bg-[#0a0a0a]/5 dark:bg-white/5 px-8 py-6 rounded-2xl border border-gray-900/10 dark:border-white/5 flex items-center gap-4 transition-all duration-500 min-w-[240px] hover:scale-105 cursor-default overflow-hidden hover:border-gray-900/20 dark:hover:border-white/20"
+                  >
+                    <div className="relative z-10 p-2.5 rounded-xl bg-white dark:bg-white/5 group-hover:bg-white dark:group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
+                      {IconComponent && (
+                        <IconComponent className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                      )}
+                    </div>
+                    <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
+                      {item.name}
+                    </span>
+                    {/* Subtle Glow Background */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
+                      style={{
+                        background: item.hoverColor
+                          ? `var(--color-${item.hoverColor})`
+                          : "#f59e0b",
+                      }}
+                    ></div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {data.marketingStack.items.map((item, index) => {
-              const IconComponent = iconMap[item.icon as keyof typeof iconMap];
-              return (
-                <div
-                  key={index}
-                  className="bg-amber-50 dark:bg-[#1C1C1E] p-6 rounded-2xl border border-amber-100 dark:border-white/10 flex flex-col items-center justify-center group transition-colors duration-300"
-                >
-                  {IconComponent && (
-                    <IconComponent
-                      className={`w-8 h-8 mb-3 text-amber-400 group-hover:text-${item.hoverColor} transition-colors`}
-                    />
-                  )}
-                  <span className="text-gray-900 dark:text-white font-medium">
-                    {item.name}
-                  </span>
-                </div>
-              );
-            })}
+
+          {/* Second Row: Moving Left */}
+          <div className="flex whitespace-nowrap overflow-hidden">
+            <div className="flex animate-marquee-left gap-6 px-3 w-max">
+              {[
+                ...data.marketingStack.items,
+                ...data.marketingStack.items,
+                ...data.marketingStack.items,
+                ...data.marketingStack.items,
+              ]
+                .reverse()
+                .map((item, index) => {
+                  const IconComponent =
+                    iconMap[item.icon as keyof typeof iconMap];
+                  return (
+                    <div
+                      key={`row2-${index}`}
+                      className="group relative bg-[#0a0a0a]/5 dark:bg-white/5 px-8 py-6 rounded-2xl border border-gray-900/10 dark:border-white/5 flex items-center gap-4 transition-all duration-500 min-w-[240px] hover:scale-105 cursor-default overflow-hidden hover:border-gray-900/20 dark:hover:border-white/20"
+                    >
+                      <div className="relative z-10 p-2.5 rounded-xl bg-white dark:bg-white/5 group-hover:bg-white dark:group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
+                        {IconComponent && (
+                          <IconComponent className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                        )}
+                      </div>
+                      <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
+                        {item.name}
+                      </span>
+                      {/* Subtle Glow Background */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
+                        style={{
+                          background: item.hoverColor
+                            ? `var(--color-${item.hoverColor})`
+                            : "#f59e0b",
+                        }}
+                      ></div>
+                    </div>
+                  );
+                })}
+            </div>
           </div>
         </div>
       </section>
