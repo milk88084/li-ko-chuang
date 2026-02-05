@@ -5,6 +5,7 @@ import {
   useContext,
   ReactNode,
   useState,
+  useSyncExternalStore,
   useEffect,
 } from "react";
 
@@ -24,15 +25,30 @@ interface LanguageProviderProps {
   children: ReactNode;
 }
 
+function getStoredLanguage(): Language {
+  if (typeof window === "undefined") return "en";
+  const savedLanguage = localStorage.getItem("language");
+  return savedLanguage === "zh" ? "zh" : "en";
+}
+
+function subscribeToLanguage(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+}
+
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguageState] = useState<Language>("en");
+  const storedLanguage = useSyncExternalStore(
+    subscribeToLanguage,
+    getStoredLanguage,
+    () => "en" as Language,
+  );
+
+  const [language, setLanguageState] = useState<Language>(storedLanguage);
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("language") as Language;
-    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "zh")) {
-      setLanguageState(savedLanguage);
-    }
-  }, []);
+    setLanguageState(storedLanguage);
+  }, [storedLanguage]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
