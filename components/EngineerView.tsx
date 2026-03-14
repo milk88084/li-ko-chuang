@@ -33,6 +33,7 @@ import { useLanguage } from "@/providers/LanguageProvider";
 import { useTheme } from "next-themes";
 import { ProjectShowcase } from "./ProjectShowcase";
 import { ProjectTimeline } from "./ProjectTimeline";
+import { MediumArticles } from "./MediumArticles";
 
 type ContentType = typeof content;
 type LanguageKey = keyof ContentType;
@@ -352,6 +353,29 @@ export function EngineerView() {
             isDark={isDark}
             activeProjectIndex={activeProjectIndex}
             onProjectChange={setActiveProjectIndex}
+          />
+        </div>
+      </section>
+
+      <section
+        id="eng-articles"
+        className="py-24 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
+      >
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
+              {data.mediumArticles.title}
+            </h2>
+            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
+              {data.mediumArticles.subtitle}
+            </p>
+          </div>
+          <MediumArticles
+            readMore={data.mediumArticles.readMore}
+            viewAll={data.mediumArticles.viewAll}
+            loading={data.mediumArticles.loading}
+            noArticles={data.mediumArticles.noArticles}
+            mediumUrl={data.mediumArticles.mediumUrl}
           />
         </div>
       </section>

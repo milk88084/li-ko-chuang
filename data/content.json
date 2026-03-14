@@ -302,6 +302,15 @@
           }
         ]
       },
+      "mediumArticles": {
+        "title": "Latest Articles",
+        "subtitle": "Thoughts on frontend engineering, AI, and product.",
+        "readMore": "Read on Medium",
+        "viewAll": "View All Articles",
+        "loading": "Loading articles...",
+        "noArticles": "No articles found.",
+        "mediumUrl": "https://medium.com/@dearno.3"
+      },
       "contact": {
         "title": "Contact Me",
         "description": "Feel free to reach out for collaborations or any questions.",
@@ -875,6 +884,15 @@
             "hoverColor": "indigo-500"
           }
         ]
+      },
+      "mediumArticles": {
+        "title": "最新文章",
+        "subtitle": "關於前端工程、AI 與產品的思考與紀錄。",
+        "readMore": "在 Medium 閱讀",
+        "viewAll": "查看所有文章",
+        "loading": "載入文章中...",
+        "noArticles": "目前沒有文章。",
+        "mediumUrl": "https://medium.com/@your-medium-username"
       },
       "contact": {
         "title": "聯絡我",
