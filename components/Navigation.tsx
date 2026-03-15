@@ -38,7 +38,7 @@ export function Navigation({ currentPage }: NavigationProps) {
   const navItems = [
     { id: "engineer", label: t.nav.engineer, href: "/engineer" },
     { id: "marketer", label: t.nav.marketer, href: "/marketer" },
-    { id: "creator", label: t.nav.creator, href: "/creator" },
+    // { id: "creator", label: t.nav.creator, href: "/creator" },
   ];
 
   return (
