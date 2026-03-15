@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   Copy,
   CheckCircle2,
@@ -8,7 +10,6 @@ import {
   Lightbulb,
   Instagram,
   Youtube,
-  Sparkles,
   AlertCircle,
   RefreshCw,
 } from "lucide-react";
@@ -102,6 +103,27 @@ function formatTextForCopy(item: Result, tab: Tab): string {
   }
 }
 
+const TAB_CONFIG = {
+  ig: {
+    icon: Instagram,
+    label: "IG 文案",
+    activeClass:
+      "bg-white dark:bg-[#1C1C1E] text-gray-900 dark:text-white shadow-sm",
+  },
+  yt: {
+    icon: Youtube,
+    label: "YT 企劃",
+    activeClass:
+      "bg-white dark:bg-[#1C1C1E] text-gray-900 dark:text-white shadow-sm",
+  },
+  ideas: {
+    icon: Lightbulb,
+    label: "創意發想",
+    activeClass:
+      "bg-white dark:bg-[#1C1C1E] text-gray-900 dark:text-white shadow-sm",
+  },
+};
+
 export default function StudioPage() {
   const [activeTab, setActiveTab] = useState<Tab>("ig");
   const [topic, setTopic] = useState("");
@@ -111,10 +133,7 @@ export default function StudioPage() {
   const [isAuthError, setIsAuthError] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-  const fetchWithBackoff = async (
-    payload: object,
-    retries = 5,
-  ): Promise<object> => {
+  const fetchWithBackoff = async (payload: object, retries = 5): Promise<object> => {
     const delays = [1000, 2000, 4000, 8000, 16000];
     for (let i = 0; i < retries; i++) {
       const res = await fetch("/api/gemini", {
@@ -124,9 +143,7 @@ export default function StudioPage() {
       });
 
       if (!res.ok) {
-        if (res.status === 401 || res.status === 403) {
-          throw new Error("AUTH_ERROR");
-        }
+        if (res.status === 401 || res.status === 403) throw new Error("AUTH_ERROR");
         if (i === retries - 1) throw new Error(`HTTP error: ${res.status}`);
         await new Promise((r) => setTimeout(r, delays[i]));
         continue;
@@ -150,16 +167,13 @@ export default function StudioPage() {
 
     try {
       let promptText = "";
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const tools: any[] = [];
 
       if (activeTab === "ig") {
         promptText = `請根據主題「${topic}」，為「微小日常」產生 5 個 Instagram 文案範例。每個範例必須包含強烈 Hook 的標題、客觀無 AI 感的內文，以及相關標籤。`;
       } else if (activeTab === "yt") {
         promptText = `請根據主題「${topic}」，為「微小日常」產生 5 個 YouTube 影片企劃範例。每個範例包含強烈 Hook 的標題、資訊欄內文、標籤，以及一段 30 秒內（約 80-100 字）的精煉開場口白。`;
       } else {
-        promptText = `請搜尋近期（過去三個月）關於「愛情」、「分手」、「關係」的網路討論趨勢與熱門話題。根據搜尋結果，為「微小日常」發想 5 個具體的自媒體內容主題點子，並說明切入點以及受歡迎的原因。`;
-        tools.push({ google_search: {} });
+        promptText = `請根據你對近期（2024 年底至今）華語網路上關於「愛情」、「分手」、「關係」的討論趨勢與熱門話題的了解，為「微小日常」發想 5 個具體的自媒體內容主題點子，並說明切入點以及受歡迎的原因。`;
       }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -172,16 +186,23 @@ export default function StudioPage() {
         },
       };
 
-      if (tools.length > 0) {
-        payload.tools = tools;
-      }
-
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const data = await fetchWithBackoff(payload) as any;
+      const data = (await fetchWithBackoff(payload)) as any;
       const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!responseText) throw new Error("API 回傳格式錯誤或無內容");
 
-      setResults(JSON.parse(responseText));
+      const parsed = JSON.parse(responseText);
+      setResults(parsed);
+
+      // 非同步送至 n8n，不阻塞 UI
+      fetch("https://n8n.iii-ei-stack.com/webhook-test/getData", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: JSON.stringify(parsed),
+          timestamp: new Date().toISOString(),
+        }),
+      }).catch(() => {/* 忽略 n8n 送出失敗 */});
     } catch (err) {
       if (err instanceof Error && err.message === "AUTH_ERROR") {
         setIsAuthError(true);
@@ -212,90 +233,96 @@ export default function StudioPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-800 font-sans p-4 md:p-8">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <div className="min-h-screen bg-[#FBFBFD] dark:bg-black text-gray-900 dark:text-white transition-colors duration-300">
+      <div className="max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-12">
 
-        <header className="text-center space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 flex items-center justify-center gap-2">
-            <Sparkles className="w-8 h-8 text-indigo-500" />
-            微小日常 - 自媒體文案產生器
+        {/* Header */}
+        <header className="text-center space-y-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center justify-center gap-3">
+            <Link href="/" className="hover:opacity-70 transition-opacity">
+              <Image
+                src="/favicon.ico"
+                alt="Logo"
+                width={40}
+                height={40}
+                className="rounded-xl shadow-sm"
+              />
+            </Link>
+            自媒體工作區
           </h1>
-          <p className="text-neutral-500">客觀、精煉、直擊人心的內容引擎</p>
+          <p className="text-gray-500 dark:text-gray-500 font-light">
+            自媒體文案產生器 · 客觀、精煉、直擊人心
+          </p>
+          <div className="h-px w-12 bg-gray-200 dark:bg-gray-700 rounded-full mx-auto"></div>
         </header>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 overflow-hidden">
+        {/* Main Card */}
+        <div className="bg-white dark:bg-[#0a0a0a] rounded-2xl border border-gray-100 dark:border-white/10 overflow-hidden transition-colors duration-300">
 
           {/* Tabs */}
-          <div className="flex border-b border-neutral-200">
-            <button
-              onClick={() => setActiveTab("ig")}
-              className={`flex-1 py-4 flex items-center justify-center gap-2 font-medium transition-colors ${
-                activeTab === "ig"
-                  ? "bg-indigo-50 text-indigo-700 border-b-2 border-indigo-600"
-                  : "text-neutral-500 hover:bg-neutral-50"
-              }`}
-            >
-              <Instagram className="w-5 h-5" />
-              IG 文案
-            </button>
-            <button
-              onClick={() => setActiveTab("yt")}
-              className={`flex-1 py-4 flex items-center justify-center gap-2 font-medium transition-colors ${
-                activeTab === "yt"
-                  ? "bg-red-50 text-red-700 border-b-2 border-red-600"
-                  : "text-neutral-500 hover:bg-neutral-50"
-              }`}
-            >
-              <Youtube className="w-5 h-5" />
-              YT 企劃
-            </button>
-            <button
-              onClick={() => setActiveTab("ideas")}
-              className={`flex-1 py-4 flex items-center justify-center gap-2 font-medium transition-colors ${
-                activeTab === "ideas"
-                  ? "bg-amber-50 text-amber-700 border-b-2 border-amber-600"
-                  : "text-neutral-500 hover:bg-neutral-50"
-              }`}
-            >
-              <Lightbulb className="w-5 h-5" />
-              創意發想
-            </button>
+          <div className="p-2 bg-gray-50 dark:bg-[#050505] border-b border-gray-100 dark:border-white/5 flex gap-1">
+            {(Object.keys(TAB_CONFIG) as Tab[]).map((tab) => {
+              const { icon: Icon, label, activeClass } = TAB_CONFIG[tab];
+              return (
+                <button
+                  key={tab}
+                  onClick={() => { setActiveTab(tab); setResults([]); setError(null); }}
+                  className={`flex-1 py-2.5 flex items-center justify-center gap-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                    activeTab === tab
+                      ? activeClass
+                      : "text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="hidden sm:inline">{label}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Input */}
-          <div className="p-6 space-y-4">
+          {/* Input Area */}
+          <div className="p-6 md:p-8 space-y-5">
             {activeTab !== "ideas" ? (
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-neutral-700">
-                  輸入主題或關鍵字
+                <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-500">
+                  主題或關鍵字
                 </label>
                 <input
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   placeholder="例如：面對分手後遺症、遠距離戀愛的溝通成本..."
-                  className="w-full px-4 py-3 rounded-lg border border-neutral-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-[#1C1C1E] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-900/20 dark:focus:ring-white/20 focus:border-gray-400 dark:focus:border-white/30 transition-all text-sm"
                   onKeyDown={(e) => e.key === "Enter" && handleGenerate()}
                 />
               </div>
             ) : (
-              <div className="bg-amber-50/50 p-4 rounded-lg border border-amber-100 flex gap-3 text-amber-800">
-                <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <p className="text-sm">
-                  系統將自動檢索近期關於「愛情」、「分手」、「關係」的網路討論趨勢，並為你產出
-                  5 個客觀且具備討論度的內容主題。不需輸入關鍵字，直接點擊產生即可。
+              <div className="bg-gray-50 dark:bg-[#1C1C1E] p-4 rounded-xl border border-gray-100 dark:border-white/10 flex gap-3">
+                <AlertCircle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed">
+                  系統將自動檢索近期關於「愛情」、「分手」、「關係」的網路討論趨勢，並為你產出 5
+                  個客觀且具備討論度的內容主題。不需輸入關鍵字，直接點擊產生即可。
                 </p>
               </div>
             )}
 
             {isAuthError && (
-              <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg flex items-start gap-3">
-                <RefreshCw className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <div className="bg-gray-50 dark:bg-[#1C1C1E] border border-gray-200 dark:border-white/10 p-4 rounded-xl flex items-start gap-3">
+                <RefreshCw className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h4 className="font-bold text-red-800">API 金鑰授權失敗</h4>
-                  <p className="text-sm mt-1">
-                    請確認 <code className="bg-red-100 px-1 rounded">.env.local</code> 中已設定
-                    有效的 <code className="bg-red-100 px-1 rounded">GEMINI_API_KEY</code>，並重新啟動開發伺服器。
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                    API 金鑰授權失敗
+                  </h4>
+                  <p className="text-xs text-gray-500 dark:text-gray-500 font-light">
+                    請確認{" "}
+                    <code className="bg-gray-100 dark:bg-white/10 px-1.5 py-0.5 rounded text-gray-700 dark:text-gray-300">
+                      .env.local
+                    </code>{" "}
+                    中已設定有效的{" "}
+                    <code className="bg-gray-100 dark:bg-white/10 px-1.5 py-0.5 rounded text-gray-700 dark:text-gray-300">
+                      GEMINI_API_KEY
+                    </code>
+                    ，並重新啟動開發伺服器。
                   </p>
                 </div>
               </div>
@@ -304,11 +331,11 @@ export default function StudioPage() {
             <button
               onClick={handleGenerate}
               disabled={isLoading}
-              className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-medium py-3 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+              className="w-full bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-black font-medium py-3 rounded-full text-sm transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-sm"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin" />
                   生成中，請稍候...
                 </>
               ) : (
@@ -316,105 +343,131 @@ export default function StudioPage() {
               )}
             </button>
 
-            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+            {error && (
+              <p className="text-xs text-center text-gray-500 dark:text-gray-500">
+                {error}
+              </p>
+            )}
           </div>
         </div>
 
         {/* Results */}
         {results.length > 0 && (
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold flex items-center gap-2 px-2">
-              <CheckCircle2 className="w-5 h-5 text-green-500" />
-              生成結果（{results.length}）
-            </h2>
-            <div className="grid gap-6">
+            <div className="flex items-center gap-3">
+              <CheckCircle2 className="w-4 h-4 text-gray-400" />
+              <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">
+                生成結果 · {results.length} 則
+              </h2>
+            </div>
+
+            <div className="grid gap-4">
               {results.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white p-6 rounded-2xl shadow-sm border border-neutral-200 relative hover:shadow-md transition-shadow"
+                  className="bg-white dark:bg-[#1C1C1E] p-6 rounded-2xl border border-gray-100 dark:border-white/10 relative group hover:border-gray-200 dark:hover:border-white/20 hover:shadow-sm transition-all duration-300"
                 >
+                  {/* Copy Button */}
                   <button
-                    onClick={() =>
-                      copyToClipboard(formatTextForCopy(item, activeTab), index)
-                    }
-                    className="absolute top-4 right-4 p-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-600 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium"
+                    onClick={() => copyToClipboard(formatTextForCopy(item, activeTab), index)}
+                    className="absolute top-5 right-5 p-2 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white rounded-lg transition-all flex items-center gap-1.5 text-xs font-medium"
                     title="複製文案"
                   >
                     {copiedIndex === index ? (
-                      <span className="flex items-center gap-1 text-green-600">
-                        <CheckCircle2 className="w-4 h-4" /> 已複製
-                      </span>
+                      <>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-gray-500 dark:text-gray-400" />
+                        <span className="hidden sm:inline text-gray-500 dark:text-gray-400">已複製</span>
+                      </>
                     ) : (
-                      <span className="flex items-center gap-1">
-                        <Copy className="w-4 h-4" /> 複製
-                      </span>
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">複製</span>
+                      </>
                     )}
                   </button>
 
-                  <div className="pr-20 space-y-4">
+                  <div className="pr-20 space-y-5">
+                    {/* IG & YT */}
                     {(activeTab === "ig" || activeTab === "yt") && (
                       <>
                         <div>
-                          <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-1 block">
-                            標題 (Hook)
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2 block">
+                            標題 · Hook
                           </span>
-                          <h3 className="text-lg font-bold text-neutral-900 leading-snug">
+                          <h3 className="text-base font-semibold text-gray-900 dark:text-white leading-snug">
                             {(item as IgResult).title}
                           </h3>
                         </div>
+
+                        <div className="h-px bg-gray-100 dark:bg-white/5" />
+
                         <div>
-                          <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-1 block">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2 block">
                             內文
                           </span>
-                          <p className="text-neutral-700 whitespace-pre-wrap leading-relaxed">
+                          <p className="text-gray-600 dark:text-gray-400 text-sm font-light whitespace-pre-wrap leading-relaxed">
                             {(item as IgResult).content}
                           </p>
                         </div>
+
                         {activeTab === "yt" && (
-                          <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-1">
-                              <Youtube className="w-4 h-4" />
-                              30秒開場口白
-                            </span>
-                            <p className="text-slate-800 font-medium">
-                              {(item as YtResult).script}
-                            </p>
-                          </div>
+                          <>
+                            <div className="h-px bg-gray-100 dark:bg-white/5" />
+                            <div className="bg-gray-50 dark:bg-[#0a0a0a] p-4 rounded-xl border border-gray-100 dark:border-white/5">
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2 flex items-center gap-1.5">
+                                <Youtube className="w-3 h-3" />
+                                30 秒開場口白
+                              </span>
+                              <p className="text-gray-700 dark:text-gray-300 text-sm font-medium leading-relaxed mt-2">
+                                {(item as YtResult).script}
+                              </p>
+                            </div>
+                          </>
                         )}
+
+                        <div className="h-px bg-gray-100 dark:bg-white/5" />
+
                         <div>
-                          <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-1 block">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2 block">
                             標籤
                           </span>
-                          <p className="text-indigo-600 text-sm">
+                          <p className="text-gray-500 dark:text-gray-500 text-xs font-light">
                             {(item as IgResult).tags}
                           </p>
                         </div>
                       </>
                     )}
 
+                    {/* Ideas */}
                     {activeTab === "ideas" && (
                       <>
                         <div>
-                          <span className="text-xs font-bold text-amber-500 uppercase tracking-wider mb-1 block">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2 block">
                             主題點子
                           </span>
-                          <h3 className="text-lg font-bold text-neutral-900">
+                          <h3 className="text-base font-semibold text-gray-900 dark:text-white">
                             {(item as IdeaResult).title}
                           </h3>
                         </div>
+
+                        <div className="h-px bg-gray-100 dark:bg-white/5" />
+
                         <div>
-                          <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-1 block">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2 block">
                             切入點
                           </span>
-                          <p className="text-neutral-700 leading-relaxed">
+                          <p className="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed">
                             {(item as IdeaResult).description}
                           </p>
                         </div>
-                        <div className="bg-amber-50 p-4 rounded-lg border border-amber-100">
-                          <span className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-1 block">
+
+                        <div className="h-px bg-gray-100 dark:bg-white/5" />
+
+                        <div className="bg-gray-50 dark:bg-[#0a0a0a] p-4 rounded-xl border border-gray-100 dark:border-white/5">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2 block">
                             熱門趨勢原因
                           </span>
-                          <p className="text-amber-900 text-sm">
+                          <p className="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed mt-2">
                             {(item as IdeaResult).reason}
                           </p>
                         </div>

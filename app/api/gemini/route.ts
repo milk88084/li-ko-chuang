@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY ?? "";
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 export async function POST(req: NextRequest) {
   if (!GEMINI_API_KEY) {
@@ -18,11 +18,13 @@ export async function POST(req: NextRequest) {
     });
 
     if (!res.ok) {
+      const errBody = await res.json().catch(() => null);
+      console.error("[Gemini API error]", res.status, JSON.stringify(errBody));
       if (res.status === 401 || res.status === 403) {
         return NextResponse.json({ error: "AUTH_ERROR" }, { status: res.status });
       }
       return NextResponse.json(
-        { error: `Gemini error: ${res.status}` },
+        { error: `Gemini error: ${res.status}`, detail: errBody },
         { status: res.status },
       );
     }
