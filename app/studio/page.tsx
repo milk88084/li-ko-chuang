@@ -51,8 +51,14 @@ const SCHEMAS = {
       type: "OBJECT",
       properties: {
         title: { type: "STRING", description: "具有強烈Hook的吸引人標題" },
-        content: { type: "STRING", description: "引人共鳴的內文，語氣自然客觀" },
-        tags: { type: "STRING", description: "相關的Hashtags，以空格或井字號分隔" },
+        content: {
+          type: "STRING",
+          description: "引人共鳴的內文，語氣自然客觀",
+        },
+        tags: {
+          type: "STRING",
+          description: "相關的Hashtags，以空格或井字號分隔",
+        },
       },
       required: ["title", "content", "tags"],
     },
@@ -67,7 +73,8 @@ const SCHEMAS = {
         tags: { type: "STRING", description: "相關標籤" },
         script: {
           type: "STRING",
-          description: "30秒內的開場口白（Hook+破題，約80-100字），需具備吸引力",
+          description:
+            "30秒內的開場口白（Hook+破題，約80-100字），需具備吸引力",
         },
       },
       required: ["title", "content", "tags", "script"],
@@ -133,7 +140,10 @@ export default function StudioPage() {
   const [isAuthError, setIsAuthError] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-  const fetchWithBackoff = async (payload: object, retries = 5): Promise<object> => {
+  const fetchWithBackoff = async (
+    payload: object,
+    retries = 5,
+  ): Promise<object> => {
     const delays = [1000, 2000, 4000, 8000, 16000];
     for (let i = 0; i < retries; i++) {
       const res = await fetch("/api/gemini", {
@@ -143,7 +153,8 @@ export default function StudioPage() {
       });
 
       if (!res.ok) {
-        if (res.status === 401 || res.status === 403) throw new Error("AUTH_ERROR");
+        if (res.status === 401 || res.status === 403)
+          throw new Error("AUTH_ERROR");
         if (i === retries - 1) throw new Error(`HTTP error: ${res.status}`);
         await new Promise((r) => setTimeout(r, delays[i]));
         continue;
@@ -194,15 +205,17 @@ export default function StudioPage() {
       const parsed = JSON.parse(responseText);
       setResults(parsed);
 
-      // 非同步送至 n8n，不阻塞 UI
-      fetch("https://n8n.iii-ei-stack.com/webhook-test/getData", {
+      // 非同步送至 n8n（透過 API proxy 避免 CORS），不阻塞 UI
+      fetch("/api/n8n-proxy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: JSON.stringify(parsed),
           timestamp: new Date().toISOString(),
         }),
-      }).catch(() => {/* 忽略 n8n 送出失敗 */});
+      }).catch(() => {
+        /* 忽略 n8n 送出失敗 */
+      });
     } catch (err) {
       if (err instanceof Error && err.message === "AUTH_ERROR") {
         setIsAuthError(true);
@@ -235,7 +248,6 @@ export default function StudioPage() {
   return (
     <div className="min-h-screen bg-[#FBFBFD] dark:bg-black text-gray-900 dark:text-white transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-12">
-
         {/* Header */}
         <header className="text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center justify-center gap-3">
@@ -248,17 +260,16 @@ export default function StudioPage() {
                 className="rounded-xl shadow-sm"
               />
             </Link>
-            自媒體工作區
+            Idea Generator
           </h1>
           <p className="text-gray-500 dark:text-gray-500 font-light">
-            自媒體文案產生器 · 客觀、精煉、直擊人心
+            Generate ideas for your media content.
           </p>
           <div className="h-px w-12 bg-gray-200 dark:bg-gray-700 rounded-full mx-auto"></div>
         </header>
 
         {/* Main Card */}
         <div className="bg-white dark:bg-[#0a0a0a] rounded-2xl border border-gray-100 dark:border-white/10 overflow-hidden transition-colors duration-300">
-
           {/* Tabs */}
           <div className="p-2 bg-gray-50 dark:bg-[#050505] border-b border-gray-100 dark:border-white/5 flex gap-1">
             {(Object.keys(TAB_CONFIG) as Tab[]).map((tab) => {
@@ -266,7 +277,11 @@ export default function StudioPage() {
               return (
                 <button
                   key={tab}
-                  onClick={() => { setActiveTab(tab); setResults([]); setError(null); }}
+                  onClick={() => {
+                    setActiveTab(tab);
+                    setResults([]);
+                    setError(null);
+                  }}
                   className={`flex-1 py-2.5 flex items-center justify-center gap-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                     activeTab === tab
                       ? activeClass
@@ -300,7 +315,8 @@ export default function StudioPage() {
               <div className="bg-gray-50 dark:bg-[#1C1C1E] p-4 rounded-xl border border-gray-100 dark:border-white/10 flex gap-3">
                 <AlertCircle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed">
-                  系統將自動檢索近期關於「愛情」、「分手」、「關係」的網路討論趨勢，並為你產出 5
+                  系統將自動檢索近期關於「愛情」、「分手」、「關係」的網路討論趨勢，並為你產出
+                  5
                   個客觀且具備討論度的內容主題。不需輸入關鍵字，直接點擊產生即可。
                 </p>
               </div>
@@ -369,14 +385,18 @@ export default function StudioPage() {
                 >
                   {/* Copy Button */}
                   <button
-                    onClick={() => copyToClipboard(formatTextForCopy(item, activeTab), index)}
+                    onClick={() =>
+                      copyToClipboard(formatTextForCopy(item, activeTab), index)
+                    }
                     className="absolute top-5 right-5 p-2 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white rounded-lg transition-all flex items-center gap-1.5 text-xs font-medium"
                     title="複製文案"
                   >
                     {copiedIndex === index ? (
                       <>
                         <CheckCircle2 className="w-3.5 h-3.5 text-gray-500 dark:text-gray-400" />
-                        <span className="hidden sm:inline text-gray-500 dark:text-gray-400">已複製</span>
+                        <span className="hidden sm:inline text-gray-500 dark:text-gray-400">
+                          已複製
+                        </span>
                       </>
                     ) : (
                       <>
