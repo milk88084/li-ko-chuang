@@ -44,58 +44,6 @@ const SYSTEM_PROMPT = `
 所有產出必須使用繁體中文。
 `;
 
-const SCHEMAS = {
-  ig: {
-    type: "ARRAY",
-    items: {
-      type: "OBJECT",
-      properties: {
-        title: { type: "STRING", description: "具有強烈Hook的吸引人標題" },
-        content: {
-          type: "STRING",
-          description: "引人共鳴的內文，語氣自然客觀",
-        },
-        tags: {
-          type: "STRING",
-          description: "相關的Hashtags，以空格或井字號分隔",
-        },
-      },
-      required: ["title", "content", "tags"],
-    },
-  },
-  yt: {
-    type: "ARRAY",
-    items: {
-      type: "OBJECT",
-      properties: {
-        title: { type: "STRING", description: "具有強烈Hook的YouTube標題" },
-        content: { type: "STRING", description: "影片資訊欄內文簡述" },
-        tags: { type: "STRING", description: "相關標籤" },
-        script: {
-          type: "STRING",
-          description:
-            "30秒內的開場口白（Hook+破題，約80-100字），需具備吸引力",
-        },
-      },
-      required: ["title", "content", "tags", "script"],
-    },
-  },
-  ideas: {
-    type: "ARRAY",
-    items: {
-      type: "OBJECT",
-      properties: {
-        title: { type: "STRING", description: "主題名稱" },
-        description: { type: "STRING", description: "具體的切入點說明" },
-        reason: {
-          type: "STRING",
-          description: "結合近期趨勢，說明為什麼這個話題現在受歡迎",
-        },
-      },
-      required: ["title", "description", "reason"],
-    },
-  },
-};
 
 function formatTextForCopy(item: Result, tab: Tab): string {
   if (tab === "ig") {
@@ -141,25 +89,26 @@ export default function StudioPage() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const fetchWithBackoff = async (
-    payload: object,
+    content: string,
     retries = 5,
-  ): Promise<object> => {
+  ): Promise<object[]> => {
     const delays = [1000, 2000, 4000, 8000, 16000];
     for (let i = 0; i < retries; i++) {
-      const res = await fetch("/api/gemini", {
+      const res = await fetch("/api/n8n-proxy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ content }),
       });
 
       if (!res.ok) {
-        if (res.status === 401 || res.status === 403)
-          throw new Error("AUTH_ERROR");
         if (i === retries - 1) throw new Error(`HTTP error: ${res.status}`);
         await new Promise((r) => setTimeout(r, delays[i]));
         continue;
       }
-      return res.json();
+      const data = await res.json();
+      const raw: string = data.output ?? "";
+      const jsonString = raw.replace(/^```json\s*/i, "").replace(/```\s*$/, "").trim();
+      return JSON.parse(jsonString);
     }
     throw new Error("Max retries exceeded");
   };
@@ -180,42 +129,27 @@ export default function StudioPage() {
       let promptText = "";
 
       if (activeTab === "ig") {
-        promptText = `請根據主題「${topic}」，為「微小日常」產生 5 個 Instagram 文案範例。每個範例必須包含強烈 Hook 的標題、客觀無 AI 感的內文，以及相關標籤。`;
+        promptText = `${SYSTEM_PROMPT}
+
+請根據主題「${topic}」，為「微小日常」產生 5 個 Instagram 文案範例。
+請直接回傳 JSON 陣列，不要有任何其他文字，格式如下：
+[{"title":"標題","content":"內文","tags":"標籤"}]`;
       } else if (activeTab === "yt") {
-        promptText = `請根據主題「${topic}」，為「微小日常」產生 5 個 YouTube 影片企劃範例。每個範例包含強烈 Hook 的標題、資訊欄內文、標籤，以及一段 30 秒內（約 80-100 字）的精煉開場口白。`;
+        promptText = `${SYSTEM_PROMPT}
+
+請根據主題「${topic}」，為「微小日常」產生 5 個 YouTube 影片企劃範例。
+請直接回傳 JSON 陣列，不要有任何其他文字，格式如下：
+[{"title":"標題","content":"資訊欄內文","tags":"標籤","script":"30秒開場口白"}]`;
       } else {
-        promptText = `請根據你對近期（2024 年底至今）華語網路上關於「愛情」、「分手」、「關係」的討論趨勢與熱門話題的了解，為「微小日常」發想 5 個具體的自媒體內容主題點子，並說明切入點以及受歡迎的原因。`;
+        promptText = `${SYSTEM_PROMPT}
+
+請根據你對近期華語網路上關於「愛情」、「分手」、「關係」的討論趨勢，為「微小日常」發想 5 個自媒體內容主題點子。
+請直接回傳 JSON 陣列，不要有任何其他文字，格式如下：
+[{"title":"主題名稱","description":"切入點說明","reason":"熱門原因"}]`;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const payload: any = {
-        contents: [{ parts: [{ text: promptText }] }],
-        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        generationConfig: {
-          responseMimeType: "application/json",
-          responseSchema: SCHEMAS[activeTab],
-        },
-      };
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const data = (await fetchWithBackoff(payload)) as any;
-      const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (!responseText) throw new Error("API 回傳格式錯誤或無內容");
-
-      const parsed = JSON.parse(responseText);
+      const parsed = await fetchWithBackoff(promptText);
       setResults(parsed);
-
-      // 非同步送至 n8n（透過 API proxy 避免 CORS），不阻塞 UI
-      fetch("/api/n8n-proxy", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: JSON.stringify(parsed),
-          timestamp: new Date().toISOString(),
-        }),
-      }).catch(() => {
-        /* 忽略 n8n 送出失敗 */
-      });
     } catch (err) {
       if (err instanceof Error && err.message === "AUTH_ERROR") {
         setIsAuthError(true);
