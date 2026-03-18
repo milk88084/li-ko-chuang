@@ -91,7 +91,7 @@ export default function StudioPage() {
   const fetchWithBackoff = async (
     content: string,
     retries = 5,
-  ): Promise<object[]> => {
+  ): Promise<Result[]> => {
     const delays = [1000, 2000, 4000, 8000, 16000];
     for (let i = 0; i < retries; i++) {
       const res = await fetch("/api/n8n-proxy", {
@@ -108,7 +108,7 @@ export default function StudioPage() {
       const data = await res.json();
       const raw: string = data.output ?? "";
       const jsonString = raw.replace(/^```json\s*/i, "").replace(/```\s*$/, "").trim();
-      return JSON.parse(jsonString);
+      return JSON.parse(jsonString) as Result[];
     }
     throw new Error("Max retries exceeded");
   };
@@ -247,7 +247,7 @@ export default function StudioPage() {
               </div>
             ) : (
               <div className="bg-gray-50 dark:bg-[#1C1C1E] p-4 rounded-xl border border-gray-100 dark:border-white/10 flex gap-3">
-                <AlertCircle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" />
                 <p className="text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed">
                   系統將自動檢索近期關於「愛情」、「分手」、「關係」的網路討論趨勢，並為你產出
                   5
@@ -258,21 +258,13 @@ export default function StudioPage() {
 
             {isAuthError && (
               <div className="bg-gray-50 dark:bg-[#1C1C1E] border border-gray-200 dark:border-white/10 p-4 rounded-xl flex items-start gap-3">
-                <RefreshCw className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                <RefreshCw className="w-4 h-4 text-gray-400 mt-0.5 shrink-0" />
                 <div>
                   <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                     API 金鑰授權失敗
                   </h4>
                   <p className="text-xs text-gray-500 dark:text-gray-500 font-light">
-                    請確認{" "}
-                    <code className="bg-gray-100 dark:bg-white/10 px-1.5 py-0.5 rounded text-gray-700 dark:text-gray-300">
-                      .env.local
-                    </code>{" "}
-                    中已設定有效的{" "}
-                    <code className="bg-gray-100 dark:bg-white/10 px-1.5 py-0.5 rounded text-gray-700 dark:text-gray-300">
-                      GEMINI_API_KEY
-                    </code>
-                    ，並重新啟動開發伺服器。
+                    請確認後端服務的 API 金鑰與環境變數已正確設定，並重新啟動開發伺服器。
                   </p>
                 </div>
               </div>
