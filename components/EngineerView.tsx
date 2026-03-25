@@ -27,10 +27,12 @@ import {
   Sparkles,
   Database,
   Terminal,
+  CalendarDays,
 } from "lucide-react";
 import content from "@/data/content.json";
 import { useLanguage } from "@/providers/LanguageProvider";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import { ProjectShowcase } from "./ProjectShowcase";
 import { ProjectTimeline } from "./ProjectTimeline";
 import { MediumArticles } from "./MediumArticles";
@@ -73,6 +75,27 @@ export function EngineerView() {
   const data = t.engineer;
   const isDark = resolvedTheme === "dark";
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+
+  const offlineHighlightTitle =
+    language === "en" ? "Offline Event Highlights" : "線下活動精華回顧";
+
+  const offlineHighlights = [
+    {
+      name: "OpenClaw Meetup",
+      time: "2026/03/04",
+      imageSrc: "/meetup_01.jpg",
+    },
+    {
+      name: "Dify AI Meetup",
+      time: "2026/01/22",
+      imageSrc: "/meetup_02.jpg",
+    },
+    {
+      name: "claude code Meetup",
+      time: "2025/12/30",
+      imageSrc: "/meetup_03.jpg",
+    },
+  ];
 
   const handleShowcaseProjectChange = useCallback((index: number) => {
     setActiveProjectIndex(index);
@@ -361,7 +384,7 @@ export function EngineerView() {
         id="eng-articles"
         className="py-24 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
               {data.mediumArticles.title}
@@ -377,6 +400,105 @@ export function EngineerView() {
             noArticles={data.mediumArticles.noArticles}
             mediumUrl={data.mediumArticles.mediumUrl}
           />
+        </div>
+      </section>
+      <section
+        id="eng-offline-highlight"
+        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-hidden"
+      >
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+              {offlineHighlightTitle}
+            </h2>
+          </div>
+
+          <div className="space-y-10">
+            {offlineHighlights.map((item, index) => (
+              <div
+                key={`${item.name}-${index}`}
+                className={`grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch fade-in-up ${
+                  index === 0
+                    ? "delay-100"
+                    : index === 1
+                      ? "delay-200"
+                      : "delay-300"
+                }`}
+              >
+                {index === 1 ? (
+                  <>
+                    <div className="md:col-span-4">
+                      <div className="h-full rounded-2xl border border-gray-100 dark:border-white/10 bg-gray-900/5 dark:bg-white/5 p-6 md:p-7 flex flex-col">
+                        <div className="space-y-5">
+                          <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
+                            <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                            {item.time}
+                          </p>
+
+                          <div>
+                            <h3 className="text-xl md:text-2xl font-semibold tracking-tight italic text-gray-900 dark:text-white">
+                              {item.name}
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="md:col-span-8 relative">
+                      <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
+                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
+                        <div className="aspect-video relative">
+                          <Image
+                            src={item.imageSrc}
+                            alt={item.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 66vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                            priority={false}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="md:col-span-8 relative">
+                      <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
+                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
+                        <div className="aspect-video relative">
+                          <Image
+                            src={item.imageSrc}
+                            alt={item.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 66vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                            priority={index === 0}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="md:col-span-4">
+                      <div className="h-full rounded-2xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#0a0a0a] p-6 md:p-7 flex flex-col">
+                        <div className="space-y-5">
+                          <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
+                            <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                            {item.time}
+                          </p>
+
+                          <div>
+                            <h3 className="text-xl md:text-2xl font-semibold italic tracking-tight text-gray-900 dark:text-white">
+                              {item.name}
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
