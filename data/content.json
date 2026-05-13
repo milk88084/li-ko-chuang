@@ -35,6 +35,25 @@
         "viewProject": "View Project",
         "projects": [
           {
+            "id": 0,
+            "name": "araS",
+            "description": "Asset Tracking Website/Software",
+            "tech": [
+              "React",
+              "TypeScript",
+              "husky",
+              "Tailwind CSS",
+              "E2E Testing",
+              "PostgreSQL",
+              "Clerk",
+              "Vercel"
+            ],
+            "color": "#F59E0B",
+            "img": "/00_araS.png",
+            "video": "/00_araS.mp4",
+            "link": "#"
+          },
+          {
             "id": 1,
             "name": "Market Trend Tracking Platform",
             "description": "Finding market trends, mastering market pulses",
@@ -142,8 +161,8 @@
           },
           {
             "icon": "Terminal",
-            "title": "Backend Fundamentals",
-            "description": "Learning API design, database design, and security considerations."
+            "title": "Full-stack Fundamentals",
+            "description": "Learning full-stack development, including API design, database design, and security considerations."
           },
           {
             "icon": "Workflow",
@@ -164,6 +183,29 @@
         "outcomeLabel": "The Outcome",
         "techLabel": "Tech Stack",
         "items": [
+          {
+            "title": "araS",
+            "subtitle": "Asset Tracking Website/Software",
+            "tech": [
+              "React",
+              "TypeScript",
+              "husky",
+              "Tailwind CSS",
+              "E2E Testing",
+              "PostgreSQL",
+              "Clerk",
+              "Vercel"
+            ],
+            "problem": "The app records asset gains and losses and calculates retirement funds, but the existing system lacks asset tracking functionality, which needs to be implemented.",
+            "outcome": "The post records the accumulated value and profit/loss of assets, has over 1000 likes on Threads, and 70% of users have a need for it.",
+            "metrics": [
+              "Asset Tracking",
+              "Asset Profit and Loss Record",
+              "Retirement Fund Calculation",
+              "Login System",
+              "Database Management"
+            ]
+          },
           {
             "title": "Market Trend Tracking Platform",
             "subtitle": "Monitoring growth data from GitHub, Hugging Face, etc., to provide policy suggestions.",
@@ -618,6 +660,25 @@
         "viewProject": "查看專案",
         "projects": [
           {
+            "id": 0,
+            "name": "araS",
+            "description": "資產追蹤網站/軟體",
+            "tech": [
+              "React",
+              "TypeScript",
+              "husky",
+              "Tailwind CSS",
+              "E2E Testing",
+              "PostgreSQL",
+              "Clerk",
+              "Vercel"
+            ],
+            "color": "#F59E0B",
+            "img": "/00_araS.png",
+            "video": "/00_araS.mp4",
+            "link": "#"
+          },
+          {
             "id": 1,
             "name": "國內市場趨勢追蹤平台",
             "description": "尋找市場趨勢，掌握市場脈動",
@@ -725,8 +786,8 @@
           },
           {
             "icon": "Terminal",
-            "title": "後端基礎開發",
-            "description": "學習後端基礎開發，包括 API 設計、資料庫設計、安全性考量等。"
+            "title": "全端基礎開發",
+            "description": "學習全端基礎開發，包括 API 設計、資料庫設計、安全性考量等。"
           },
           {
             "icon": "Workflow",
@@ -747,6 +808,29 @@
         "outcomeLabel": "專案成果",
         "techLabel": "使用技術",
         "items": [
+          {
+            "title": "araS",
+            "subtitle": "資產追蹤APP",
+            "tech": [
+              "React",
+              "TypeScript",
+              "husky",
+              "Tailwind CSS",
+              "E2E Testing",
+              "PostgreSQL",
+              "Clerk",
+              "Vercel"
+            ],
+            "problem": "以APP的方式記錄資產的損益，並計算退休金，但現有系統缺乏資產追蹤功能，需要實現資產追蹤功能。",
+            "outcome": "資產累積的價值與損益紀錄，Threads貼文超過1000讚數，70%的人有使用需求",
+            "metrics": [
+              "資產追蹤",
+              "資產損益紀錄",
+              "退休金計算",
+              "登入系統",
+              "資料庫管理"
+            ]
+          },
           {
             "title": "國內市場趨勢追蹤平台",
             "subtitle": "依據網路爬蟲領域關鍵字、監測Github Hugging Face等相關成長數據，對應國內公司資訊，依照微光、新興、主流趨勢，提供相對應政策",
