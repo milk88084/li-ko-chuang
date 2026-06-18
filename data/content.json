@@ -49,12 +49,30 @@
               "Vercel"
             ],
             "color": "#F59E0B",
-            "img": "/00_araS.png",
+            "img": "/00_araS.webp",
             "video": "/00_araS.mp4",
             "link": "#"
           },
           {
             "id": 1,
+            "name": "U-Turn",
+            "description": "Badminton Grouping System",
+            "tech": [
+              "React",
+              "TypeScript",
+              "n8n",
+              "Vite",
+              "PostgreSQL",
+              "Clerk",
+              "Zeabur"
+            ],
+            "color": "#F59E0B",
+            "img": "/01_U-Turn.webp",
+            "video": "/01_U-Turn.mp4",
+            "link": "#"
+          },
+          {
+            "id": 2,
             "name": "Market Trend Tracking Platform",
             "description": "Finding market trends, mastering market pulses",
             "tech": [
@@ -68,12 +86,12 @@
               "RWD"
             ],
             "color": "#F59E0B",
-            "img": "/01_AI快研究.png",
-            "video": "/01_AI快研究.mp4",
+            "img": "/02_AI快研究.webp",
+            "video": "/02_AI快研究.mp4",
             "link": "#"
           },
           {
-            "id": 2,
+            "id": 3,
             "name": "Digital Chatroom",
             "description": "Chatroom switching tools based on environment variables",
             "tech": [
@@ -87,12 +105,12 @@
               "RWD"
             ],
             "color": "#10B981",
-            "img": "/02_Landscape.png",
-            "video": "/02_Landscape.mp4",
+            "img": "/03_Landscape.webp",
+            "video": "/03_Landscape.mp4",
             "link": "#"
           },
           {
-            "id": 3,
+            "id": 4,
             "name": "Taiwan Info Service Provider Database",
             "description": "Connecting to MOEA database for searching and filtering providers",
             "tech": [
@@ -107,12 +125,12 @@
               "RWD"
             ],
             "color": "#8B5CF6",
-            "img": "/03_數位聊天室.png",
+            "img": "/03_數位聊天室.webp",
             "video": "/03_數位聊天室.mp4",
             "link": "#"
           },
           {
-            "id": 4,
+            "id": 5,
             "name": "AI Agent Collaboration Platform",
             "description": "Personalized chatbot with knowledge base integration",
             "tech": [
@@ -126,7 +144,7 @@
               "RWD"
             ],
             "color": "#3B82F6",
-            "img": "/04_Agent_Fabric.png",
+            "img": "/04_Agent_Fabric.webp",
             "video": "/04_Agent_Fabric.mp4",
             "link": "#"
           }
@@ -203,6 +221,28 @@
               "Asset Profit and Loss Record",
               "Retirement Fund Calculation",
               "Login System",
+              "Database Management"
+            ]
+          },
+          {
+            "title": "U-Turn",
+            "subtitle": "Automated badminton grouping and match scheduling system.",
+            "tech": [
+              "React",
+              "TypeScript",
+              "n8n",
+              "Vite",
+              "PostgreSQL",
+              "Clerk",
+              "Zeabur"
+            ],
+            "problem": "Organizing badminton meetups requires manually grouping players by skill level and balancing teams, which is time-consuming and error-prone.",
+            "outcome": "Built an automated grouping system that generates balanced matchups in seconds, streamlining registration and scheduling for badminton groups.",
+            "metrics": [
+              "Auto Grouping",
+              "Match Scheduling",
+              "Registration",
+              "Auth System",
               "Database Management"
             ]
           },
@@ -674,12 +714,30 @@
               "Vercel"
             ],
             "color": "#F59E0B",
-            "img": "/00_araS.png",
+            "img": "/00_araS.webp",
             "video": "/00_araS.mp4",
             "link": "#"
           },
           {
             "id": 1,
+            "name": "U-Turn",
+            "description": "羽球分組系統",
+            "tech": [
+              "React",
+              "TypeScript",
+              "n8n",
+              "Vite",
+              "PostgreSQL",
+              "Clerk",
+              "Zeabur"
+            ],
+            "color": "#F59E0B",
+            "img": "/01_U-Turn.webp",
+            "video": "/01_U-Turn.mp4",
+            "link": "#"
+          },
+          {
+            "id": 2,
             "name": "國內市場趨勢追蹤平台",
             "description": "尋找市場趨勢，掌握市場脈動",
             "tech": [
@@ -693,12 +751,12 @@
               "RWD"
             ],
             "color": "#F59E0B",
-            "img": "/01_AI快研究.png",
-            "video": "/01_AI快研究.mp4",
+            "img": "/02_AI快研究.webp",
+            "video": "/02_AI快研究.mp4",
             "link": "#"
           },
           {
-            "id": 2,
+            "id": 3,
             "name": "數位聊天室",
             "description": "依環境變數切換不同數位工具的聊天室",
             "tech": [
@@ -712,12 +770,12 @@
               "RWD"
             ],
             "color": "#10B981",
-            "img": "/02_Landscape.png",
-            "video": "/02_Landscape.mp4",
+            "img": "/03_Landscape.webp",
+            "video": "/03_Landscape.mp4",
             "link": "#"
           },
           {
-            "id": 3,
+            "id": 4,
             "name": "台灣資訊服務業者資料庫",
             "description": "串接經濟部資料庫，提供台灣資訊服務業者的查詢與篩選功能",
             "tech": [
@@ -732,12 +790,12 @@
               "RWD"
             ],
             "color": "#8B5CF6",
-            "img": "/03_數位聊天室.png",
+            "img": "/03_數位聊天室.webp",
             "video": "/03_數位聊天室.mp4",
             "link": "#"
           },
           {
-            "id": 4,
+            "id": 5,
             "name": "AI Agent 協作平台",
             "description": "建立機器人聊天室，掛載個人知識庫，提供個人化服務，提高工作效率",
             "tech": [
@@ -751,7 +809,7 @@
               "RWD"
             ],
             "color": "#3B82F6",
-            "img": "/04_Agent_Fabric.png",
+            "img": "/04_Agent_Fabric.webp",
             "video": "/04_Agent_Fabric.mp4",
             "link": "#"
           }
@@ -827,6 +885,28 @@
               "資產追蹤",
               "資產損益紀錄",
               "退休金計算",
+              "登入系統",
+              "資料庫管理"
+            ]
+          },
+          {
+            "title": "U-Turn",
+            "subtitle": "自動化羽球分組與賽程安排系統",
+            "tech": [
+              "React",
+              "TypeScript",
+              "n8n",
+              "Vite",
+              "PostgreSQL",
+              "Clerk",
+              "Zeabur"
+            ],
+            "problem": "羽球團體活動需手動依程度與人數平衡分組，耗時且容易出錯。",
+            "outcome": "建立自動化分組系統，依程度快速產生平衡賽程，簡化報名與分組流程，提升活動運作效率。",
+            "metrics": [
+              "自動分組",
+              "賽程安排",
+              "報名系統",
               "登入系統",
               "資料庫管理"
             ]
