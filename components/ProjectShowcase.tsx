@@ -113,9 +113,7 @@ export function ProjectShowcase({
                 }`}
               >
                 <div className="relative">
-                  <div
-                    className={`absolute top-0 left-1/2 -translate-x-1/2 w-20 md:w-24 h-5 md:h-6 rounded-b-2xl z-10 ${isDark ? "bg-[#1C1C1E]" : "bg-gray-900"}`}
-                  ></div>
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-14 md:w-16 h-4 md:h-5 rounded-full z-10 bg-black/80 pointer-events-none"></div>
                   <div className="aspect-9/19 rounded-4xl overflow-hidden relative">
                     <video
                       src={currentProject.video}
