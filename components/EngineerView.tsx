@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, type ReactNode, type CSSProperties } from "react";
 import {
   Code2,
   Cpu,
@@ -28,6 +28,8 @@ import {
   Database,
   Terminal,
   CalendarDays,
+  User,
+  MessageCircle,
 } from "lucide-react";
 import content from "@/data/content.json";
 import { useLanguage } from "@/providers/LanguageProvider";
@@ -68,6 +70,48 @@ const iconMap = {
   Terminal,
 };
 
+// Frosted-glass floating card with a violet tint, light border, and stacked
+// shadow plates beneath — tilted in 3D so every card faces the same direction.
+function FloatingGlassCard({
+  className,
+  style,
+  isDark,
+  children,
+}: {
+  className?: string;
+  style?: CSSProperties;
+  isDark: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <div className="relative transform-gpu transform-3d" style={style}>
+      {/* Stacked layers peeking out below to fake a deck-of-cards shadow */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 translate-y-[9px] scale-[0.965] rounded-3xl border border-black/5 bg-black/4 backdrop-blur-md dark:border-white/10 dark:bg-white/5"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 translate-y-[18px] scale-[0.92] rounded-3xl border border-black/3 bg-black/2 dark:border-white/6 dark:bg-white/2.5"
+      />
+      {/* Main glass surface */}
+      <div
+        className={`relative rounded-3xl border border-black/10 p-5 text-left backdrop-blur-xl dark:border-white/20 ${className ?? ""}`}
+        style={{
+          backgroundImage: isDark
+            ? "linear-gradient(140deg, rgba(255,255,255,0.14), rgba(168,85,247,0.10))"
+            : "linear-gradient(140deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6))",
+          boxShadow: isDark
+            ? "inset 0 1px 0 rgba(255,255,255,0.18), 0 8px 18px -6px rgba(168,85,247,0.5), 0 24px 40px -16px rgba(139,92,246,0.4), 0 48px 70px -30px rgba(120,60,220,0.35)"
+            : "inset 0 1px 0 rgba(255,255,255,0.7), 0 8px 18px -6px rgba(0,0,0,0.12), 0 24px 40px -16px rgba(0,0,0,0.10), 0 48px 70px -30px rgba(0,0,0,0.08)",
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export function EngineerView() {
   const { language } = useLanguage();
   const { resolvedTheme } = useTheme();
@@ -107,52 +151,257 @@ export function EngineerView() {
     }, 100);
   }, []);
 
+  // Shared 3D tilt so every floating card faces the same direction, matching
+  // the reference (left edge near, right edge receding).
+  const cardTilt =
+    "perspective(1000px) rotateX(5deg) rotateY(23deg) rotateZ(-2deg)";
+
+  // Day/night hero background: a deep colorful night gradient in dark mode; a
+  // clean white base with no purple in light mode.
+  const heroBackground = isDark
+    ? "radial-gradient(90% 80% at 78% 16%, rgba(232,72,214,0.5), transparent 55%)," +
+      "radial-gradient(80% 70% at 44% 6%, rgba(147,89,241,0.55), transparent 55%)," +
+      "radial-gradient(72% 72% at 12% 90%, rgba(250,190,120,0.45), transparent 50%)," +
+      "linear-gradient(160deg, #241443 0%, #170a24 55%, #120717 100%)"
+    : "radial-gradient(100% 90% at 50% 8%, rgba(0,0,0,0.03), transparent 60%)," +
+      "linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%)";
+  const heroVignette = isDark
+    ? "radial-gradient(115% 85% at 50% 42%, transparent 38%, rgba(0,0,0,0.55) 100%)"
+    : "radial-gradient(120% 90% at 50% 40%, transparent 62%, rgba(0,0,0,0.05) 100%)";
+  // Text halo: bright on the dark background, dark on the white background.
+  const titleGradient = isDark
+    ? "radial-gradient(60% 130% at 50% 45%, #ffffff 0%, rgba(255,255,255,0.92) 42%, rgba(255,255,255,0.52) 80%, rgba(255,255,255,0.3) 100%)"
+    : "radial-gradient(60% 130% at 50% 45%, #1d1d1f 0%, rgba(29,29,31,0.92) 42%, rgba(29,29,31,0.62) 80%, rgba(29,29,31,0.4) 100%)";
+  const bodyGradient = isDark
+    ? "radial-gradient(70% 170% at 50% 50%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.62) 60%, rgba(255,255,255,0.32) 100%)"
+    : "radial-gradient(70% 170% at 50% 50%, rgba(60,60,67,0.9) 0%, rgba(60,60,67,0.62) 60%, rgba(60,60,67,0.36) 100%)";
+  // Color the blurred bridge fades into = the next section's background.
+  const heroFadeColor = isDark ? "#0a0a0a" : "#ffffff";
+
   return (
     <main id="view-engineer">
-      <section className="h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative z-10 bg-transparent overflow-hidden">
-        <div className="max-w-3xl mx-auto space-y-6 md:space-y-8 relative">
-          <p className="fade-in-up text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-2 md:mb-4 bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full inline-block backdrop-blur-sm">
+      <section className="relative z-10 flex min-h-screen flex-col items-center overflow-hidden px-6 pb-0 pt-28 text-center md:pt-32">
+        {/* Mesh / radial gradient background (adapts to day / night) */}
+        <div
+          aria-hidden
+          className="absolute inset-0 z-0 transition-[background] duration-500"
+          style={{ background: heroBackground }}
+        />
+        {/* Vignette to draw focus to the centre */}
+        <div
+          aria-hidden
+          className="absolute inset-0 z-0 transition-[background] duration-500"
+          style={{ background: heroVignette }}
+        />
+
+        {/* Centre-aligned header */}
+        <div className="relative z-30 mx-auto max-w-3xl">
+          <p className="fade-in-up mb-5 inline-block rounded-full border border-black/10 bg-black/5 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-gray-600 backdrop-blur-md md:text-xs dark:border-white/15 dark:bg-white/10 dark:text-white/70">
             {data.hero.badge}
           </p>
-          <h1 className="fade-in-up delay-100 text-4xl md:text-7xl font-bold tracking-tight leading-tight text-gray-900 dark:text-white drop-shadow-sm">
-            {data.hero.title}{" "}
-            <span className="text-gray-400 dark:text-gray-500 inline-block">
-              {data.hero.titleHighlight}
-            </span>
+          <h1
+            className="fade-in-up delay-100 text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl"
+            style={{
+              backgroundImage: titleGradient,
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+            }}
+          >
+            {data.hero.title} {data.hero.titleHighlight}
           </h1>
-          <p className="fade-in-up delay-200 text-base md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto font-light px-4">
-            {data.hero.description} <br className="hidden md:block" />
-            {data.hero.descriptionSub}
+          <p
+            className="fade-in-up delay-200 mx-auto mt-5 max-w-xl text-sm font-light leading-relaxed md:text-base"
+            style={{
+              backgroundImage: bodyGradient,
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+            }}
+          >
+            {data.hero.description}
           </p>
+        </div>
 
-          <div className="fade-in-up delay-300 flex flex-col sm:flex-row gap-4 justify-center pt-4 md:pt-2">
-            <a
-              href="#eng-intro"
-              className="group bg-gray-900 dark:bg-white text-white dark:text-black px-8 py-3 rounded-full text-sm font-medium transition-all hover:bg-gray-800 dark:hover:bg-gray-200 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-gray-200/50 dark:shadow-none"
-            >
-              {data.hero.ctaText}
-              <Code2 className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+        {/* Stage: central phone + asymmetrical floating glass cards */}
+        <div className="fade-in delay-300 relative z-10 mx-auto mt-auto h-[440px] w-full max-w-5xl md:h-[560px]">
+          {/* Left top card — Complete your Profile (slight depth-of-field blur) */}
+          <div className="absolute left-0 top-0 hidden md:block">
+            <div className="animate-float" style={{ filter: "blur(0.4px)" }}>
+              <FloatingGlassCard
+                className="w-[230px]"
+                style={{ transform: cardTilt }}
+                isDark={isDark}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-fuchsia-400/80 to-violet-500/80">
+                    <User className="h-4 w-4 text-white" />
+                  </span>
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                    Complete your Profile
+                  </p>
+                </div>
+                <p className="mt-3 text-xs font-light leading-relaxed text-gray-500 dark:text-white/55">
+                  Create a profile in your style
+                </p>
+              </FloatingGlassCard>
+            </div>
+          </div>
+
+          {/* Left bottom card — Fast processing of requests */}
+          <div className="absolute bottom-40 left-4 hidden md:block">
+            <div className="animate-float" style={{ animationDelay: "1.5s" }}>
+              <FloatingGlassCard
+                className="w-[240px]"
+                style={{ transform: cardTilt }}
+                isDark={isDark}
+              >
+                <p className="text-sm font-semibold leading-snug text-gray-900 dark:text-white">
+                  Fast processing of requests according
+                </p>
+                <div className="mt-3 flex items-center gap-2 rounded-full border border-black/10 bg-black/3 px-3 py-2 dark:border-white/10 dark:bg-white/5">
+                  <MessageCircle className="h-3.5 w-3.5 text-gray-400 dark:text-white/60" />
+                  <span className="text-xs font-light text-gray-500 dark:text-white/60">
+                    How can I help you?
+                  </span>
+                </div>
+              </FloatingGlassCard>
+            </div>
+          </div>
+
+          {/* Right card — pricing / plans */}
+          <div className="absolute right-0 top-4 hidden md:block">
+            <div className="animate-float" style={{ animationDelay: "0.8s" }}>
+              <FloatingGlassCard
+                className="w-[210px]"
+                style={{ transform: cardTilt }}
+                isDark={isDark}
+              >
+                <div className="space-y-2.5">
+                  {[
+                    { name: "Monthly", price: "$25 / month", best: false },
+                    { name: "Yearly", price: "$180 / year", best: true },
+                    { name: "Ultimate", price: "$490", best: false },
+                  ].map((plan) => (
+                    <div
+                      key={plan.name}
+                      className={`flex items-center justify-between rounded-xl border px-3 py-2.5 ${
+                        plan.best
+                          ? "border-black/10 bg-black/5 dark:border-white/25 dark:bg-white/15"
+                          : "border-black/6 bg-black/2 dark:border-white/10 dark:bg-white/4"
+                      }`}
+                    >
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                          {plan.name}
+                        </p>
+                        <p className="text-[10px] font-light text-gray-500 dark:text-white/50">
+                          {plan.price}
+                        </p>
+                      </div>
+                      {plan.best && (
+                        <span className="rounded-full bg-gray-900 px-2 py-0.5 text-[9px] font-semibold text-white dark:bg-white dark:text-black">
+                          Best value
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </FloatingGlassCard>
+            </div>
+          </div>
+
+          {/* Central phone mockup image — enlarged, flush to the bottom */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+            <Image
+              src="/engineer_hero.png"
+              alt="LI KO CHUANG portfolio shown on an iPhone held in hand"
+              width={1024}
+              height={926}
+              priority
+              className="animate-float w-[380px] max-w-none drop-shadow-[0_40px_90px_-30px_rgba(0,0,0,0.25)] md:w-[640px] dark:drop-shadow-[0_45px_120px_-25px_rgba(168,85,247,0.6)]"
+              style={{ animationDelay: "0.4s" }}
+            />
           </div>
         </div>
+
+        {/* Blurred bridge so the hero melts into the next section */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-40 backdrop-blur-xl"
+          style={{
+            background: `linear-gradient(to bottom, transparent, ${heroFadeColor})`,
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent, black 55%)",
+            maskImage: "linear-gradient(to bottom, transparent, black 55%)",
+          }}
+        />
       </section>
 
       <section
         id="eng-intro"
-        className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
+        className="relative z-10 bg-[#f4f4f5] px-6 py-20 transition-colors duration-300 md:py-28 dark:bg-[#0a0a0a]"
       >
-        <div className="max-w-3xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
-              {data.philosophy.title}
-            </h2>
-            <div className="h-1 w-12 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+        <div className="mx-auto max-w-6xl">
+          {/* Giant headline */}
+          <h2 className="text-center text-[15vw] font-bold leading-[0.9] tracking-tighter text-gray-900 md:text-[8.5rem] dark:text-white">
+            {data.philosophy.title}
+          </h2>
+
+          {/* Banner with a phone breaking out of its bounds */}
+          <div className="relative mt-8 md:mt-14">
+            <div className="relative min-h-[400px] overflow-hidden rounded-4xl bg-[#6b7fd6] md:min-h-[520px] md:rounded-[2.5rem]">
+              {/* Blended monochrome photo on the right */}
+              <div className="absolute inset-y-0 right-0 w-2/3 md:w-1/2">
+                <Image
+                  src="/meetup_01.webp"
+                  alt="Working with people"
+                  fill
+                  sizes="(max-width: 768px) 66vw, 50vw"
+                  className="object-cover grayscale"
+                />
+                <div className="absolute inset-0 bg-[#6b7fd6] mix-blend-color opacity-70" />
+                <div className="absolute inset-0 bg-linear-to-r from-[#6b7fd6] via-[#6b7fd6]/60 to-transparent" />
+              </div>
+
+              {/* Label inside the banner */}
+              <div className="absolute bottom-7 left-7 z-10 md:bottom-10 md:left-10">
+                <p className="text-3xl font-bold text-white md:text-5xl">
+                  LI KO CHUANG™
+                </p>
+                <p className="mt-2 max-w-xs text-xs font-light leading-relaxed text-white/70 md:text-sm">
+                  {data.philosophy.quote}
+                </p>
+              </div>
+            </div>
+
+            {/* Phone mockup image — centered, breaking the banner's bounds */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+              <Image
+                src="/engineer_intro.png"
+                alt="LI KO CHUANG site shown on a tilted iPhone"
+                width={808}
+                height={1024}
+                className="w-[300px] drop-shadow-[0_50px_90px_-25px_rgba(60,70,150,0.5)] md:w-[480px]"
+              />
+            </div>
           </div>
-          <div className="prose prose-lg prose-gray dark:prose-invert text-gray-600 dark:text-gray-400 font-light leading-loose">
-            <p className="mb-6 text-xl text-gray-800 dark:text-gray-200">
-              &ldquo;{data.philosophy.quote}&rdquo;
-            </p>
-            <p>{data.philosophy.content}</p>
+
+          {/* Two-column overview */}
+          <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-2 md:gap-16">
+            <h3 className="text-2xl font-semibold leading-tight tracking-tight text-gray-900 md:text-4xl dark:text-white">
+              {data.philosophy.quote}
+            </h3>
+            <div>
+              <p className="mb-3 text-[10px] font-semibold uppercase tracking-wider text-gray-400 md:text-xs">
+                [OVERVIEW]
+              </p>
+              <p className="text-sm font-light leading-relaxed text-gray-600 md:text-base dark:text-gray-400">
+                {data.philosophy.content}
+              </p>
+            </div>
           </div>
         </div>
       </section>
