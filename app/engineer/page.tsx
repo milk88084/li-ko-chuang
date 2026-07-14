@@ -1,18 +1,19 @@
-'use client';
+import type { Metadata } from "next";
+import content from "@/data/content.json";
+import { EngineerContent } from "@/components/EngineerContent";
 
-import dynamic from 'next/dynamic';
+const hero = content.en.engineer.hero;
 
-const EngineerContent = dynamic(
-  () => import('@/components/EngineerContent').then((mod) => mod.EngineerContent),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-gray-400">Loading...</div>
-      </div>
-    ),
-  }
-);
+export const metadata: Metadata = {
+  title: "Engineer",
+  description: hero.descriptionSub,
+  alternates: { canonical: "/engineer" },
+  openGraph: {
+    title: `${hero.title} ${hero.titleHighlight}`,
+    description: hero.descriptionSub,
+    url: "/engineer",
+  },
+};
 
 export default function EngineerPage() {
   return <EngineerContent />;
