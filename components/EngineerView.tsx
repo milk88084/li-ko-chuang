@@ -75,8 +75,10 @@ const iconMap = {
   Terminal,
 };
 
-// Frosted-glass floating card with a violet tint, light border, and stacked
-// shadow plates beneath — tilted in 3D so every card faces the same direction.
+// Frosted-glass floating card: a genuinely see-through pane (backdrop-blur
+// doing the work, minimal white tint) so whatever's behind it shows through
+// blurred. Border and inner text follow the normal light/dark convention.
+// Tilted in 3D so every card faces the same direction.
 function FloatingGlassCard({
   className,
   style,
@@ -90,25 +92,19 @@ function FloatingGlassCard({
 }) {
   return (
     <div className="relative transform-gpu transform-3d" style={style}>
-      {/* Stacked layers peeking out below to fake a deck-of-cards shadow */}
+      {/* Main glass surface — no color fill at all, just a border/highlight
+          for definition. The drop shadow is a real CSS box-shadow (not a
+          separate blurred div sitting behind the panel), so it only ever
+          renders outside the card's edges and never bleeds through the
+          transparent interior. */}
       <div
-        aria-hidden
-        className="absolute inset-0 -z-10 translate-y-[9px] scale-[0.965] rounded-3xl border border-black/5 bg-black/4 backdrop-blur-md dark:border-white/10 dark:bg-white/5"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-20 translate-y-[18px] scale-[0.92] rounded-3xl border border-black/3 bg-black/2 dark:border-white/6 dark:bg-white/2.5"
-      />
-      {/* Main glass surface */}
-      <div
-        className={`relative rounded-3xl border border-black/10 p-5 text-left backdrop-blur-xl dark:border-white/20 ${className ?? ""}`}
+        className={`relative flex flex-col justify-center rounded-3xl border p-5 text-left ${
+          isDark ? "border-white/20" : "border-black/10"
+        } ${className ?? ""}`}
         style={{
-          backgroundImage: isDark
-            ? "linear-gradient(140deg, rgba(255,255,255,0.14), rgba(168,85,247,0.10))"
-            : "linear-gradient(140deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6))",
           boxShadow: isDark
-            ? "inset 0 1px 0 rgba(255,255,255,0.18), 0 8px 18px -6px rgba(168,85,247,0.5), 0 24px 40px -16px rgba(139,92,246,0.4), 0 48px 70px -30px rgba(120,60,220,0.35)"
-            : "inset 0 1px 0 rgba(255,255,255,0.7), 0 8px 18px -6px rgba(0,0,0,0.12), 0 24px 40px -16px rgba(0,0,0,0.10), 0 48px 70px -30px rgba(0,0,0,0.08)",
+            ? "inset 0 1px 0 rgba(255,255,255,0.15), 0 12px 24px -8px rgba(255,255,255,0.18), 0 30px 45px -20px rgba(255,255,255,0.1)"
+            : "inset 0 1px 0 rgba(255,255,255,0.5), 0 12px 24px -8px rgba(0,0,0,0.18), 0 30px 45px -20px rgba(0,0,0,0.12)",
         }}
       >
         {children}
@@ -179,13 +175,13 @@ export function EngineerView() {
   const cardTilt =
     "perspective(1000px) rotateX(30deg) rotateY(38deg) rotateZ(-20deg)";
 
-  // Day/night hero background: a deep colorful night gradient in dark mode; a
-  // clean white base with no purple in light mode.
+  // Day/night hero background: a deep blue-black night gradient (brand blue
+  // #3250FE, no purple) in dark mode; a clean white base in light mode.
   const heroBackground = isDark
-    ? "radial-gradient(85% 65% at 78% 34%, rgba(232,72,214,0.32), transparent 55%)," +
-      "radial-gradient(75% 55% at 44% 26%, rgba(147,89,241,0.36), transparent 55%)," +
+    ? "radial-gradient(85% 65% at 78% 34%, rgba(50,80,254,0.34), transparent 55%)," +
+      "radial-gradient(75% 55% at 44% 26%, rgba(90,130,255,0.32), transparent 55%)," +
       "radial-gradient(72% 65% at 12% 92%, rgba(250,190,120,0.3), transparent 50%)," +
-      "linear-gradient(180deg, #000000 0%, #0a0510 22%, #1c0f30 55%, #170a24 80%, #0a0508 100%)"
+      "linear-gradient(180deg, #000000 0%, #05070f 22%, #0a1230 55%, #0a0f24 80%, #05060d 100%)"
     : "radial-gradient(100% 90% at 50% 8%, rgba(0,0,0,0.03), transparent 60%)," +
       "linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%)";
   const heroVignette = isDark
@@ -229,6 +225,7 @@ export function EngineerView() {
               backgroundClip: "text",
               WebkitTextFillColor: "transparent",
               color: "transparent",
+              filter: "drop-shadow(0 6px 16px rgba(0,0,0,0.22))",
             }}
           >
             {data.hero.title} {data.hero.titleHighlight}
@@ -253,18 +250,18 @@ export function EngineerView() {
             inside it (not a sibling) — otherwise the bridge's z-20 would
             always paint over this whole subtree regardless of the cards'
             z-30. */}
-        <div className="fade-in delay-300 relative mt-auto h-[440px] w-full md:h-[42vh] md:min-h-[280px]">
+        <div className="fade-in delay-300 relative mt-auto h-[440px] w-full md:h-[42vh] md:min-h-[440px]">
           <div className="relative mx-auto h-full w-full max-w-5xl">
             {/* Left top card — Complete your Profile (slight depth-of-field blur) */}
             <div className="absolute left-0 top-0 z-30 hidden md:block">
               <div className="animate-float" style={{ filter: "blur(0.4px)" }}>
                 <FloatingGlassCard
-                  className="w-[230px]"
+                  className="h-[200px] w-[220px]"
                   style={{ transform: cardTilt }}
                   isDark={isDark}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-fuchsia-400/80 to-violet-500/80">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-blue-400/80 to-[#3250FE]/80">
                       <User className="h-4 w-4 text-white" />
                     </span>
                     <p className="text-sm font-semibold text-gray-900 dark:text-white">
@@ -279,17 +276,17 @@ export function EngineerView() {
             </div>
 
             {/* Left bottom card — Fast processing of requests */}
-            <div className="absolute left-4 z-30 hidden md:block md:bottom-[2vh]">
+            <div className="absolute left-4 top-[216px] z-30 hidden md:block">
               <div className="animate-float" style={{ animationDelay: "1.5s" }}>
                 <FloatingGlassCard
-                  className="w-[240px]"
+                  className="h-[200px] w-[220px]"
                   style={{ transform: cardTilt }}
                   isDark={isDark}
                 >
                   <p className="text-sm font-semibold leading-snug text-gray-900 dark:text-white">
                     Fast processing of requests according
                   </p>
-                  <div className="mt-3 flex items-center gap-2 rounded-full border border-black/10 bg-black/3 px-3 py-2 dark:border-white/10 dark:bg-white/5">
+                  <div className="mt-3 flex items-center gap-2 rounded-full border border-black/10 px-3 py-2 dark:border-white/10">
                     <MessageCircle className="h-3.5 w-3.5 text-gray-400 dark:text-white/60" />
                     <span className="text-xs font-light text-gray-500 dark:text-white/60">
                       How can I help you?
@@ -303,7 +300,7 @@ export function EngineerView() {
             <div className="absolute right-0 top-4 z-30 hidden md:block">
               <div className="animate-float" style={{ animationDelay: "0.8s" }}>
                 <FloatingGlassCard
-                  className="w-[210px]"
+                  className="h-[200px] w-[220px]"
                   style={{ transform: cardTilt }}
                   isDark={isDark}
                 >
@@ -317,8 +314,8 @@ export function EngineerView() {
                         key={plan.name}
                         className={`flex items-center justify-between rounded-xl border px-3 py-2.5 ${
                           plan.best
-                            ? "border-black/10 bg-black/5 dark:border-white/25 dark:bg-white/15"
-                            : "border-black/6 bg-black/2 dark:border-white/10 dark:bg-white/4"
+                            ? "border-black/15 dark:border-white/30"
+                            : "border-black/6 dark:border-white/10"
                         }`}
                       >
                         <div>

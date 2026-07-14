@@ -78,8 +78,8 @@ const DEVICES: Device[] = [
     corners: [
       [0.2009, 0.27067],
       [0.71296, 0.28227],
-      [0.85485, 0.77515],
-      [0.30418, 0.80063],
+      [0.85485, 0.75515],
+      [0.30418, 0.79063],
     ],
   },
   {
@@ -289,10 +289,24 @@ export function ProjectShowcase({
             isDark ? "text-white/40" : "text-gray-400"
           }`}
         >
-          <span className="justify-self-start">
-            {String(currentIndex + 1).padStart(2, "0")} /{" "}
-            {String(projects.length).padStart(2, "0")}
-          </span>
+          <div className="w-fit justify-self-start">
+            <span>
+              {String(currentIndex + 1).padStart(2, "0")} /{" "}
+              {String(projects.length).padStart(2, "0")}
+            </span>
+            <div
+              className={`mt-1.5 h-0.5 w-full rounded-full ${
+                isDark ? "bg-white/10" : "bg-gray-200"
+              }`}
+            >
+              <div
+                className={`h-full rounded-full transition-all duration-100 ${
+                  isDark ? "bg-white" : "bg-gray-900"
+                }`}
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
 
           {/* Device switcher, flanked by prev/next project arrows */}
           <div className="justify-self-center flex items-center gap-3 normal-case tracking-normal">
@@ -355,18 +369,6 @@ export function ProjectShowcase({
           </div>
 
           <span className="justify-self-end">PROJECT SHOWCASE</span>
-        </div>
-        <div
-          className={`absolute inset-x-0 bottom-0 h-0.5 ${
-            isDark ? "bg-white/10" : "bg-gray-200"
-          }`}
-        >
-          <div
-            className={`h-full transition-all duration-100 ${
-              isDark ? "bg-white" : "bg-gray-900"
-            }`}
-            style={{ width: `${progress}%` }}
-          />
         </div>
       </div>
     </div>
