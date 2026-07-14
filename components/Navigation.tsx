@@ -43,7 +43,7 @@ export function Navigation({ currentPage }: NavigationProps) {
 
   return (
     <nav className="fixed w-full top-0 z-50 bg-[#FBFBFD]/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-100/50 dark:border-white/10 transition-all duration-300">
-      <div className=" mx-auto px-6 h-16 flex items-center justify-between">
+      <div className=" mx-auto px-6 h-12 flex items-center justify-between">
         <Link
           href="/"
           className="flex items-center hover:opacity-70 transition-opacity"

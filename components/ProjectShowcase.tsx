@@ -9,11 +9,11 @@ import {
 } from "react";
 import Image from "next/image";
 import {
+  ChevronLeft,
   ChevronRight,
   Monitor,
   Tablet,
   Smartphone,
-  ExternalLink,
 } from "lucide-react";
 
 interface Project {
@@ -152,10 +152,7 @@ function screenMatrix(
 
 export function ProjectShowcase({
   projects,
-  nextProjectLabel,
-  viewProjectLabel,
   isDark = false,
-  onProjectChange,
 }: ProjectShowcaseProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [deviceType, setDeviceType] = useState<DeviceKey>("desktop");
@@ -172,15 +169,10 @@ export function ProjectShowcase({
     setProgress(0);
   }, [projects.length]);
 
-  const goToProject = (index: number) => {
-    setCurrentIndex(index);
+  const prevProject = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
     setProgress(0);
-  };
-
-  const handleViewProject = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onProjectChange?.(currentIndex);
-  };
+  }, [projects.length]);
 
   useEffect(() => {
     const progressInterval = setInterval(() => {
@@ -223,18 +215,18 @@ export function ProjectShowcase({
           <span
             key={device.key}
             className={`animate-[fadeIn_0.6s_ease-out] text-[22vw] leading-none font-black tracking-tighter italic whitespace-nowrap ${
-              isDark ? "text-white/6" : "text-gray-900/6"
+              isDark ? "text-white/10" : "text-gray-900/6"
             }`}
           >
             {device.label.toUpperCase()}
           </span>
         </div>
 
-        <div className="relative flex items-center justify-center px-6 py-10 md:py-14">
+        <div className="relative flex items-center justify-center px-6 py-10 md:py-6">
           {/* the cut-out mockup defines the stage box; the screen is projected onto it */}
           <div
             ref={stageRef}
-            className="relative aspect-square w-full max-w-[420px] md:max-w-[560px] lg:max-w-[640px]"
+            className="relative aspect-square w-full max-w-[420px] md:max-w-[440px] lg:max-w-[520px]"
           >
             <Image
               key={device.mockup}
@@ -291,19 +283,78 @@ export function ProjectShowcase({
           </div>
         </div>
 
-        {/* Meta + progress */}
+        {/* Meta + device switcher + progress — all on one line */}
         <div
-          className={`absolute inset-x-0 top-0 flex items-center justify-between px-6 py-5 font-mono text-[10px] tracking-[0.2em] uppercase ${
+          className={`absolute inset-x-0 top-0 grid grid-cols-3 items-center px-6 py-5 font-mono text-[10px] tracking-[0.2em] uppercase ${
             isDark ? "text-white/40" : "text-gray-400"
           }`}
         >
-          <span>
+          <span className="justify-self-start">
             {String(currentIndex + 1).padStart(2, "0")} /{" "}
             {String(projects.length).padStart(2, "0")}
           </span>
-          <span>
-            {device.label} · {device.resolution}
-          </span>
+
+          {/* Device switcher, flanked by prev/next project arrows */}
+          <div className="justify-self-center flex items-center gap-3 normal-case tracking-normal">
+            <button
+              type="button"
+              onClick={prevProject}
+              aria-label="Previous project"
+              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
+                isDark
+                  ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                  : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+              }`}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+
+            <div
+              className={`flex gap-1 rounded-full p-1 ${
+                isDark ? "bg-white/10" : "border border-gray-200 bg-white"
+              }`}
+            >
+              {DEVICES.map(({ key, label, icon: Icon }) => {
+                const active = deviceType === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setDeviceType(key)}
+                    aria-label={`${label} view`}
+                    aria-pressed={active}
+                    className={`flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 font-sans text-xs font-medium transition-all ${
+                      active
+                        ? isDark
+                          ? "bg-white text-black"
+                          : "bg-gray-900 text-white"
+                        : isDark
+                          ? "text-gray-400 hover:text-white"
+                          : "text-gray-500 hover:text-gray-900"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span className="hidden sm:inline">{label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              type="button"
+              onClick={nextProject}
+              aria-label="Next project"
+              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
+                isDark
+                  ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                  : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+              }`}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+
+          <span className="justify-self-end">PROJECT SHOWCASE</span>
         </div>
         <div
           className={`absolute inset-x-0 bottom-0 h-0.5 ${
@@ -311,129 +362,11 @@ export function ProjectShowcase({
           }`}
         >
           <div
-            className="h-full transition-all duration-100"
-            style={{
-              width: `${progress}%`,
-              backgroundColor: currentProject.color,
-            }}
+            className={`h-full transition-all duration-100 ${
+              isDark ? "bg-white" : "bg-gray-900"
+            }`}
+            style={{ width: `${progress}%` }}
           />
-        </div>
-      </div>
-
-      {/* Device switcher */}
-      <div className="mt-8 flex justify-center">
-        <div
-          className={`flex gap-1 rounded-full p-1 ${
-            isDark ? "bg-white/10" : "border border-gray-200 bg-white"
-          }`}
-        >
-          {DEVICES.map(({ key, label, icon: Icon }) => {
-            const active = deviceType === key;
-            return (
-              <button
-                key={key}
-                type="button"
-                onClick={() => setDeviceType(key)}
-                aria-label={`${label} view`}
-                aria-pressed={active}
-                className={`flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all ${
-                  active
-                    ? isDark
-                      ? "bg-white text-black"
-                      : "bg-gray-900 text-white"
-                    : isDark
-                      ? "text-gray-400 hover:text-white"
-                      : "text-gray-500 hover:text-gray-900"
-                }`}
-              >
-                <Icon className="h-4 w-4" />
-                <span className="hidden sm:inline">{label}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Project info */}
-      <div className="mt-10 flex flex-col items-center gap-5 text-center">
-        <h3
-          className={`text-2xl font-semibold tracking-tight md:text-3xl ${
-            isDark ? "text-white" : "text-gray-900"
-          }`}
-        >
-          {currentProject.name}
-        </h3>
-        <p
-          className={`max-w-xl font-light ${
-            isDark ? "text-gray-400" : "text-gray-600"
-          }`}
-        >
-          {currentProject.description}
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-2">
-          {currentProject.tech.map((tech) => (
-            <span
-              key={tech}
-              className={`rounded-full px-3 py-1 text-xs font-medium ${
-                isDark
-                  ? "bg-white/10 text-gray-300"
-                  : "bg-gray-100 text-gray-700"
-              }`}
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={nextProject}
-            className={`flex cursor-pointer items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-all hover:scale-105 ${
-              isDark
-                ? "bg-white text-black hover:bg-gray-200"
-                : "bg-gray-900 text-white hover:bg-gray-800"
-            }`}
-          >
-            {nextProjectLabel}
-            <ChevronRight className="h-4 w-4" />
-          </button>
-
-          <a
-            href={currentProject.link}
-            onClick={handleViewProject}
-            className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-all hover:scale-105 ${
-              isDark
-                ? "border-white/20 text-white hover:bg-white/10"
-                : "border-gray-300 text-gray-900 hover:bg-gray-100"
-            }`}
-          >
-            {viewProjectLabel}
-            <ExternalLink className="h-4 w-4" />
-          </a>
-        </div>
-
-        <div className="mt-2 flex gap-2">
-          {projects.map((project, index) => (
-            <button
-              type="button"
-              key={project.id}
-              onClick={() => goToProject(index)}
-              aria-label={`Go to project ${index + 1}`}
-              className={`h-2 cursor-pointer rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "w-8"
-                  : isDark
-                    ? "w-2 bg-white/20 hover:bg-white/40"
-                    : "w-2 bg-gray-300 hover:bg-gray-400"
-              }`}
-              style={{
-                backgroundColor:
-                  index === currentIndex ? project.color : undefined,
-              }}
-            />
-          ))}
         </div>
       </div>
     </div>
