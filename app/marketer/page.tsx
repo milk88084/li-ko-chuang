@@ -1,18 +1,19 @@
-'use client';
+import type { Metadata } from "next";
+import content from "@/data/content.json";
+import { MarketerContent } from "@/components/MarketerContent";
 
-import dynamic from 'next/dynamic';
+const hero = content.en.marketer.hero;
 
-const MarketerContent = dynamic(
-  () => import('@/components/MarketerContent').then((mod) => mod.MarketerContent),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-gray-400">Loading...</div>
-      </div>
-    ),
-  }
-);
+export const metadata: Metadata = {
+  title: "Marketer",
+  description: hero.descriptionSub,
+  alternates: { canonical: "/marketer" },
+  openGraph: {
+    title: `${hero.title} ${hero.titleHighlight}`,
+    description: hero.descriptionSub,
+    url: "/marketer",
+  },
+};
 
 export default function MarketerPage() {
   return <MarketerContent />;

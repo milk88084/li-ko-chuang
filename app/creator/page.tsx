@@ -1,18 +1,19 @@
-'use client';
+import type { Metadata } from "next";
+import content from "@/data/content.json";
+import { CreatorContent } from "@/components/CreatorContent";
 
-import dynamic from 'next/dynamic';
+const hero = content.en.creator.hero;
 
-const CreatorContent = dynamic(
-  () => import('@/components/CreatorContent').then((mod) => mod.CreatorContent),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-gray-400">Loading...</div>
-      </div>
-    ),
-  }
-);
+export const metadata: Metadata = {
+  title: "Creator",
+  description: hero.descriptionSub,
+  alternates: { canonical: "/creator" },
+  openGraph: {
+    title: `${hero.title} ${hero.titleHighlight}`,
+    description: hero.descriptionSub,
+    url: "/creator",
+  },
+};
 
 export default function CreatorPage() {
   return <CreatorContent />;

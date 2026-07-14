@@ -1,8 +1,20 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import Image from "next/image";
-import { ChevronRight, Monitor, Smartphone, ExternalLink } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Monitor,
+  Tablet,
+  Smartphone,
+} from "lucide-react";
 
 interface Project {
   id: number;
@@ -23,34 +35,144 @@ interface ProjectShowcaseProps {
   onProjectChange?: (index: number) => void;
 }
 
+type DeviceKey = "desktop" | "tablet" | "mobile";
+
+interface Device {
+  key: DeviceKey;
+  label: string;
+  resolution: string;
+  icon: typeof Monitor;
+  mockup: string;
+  /** screen aspect (w/h) */
+  aspect: number;
+  /** screen corner radius, as a fraction of the screen width */
+  radius: number;
+  /** screen corners in the mockup image, normalised 0..1: top-left, top-right, bottom-right, bottom-left */
+  corners: [number, number][];
+}
+
+const DEVICES: Device[] = [
+  {
+    key: "desktop",
+    label: "Desktop",
+    resolution: "1440 × 900",
+    icon: Monitor,
+    mockup: "/mockup-desktop.webp",
+    aspect: 16 / 10,
+    radius: 0.028,
+    corners: [
+      [0.1835, 0.17598],
+      [0.80287, 0.22481],
+      [0.86051, 0.65593],
+      [0.22783, 0.65543],
+    ],
+  },
+  {
+    key: "tablet",
+    label: "Tablet",
+    resolution: "1024 × 768",
+    icon: Tablet,
+    mockup: "/mockup-tablet.webp",
+    aspect: 4 / 3,
+    radius: 0.035,
+    corners: [
+      [0.2009, 0.27067],
+      [0.71296, 0.28227],
+      [0.85485, 0.75515],
+      [0.30418, 0.79063],
+    ],
+  },
+  {
+    key: "mobile",
+    label: "Mobile",
+    resolution: "375 × 812",
+    icon: Smartphone,
+    mockup: "/mockup-mobile.webp",
+    aspect: 9 / 19.5,
+    radius: 0.115,
+    corners: [
+      [0.30764, 0.10597],
+      [0.58104, 0.19645],
+      [0.74536, 0.91487],
+      [0.47386, 0.85334],
+    ],
+  },
+];
+
+/**
+ * Homography mapping the screen rectangle (0,0)–(w,h) onto the four screen
+ * corners of the mockup photo, expressed as a CSS matrix3d.
+ */
+function screenMatrix(
+  w: number,
+  h: number,
+  corners: [number, number][],
+  stage: number,
+): string {
+  const src: [number, number][] = [
+    [0, 0],
+    [w, 0],
+    [w, h],
+    [0, h],
+  ];
+  const dst = corners.map(([x, y]) => [x * stage, y * stage]);
+
+  const A: number[][] = [];
+  const b: number[] = [];
+  for (let i = 0; i < 4; i++) {
+    const [u, v] = src[i];
+    const [x, y] = dst[i];
+    A.push([u, v, 1, 0, 0, 0, -u * x, -v * x]);
+    b.push(x);
+    A.push([0, 0, 0, u, v, 1, -u * y, -v * y]);
+    b.push(y);
+  }
+  for (let i = 0; i < 8; i++) {
+    let pivot = i;
+    for (let r = i + 1; r < 8; r++) {
+      if (Math.abs(A[r][i]) > Math.abs(A[pivot][i])) pivot = r;
+    }
+    [A[i], A[pivot]] = [A[pivot], A[i]];
+    [b[i], b[pivot]] = [b[pivot], b[i]];
+    for (let r = i + 1; r < 8; r++) {
+      const f = A[r][i] / A[i][i];
+      for (let c = i; c < 8; c++) A[r][c] -= f * A[i][c];
+      b[r] -= f * b[i];
+    }
+  }
+  const m = new Array(8).fill(0);
+  for (let i = 7; i >= 0; i--) {
+    let s = b[i];
+    for (let c = i + 1; c < 8; c++) s -= A[i][c] * m[c];
+    m[i] = s / A[i][i];
+  }
+  const [a, bb, c, d, e, f, g, hh] = m;
+  return `matrix3d(${a},${d},0,${g},${bb},${e},0,${hh},0,0,1,0,${c},${f},0,1)`;
+}
+
 export function ProjectShowcase({
   projects,
-  nextProjectLabel,
-  viewProjectLabel,
   isDark = false,
-  onProjectChange,
 }: ProjectShowcaseProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [deviceType, setDeviceType] = useState<"desktop" | "mobile">("mobile");
+  const [deviceType, setDeviceType] = useState<DeviceKey>("desktop");
   const [progress, setProgress] = useState(0);
+  const [stageSize, setStageSize] = useState(0);
+
+  const stageRef = useRef<HTMLDivElement>(null);
 
   const currentProject = projects[currentIndex];
+  const device = DEVICES.find((d) => d.key === deviceType) ?? DEVICES[0];
 
   const nextProject = useCallback(() => {
-    const newIndex = (currentIndex + 1) % projects.length;
-    setCurrentIndex(newIndex);
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
     setProgress(0);
-  }, [projects.length, currentIndex]);
+  }, [projects.length]);
 
-  const goToProject = (index: number) => {
-    setCurrentIndex(index);
+  const prevProject = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
     setProgress(0);
-  };
-
-  const handleViewProject = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onProjectChange?.(currentIndex);
-  };
+  }, [projects.length]);
 
   useEffect(() => {
     const progressInterval = setInterval(() => {
@@ -66,213 +188,187 @@ export function ProjectShowcase({
     return () => clearInterval(progressInterval);
   }, [nextProject]);
 
+  useLayoutEffect(() => {
+    const node = stageRef.current;
+    if (!node) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setStageSize(entry.contentRect.width);
+    });
+    observer.observe(node);
+    setStageSize(node.getBoundingClientRect().width);
+    return () => observer.disconnect();
+  }, []);
+
+  // the screen rectangle, in its own (un-projected) coordinates
+  const screenWidth = stageSize;
+  const screenHeight = stageSize / device.aspect;
+  const transform = stageSize
+    ? screenMatrix(screenWidth, screenHeight, device.corners, stageSize)
+    : undefined;
+
   return (
     <div className="w-full">
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
-        <div className="flex-1 flex justify-center items-center order-1 lg:order-1">
-          <div className="relative">
-            {deviceType === "desktop" ? (
-              <div className="relative">
-                <div
-                  className={`w-[320px] md:w-[480px] lg:w-[560px] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ${
-                    isDark ? "bg-[#1C1C1E]" : "bg-gray-900"
-                  }`}
-                >
-                  <div
-                    className={`h-8 md:h-10 flex items-center px-4 gap-2 ${isDark ? "bg-[#2C2C2E]" : "bg-gray-800"}`}
-                  >
-                    <div className="flex gap-1.5">
-                      <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500"></div>
-                      <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-500"></div>
-                    </div>
-                    <div
-                      className={`flex-1 mx-4 h-5 md:h-6 rounded-md ${isDark ? "bg-[#3C3C3E]" : "bg-gray-700"}`}
-                    ></div>
-                  </div>
-                  <div className="aspect-16/10 relative overflow-hidden">
-                    <Image
-                      src={currentProject.img}
-                      alt={currentProject.name}
-                      fill
-                      className="object-cover transition-all duration-700"
-                    />
-                  </div>
-                </div>
-                <div
-                  className={`w-24 md:w-32 h-6 md:h-8 mx-auto rounded-b-lg ${isDark ? "bg-[#2C2C2E]" : "bg-gray-800"}`}
-                ></div>
-                <div
-                  className={`w-40 md:w-48 h-2 md:h-3 mx-auto rounded-full ${isDark ? "bg-[#2C2C2E]" : "bg-gray-800"}`}
-                ></div>
-              </div>
-            ) : (
+      {/* Stage */}
+      <div className="relative">
+        {/* the device's name, set full-bleed behind it */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 flex w-screen -translate-x-1/2 -translate-y-1/2 justify-center overflow-hidden select-none">
+          <span
+            key={device.key}
+            className={`animate-[fadeIn_0.6s_ease-out] text-[22vw] leading-none font-black tracking-tighter italic whitespace-nowrap ${
+              isDark ? "text-white/10" : "text-gray-900/6"
+            }`}
+          >
+            {device.label.toUpperCase()}
+          </span>
+        </div>
+
+        <div className="relative flex items-center justify-center px-6 py-10 md:py-6">
+          {/* the cut-out mockup defines the stage box; the screen is projected onto it */}
+          <div
+            ref={stageRef}
+            className="relative aspect-square w-full max-w-[420px] md:max-w-[440px] lg:max-w-[520px]"
+          >
+            <Image
+              key={device.mockup}
+              src={device.mockup}
+              alt={`${device.label} mockup`}
+              fill
+              priority
+              // already a compact webp; the optimiser re-encodes it to JPEG and drops the alpha
+              unoptimized
+              sizes="(max-width: 768px) 90vw, 640px"
+              className="animate-[fadeIn_0.5s_ease-out] object-contain drop-shadow-[0_30px_50px_rgba(15,23,42,0.25)]"
+            />
+
+            {transform && (
               <div
-                className={`w-[200px] md:w-[240px] rounded-[2.5rem] p-2 md:p-3 shadow-2xl transition-all duration-500 ${
-                  isDark ? "bg-[#1C1C1E]" : "bg-gray-900"
-                }`}
+                className="absolute top-0 left-0 origin-top-left overflow-hidden"
+                style={{
+                  width: screenWidth,
+                  height: screenHeight,
+                  transform,
+                  borderRadius: device.radius * screenWidth,
+                }}
               >
-                <div className="relative">
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-14 md:w-16 h-4 md:h-5 rounded-full z-10 bg-black/80 pointer-events-none"></div>
-                  <div className="aspect-9/19 rounded-4xl overflow-hidden relative">
+                <div className="relative h-full w-full">
+                  {deviceType === "mobile" ? (
                     <video
+                      key={currentProject.video}
                       src={currentProject.video}
                       autoPlay
                       loop
                       muted
                       playsInline
-                      className="w-full h-full object-cover transition-all duration-700"
+                      className="h-full w-full object-cover"
                     />
-                  </div>
+                  ) : (
+                    <Image
+                      src={currentProject.img}
+                      alt={currentProject.name}
+                      fill
+                      sizes="(max-width: 768px) 90vw, 640px"
+                      className="object-cover"
+                    />
+                  )}
+
+                  {/* screen sheen, so the render doesn't look pasted on */}
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-tr from-white/0 via-white/5 to-white/15" />
+
+                  {deviceType === "mobile" && (
+                    <div className="absolute top-[1.2%] left-1/2 h-[3.6%] w-[30%] -translate-x-1/2 rounded-full bg-black" />
+                  )}
                 </div>
               </div>
             )}
           </div>
         </div>
 
-        <div className="flex-1 order-2 lg:order-2 text-center lg:text-left">
-          <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-            <span
-              className="text-5xl md:text-6xl font-bold transition-colors duration-500"
-              style={{ color: currentProject.color }}
-            >
-              {String(currentIndex + 1).padStart(2, "0")}
+        {/* Meta + device switcher + progress — all on one line */}
+        <div
+          className={`absolute inset-x-0 top-0 grid grid-cols-3 items-center px-6 py-5 font-mono text-[10px] tracking-[0.2em] uppercase ${
+            isDark ? "text-white/40" : "text-gray-400"
+          }`}
+        >
+          <div className="w-fit justify-self-start">
+            <span>
+              {String(currentIndex + 1).padStart(2, "0")} /{" "}
+              {String(projects.length).padStart(2, "0")}
             </span>
-            <span
-              className={`text-sm ${isDark ? "text-gray-500" : "text-gray-400"}`}
-            >
-              / {String(projects.length).padStart(2, "0")}
-            </span>
-          </div>
-
-          <h3
-            className={`text-2xl md:text-3xl font-bold mb-3 transition-all duration-500 ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}
-          >
-            {currentProject.name}
-          </h3>
-
-          <p
-            className={`text-base md:text-lg mb-6 font-light ${
-              isDark ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            {currentProject.description}
-          </p>
-
-          <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
-            {currentProject.tech.map((tech, i) => (
-              <span
-                key={i}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors duration-300 ${
-                  isDark
-                    ? "bg-white/10 text-gray-300"
-                    : "bg-gray-100 text-gray-700"
-                }`}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <div
-            className={`h-1 rounded-full mb-6 overflow-hidden ${
-              isDark ? "bg-white/10" : "bg-gray-200"
-            }`}
-          >
             <div
-              className="h-full transition-all duration-100 rounded-full"
-              style={{
-                width: `${progress}%`,
-                backgroundColor: currentProject.color,
-              }}
-            ></div>
+              className={`mt-1.5 h-0.5 w-full rounded-full ${
+                isDark ? "bg-white/10" : "bg-gray-200"
+              }`}
+            >
+              <div
+                className={`h-full rounded-full transition-all duration-100 ${
+                  isDark ? "bg-white" : "bg-gray-900"
+                }`}
+                style={{ width: `${progress}%` }}
+              />
+            </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-            <div
-              className={`flex rounded-full p-1 ${isDark ? "bg-white/10" : "bg-gray-100"}`}
+          {/* Device switcher, flanked by prev/next project arrows */}
+          <div className="justify-self-center flex items-center gap-3 normal-case tracking-normal">
+            <button
+              type="button"
+              onClick={prevProject}
+              aria-label="Previous project"
+              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
+                isDark
+                  ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                  : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+              }`}
             >
-              <button
-                onClick={() => setDeviceType("desktop")}
-                className={`p-2 rounded-full transition-all ${
-                  deviceType === "desktop"
-                    ? isDark
-                      ? "bg-white text-black"
-                      : "bg-gray-900 text-white"
-                    : isDark
-                      ? "text-gray-400 hover:text-white"
-                      : "text-gray-500 hover:text-gray-900"
-                }`}
-                aria-label="Desktop view"
-              >
-                <Monitor className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setDeviceType("mobile")}
-                className={`p-2 rounded-full transition-all ${
-                  deviceType === "mobile"
-                    ? isDark
-                      ? "bg-white text-black"
-                      : "bg-gray-900 text-white"
-                    : isDark
-                      ? "text-gray-400 hover:text-white"
-                      : "text-gray-500 hover:text-gray-900"
-                }`}
-                aria-label="Mobile view"
-              >
-                <Smartphone className="w-4 h-4" />
-              </button>
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+
+            <div
+              className={`flex gap-1 rounded-full p-1 ${
+                isDark ? "bg-white/10" : "border border-gray-200 bg-white"
+              }`}
+            >
+              {DEVICES.map(({ key, label, icon: Icon }) => {
+                const active = deviceType === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setDeviceType(key)}
+                    aria-label={`${label} view`}
+                    aria-pressed={active}
+                    className={`flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 font-sans text-xs font-medium transition-all ${
+                      active
+                        ? isDark
+                          ? "bg-white text-black"
+                          : "bg-gray-900 text-white"
+                        : isDark
+                          ? "text-gray-400 hover:text-white"
+                          : "text-gray-500 hover:text-gray-900"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span className="hidden sm:inline">{label}</span>
+                  </button>
+                );
+              })}
             </div>
 
             <button
+              type="button"
               onClick={nextProject}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm transition-all hover:scale-105 cursor-pointer ${
+              aria-label="Next project"
+              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
                 isDark
-                  ? "bg-white text-black hover:bg-gray-200"
-                  : "bg-gray-900 text-white hover:bg-gray-800"
+                  ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                  : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
               }`}
             >
-              {nextProjectLabel}
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="h-4 w-4" />
             </button>
-
-            <a
-              href={currentProject.link}
-              onClick={handleViewProject}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm transition-all hover:scale-105 border ${
-                isDark
-                  ? "border-white/20 text-white hover:bg-white/10"
-                  : "border-gray-300 text-gray-900 hover:bg-gray-100"
-              }`}
-            >
-              {viewProjectLabel}
-              <ExternalLink className="w-4 h-4" />
-            </a>
           </div>
 
-          <div className="flex gap-2 mt-8 justify-center lg:justify-start">
-            {projects.map((project, index) => (
-              <button
-                type="button"
-                key={project.id}
-                onClick={() => goToProject(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? "w-8"
-                    : isDark
-                      ? "bg-white/20 hover:bg-white/40"
-                      : "bg-gray-300 hover:bg-gray-400"
-                }`}
-                style={{
-                  backgroundColor:
-                    index === currentIndex ? project.color : undefined,
-                }}
-                aria-label={`Go to project ${index + 1}`}
-              />
-            ))}
-          </div>
+          <span className="justify-self-end">PROJECT SHOWCASE</span>
         </div>
       </div>
     </div>

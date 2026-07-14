@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { LanguageProvider } from "@/providers/LanguageProvider";
+import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,9 +11,23 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const ogDescription =
+  "Front-end Engineer & Podcaster bridging logic and emotion. Specializing in React, Next.js, and user-centric interfaces.";
+
 export const metadata: Metadata = {
-  title: "Li Ko Chuang | Portfolio",
-  description: "Building Interfaces, Telling Stories.",
+  // Lets every child route use a relative `alternates.canonical` / OG image
+  // path instead of hard-coding the domain everywhere.
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: siteConfig.title,
+    // Child routes only need to set `title: "Engineer"` and this renders
+    // "Engineer | Li Ko Chuang".
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/favicon.ico",
   },
@@ -25,12 +40,29 @@ export const metadata: Metadata = {
     "Frontend Engineer",
     "Podcast",
   ],
-  authors: [{ name: "Li Ko Chuang" }],
+  authors: [{ name: siteConfig.name }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
   openGraph: {
     title: "Logic meets Emotion | Portfolio",
-    description:
-      "Front-end Engineer & Podcaster bridging logic and emotion. Specializing in React, Next.js, and user-centric interfaces.",
+    description: ogDescription,
     type: "website",
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.name,
+    images: [{ url: siteConfig.ogImage, width: 1024, height: 926 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Logic meets Emotion | Portfolio",
+    description: ogDescription,
+    images: [siteConfig.ogImage],
   },
 };
 
@@ -42,13 +74,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Remote hosts used for CreatorView images — warms the connection
+            (DNS + TLS) before the browser discovers the <img> tag. */}
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://magazine.feg.com.tw" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Li Ko Chuang",
+              name: siteConfig.name,
               jobTitle: "Front-end Engineer",
               knowsAbout: [
                 "React",
@@ -58,11 +94,8 @@ export default function RootLayout({
                 "Rust",
                 "Podcast",
               ],
-              url: "https://yourportfolio.com",
-              sameAs: [
-                "https://www.linkedin.com/in/yourprofile",
-                "https://github.com/yourusername",
-              ],
+              url: siteConfig.siteUrl,
+              sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
             }),
           }}
         />
