@@ -283,13 +283,17 @@ export function ProjectShowcase({
           </div>
         </div>
 
-        {/* Meta + device switcher + progress — all on one line */}
+        {/* Meta + device switcher + progress. The switcher (2 arrow buttons
+            + 3 device buttons) needs ~250px, which doesn't fit a third of a
+            mobile-width row alongside the counter and label, so on mobile
+            it wraps to its own centered row below them; sm+ keeps the
+            original single-line grid. */}
         <div
-          className={`absolute inset-x-0 top-0 grid grid-cols-3 items-center px-6 py-5 font-mono text-[10px] tracking-[0.2em] uppercase ${
+          className={`absolute inset-x-0 top-0 flex flex-wrap items-center justify-between gap-y-4 px-6 py-5 font-mono text-[10px] tracking-[0.2em] uppercase sm:grid sm:grid-cols-3 sm:flex-nowrap sm:gap-y-0 ${
             isDark ? "text-white/40" : "text-gray-400"
           }`}
         >
-          <div className="w-fit justify-self-start">
+          <div className="order-1 w-fit justify-self-start">
             <span>
               {String(currentIndex + 1).padStart(2, "0")} /{" "}
               {String(projects.length).padStart(2, "0")}
@@ -309,7 +313,7 @@ export function ProjectShowcase({
           </div>
 
           {/* Device switcher, flanked by prev/next project arrows */}
-          <div className="justify-self-center flex items-center gap-3 normal-case tracking-normal">
+          <div className="order-3 flex w-full items-center justify-center gap-3 normal-case tracking-normal sm:order-2 sm:w-auto sm:justify-self-center">
             <button
               type="button"
               onClick={prevProject}
@@ -368,7 +372,9 @@ export function ProjectShowcase({
             </button>
           </div>
 
-          <span className="justify-self-end">PROJECT SHOWCASE</span>
+          <span className="order-2 justify-self-end sm:order-3">
+            PROJECT SHOWCASE
+          </span>
         </div>
       </div>
     </div>
