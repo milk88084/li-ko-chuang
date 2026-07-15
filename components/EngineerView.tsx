@@ -146,17 +146,17 @@ export function EngineerView() {
     {
       name: "OpenClaw Meetup",
       time: "2026/03/04",
-      imageSrc: "/meetup_01.jpg",
+      imageSrc: "/meetup_01.webp",
     },
     {
       name: "Dify AI Meetup",
       time: "2026/01/22",
-      imageSrc: "/meetup_02.jpg",
+      imageSrc: "/meetup_02.webp",
     },
     {
       name: "claude code Meetup",
       time: "2025/12/30",
-      imageSrc: "/meetup_03.jpg",
+      imageSrc: "/meetup_03.webp",
     },
   ];
 
@@ -201,7 +201,7 @@ export function EngineerView() {
 
   return (
     <main id="view-engineer">
-      <section className="relative z-10 flex min-h-screen flex-col items-center overflow-hidden px-6 pb-0 pt-28 text-center md:h-screen md:pt-16">
+      <section className="relative z-10 flex min-h-screen flex-col items-center overflow-hidden px-6 pb-0 pt-28 text-center md:min-h-screen md:pt-16">
         {/* Mesh / radial gradient background (adapts to day / night) */}
         <div
           aria-hidden
@@ -218,7 +218,7 @@ export function EngineerView() {
         {/* Centre-aligned header */}
         <div className="relative z-30 mx-auto max-w-3xl md:shrink-0">
           <h1
-            className="fade-in-up delay-100 text-4xl font-bold leading-[1.08] tracking-tight md:text-[clamp(4rem,5.5vh,3.75rem)]"
+            className="fade-in-up delay-100 text-4xl font-bold leading-[1.08] tracking-tight md:text-[clamp(3.75rem,5.5vh,4rem)]"
             style={{
               backgroundImage: titleGradient,
               WebkitBackgroundClip: "text",
@@ -338,15 +338,19 @@ export function EngineerView() {
               </div>
             </div>
 
-            {/* Central phone mockup image — enlarged, flush to the bottom */}
-            <div className="absolute bottom-0 left-1/2 z-0 -translate-x-1/2">
+            {/* Central phone mockup image — enlarged, flush to the bottom.
+                Sized as a share of the Stage's own height (md:h-full on the
+                wrapper gives the image a definite containing-block height)
+                instead of a raw vh value, so it always fits inside the Stage
+                box and never pokes up over the header on short viewports. */}
+            <div className="absolute bottom-0 left-1/2 z-0 -translate-x-1/2 md:h-full">
               <Image
                 src="/engineer_hero.png"
                 alt="LI KO CHUANG portfolio shown on an iPhone held in hand"
-                width={1024}
+                width={824}
                 height={926}
                 priority
-                className="w-[380px] max-w-none drop-shadow-[0_40px_90px_-30px_rgba(0,0,0,0.25)] md:w-[46vh] md:min-w-[450px] dark:drop-shadow-[0_45px_120px_-25px_rgba(168,85,247,0.6)]"
+                className="w-[380px] max-w-none drop-shadow-[0_40px_90px_-30px_rgba(0,0,0,0.25)] md:h-[92%] md:w-auto dark:drop-shadow-[0_45px_120px_-25px_rgba(168,85,247,0.6)]"
                 style={{ animationDelay: "0.4s" }}
               />
             </div>
@@ -370,7 +374,7 @@ export function EngineerView() {
 
       <section
         id="eng-intro"
-        className="relative z-10 flex flex-col justify-center overflow-hidden bg-white px-6 py-20 transition-colors duration-300 md:h-screen md:py-10 dark:bg-[#0a0a0a]"
+        className="relative z-10 flex flex-col justify-center overflow-hidden bg-white px-6 py-20 transition-colors duration-300 md:min-h-screen md:py-10 dark:bg-[#0a0a0a]"
       >
         <div className="mx-auto w-full max-w-6xl">
           {/* Giant headline — kept above the enlarged phone mockup (z-30 vs
@@ -389,7 +393,7 @@ export function EngineerView() {
           </h2>
 
           {/* Banner with a phone breaking out of its bounds */}
-          <div className="relative mt-8 md:mt-[3vh]">
+          <div className="relative mt-8 md:mt-[3vh] md:h-[34vh] md:min-h-[260px]">
             <div className="relative min-h-[400px] overflow-hidden rounded-4xl bg-white dark:bg-[#0a0a0a] md:h-[34vh] md:min-h-[260px] md:rounded-[2.5rem]">
               {/* Blended monochrome photo on the right */}
               <div className="absolute inset-y-0 right-0 w-2/3 md:w-1/2">
@@ -415,18 +419,20 @@ export function EngineerView() {
               </div>
             </div>
 
-            {/* Phone mockup image — centered, sized to 70% of the section's
-                own height on desktop (calc(100vh - 4rem) * 0.7), so it
-                deliberately breaks out past the banner's top and bottom
-                edges. Sized by height (w-auto) instead of width so it scales
-                with viewport height like the rest of this section. */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+            {/* Phone mockup image — centered, breaking out past the banner's
+                top and bottom edges by a fixed amount (calc(100% + 40px)
+                relative to the banner's own height) instead of an
+                independent vh value, so the breakout stays a small, safe
+                constant and never grows large enough to collide with the
+                heading above or the overview text below on short
+                viewports. */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 md:h-full">
               <Image
                 src="/engineer_intro.png"
                 alt="LI KO CHUANG site shown on a tilted iPhone"
-                width={808}
+                width={845}
                 height={1024}
-                className="w-[300px] drop-shadow-[0_50px_90px_-25px_rgba(60,70,150,0.5)] md:h-[calc(70vh_-_2.8rem)] md:w-auto md:min-h-[380px]"
+                className="w-[300px] drop-shadow-[0_50px_90px_-25px_rgba(60,70,150,0.5)] md:h-[calc(100%_+_40px)] md:w-auto"
               />
             </div>
           </div>
@@ -452,7 +458,7 @@ export function EngineerView() {
 
       <section
         id="eng-showcase"
-        className="relative z-10 flex flex-col justify-center overflow-hidden py-20 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 transition-colors duration-300 md:h-screen md:py-10"
+        className="relative z-10 flex flex-col justify-center overflow-hidden py-20 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 transition-colors duration-300 md:min-h-screen md:py-10"
       >
         <div className="mx-auto w-full max-w-6xl">
           <ProjectShowcase
@@ -718,77 +724,55 @@ export function EngineerView() {
                       : "delay-300"
                 }`}
               >
-                {index === 1 ? (
-                  <>
-                    <div className="md:col-span-4">
-                      <div className="h-full rounded-2xl border border-gray-100 dark:border-white/10 bg-gray-900/5 dark:bg-white/5 p-6 md:p-7 flex flex-col">
-                        <div className="space-y-5">
-                          <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
-                            <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                            {item.time}
-                          </p>
-
-                          <div>
-                            <h3 className="text-xl md:text-2xl font-semibold tracking-tight italic text-gray-900 dark:text-white">
-                              {item.name}
-                            </h3>
+                {(() => {
+                  const isReversed = index % 2 === 1;
+                  return (
+                    <>
+                      <div
+                        className={`md:col-span-8 relative ${isReversed ? "md:order-2" : "md:order-1"}`}
+                      >
+                        <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
+                          <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
+                          <div className="aspect-video relative">
+                            <Image
+                              src={item.imageSrc}
+                              alt={item.name}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 66vw"
+                              className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                              priority={index === 0}
+                            />
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="md:col-span-8 relative">
-                      <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
-                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
-                        <div className="aspect-video relative">
-                          <Image
-                            src={item.imageSrc}
-                            alt={item.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 66vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                            priority={false}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="md:col-span-8 relative">
-                      <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
-                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
-                        <div className="aspect-video relative">
-                          <Image
-                            src={item.imageSrc}
-                            alt={item.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 66vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                            priority={index === 0}
-                          />
-                        </div>
-                      </div>
-                    </div>
+                      <div
+                        className={`md:col-span-4 ${isReversed ? "md:order-1" : "md:order-2"}`}
+                      >
+                        <div
+                          className={`h-full rounded-2xl border border-gray-100 dark:border-white/10 p-6 md:p-7 flex flex-col ${
+                            isReversed
+                              ? "bg-gray-900/5 dark:bg-white/5"
+                              : "bg-white dark:bg-[#0a0a0a]"
+                          }`}
+                        >
+                          <div className="space-y-5">
+                            <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
+                              <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                              {item.time}
+                            </p>
 
-                    <div className="md:col-span-4">
-                      <div className="h-full rounded-2xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#0a0a0a] p-6 md:p-7 flex flex-col">
-                        <div className="space-y-5">
-                          <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
-                            <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                            {item.time}
-                          </p>
-
-                          <div>
-                            <h3 className="text-xl md:text-2xl font-semibold italic tracking-tight text-gray-900 dark:text-white">
-                              {item.name}
-                            </h3>
+                            <div>
+                              <h3 className="text-xl md:text-2xl font-semibold italic tracking-tight text-gray-900 dark:text-white">
+                                {item.name}
+                              </h3>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                )}
+                    </>
+                  );
+                })()}
               </div>
             ))}
           </div>
