@@ -206,6 +206,69 @@ export function ProjectShowcase({
     ? screenMatrix(screenWidth, screenHeight, device.corners, stageSize)
     : undefined;
 
+  // Rendered twice: inline in the meta bar at sm+, and as its own row
+  // below the device mockup on mobile (see render below for why).
+  const deviceSwitcherButtons = (
+    <>
+      <button
+        type="button"
+        onClick={prevProject}
+        aria-label="Previous project"
+        className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
+          isDark
+            ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+            : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+        }`}
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </button>
+
+      <div
+        className={`flex gap-1 rounded-full p-1 ${
+          isDark ? "bg-white/10" : "border border-gray-200 bg-white"
+        }`}
+      >
+        {DEVICES.map(({ key, label, icon: Icon }) => {
+          const active = deviceType === key;
+          return (
+            <button
+              key={key}
+              type="button"
+              onClick={() => setDeviceType(key)}
+              aria-label={`${label} view`}
+              aria-pressed={active}
+              className={`flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 font-sans text-xs font-medium transition-all ${
+                active
+                  ? isDark
+                    ? "bg-white text-black"
+                    : "bg-gray-900 text-white"
+                  : isDark
+                    ? "text-gray-400 hover:text-white"
+                    : "text-gray-500 hover:text-gray-900"
+              }`}
+            >
+              <Icon className="h-4 w-4" />
+              <span className="hidden sm:inline">{label}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <button
+        type="button"
+        onClick={nextProject}
+        aria-label="Next project"
+        className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
+          isDark
+            ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+            : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+        }`}
+      >
+        <ChevronRight className="h-4 w-4" />
+      </button>
+    </>
+  );
+
   return (
     <div className="w-full">
       {/* Stage */}
@@ -283,17 +346,17 @@ export function ProjectShowcase({
           </div>
         </div>
 
-        {/* Meta + device switcher + progress. The switcher (2 arrow buttons
-            + 3 device buttons) needs ~250px, which doesn't fit a third of a
-            mobile-width row alongside the counter and label, so on mobile
-            it wraps to its own centered row below them; sm+ keeps the
-            original single-line grid. */}
+        {/* Meta bar: counter + label. The device switcher only shows here
+            at sm+ (inline, 3-column grid); on mobile there isn't room for
+            it next to the counter/label, so it renders separately below
+            the device mockup instead (see the block right after this
+            one's closing stage div). */}
         <div
-          className={`absolute inset-x-0 top-0 flex flex-wrap items-center justify-between gap-y-4 px-6 py-5 font-mono text-[10px] tracking-[0.2em] uppercase sm:grid sm:grid-cols-3 sm:flex-nowrap sm:gap-y-0 ${
+          className={`absolute inset-x-0 top-0 flex items-center justify-between px-6 py-5 font-mono text-[10px] tracking-[0.2em] uppercase sm:grid sm:grid-cols-3 ${
             isDark ? "text-white/40" : "text-gray-400"
           }`}
         >
-          <div className="order-1 w-fit justify-self-start">
+          <div className="w-fit justify-self-start">
             <span>
               {String(currentIndex + 1).padStart(2, "0")} /{" "}
               {String(projects.length).padStart(2, "0")}
@@ -312,70 +375,18 @@ export function ProjectShowcase({
             </div>
           </div>
 
-          {/* Device switcher, flanked by prev/next project arrows */}
-          <div className="order-3 flex w-full items-center justify-center gap-3 normal-case tracking-normal sm:order-2 sm:w-auto sm:justify-self-center">
-            <button
-              type="button"
-              onClick={prevProject}
-              aria-label="Previous project"
-              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
-                isDark
-                  ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
-                  : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-              }`}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-
-            <div
-              className={`flex gap-1 rounded-full p-1 ${
-                isDark ? "bg-white/10" : "border border-gray-200 bg-white"
-              }`}
-            >
-              {DEVICES.map(({ key, label, icon: Icon }) => {
-                const active = deviceType === key;
-                return (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => setDeviceType(key)}
-                    aria-label={`${label} view`}
-                    aria-pressed={active}
-                    className={`flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 font-sans text-xs font-medium transition-all ${
-                      active
-                        ? isDark
-                          ? "bg-white text-black"
-                          : "bg-gray-900 text-white"
-                        : isDark
-                          ? "text-gray-400 hover:text-white"
-                          : "text-gray-500 hover:text-gray-900"
-                    }`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    <span className="hidden sm:inline">{label}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <button
-              type="button"
-              onClick={nextProject}
-              aria-label="Next project"
-              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
-                isDark
-                  ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
-                  : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-              }`}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
+          <div className="hidden items-center gap-3 normal-case tracking-normal sm:flex sm:justify-self-center">
+            {deviceSwitcherButtons}
           </div>
 
-          <span className="order-2 justify-self-end sm:order-3">
-            PROJECT SHOWCASE
-          </span>
+          <span className="justify-self-end">PROJECT SHOWCASE</span>
         </div>
+      </div>
+
+      {/* Mobile-only device switcher, directly below the device mockup —
+          at sm+ it's already shown inline in the meta bar above. */}
+      <div className="flex items-center justify-center gap-3 pb-6 normal-case tracking-normal sm:hidden">
+        {deviceSwitcherButtons}
       </div>
     </div>
   );
