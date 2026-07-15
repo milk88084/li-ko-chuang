@@ -186,12 +186,20 @@ export default function StudioPage() {
         <header className="text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center justify-center gap-3">
             <Link href="/" className="hover:opacity-70 transition-opacity">
+              {/* Black logo by day, white by night (toggled via `.dark`). */}
               <Image
-                src="/favicon.ico"
+                src="/favicon_black.ico"
                 alt="Logo"
                 width={40}
                 height={40}
-                className="rounded-xl shadow-sm"
+                className="rounded-xl shadow-sm dark:hidden"
+              />
+              <Image
+                src="/favicon_white.ico"
+                alt="Logo"
+                width={40}
+                height={40}
+                className="hidden rounded-xl shadow-sm dark:block"
               />
             </Link>
             Idea Generator

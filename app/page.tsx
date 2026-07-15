@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Globe, ArrowDown } from "lucide-react";
 import dynamic from "next/dynamic";
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore, useState, useEffect, useCallback } from "react";
 import { useLanguage } from "@/providers/LanguageProvider";
 import content from "@/data/content.json";
 
@@ -29,6 +29,61 @@ function useIsMounted() {
   );
 }
 
+// Full-screen brand loading screen shown until the physics background starts
+// animating. `fadingOut` drives the exit fade; theme comes from the `.dark`
+// class (CSS) so it renders correctly even before next-themes has resolved.
+function LoadingScreen({ fadingOut = false }: { fadingOut?: boolean }) {
+  return (
+    <div
+      aria-hidden={fadingOut}
+      className={`fixed inset-0 z-[60] flex items-center justify-center bg-[#FBFBFD] transition-opacity duration-700 ease-out dark:bg-black ${
+        fadingOut ? "pointer-events-none opacity-0" : "opacity-100"
+      }`}
+    >
+      <div className="px-4 text-center">
+        {/* Triple-outlined text. Three stacked copies in the same grid cell,
+            each stroke narrower than the last and alternating blue / paper /
+            blue, so each layer carves or repaints the middle of the one below —
+            leaving three concentric blue lines (outer, middle, inner) with a
+            hollow centre. Text-stroke has no Tailwind utility, so widths/colours
+            are inline; --paper flips with the theme so the carved gaps always
+            match the loading background. */}
+        <div className="grid [--paper:#FBFBFD] dark:[--paper:#000000]">
+          <h1
+            className="col-start-1 row-start-1 text-[13vw] font-black leading-[0.85] tracking-[-0.04em] text-transparent md:text-[12vw] lg:text-[11vw]"
+            style={{ WebkitTextStroke: "12px #3250FE" }}
+          >
+            LOADING
+          </h1>
+          <h1
+            aria-hidden
+            className="col-start-1 row-start-1 text-[13vw] font-black leading-[0.85] tracking-[-0.04em] text-transparent md:text-[12vw] lg:text-[11vw]"
+            style={{ WebkitTextStroke: "8px var(--paper)" }}
+          >
+            LOADING
+          </h1>
+          <h1
+            aria-hidden
+            className="col-start-1 row-start-1 text-[13vw] font-black leading-[0.85] tracking-[-0.04em] text-transparent md:text-[12vw] lg:text-[11vw]"
+            style={{ WebkitTextStroke: "4px #3250FE" }}
+          >
+            LOADING
+          </h1>
+        </div>
+        <div
+          className="mt-8 flex items-center justify-center gap-2"
+          role="status"
+          aria-label="Loading"
+        >
+          <span className="h-2.5 w-2.5 animate-bounce rounded-full bg-[#3250FE] [animation-delay:-0.3s]" />
+          <span className="h-2.5 w-2.5 animate-bounce rounded-full bg-[#3250FE] [animation-delay:-0.15s]" />
+          <span className="h-2.5 w-2.5 animate-bounce rounded-full bg-[#3250FE]" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const mounted = useIsMounted();
   const { resolvedTheme, setTheme } = useTheme();
@@ -37,6 +92,17 @@ export default function Home() {
   const isDark = mounted ? resolvedTheme === "dark" : false;
   const t = content[language as LanguageKey];
 
+  // Keep the loading screen up until the physics tags start falling.
+  const [physicsReady, setPhysicsReady] = useState(false);
+  const handlePhysicsReady = useCallback(() => setPhysicsReady(true), []);
+
+  // Safety net: never trap the user behind the loader if onReady never fires
+  // (e.g. the physics init throws). Drops it after a hard ceiling.
+  useEffect(() => {
+    const fallback = setTimeout(() => setPhysicsReady(true), 5000);
+    return () => clearTimeout(fallback);
+  }, []);
+
   const navItems = [
     { id: "engineer", label: t.nav.engineer, href: "/engineer" },
     { id: "marketer", label: t.nav.marketer, href: "/marketer" },
@@ -44,20 +110,7 @@ export default function Home() {
   ];
 
   if (!mounted) {
-    return (
-      <main className="h-screen relative overflow-hidden bg-[#FBFBFD] dark:bg-black">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-          <div className="text-center px-4">
-            <h1 className="text-[13vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] text-[#3250FE]">
-              LI KO
-            </h1>
-            <h1 className="text-[13vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] text-[#3250FE]">
-              CHUANG
-            </h1>
-          </div>
-        </div>
-      </main>
-    );
+    return <LoadingScreen />;
   }
 
   return (
@@ -80,12 +133,21 @@ export default function Home() {
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
+            {/* Black logo by day, white by night (toggled via `.dark`). */}
             <Image
-              src="/favicon.ico"
+              src="/favicon_black.ico"
               alt="Logo"
               width={28}
               height={28}
-              className="rounded-md shadow-sm"
+              className="rounded-md shadow-sm dark:hidden"
+              priority
+            />
+            <Image
+              src="/favicon_white.ico"
+              alt="Logo"
+              width={28}
+              height={28}
+              className="hidden rounded-md shadow-sm dark:block"
               priority
             />
           </Link>
@@ -167,7 +229,15 @@ export default function Home() {
         </div>
       </div>
 
-      <PhysicsBackground language={language} isDark={isDark} />
+      <PhysicsBackground
+        language={language}
+        isDark={isDark}
+        onReady={handlePhysicsReady}
+      />
+
+      {/* Loading screen sits on top of the (already-mounted) content and the
+          physics scene, fading out once the tags begin to fall. */}
+      <LoadingScreen fadingOut={physicsReady} />
     </main>
   );
 }

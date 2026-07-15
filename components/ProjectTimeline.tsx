@@ -162,11 +162,16 @@ export function ProjectTimeline({
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className={`flex justify-start md:justify-center gap-3 px-12 overflow-x-auto scrollbar-hide py-2 scroll-smooth ${
+          className={`relative overflow-x-auto scrollbar-hide px-12 py-2 scroll-smooth ${
             isDragging ? "cursor-grabbing select-none" : "cursor-grab"
           }`}
         >
-          {projects.map((project, index) => (
+          {/* Inner track: w-max shrinks to the buttons' total width; mx-auto
+              then centres it when it fits, but collapses to 0 margin
+              (left-aligned, fully scrollable) when it overflows — so the first
+              button is never clipped the way flex justify-center clipped it. */}
+          <div className="flex gap-3 w-max mx-auto">
+            {projects.map((project, index) => (
             <button
               key={index}
               ref={(el) => {
@@ -191,6 +196,7 @@ export function ProjectTimeline({
               )}
             </button>
           ))}
+          </div>
         </div>
       </div>
 

@@ -107,7 +107,8 @@ export async function GET() {
     }
 
     return NextResponse.json({ articles });
-  } catch {
+  } catch (error) {
+    console.error("[medium-rss] fetch/parse failed:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

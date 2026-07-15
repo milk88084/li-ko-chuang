@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { LanguageProvider } from "@/providers/LanguageProvider";
+import { FaviconSync } from "@/components/FaviconSync";
 import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
@@ -28,8 +29,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // Day-mode default; FaviconSync swaps to the white icon at night.
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon_black.ico",
   },
   keywords: [
     "React",
@@ -105,6 +107,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
+          <FaviconSync />
           <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
