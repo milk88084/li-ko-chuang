@@ -34,7 +34,6 @@ import {
   Database,
   Terminal,
   CalendarDays,
-  User,
   MessageCircle,
 } from "lucide-react";
 import content from "@/data/content.json";
@@ -184,13 +183,17 @@ export function EngineerView() {
 
   // Day/night hero background: a deep blue-black night gradient (brand blue
   // #3250FE, no purple) in dark mode; a clean white base in light mode.
+  // Both variants END on the exact background color of the next section
+  // (intro: #ffffff light / #0a0a0a dark) so the hero melts into it with no
+  // color step at the seam — the earlier grey (#f5f5f7) / near-black (#05060d)
+  // endpoints were what made the join read as two stacked boxes.
   const heroBackground = isDark
     ? "radial-gradient(85% 65% at 78% 34%, rgba(50,80,254,0.34), transparent 55%)," +
       "radial-gradient(75% 55% at 44% 26%, rgba(90,130,255,0.32), transparent 55%)," +
       "radial-gradient(72% 65% at 12% 92%, rgba(250,190,120,0.3), transparent 50%)," +
-      "linear-gradient(180deg, #000000 0%, #05070f 22%, #0a1230 55%, #0a0f24 80%, #05060d 100%)"
+      "linear-gradient(180deg, #000000 0%, #05070f 22%, #0a1230 55%, #0a0f24 82%, #0a0a0a 100%)"
     : "radial-gradient(100% 90% at 50% 8%, rgba(0,0,0,0.03), transparent 60%)," +
-      "linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%)";
+      "linear-gradient(180deg, #ffffff 0%, #f4f4f6 46%, #ffffff 100%)";
   const heroVignette = isDark
     ? "radial-gradient(115% 85% at 50% 42%, transparent 38%, rgba(0,0,0,0.55) 100%)"
     : "radial-gradient(120% 90% at 50% 40%, transparent 62%, rgba(0,0,0,0.05) 100%)";
@@ -313,34 +316,10 @@ export function EngineerView() {
               } as CSSProperties
             }
           >
-            {/* Left top card — Complete your Profile */}
-            <div className="absolute left-0 top-[-64px] z-30 hidden md:block">
-              <div className="animate-float">
-                <FloatingGlassCard
-                  className="h-[210px] w-[220px]"
-                  style={{ transform: cardTilt }}
-                  isDark={isDark}
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-blue-400/80 to-[#3250FE]/80">
-                      <User className="h-4 w-4 text-white" />
-                    </span>
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                      Complete your Profile
-                    </p>
-                  </div>
-                  <p className="mt-3 text-xs font-light leading-relaxed text-gray-500 dark:text-white/55">
-                    Create a profile in your style
-                  </p>
-                </FloatingGlassCard>
-              </div>
-            </div>
-
-            {/* Left bottom card — Fast processing of requests. Same left offset
-                AND same float phase (no animationDelay) as the top card, so the
-                two bob together as one rigid stack and read as identically
-                tilted — an out-of-phase bob made the pair look skewed. */}
-            <div className="absolute left-0 top-[162px] z-30 hidden md:block">
+            {/* Left card — a single card, deliberately sitting LOWER than the
+                right card (top-[120px] vs the right's top-[-48px]) so the two
+                sides read as a staggered pair, not a level shelf. */}
+            <div className="absolute left-0 top-[120px] z-30 hidden md:block">
               <div className="animate-float">
                 <FloatingGlassCard
                   className="h-[210px] w-[220px]"
@@ -360,7 +339,7 @@ export function EngineerView() {
               </div>
             </div>
 
-            {/* Right card — pricing / plans */}
+            {/* Right card — pricing / plans, sits higher than the left card */}
             <div className="absolute right-0 top-[-48px] z-30 hidden md:block">
               <div className="animate-float" style={{ animationDelay: "0.8s" }}>
                 <FloatingGlassCard
@@ -403,6 +382,7 @@ export function EngineerView() {
             </div>
           </div>
         </div>
+        <SectionBridge toColor={fadeToWhite} />
       </section>
 
       <section
@@ -522,7 +502,6 @@ export function EngineerView() {
           />
         </div>
       </section>
-      <div></div>
 
       <section
         id="eng-work"
