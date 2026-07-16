@@ -3,6 +3,7 @@
 import {
   useState,
   useCallback,
+  useRef,
   type ReactNode,
   type CSSProperties,
 } from "react";
@@ -33,7 +34,6 @@ import {
   Database,
   Terminal,
   CalendarDays,
-  User,
   MessageCircle,
 } from "lucide-react";
 import content from "@/data/content.json";
@@ -43,6 +43,7 @@ import Image from "next/image";
 import { ProjectShowcase } from "./ProjectShowcase";
 import { ProjectTimeline } from "./ProjectTimeline";
 import { MediumArticles } from "./MediumArticles";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 type ContentType = typeof content;
 type LanguageKey = keyof ContentType;
@@ -119,15 +120,17 @@ function FloatingGlassCard({
 // differ — adjacent same-color sections don't need a bridge.
 function SectionBridge({ toColor }: { toColor: string }) {
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-40 backdrop-blur-xl"
-      style={{
-        background: `linear-gradient(to bottom, transparent, ${toColor})`,
-        WebkitMaskImage: "linear-gradient(to bottom, transparent, black 55%)",
-        maskImage: "linear-gradient(to bottom, transparent, black 55%)",
-      }}
-    />
+    <div className="my-10 ">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-40 backdrop-blur-xl"
+        style={{
+          background: `linear-gradient(to bottom, transparent, ${toColor})`,
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 55%)",
+          maskImage: "linear-gradient(to bottom, transparent, black 55%)",
+        }}
+      />
+    </div>
   );
 }
 
@@ -138,6 +141,9 @@ export function EngineerView() {
   const data = t.engineer;
   const isDark = resolvedTheme === "dark";
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const rootRef = useRef<HTMLElement>(null);
+
+  useScrollReveal(rootRef);
 
   const offlineHighlightTitle =
     language === "en" ? "Offline Event Highlights" : "線下活動精華回顧";
@@ -177,13 +183,17 @@ export function EngineerView() {
 
   // Day/night hero background: a deep blue-black night gradient (brand blue
   // #3250FE, no purple) in dark mode; a clean white base in light mode.
+  // Both variants END on the exact background color of the next section
+  // (intro: #ffffff light / #0a0a0a dark) so the hero melts into it with no
+  // color step at the seam — the earlier grey (#f5f5f7) / near-black (#05060d)
+  // endpoints were what made the join read as two stacked boxes.
   const heroBackground = isDark
     ? "radial-gradient(85% 65% at 78% 34%, rgba(50,80,254,0.34), transparent 55%)," +
       "radial-gradient(75% 55% at 44% 26%, rgba(90,130,255,0.32), transparent 55%)," +
       "radial-gradient(72% 65% at 12% 92%, rgba(250,190,120,0.3), transparent 50%)," +
-      "linear-gradient(180deg, #000000 0%, #05070f 22%, #0a1230 55%, #0a0f24 80%, #05060d 100%)"
+      "linear-gradient(180deg, #000000 0%, #05070f 22%, #0a1230 55%, #0a0f24 82%, #0a0a0a 100%)"
     : "radial-gradient(100% 90% at 50% 8%, rgba(0,0,0,0.03), transparent 60%)," +
-      "linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%)";
+      "linear-gradient(180deg, #ffffff 0%, #f4f4f6 46%, #ffffff 100%)";
   const heroVignette = isDark
     ? "radial-gradient(115% 85% at 50% 42%, transparent 38%, rgba(0,0,0,0.55) 100%)"
     : "radial-gradient(120% 90% at 50% 40%, transparent 62%, rgba(0,0,0,0.05) 100%)";
@@ -200,8 +210,12 @@ export function EngineerView() {
   const fadeToGray = isDark ? "#050505" : "#f9fafb";
 
   return (
-    <main id="view-engineer">
-      <section className="relative z-10 flex min-h-screen flex-col items-center overflow-hidden px-6 pb-0 pt-28 text-center md:min-h-screen md:pt-16">
+    <main id="view-engineer" ref={rootRef}>
+      {/* overflow-clip, not overflow-hidden, on every section that clips:
+          `hidden` makes the section a scroll container, and a scroll container
+          that never scrolls leaves the view() timelines of everything inside it
+          permanently inactive. `clip` clips identically without creating one. */}
+      <section className="hero-timeline relative z-10 flex min-h-screen flex-col items-center overflow-clip px-6 pb-0 pt-28 text-center md:h-screen md:pt-16">
         {/* Mesh / radial gradient background (adapts to day / night) */}
         <div
           aria-hidden
@@ -215,10 +229,11 @@ export function EngineerView() {
           style={{ background: heroVignette }}
         />
 
-        {/* Centre-aligned header */}
-        <div className="relative z-30 mx-auto max-w-3xl md:shrink-0">
+        {/* Centre-aligned header. Entry is the one-shot load animation on the
+            children; `scroll-out` then hands the exit over to the wheel. */}
+        <div className="scroll-out relative z-30 mx-auto max-w-3xl md:shrink-0">
           <h1
-            className="fade-in-up delay-100 text-4xl font-bold leading-[1.08] tracking-tight md:text-[clamp(3.75rem,5.5vh,4rem)]"
+            className="fade-in-up delay-100 pb-[0.15em] text-4xl font-bold leading-[1.2] tracking-tight md:text-[clamp(4rem,5.5vh,3.75rem)]"
             style={{
               backgroundImage: titleGradient,
               WebkitBackgroundClip: "text",
@@ -244,42 +259,70 @@ export function EngineerView() {
           </p>
         </div>
 
-        {/* Stage: central phone + asymmetrical floating glass cards.
-            This outer div's fade-in animation makes browsers promote it to
-            its own stacking context, so the blurred bridge below is nested
-            inside it (not a sibling) — otherwise the bridge's z-20 would
-            always paint over this whole subtree regardless of the cards'
-            z-30. */}
+        {/* Stage: central phone + asymmetrical floating glass cards. Three
+            layers stacked by z-index — a drifting phone (z-0), a STATIC
+            full-width bridge pinned to the bottom (z-10), and the drifting
+            cards (z-20). Keeping the bridge out of the parallax means it always
+            covers the hero→intro seam instead of drifting off it, while phone
+            and cards still parallax together (identical drift on both layers). */}
         <div className="fade-in delay-300 relative mt-auto h-[440px] w-full md:h-[42vh] md:min-h-[440px]">
-          <div className="relative mx-auto h-full w-full max-w-5xl">
-            {/* Left top card — Complete your Profile (slight depth-of-field blur) */}
-            <div className="absolute left-0 top-0 z-30 hidden md:block">
-              <div className="animate-float" style={{ filter: "blur(0.4px)" }}>
-                <FloatingGlassCard
-                  className="h-[200px] w-[220px]"
-                  style={{ transform: cardTilt }}
-                  isDark={isDark}
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-blue-400/80 to-[#3250FE]/80">
-                      <User className="h-4 w-4 text-white" />
-                    </span>
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                      Complete your Profile
-                    </p>
-                  </div>
-                  <p className="mt-3 text-xs font-light leading-relaxed text-gray-500 dark:text-white/55">
-                    Create a profile in your style
-                  </p>
-                </FloatingGlassCard>
-              </div>
+          {/* Phone layer — drifts, sits UNDER the bridge so its bottom melts
+              into the next section. */}
+          <div
+            className="parallax absolute inset-0 z-0"
+            style={
+              {
+                "--parallax-from": "36px",
+                "--parallax-to": "-36px",
+              } as CSSProperties
+            }
+          >
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+              <Image
+                src="/engineer_hero.png"
+                alt="LI KO CHUANG portfolio shown on an iPhone held in hand"
+                width={1024}
+                height={926}
+                priority
+                className="w-[380px] max-w-none drop-shadow-[0_40px_90px_-30px_rgba(0,0,0,0.25)] md:w-[46vh] md:min-w-[450px] dark:drop-shadow-[0_45px_120px_-25px_rgba(168,85,247,0.6)]"
+              />
             </div>
+          </div>
 
-            {/* Left bottom card — Fast processing of requests */}
-            <div className="absolute left-4 top-[216px] z-30 hidden md:block">
-              <div className="animate-float" style={{ animationDelay: "1.5s" }}>
+          {/* Static full-width bridge — pinned to the section bottom so it does
+              NOT drift with the parallax (that drift used to lift it off the
+              bottom and expose a hard hero→intro seam). Sits above the phone
+              (z-0) and below the cards (z-20); w-screen breaks it out of the
+              centred column to cover the full viewport width. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute bottom-0 left-1/2 z-10 h-40 w-screen -translate-x-1/2 backdrop-blur-xl"
+            style={{
+              background: `linear-gradient(to bottom, transparent, ${fadeToWhite})`,
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent, black 55%)",
+              maskImage: "linear-gradient(to bottom, transparent, black 55%)",
+            }}
+          />
+
+          {/* Cards layer — drifts, sits ABOVE the bridge so the glass cards
+              stay sharp. */}
+          <div
+            className="parallax relative z-20 mx-auto h-full w-full max-w-5xl"
+            style={
+              {
+                "--parallax-from": "36px",
+                "--parallax-to": "-36px",
+              } as CSSProperties
+            }
+          >
+            {/* Left card — a single card, deliberately sitting LOWER than the
+                right card (top-[120px] vs the right's top-[-48px]) so the two
+                sides read as a staggered pair, not a level shelf. */}
+            <div className="absolute left-0 top-[120px] z-30 hidden md:block">
+              <div className="animate-float">
                 <FloatingGlassCard
-                  className="h-[200px] w-[220px]"
+                  className="h-[210px] w-[220px]"
                   style={{ transform: cardTilt }}
                   isDark={isDark}
                 >
@@ -296,15 +339,15 @@ export function EngineerView() {
               </div>
             </div>
 
-            {/* Right card — pricing / plans */}
-            <div className="absolute right-0 top-4 z-30 hidden md:block">
+            {/* Right card — pricing / plans, sits higher than the left card */}
+            <div className="absolute right-0 top-[-48px] z-30 hidden md:block">
               <div className="animate-float" style={{ animationDelay: "0.8s" }}>
                 <FloatingGlassCard
-                  className="h-[200px] w-[220px]"
+                  className="h-[210px] w-[220px]"
                   style={{ transform: cardTilt }}
                   isDark={isDark}
                 >
-                  <div className="space-y-2.5">
+                  <div className="space-y-2">
                     {[
                       { name: "Monthly", price: "$25 / month", best: false },
                       { name: "Yearly", price: "$180 / year", best: true },
@@ -312,7 +355,7 @@ export function EngineerView() {
                     ].map((plan) => (
                       <div
                         key={plan.name}
-                        className={`flex items-center justify-between rounded-xl border px-3 py-2.5 ${
+                        className={`flex items-center justify-between rounded-xl border px-3 py-2 ${
                           plan.best
                             ? "border-black/15 dark:border-white/30"
                             : "border-black/6 dark:border-white/10"
@@ -337,72 +380,54 @@ export function EngineerView() {
                 </FloatingGlassCard>
               </div>
             </div>
-
-            {/* Central phone mockup image — enlarged, flush to the bottom.
-                Sized as a share of the Stage's own height (md:h-full on the
-                wrapper gives the image a definite containing-block height)
-                instead of a raw vh value, so it always fits inside the Stage
-                box and never pokes up over the header on short viewports. */}
-            <div className="absolute bottom-0 left-1/2 z-0 -translate-x-1/2 md:h-full">
-              <Image
-                src="/engineer_hero.png"
-                alt="LI KO CHUANG portfolio shown on an iPhone held in hand"
-                width={824}
-                height={926}
-                priority
-                className="w-[380px] max-w-none drop-shadow-[0_40px_90px_-30px_rgba(0,0,0,0.25)] md:h-[92%] md:w-auto dark:drop-shadow-[0_45px_120px_-25px_rgba(168,85,247,0.6)]"
-                style={{ animationDelay: "0.4s" }}
-              />
-            </div>
           </div>
-
-          {/* Blurred bridge so the hero melts into the next section — kept
-              inside the Stage box's stacking context so it can sit between
-              the phone (z-0) and the cards (z-30) above. */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-40 backdrop-blur-xl"
-            style={{
-              background: `linear-gradient(to bottom, transparent, ${fadeToWhite})`,
-              WebkitMaskImage:
-                "linear-gradient(to bottom, transparent, black 55%)",
-              maskImage: "linear-gradient(to bottom, transparent, black 55%)",
-            }}
-          />
         </div>
+        <SectionBridge toColor={fadeToWhite} />
       </section>
 
       <section
         id="eng-intro"
-        className="relative z-10 flex flex-col justify-center overflow-hidden bg-white px-6 py-20 transition-colors duration-300 md:min-h-screen md:py-10 dark:bg-[#0a0a0a]"
+        className="relative z-10 flex flex-col justify-center overflow-clip bg-white px-6 py-20 transition-colors duration-300 md:h-screen md:py-10 dark:bg-[#0a0a0a]"
       >
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="reveal mx-auto w-full max-w-6xl">
           {/* Giant headline — kept above the enlarged phone mockup (z-30 vs
               the phone's z-20) so it never gets visually covered. A drop
               shadow keeps it legible where it overlaps the phone's light
               bezel/screen, since z-index alone doesn't guarantee contrast. */}
           <h2
-            className="relative z-30 text-center text-[15vw] font-bold leading-[0.9] tracking-tighter text-gray-900 md:text-[clamp(3rem,9vh,8.5rem)] dark:text-white"
-            style={{
-              filter: isDark
-                ? "drop-shadow(0 2px 16px rgba(0,0,0,0.7))"
-                : "drop-shadow(0 2px 16px rgba(255,255,255,0.85))",
-            }}
+            className="parallax relative z-30 text-center text-[15vw] font-bold leading-[0.9] tracking-tighter text-gray-900 md:text-[clamp(3rem,9vh,8.5rem)] dark:text-white"
+            style={
+              {
+                filter: isDark
+                  ? "drop-shadow(0 2px 16px rgba(0,0,0,0.7))"
+                  : "drop-shadow(0 2px 16px rgba(255,255,255,0.85))",
+                "--parallax-from": "28px",
+                "--parallax-to": "-28px",
+              } as CSSProperties
+            }
           >
             {data.philosophy.title}
           </h2>
 
           {/* Banner with a phone breaking out of its bounds */}
-          <div className="relative mt-8 md:mt-[3vh] md:h-[34vh] md:min-h-[260px]">
-            <div className="relative min-h-[400px] overflow-hidden rounded-4xl bg-white dark:bg-[#0a0a0a] md:h-[34vh] md:min-h-[260px] md:rounded-[2.5rem]">
+          <div className="relative mt-8 md:mt-[3vh]">
+            <div className="relative min-h-[400px] overflow-clip rounded-4xl bg-white dark:bg-[#0a0a0a] md:h-[34vh] md:min-h-[260px] md:rounded-[2.5rem]">
               {/* Blended monochrome photo on the right */}
               <div className="absolute inset-y-0 right-0 w-2/3 md:w-1/2">
+                {/* Over-scaled so the parallax drift always has image to
+                    slide, instead of exposing a bare strip at the edges. */}
                 <Image
                   src="/engineer_intro_bg.webp"
                   alt="Working with people"
                   fill
                   sizes="(max-width: 768px) 66vw, 50vw"
-                  className="object-cover grayscale"
+                  className="parallax scale-110 object-cover grayscale"
+                  style={
+                    {
+                      "--parallax-from": "-22px",
+                      "--parallax-to": "22px",
+                    } as CSSProperties
+                  }
                 />
                 <div className="absolute inset-0 bg-white dark:bg-[#0a0a0a] mix-blend-color opacity-70" />
                 <div className="absolute inset-0 bg-linear-to-r from-white dark:from-[#0a0a0a] via-white/60 dark:via-[#0a0a0a]/60 to-transparent" />
@@ -419,20 +444,27 @@ export function EngineerView() {
               </div>
             </div>
 
-            {/* Phone mockup image — centered, breaking out past the banner's
-                top and bottom edges by a fixed amount (calc(100% + 40px)
-                relative to the banner's own height) instead of an
-                independent vh value, so the breakout stays a small, safe
-                constant and never grows large enough to collide with the
-                heading above or the overview text below on short
-                viewports. */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 md:h-full">
+            {/* Phone mockup image — centered, sized to 70% of the section's
+                own height on desktop (calc(100vh - 4rem) * 0.7), so it
+                deliberately breaks out past the banner's top and bottom
+                edges. Sized by height (w-auto) instead of width so it scales
+                with viewport height like the rest of this section. */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+              {/* Parallax sits on the image, not on the wrapper: the wrapper's
+                  -translate-x-1/2 utility compiles to the same `translate`
+                  property the keyframes drive, so they cannot share an element. */}
               <Image
                 src="/engineer_intro.png"
                 alt="LI KO CHUANG site shown on a tilted iPhone"
-                width={845}
+                width={808}
                 height={1024}
-                className="w-[300px] drop-shadow-[0_50px_90px_-25px_rgba(60,70,150,0.5)] md:h-[calc(100%_+_40px)] md:w-auto"
+                className="parallax w-[300px] drop-shadow-[0_50px_90px_-25px_rgba(60,70,150,0.5)] md:h-[calc(70vh_-_2.8rem)] md:w-auto md:min-h-[380px]"
+                style={
+                  {
+                    "--parallax-from": "70px",
+                    "--parallax-to": "-70px",
+                  } as CSSProperties
+                }
               />
             </div>
           </div>
@@ -458,9 +490,9 @@ export function EngineerView() {
 
       <section
         id="eng-showcase"
-        className="relative z-10 flex flex-col justify-center overflow-hidden py-20 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 transition-colors duration-300 md:min-h-screen md:py-10"
+        className="relative z-10 flex flex-col justify-center overflow-clip py-20 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 transition-colors duration-300 md:h-screen md:py-10"
       >
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="reveal mx-auto w-full max-w-6xl">
           <ProjectShowcase
             projects={data.showcase.projects}
             nextProjectLabel={data.showcase.nextProject}
@@ -470,14 +502,13 @@ export function EngineerView() {
           />
         </div>
       </section>
-      <div></div>
 
       <section
         id="eng-work"
         className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
       >
         <div className="max-w-3xl mx-auto">
-          <div className="mb-16">
+          <div className="reveal mb-16">
             <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
               {data.experience.title}
             </h2>
@@ -485,7 +516,7 @@ export function EngineerView() {
               {data.experience.subtitle}
             </p>
           </div>
-          <div className="space-y-12 relative border-l border-gray-200 dark:border-gray-700 ml-3 md:ml-0 pl-8 md:pl-0">
+          <div className="reveal-stagger space-y-12 relative border-l border-gray-200 dark:border-gray-700 ml-3 md:ml-0 pl-8 md:pl-0">
             {data.experience.items.map((item, index) => (
               <div
                 key={index}
@@ -525,16 +556,16 @@ export function EngineerView() {
         className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
       >
         <div className="max-w-3xl mx-auto">
-          <div className="flex items-center gap-3 mb-8">
+          <div className="reveal flex items-center gap-3 mb-8">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
             <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">
               {data.now.title}
             </h2>
           </div>
-          <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+          <h3 className="reveal text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
             {data.now.subtitle}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8">
             {data.now.items.map((item, index) => {
               const IconComponent = iconMap[item.icon as keyof typeof iconMap];
               return (
@@ -558,8 +589,8 @@ export function EngineerView() {
         </div>
       </section>
 
-      <section className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
+      <section className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-clip">
+        <div className="reveal max-w-4xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {data.techStack.title}
           </h2>
@@ -568,7 +599,13 @@ export function EngineerView() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-8">
+        {/* No blur on the way in/out here: these rows are viewport-wide and
+            already running an infinite marquee, so a scrubbed filter on top
+            of that is the one place it actually costs frames. */}
+        <div
+          className="reveal flex flex-col gap-8"
+          style={{ "--reveal-blur": "0px" } as CSSProperties}
+        >
           <div className="flex whitespace-nowrap overflow-hidden">
             <div className="flex animate-marquee-right gap-6 px-3 w-max">
               {[
@@ -657,7 +694,7 @@ export function EngineerView() {
         className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
       >
         <div className="max-w-5xl mx-auto">
-          <div className="mb-12 text-center">
+          <div className="reveal mb-12 text-center">
             <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
               {data.projects.title}
             </h2>
@@ -665,15 +702,17 @@ export function EngineerView() {
               {data.projects.subtitle}
             </p>
           </div>
-          <ProjectTimeline
-            projects={data.projects.items}
-            problemLabel={data.projects.problemLabel}
-            outcomeLabel={data.projects.outcomeLabel}
-            techLabel={data.projects.techLabel}
-            isDark={isDark}
-            activeProjectIndex={activeProjectIndex}
-            onProjectChange={setActiveProjectIndex}
-          />
+          <div className="reveal">
+            <ProjectTimeline
+              projects={data.projects.items}
+              problemLabel={data.projects.problemLabel}
+              outcomeLabel={data.projects.outcomeLabel}
+              techLabel={data.projects.techLabel}
+              isDark={isDark}
+              activeProjectIndex={activeProjectIndex}
+              onProjectChange={setActiveProjectIndex}
+            />
+          </div>
         </div>
         <SectionBridge toColor={fadeToWhite} />
       </section>
@@ -683,7 +722,7 @@ export function EngineerView() {
         className="py-24 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
       >
         <div className="max-w-5xl mx-auto">
-          <div className="mb-12 text-center">
+          <div className="reveal mb-12 text-center">
             <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
               {data.mediumArticles.title}
             </h2>
@@ -691,96 +730,118 @@ export function EngineerView() {
               {data.mediumArticles.subtitle}
             </p>
           </div>
-          <MediumArticles
-            readMore={data.mediumArticles.readMore}
-            viewAll={data.mediumArticles.viewAll}
-            loading={data.mediumArticles.loading}
-            noArticles={data.mediumArticles.noArticles}
-            mediumUrl={data.mediumArticles.mediumUrl}
-          />
+          <div className="reveal">
+            <MediumArticles
+              readMore={data.mediumArticles.readMore}
+              viewAll={data.mediumArticles.viewAll}
+              loading={data.mediumArticles.loading}
+              noArticles={data.mediumArticles.noArticles}
+              mediumUrl={data.mediumArticles.mediumUrl}
+            />
+          </div>
         </div>
         <SectionBridge toColor={fadeToGray} />
       </section>
       <section
         id="eng-offline-highlight"
-        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-hidden"
+        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-clip"
       >
         <div className="max-w-3xl mx-auto">
-          <div className="mb-12 text-center">
+          <div className="reveal mb-12 text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
               {offlineHighlightTitle}
             </h2>
           </div>
 
-          <div className="space-y-10">
+          {/* The rows used to fade in once on mount with fixed delays; the
+              stagger is now carried by the scroll timeline instead. */}
+          <div className="reveal-stagger space-y-10">
             {offlineHighlights.map((item, index) => (
               <div
                 key={`${item.name}-${index}`}
-                className={`grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch fade-in-up ${
-                  index === 0
-                    ? "delay-100"
-                    : index === 1
-                      ? "delay-200"
-                      : "delay-300"
-                }`}
+                className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch"
               >
-                {(() => {
-                  const isReversed = index % 2 === 1;
-                  return (
-                    <>
-                      <div
-                        className={`md:col-span-8 relative ${isReversed ? "md:order-2" : "md:order-1"}`}
-                      >
-                        <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
-                          <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
-                          <div className="aspect-video relative">
-                            <Image
-                              src={item.imageSrc}
-                              alt={item.name}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 66vw"
-                              className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                              priority={index === 0}
-                            />
+                {index === 1 ? (
+                  <>
+                    <div className="md:col-span-4">
+                      <div className="h-full rounded-2xl border border-gray-100 dark:border-white/10 bg-gray-900/5 dark:bg-white/5 p-6 md:p-7 flex flex-col">
+                        <div className="space-y-5">
+                          <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
+                            <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                            {item.time}
+                          </p>
+
+                          <div>
+                            <h3 className="text-xl md:text-2xl font-semibold tracking-tight italic text-gray-900 dark:text-white">
+                              {item.name}
+                            </h3>
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <div
-                        className={`md:col-span-4 ${isReversed ? "md:order-1" : "md:order-2"}`}
-                      >
-                        <div
-                          className={`h-full rounded-2xl border border-gray-100 dark:border-white/10 p-6 md:p-7 flex flex-col ${
-                            isReversed
-                              ? "bg-gray-900/5 dark:bg-white/5"
-                              : "bg-white dark:bg-[#0a0a0a]"
-                          }`}
-                        >
-                          <div className="space-y-5">
-                            <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
-                              <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                              {item.time}
-                            </p>
+                    <div className="md:col-span-8 relative">
+                      <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
+                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
+                        <div className="aspect-video relative">
+                          <Image
+                            src={item.imageSrc}
+                            alt={item.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 66vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                            priority={false}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="md:col-span-8 relative">
+                      <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
+                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
+                        <div className="aspect-video relative">
+                          <Image
+                            src={item.imageSrc}
+                            alt={item.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 66vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                            priority={index === 0}
+                          />
+                        </div>
+                      </div>
+                    </div>
 
-                            <div>
-                              <h3 className="text-xl md:text-2xl font-semibold italic tracking-tight text-gray-900 dark:text-white">
-                                {item.name}
-                              </h3>
-                            </div>
+                    <div className="md:col-span-4">
+                      <div className="h-full rounded-2xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#0a0a0a] p-6 md:p-7 flex flex-col">
+                        <div className="space-y-5">
+                          <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
+                            <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                            {item.time}
+                          </p>
+
+                          <div>
+                            <h3 className="text-xl md:text-2xl font-semibold italic tracking-tight text-gray-900 dark:text-white">
+                              {item.name}
+                            </h3>
                           </div>
                         </div>
                       </div>
-                    </>
-                  );
-                })()}
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 text-center relative z-10 transition-colors duration-300">
-        <div className="max-w-2xl mx-auto space-y-8">
+      {/* Last section: reveals against its own section timeline (see
+          .reveal-in-section) because there is no page left to scroll after it. */}
+      <section className="section-timeline py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 text-center relative z-10 transition-colors duration-300">
+        <div className="reveal-in-section max-w-2xl mx-auto space-y-8">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {data.contact.title}
           </h2>

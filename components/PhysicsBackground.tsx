@@ -74,16 +74,28 @@ const sizeConfig = {
 interface PhysicsBackgroundProps {
   language: string;
   isDark: boolean;
+  // Fired once the Matter runner actually starts animating (after the initial
+  // delay), so the page can drop its loading screen exactly when the tags
+  // begin to fall.
+  onReady?: () => void;
 }
 
 export default function PhysicsBackground({
   language,
   isDark,
+  onReady,
 }: PhysicsBackgroundProps) {
   const sceneRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<Matter.Engine | null>(null);
   const bodiesRef = useRef<Map<number, Matter.Body>>(new Map());
   const tagRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+  // Keep the latest onReady in a ref so the physics effect can stay
+  // dependency-free (it must run exactly once) yet still call the current
+  // callback.
+  const onReadyRef = useRef(onReady);
+  useEffect(() => {
+    onReadyRef.current = onReady;
+  }, [onReady]);
 
   useEffect(() => {
     if (!sceneRef.current) return;
@@ -191,6 +203,8 @@ export default function PhysicsBackground({
     const timer = setTimeout(() => {
       Matter.Runner.run(runner, engine);
       updateLoop();
+      // Tags are now falling — let the page hide its loading screen.
+      onReadyRef.current?.();
     }, 1500);
 
     const handleResize = () => {

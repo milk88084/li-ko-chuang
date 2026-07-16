@@ -48,12 +48,21 @@ export function Navigation({ currentPage }: NavigationProps) {
           href="/"
           className="flex items-center hover:opacity-70 transition-opacity"
         >
+          {/* Black logo by day, white by night — toggled via the `.dark`
+              class so it works without reading the theme in JS. */}
           <Image
-            src="/favicon.ico"
+            src="/favicon_black.ico"
             alt="Logo"
             width={32}
             height={32}
-            className="rounded-lg shadow-sm"
+            className="rounded-lg shadow-sm dark:hidden"
+          />
+          <Image
+            src="/favicon_white.ico"
+            alt="Logo"
+            width={32}
+            height={32}
+            className="hidden rounded-lg shadow-sm dark:block"
           />
         </Link>
 

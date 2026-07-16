@@ -34,10 +34,13 @@ html {
   overflow-x: hidden;
 }
 
+/* No overflow-x here on purpose: a non-visible overflow on <body> makes it its
+   own scroll container, and since it never actually scrolls, every
+   view() timeline inside it goes inert. The rule on <html> above already
+   propagates to the viewport and clips horizontally, which is all this was for. */
 body {
   background-color: var(--background);
   color: var(--foreground);
-  overflow-x: hidden;
   font-family:
     "Inter",
     -apple-system,
@@ -223,4 +226,124 @@ section {
 
 .delay-500 {
   animation-delay: 0.5s;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Scroll-scrubbed choreography
+
+   These animations are driven by the element's own progress through
+   the viewport (animation-timeline: view()) rather than by time, so
+   the wheel *is* the playhead: scrolling down plays them forward,
+   scrolling up plays them backward. Nothing "fires once".
+
+   Everything lives inside the @supports guard on purpose — a browser
+   without scroll-driven animations simply renders the static, fully
+   visible layout instead of getting stuck on an opacity:0 first frame.
+
+   The keyframes animate the standalone `translate` / `scale`
+   properties, never `transform`. Tailwind v4's translate-* utilities
+   also compile to `translate`, so these classes must not be put on an
+   element that already carries one (the animation would win and eat
+   the utility's offset) — parallax goes on a wrapper or on the image
+   itself in those spots.
+   ───────────────────────────────────────────────────────────────── */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-out,
+    .parallax {
+      animation-timeline: view(), view();
+      animation-timing-function: linear;
+      will-change: opacity, translate, scale, filter;
+    }
+
+    /* Section/element reveals (.reveal, .reveal-stagger, .reveal-in-section)
+       are driven by GSAP ScrollTrigger instead of a CSS scroll timeline — see
+       hooks/useScrollReveal.ts. They slide in from a direction and fade, with
+       no blur, so nothing stays soft in the middle of the viewport. */
+
+    /* Names the hero section's own view progress so the header inside it can
+       borrow it (timeline names resolve up the ancestor chain). */
+    .hero-timeline {
+      view-timeline-name: --hero;
+      view-timeline-axis: block;
+    }
+
+    /* Exit only — for content already on screen at load (the hero), where an
+       entry animation would just be a flash of nothing.
+
+       It rides the *section's* timeline, not its own: the header is a short
+       box sitting near the top of the page, so its own exit range is only its
+       own height (~150px) and the fade was over almost before it started.
+       Against the full-height section, the dissolve spans the first ~35% of
+       the hero scrolling away — which is the whole time the header is still
+       on screen. */
+    .scroll-out {
+      animation-name: reveal-out;
+      animation-timeline: --hero;
+      animation-range: exit 0% exit 35%;
+      animation-fill-mode: both;
+      --reveal-to: -80px;
+      --reveal-blur: 7px;
+      --reveal-scale: 1;
+    }
+
+    /* The final section on the page can never scroll any further up, so its
+       children physically cannot reach a vh-based entry offset — the last one
+       tops out around 30vh and would sit at opacity 0.08 forever. So it rides
+       its *section's* timeline in percentages instead: the section's entry
+       always reaches 100% when the page bottoms out, whatever the viewport
+       height, so every child is guaranteed to finish. */
+    .section-timeline {
+      view-timeline-name: --sec;
+      view-timeline-axis: block;
+    }
+
+    /* Depth: layers travel at their own speed against the page. The range is
+       symmetric around the element being centred, so an element sitting
+       mid-viewport at load starts at zero offset. */
+    .parallax {
+      animation-name: parallax-drift;
+      animation-range: cover 0% cover 100%;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    translate: 0 var(--reveal-from, 64px);
+    scale: var(--reveal-scale, 0.97);
+    filter: blur(var(--reveal-blur, 5px));
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes reveal-out {
+  from {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    translate: 0 var(--reveal-to, -52px);
+    scale: var(--reveal-scale, 0.97);
+    filter: blur(var(--reveal-blur, 5px));
+  }
+}
+
+@keyframes parallax-drift {
+  from {
+    translate: 0 var(--parallax-from, 40px);
+  }
+  to {
+    translate: 0 var(--parallax-to, -40px);
+  }
 }
