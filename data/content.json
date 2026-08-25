@@ -26,7 +26,7 @@
       "philosophy": {
         "title": "Vibe Coding in the AI Era",
         "quote": "Bridging technical development and product thinking.",
-        "content": "With over 1.5 years of frontend development experience combined with 8 years of marketing background, I not only write scalable code but also optimize products from user experience and business goal perspectives."
+        "content": "With over 2 years of frontend development experience combined with 8 years of marketing background, I not only write scalable code but also optimize products from user experience and business goal perspectives."
       },
       "showcase": {
         "title": "Featured Projects",
@@ -37,24 +37,50 @@
           {
             "id": 0,
             "name": "araS",
-            "description": "Asset Tracking Website/Software",
+            "description": "Asset, portfolio and retirement tracker — live on the App Store",
             "tech": [
-              "React",
+              "Next.js 15",
+              "React 19",
               "TypeScript",
-              "husky",
-              "Tailwind CSS",
-              "E2E Testing",
+              "Expo",
+              "Expo Router",
+              "Prisma",
               "PostgreSQL",
               "Clerk",
+              "Zod",
+              "RevenueCat",
+              "Sentry",
+              "EAS",
               "Vercel"
             ],
             "color": "#F59E0B",
             "img": "/00_araS.webp",
             "video": "/00_araS.mp4",
-            "link": "#"
+            "link": "https://apps.apple.com/app/id6785747999"
           },
           {
             "id": 1,
+            "name": "reteP",
+            "description": "Food and calorie tracking iOS app — live on the App Store",
+            "tech": [
+              "Expo SDK 54",
+              "React Native",
+              "TypeScript",
+              "Expo Router",
+              "Zustand",
+              "Clerk",
+              "FastAPI",
+              "react-native-svg",
+              "EAS"
+            ],
+            "color": "#10B981",
+            "img": "/05_reteP.webp",
+            "video": "",
+            "link": "https://apps.apple.com/app/id6798490139",
+            "imgMobile": "/05_reteP_mobile.webp"
+          },
+          {
+            "id": 2,
             "name": "U-Turn",
             "description": "Badminton Grouping System",
             "tech": [
@@ -72,7 +98,7 @@
             "link": "#"
           },
           {
-            "id": 2,
+            "id": 3,
             "name": "Market Trend Tracking Platform",
             "description": "Finding market trends, mastering market pulses",
             "tech": [
@@ -91,7 +117,7 @@
             "link": "#"
           },
           {
-            "id": 3,
+            "id": 4,
             "name": "Digital Chatroom",
             "description": "Chatroom switching tools based on environment variables",
             "tech": [
@@ -110,7 +136,7 @@
             "link": "#"
           },
           {
-            "id": 4,
+            "id": 5,
             "name": "Taiwan Info Service Provider Database",
             "description": "Connecting to MOEA database for searching and filtering providers",
             "tech": [
@@ -130,7 +156,7 @@
             "link": "#"
           },
           {
-            "id": 5,
+            "id": 6,
             "name": "AI Agent Collaboration Platform",
             "description": "Personalized chatbot with knowledge base integration",
             "tech": [
@@ -179,8 +205,8 @@
           },
           {
             "icon": "Terminal",
-            "title": "Full-stack Fundamentals",
-            "description": "Learning full-stack development, including API design, database design, and security considerations."
+            "title": "Shipping Full-stack",
+            "description": "Ran two iOS apps through the whole product lifecycle — API design, auth, database, App Store review and subscription billing."
           },
           {
             "icon": "Workflow",
@@ -190,9 +216,47 @@
           {
             "icon": "Database",
             "title": "Database Design",
-            "description": "Learning database architecture, index design, and security."
+            "description": "Designing production Prisma + PostgreSQL schemas: relations, indexing and per-user data isolation."
           }
         ]
+      },
+      "shipped": {
+        "label": "Shipped Solo",
+        "title": "Two products I built and shipped alone.",
+        "description": "Schema design, backend API, iOS builds, App Store review, subscription billing, crash monitoring and over-the-air updates — every layer of both apps is mine.",
+        "stats": [
+          {
+            "value": "2",
+            "label": "Apps live on the App Store"
+          },
+          {
+            "value": "1",
+            "label": "Person, idea to review"
+          },
+          {
+            "value": "Web + iOS",
+            "label": "Sharing one API and auth"
+          },
+          {
+            "value": "OTA",
+            "label": "Updates shipped in production"
+          }
+        ],
+        "apps": [
+          {
+            "name": "araS",
+            "icon": "/icon-araS.webp",
+            "caption": "Asset & retirement tracker",
+            "href": "https://apps.apple.com/app/id6785747999"
+          },
+          {
+            "name": "reteP",
+            "icon": "/icon-reteP.webp",
+            "caption": "Food & calorie tracker",
+            "href": "https://apps.apple.com/app/id6798490139"
+          }
+        ],
+        "appStoreLabel": "View on the App Store"
       },
       "projects": {
         "title": "Projects",
@@ -203,25 +267,54 @@
         "items": [
           {
             "title": "araS",
-            "subtitle": "Asset Tracking Website/Software",
+            "subtitle": "Personal asset, portfolio and retirement tracker — designed, built and shipped to the App Store solo.",
             "tech": [
-              "React",
+              "Next.js 15",
+              "React 19",
               "TypeScript",
-              "husky",
-              "Tailwind CSS",
-              "E2E Testing",
+              "Expo",
+              "Expo Router",
+              "Prisma",
               "PostgreSQL",
               "Clerk",
+              "Zod",
+              "RevenueCat",
+              "Sentry",
+              "EAS",
               "Vercel"
             ],
-            "problem": "The app records asset gains and losses and calculates retirement funds, but the existing system lacks asset tracking functionality, which needs to be implemented.",
-            "outcome": "The post records the accumulated value and profit/loss of assets, has over 1000 likes on Threads, and 70% of users have a need for it.",
+            "problem": "Assets, liabilities, holdings and insurance policies sit scattered across banks, brokers and spreadsheets, so net worth is never visible at a glance — and no existing tool covers TW/US holdings, dividends and retirement projection in one place.",
+            "outcome": "Built end to end alone: a Turborepo monorepo where a Next.js 15 web/API and an Expo iOS app share one API surface, one set of Zod schemas and one Clerk auth flow. Version 1.3 is on the App Store, with a RevenueCat premium subscription, Sentry crash monitoring and JS updates pushed over the air through EAS.",
             "metrics": [
-              "Asset Tracking",
-              "Asset Profit and Loss Record",
-              "Retirement Fund Calculation",
-              "Login System",
-              "Database Management"
+              "On the App Store",
+              "Solo-built",
+              "Web + iOS monorepo",
+              "Premium subscription",
+              "OTA updates"
+            ]
+          },
+          {
+            "title": "reteP",
+            "subtitle": "Daily food and calorie logging, ported from the web app into a native iOS app.",
+            "tech": [
+              "Expo SDK 54",
+              "React Native",
+              "TypeScript",
+              "Expo Router",
+              "Zustand",
+              "Clerk",
+              "FastAPI",
+              "react-native-svg",
+              "EAS"
+            ],
+            "problem": "The web version already worked, but opening a browser for every meal is friction nobody repeats three times a day — food logging only sticks when it is one tap away on the phone.",
+            "outcome": "Ported the web UI one-to-one into an Expo app that reuses the existing FastAPI backend and Clerk auth, then shipped it to the App Store on 19 Aug 2026: Sign in with Apple, macro rings, calendar history, yearly SVG trend charts and a personal food library — with day-to-day updates delivered over the air.",
+            "metrics": [
+              "On the App Store",
+              "Solo-built",
+              "Calorie & macro tracking",
+              "Sign in with Apple",
+              "OTA updates"
             ]
           },
           {
@@ -342,31 +435,91 @@
         "title": "Tech Stack",
         "subtitle": "The Engineer's Toolkit.",
         "items": [
-          { "icon": "Code2", "name": "React.js", "hoverColor": "blue-500" },
-          { "icon": "Zap", "name": "Next.js", "hoverColor": "black-500" },
-          { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" },
-          { "icon": "Globe", "name": "HTML", "hoverColor": "orange-500" },
-          { "icon": "Palette", "name": "CSS", "hoverColor": "blue-400" },
+          {
+            "icon": "Code2",
+            "name": "React.js",
+            "hoverColor": "blue-500"
+          },
+          {
+            "icon": "Zap",
+            "name": "Next.js",
+            "hoverColor": "black-500"
+          },
+          {
+            "icon": "Type",
+            "name": "TypeScript",
+            "hoverColor": "blue-600"
+          },
+          {
+            "icon": "Globe",
+            "name": "HTML",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Palette",
+            "name": "CSS",
+            "hoverColor": "blue-400"
+          },
           {
             "icon": "FileJson",
             "name": "JavaScript",
             "hoverColor": "yellow-400"
           },
-          { "icon": "Shield", "name": "Husky", "hoverColor": "red-500" },
-          { "icon": "CheckCircle2", "name": "Jest", "hoverColor": "red-600" },
-          { "icon": "Link", "name": "Axios", "hoverColor": "purple-500" },
+          {
+            "icon": "Shield",
+            "name": "Husky",
+            "hoverColor": "red-500"
+          },
+          {
+            "icon": "CheckCircle2",
+            "name": "Jest",
+            "hoverColor": "red-600"
+          },
+          {
+            "icon": "Link",
+            "name": "Axios",
+            "hoverColor": "purple-500"
+          },
           {
             "icon": "Workflow",
             "name": "Redux Toolkit",
             "hoverColor": "purple-600"
           },
-          { "icon": "Atom", "name": "Jotai", "hoverColor": "gray-500" },
-          { "icon": "Waves", "name": "Zustand", "hoverColor": "amber-700" },
-          { "icon": "Wind", "name": "Tailwind CSS", "hoverColor": "cyan-500" },
-          { "icon": "Brush", "name": "Sass", "hoverColor": "pink-400" },
-          { "icon": "Zap", "name": "Vite", "hoverColor": "yellow-500" },
-          { "icon": "Box", "name": "Docker", "hoverColor": "blue-600" },
-          { "icon": "GitBranch", "name": "Git", "hoverColor": "orange-600" },
+          {
+            "icon": "Atom",
+            "name": "Jotai",
+            "hoverColor": "gray-500"
+          },
+          {
+            "icon": "Waves",
+            "name": "Zustand",
+            "hoverColor": "amber-700"
+          },
+          {
+            "icon": "Wind",
+            "name": "Tailwind CSS",
+            "hoverColor": "cyan-500"
+          },
+          {
+            "icon": "Brush",
+            "name": "Sass",
+            "hoverColor": "pink-400"
+          },
+          {
+            "icon": "Zap",
+            "name": "Vite",
+            "hoverColor": "yellow-500"
+          },
+          {
+            "icon": "Box",
+            "name": "Docker",
+            "hoverColor": "blue-600"
+          },
+          {
+            "icon": "GitBranch",
+            "name": "Git",
+            "hoverColor": "orange-600"
+          },
           {
             "icon": "Sparkles",
             "name": "Firebase",
@@ -576,8 +729,14 @@
         "podcastLink": "https://podcasts.apple.com/tw/podcast/%E5%BE%AE%E5%B0%8F%E6%97%A5%E5%B8%B8/id1529054627",
         "spotifyLink": "https://open.spotify.com/show/3wCLU0GfVEmJi64JQjDoYk?si=fa66da1d507b48f0",
         "platforms": [
-          { "name": "Apple Podcasts", "color": "gray" },
-          { "name": "Spotify", "color": "green" }
+          {
+            "name": "Apple Podcasts",
+            "color": "gray"
+          },
+          {
+            "name": "Spotify",
+            "color": "green"
+          }
         ],
         "episodesTitle": "Latest Episodes",
         "episodes": [
@@ -602,20 +761,36 @@
         "title": "Daily Interests",
         "subtitle": "Exploring life beyond work",
         "items": [
-          { "icon": "Film", "name": "Movies", "hoverColor": "amber-600" },
+          {
+            "icon": "Film",
+            "name": "Movies",
+            "hoverColor": "amber-600"
+          },
           {
             "icon": "Activity",
             "name": "Volleyball",
             "hoverColor": "blue-500"
           },
-          { "icon": "Trophy", "name": "Badminton", "hoverColor": "amber-600" },
+          {
+            "icon": "Trophy",
+            "name": "Badminton",
+            "hoverColor": "amber-600"
+          },
           {
             "icon": "Palette",
             "name": "Contemporary Art",
             "hoverColor": "amber-600"
           },
-          { "icon": "Music", "name": "Music", "hoverColor": "purple-500" },
-          { "icon": "BookOpen", "name": "Reading", "hoverColor": "green-500" }
+          {
+            "icon": "Music",
+            "name": "Music",
+            "hoverColor": "purple-500"
+          },
+          {
+            "icon": "BookOpen",
+            "name": "Reading",
+            "hoverColor": "green-500"
+          }
         ],
         "socialTitle": "Follow Me",
         "socialLinks": [
@@ -663,7 +838,6 @@
       }
     }
   },
-
   "zh": {
     "common": {
       "portfolio": "MAX",
@@ -691,7 +865,7 @@
       "philosophy": {
         "title": "與AI共融的Vibe Coding",
         "quote": "橋接技術開發與產品思維。",
-        "content": "我擁有 1.5 年以上的前端開發經驗，並結合過去 8 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。"
+        "content": "我擁有 2 年以上的前端開發經驗，並結合過去 8 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。"
       },
       "showcase": {
         "title": "精選專案",
@@ -702,24 +876,50 @@
           {
             "id": 0,
             "name": "araS",
-            "description": "資產追蹤網站/軟體",
+            "description": "資產、投資組合與退休試算 App — 已上架 App Store",
             "tech": [
-              "React",
+              "Next.js 15",
+              "React 19",
               "TypeScript",
-              "husky",
-              "Tailwind CSS",
-              "E2E Testing",
+              "Expo",
+              "Expo Router",
+              "Prisma",
               "PostgreSQL",
               "Clerk",
+              "Zod",
+              "RevenueCat",
+              "Sentry",
+              "EAS",
               "Vercel"
             ],
             "color": "#F59E0B",
             "img": "/00_araS.webp",
             "video": "/00_araS.mp4",
-            "link": "#"
+            "link": "https://apps.apple.com/app/id6785747999"
           },
           {
             "id": 1,
+            "name": "reteP",
+            "description": "飲食熱量記錄 iOS App — 已上架 App Store",
+            "tech": [
+              "Expo SDK 54",
+              "React Native",
+              "TypeScript",
+              "Expo Router",
+              "Zustand",
+              "Clerk",
+              "FastAPI",
+              "react-native-svg",
+              "EAS"
+            ],
+            "color": "#10B981",
+            "img": "/05_reteP.webp",
+            "video": "",
+            "link": "https://apps.apple.com/app/id6798490139",
+            "imgMobile": "/05_reteP_mobile.webp"
+          },
+          {
+            "id": 2,
             "name": "U-Turn",
             "description": "羽球分組系統",
             "tech": [
@@ -737,7 +937,7 @@
             "link": "#"
           },
           {
-            "id": 2,
+            "id": 3,
             "name": "國內市場趨勢追蹤平台",
             "description": "尋找市場趨勢，掌握市場脈動",
             "tech": [
@@ -756,7 +956,7 @@
             "link": "#"
           },
           {
-            "id": 3,
+            "id": 4,
             "name": "數位聊天室",
             "description": "依環境變數切換不同數位工具的聊天室",
             "tech": [
@@ -775,7 +975,7 @@
             "link": "#"
           },
           {
-            "id": 4,
+            "id": 5,
             "name": "台灣資訊服務業者資料庫",
             "description": "串接經濟部資料庫，提供台灣資訊服務業者的查詢與篩選功能",
             "tech": [
@@ -795,7 +995,7 @@
             "link": "#"
           },
           {
-            "id": 5,
+            "id": 6,
             "name": "AI Agent 協作平台",
             "description": "建立機器人聊天室，掛載個人知識庫，提供個人化服務，提高工作效率",
             "tech": [
@@ -844,8 +1044,8 @@
           },
           {
             "icon": "Terminal",
-            "title": "全端基礎開發",
-            "description": "學習全端基礎開發，包括 API 設計、資料庫設計、安全性考量等。"
+            "title": "獨立產品開發與上架",
+            "description": "完整跑過兩款 iOS App 的產品生命週期：API 設計、認證流程、資料庫、App Store 送審到訂閱金流。"
           },
           {
             "icon": "Workflow",
@@ -855,9 +1055,47 @@
           {
             "icon": "Database",
             "title": "資料庫設計",
-            "description": "學習資料庫設計，包括資料庫架構、索引設計、安全性考量等。"
+            "description": "以 Prisma 與 PostgreSQL 設計正式上線的資料模型，處理關聯、索引與使用者資料隔離。"
           }
         ]
+      },
+      "shipped": {
+        "label": "獨立開發並上架",
+        "title": "兩款從零打造、獨立送審上線的產品。",
+        "description": "資料庫設計、後端 API、iOS 打包、App Store 送審，到訂閱金流、當機監控與 OTA 熱更新，兩款 App 的每一層都是自己做的。",
+        "stats": [
+          {
+            "value": "2",
+            "label": "款 App 已上架 App Store"
+          },
+          {
+            "value": "1",
+            "label": "人，從構想做到送審"
+          },
+          {
+            "value": "Web + iOS",
+            "label": "共用同一套 API 與認證"
+          },
+          {
+            "value": "OTA",
+            "label": "線上營運中的熱更新"
+          }
+        ],
+        "apps": [
+          {
+            "name": "araS",
+            "icon": "/icon-araS.webp",
+            "caption": "資產與退休試算",
+            "href": "https://apps.apple.com/app/id6785747999"
+          },
+          {
+            "name": "reteP",
+            "icon": "/icon-reteP.webp",
+            "caption": "飲食熱量記錄",
+            "href": "https://apps.apple.com/app/id6798490139"
+          }
+        ],
+        "appStoreLabel": "到 App Store 看看"
       },
       "projects": {
         "title": "專案",
@@ -868,25 +1106,54 @@
         "items": [
           {
             "title": "araS",
-            "subtitle": "資產追蹤APP",
+            "subtitle": "個人資產、投資組合與退休試算 App，從設計、開發到上架 App Store 全程獨立完成。",
             "tech": [
-              "React",
+              "Next.js 15",
+              "React 19",
               "TypeScript",
-              "husky",
-              "Tailwind CSS",
-              "E2E Testing",
+              "Expo",
+              "Expo Router",
+              "Prisma",
               "PostgreSQL",
               "Clerk",
+              "Zod",
+              "RevenueCat",
+              "Sentry",
+              "EAS",
               "Vercel"
             ],
-            "problem": "以APP的方式記錄資產的損益，並計算退休金，但現有系統缺乏資產追蹤功能，需要實現資產追蹤功能。",
-            "outcome": "資產累積的價值與損益紀錄，Threads貼文超過1000讚數，70%的人有使用需求",
+            "problem": "資產、負債、持股與保單分散在各家銀行、券商與試算表，淨資產永遠看不到全貌；市面上也沒有同時涵蓋台股美股持股、股息與退休金試算的工具。",
+            "outcome": "一人從頭做到底：以 Turborepo 讓 Next.js 15 網頁／API 與 Expo iOS App 共用同一套 API、Zod schema 與 Clerk 認證。目前 App Store 版本 1.3，並以 RevenueCat 提供 Premium 訂閱、Sentry 監控當機、EAS OTA 直接推送即時更新。",
             "metrics": [
-              "資產追蹤",
-              "資產損益紀錄",
-              "退休金計算",
-              "登入系統",
-              "資料庫管理"
+              "已上架 App Store",
+              "獨立開發",
+              "Web + iOS Monorepo",
+              "訂閱制付費",
+              "OTA 熱更新"
+            ]
+          },
+          {
+            "title": "reteP",
+            "subtitle": "每日飲食與熱量記錄，從網頁版移植為原生 iOS App。",
+            "tech": [
+              "Expo SDK 54",
+              "React Native",
+              "TypeScript",
+              "Expo Router",
+              "Zustand",
+              "Clerk",
+              "FastAPI",
+              "react-native-svg",
+              "EAS"
+            ],
+            "problem": "網頁版已經能用，但每一餐都要打開瀏覽器記錄，摩擦大到沒人願意一天做三次；飲食追蹤只有在手機上一鍵可達時才留得住使用者。",
+            "outcome": "將網頁版 UI 1:1 移植成 Expo App，共用既有的 FastAPI 後端與 Clerk 認證，2026/08/19 上架 App Store：支援 Sign in with Apple、營養素環圈、日曆歷史紀錄、以 SVG 純 JS 繪製的年度趨勢圖與個人食物庫，日常更新以 OTA 直接推送。",
+            "metrics": [
+              "已上架 App Store",
+              "獨立開發",
+              "熱量與營養素追蹤",
+              "Sign in with Apple",
+              "OTA 熱更新"
             ]
           },
           {
@@ -1007,31 +1274,91 @@
         "title": "技術棧",
         "subtitle": "工程師的工具箱。",
         "items": [
-          { "icon": "Code2", "name": "React.js", "hoverColor": "blue-500" },
-          { "icon": "Zap", "name": "Next.js", "hoverColor": "black-500" },
-          { "icon": "Type", "name": "TypeScript", "hoverColor": "blue-600" },
-          { "icon": "Globe", "name": "HTML", "hoverColor": "orange-500" },
-          { "icon": "Palette", "name": "CSS", "hoverColor": "blue-400" },
+          {
+            "icon": "Code2",
+            "name": "React.js",
+            "hoverColor": "blue-500"
+          },
+          {
+            "icon": "Zap",
+            "name": "Next.js",
+            "hoverColor": "black-500"
+          },
+          {
+            "icon": "Type",
+            "name": "TypeScript",
+            "hoverColor": "blue-600"
+          },
+          {
+            "icon": "Globe",
+            "name": "HTML",
+            "hoverColor": "orange-500"
+          },
+          {
+            "icon": "Palette",
+            "name": "CSS",
+            "hoverColor": "blue-400"
+          },
           {
             "icon": "FileJson",
             "name": "JavaScript",
             "hoverColor": "yellow-400"
           },
-          { "icon": "Shield", "name": "Husky", "hoverColor": "red-500" },
-          { "icon": "CheckCircle2", "name": "Jest", "hoverColor": "red-600" },
-          { "icon": "Link", "name": "Axios", "hoverColor": "purple-500" },
+          {
+            "icon": "Shield",
+            "name": "Husky",
+            "hoverColor": "red-500"
+          },
+          {
+            "icon": "CheckCircle2",
+            "name": "Jest",
+            "hoverColor": "red-600"
+          },
+          {
+            "icon": "Link",
+            "name": "Axios",
+            "hoverColor": "purple-500"
+          },
           {
             "icon": "Workflow",
             "name": "Redux Toolkit",
             "hoverColor": "purple-600"
           },
-          { "icon": "Atom", "name": "Jotai", "hoverColor": "gray-500" },
-          { "icon": "Waves", "name": "Zustand", "hoverColor": "amber-700" },
-          { "icon": "Wind", "name": "Tailwind CSS", "hoverColor": "cyan-500" },
-          { "icon": "Brush", "name": "Sass", "hoverColor": "pink-400" },
-          { "icon": "Zap", "name": "Vite", "hoverColor": "yellow-500" },
-          { "icon": "Box", "name": "Docker", "hoverColor": "blue-600" },
-          { "icon": "GitBranch", "name": "Git", "hoverColor": "orange-600" },
+          {
+            "icon": "Atom",
+            "name": "Jotai",
+            "hoverColor": "gray-500"
+          },
+          {
+            "icon": "Waves",
+            "name": "Zustand",
+            "hoverColor": "amber-700"
+          },
+          {
+            "icon": "Wind",
+            "name": "Tailwind CSS",
+            "hoverColor": "cyan-500"
+          },
+          {
+            "icon": "Brush",
+            "name": "Sass",
+            "hoverColor": "pink-400"
+          },
+          {
+            "icon": "Zap",
+            "name": "Vite",
+            "hoverColor": "yellow-500"
+          },
+          {
+            "icon": "Box",
+            "name": "Docker",
+            "hoverColor": "blue-600"
+          },
+          {
+            "icon": "GitBranch",
+            "name": "Git",
+            "hoverColor": "orange-600"
+          },
           {
             "icon": "Sparkles",
             "name": "Firebase",
@@ -1165,7 +1492,11 @@
             "name": "活動企劃",
             "hoverColor": "amber-600"
           },
-          { "icon": "Users", "name": "專案管理", "hoverColor": "green-600" },
+          {
+            "icon": "Users",
+            "name": "專案管理",
+            "hoverColor": "green-600"
+          },
           {
             "icon": "Megaphone",
             "name": "新聞稿撰寫",
@@ -1237,8 +1568,14 @@
         "podcastLink": "https://podcasts.apple.com/tw/podcast/%E5%BE%AE%E5%B0%8F%E6%97%A5%E5%B8%B8/id1529054627",
         "spotifyLink": "https://open.spotify.com/show/3wCLU0GfVEmJi64JQjDoYk?si=fa66da1d507b48f0",
         "platforms": [
-          { "name": "Apple Podcasts", "color": "gray" },
-          { "name": "Spotify", "color": "green" }
+          {
+            "name": "Apple Podcasts",
+            "color": "gray"
+          },
+          {
+            "name": "Spotify",
+            "color": "green"
+          }
         ],
         "episodesTitle": "最新單集",
         "episodes": [
@@ -1263,12 +1600,36 @@
         "title": "日常興趣",
         "subtitle": "工作以外的生活探索",
         "items": [
-          { "icon": "Film", "name": "電影", "hoverColor": "amber-600" },
-          { "icon": "Activity", "name": "排球", "hoverColor": "blue-500" },
-          { "icon": "Trophy", "name": "羽球", "hoverColor": "amber-600" },
-          { "icon": "Palette", "name": "當代藝術", "hoverColor": "amber-600" },
-          { "icon": "Music", "name": "音樂", "hoverColor": "purple-500" },
-          { "icon": "BookOpen", "name": "閱讀", "hoverColor": "green-500" }
+          {
+            "icon": "Film",
+            "name": "電影",
+            "hoverColor": "amber-600"
+          },
+          {
+            "icon": "Activity",
+            "name": "排球",
+            "hoverColor": "blue-500"
+          },
+          {
+            "icon": "Trophy",
+            "name": "羽球",
+            "hoverColor": "amber-600"
+          },
+          {
+            "icon": "Palette",
+            "name": "當代藝術",
+            "hoverColor": "amber-600"
+          },
+          {
+            "icon": "Music",
+            "name": "音樂",
+            "hoverColor": "purple-500"
+          },
+          {
+            "icon": "BookOpen",
+            "name": "閱讀",
+            "hoverColor": "green-500"
+          }
         ],
         "socialTitle": "歡迎追蹤",
         "socialLinks": [

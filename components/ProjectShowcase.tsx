@@ -23,6 +23,8 @@ interface Project {
   tech: string[];
   color: string;
   img: string;
+  /** portrait still, used on the mobile mockup when there is no video */
+  imgMobile?: string;
   video: string;
   link: string;
 }
@@ -206,6 +208,39 @@ export function ProjectShowcase({
     ? screenMatrix(screenWidth, screenHeight, device.corners, stageSize)
     : undefined;
 
+  // What actually goes on the screen for the current project + device.
+  const showVideo = deviceType === "mobile" && Boolean(currentProject.video);
+  const screenSrc = showVideo
+    ? currentProject.video
+    : deviceType === "mobile"
+      ? (currentProject.imgMobile ?? currentProject.img)
+      : currentProject.img;
+
+  // Switching projects swaps `src` on the same <img>/<video>, and between the
+  // old frame going and the new one decoding there is nothing to paint — the
+  // dark mockup shows through as a black flash. Track which source has really
+  // decoded and hold a loading state over the screen until it matches.
+  const [readySrc, setReadySrc] = useState<string | null>(null);
+  const isScreenLoading = readySrc !== screenSrc;
+  const markScreenReady = useCallback(() => setReadySrc(screenSrc), [screenSrc]);
+
+  // A cached source can already be decoded by the time its element mounts, and
+  // then `onLoad`/`onLoadedData` never fires and the overlay would sit there
+  // forever. Both elements are keyed on the source, so these ref callbacks run
+  // once per switch and catch that case.
+  const screenImgRef = useCallback(
+    (node: HTMLImageElement | null) => {
+      if (node?.complete && node.naturalWidth > 0) setReadySrc(screenSrc);
+    },
+    [screenSrc],
+  );
+  const screenVideoRef = useCallback(
+    (node: HTMLVideoElement | null) => {
+      if (node && node.readyState >= 3) setReadySrc(screenSrc);
+    },
+    [screenSrc],
+  );
+
   // Rendered twice: inline in the meta bar at sm+, and as its own row
   // below the device mockup on mobile (see render below for why).
   const deviceSwitcherButtons = (
@@ -313,25 +348,53 @@ export function ProjectShowcase({
                   borderRadius: device.radius * screenWidth,
                 }}
               >
-                <div className="relative h-full w-full">
-                  {deviceType === "mobile" ? (
+                <div
+                  className={`relative h-full w-full ${
+                    isDark ? "bg-[#1c1c1e]" : "bg-gray-100"
+                  }`}
+                >
+                  {showVideo ? (
                     <video
-                      key={currentProject.video}
-                      src={currentProject.video}
+                      key={screenSrc}
+                      ref={screenVideoRef}
+                      src={screenSrc}
                       autoPlay
                       loop
                       muted
                       playsInline
-                      className="h-full w-full object-cover"
+                      onLoadedData={markScreenReady}
+                      className={`h-full w-full object-cover transition-opacity duration-300 ${
+                        isScreenLoading ? "opacity-0" : "opacity-100"
+                      }`}
                     />
                   ) : (
                     <Image
-                      src={currentProject.img}
+                      key={screenSrc}
+                      ref={screenImgRef}
+                      src={screenSrc}
                       alt={currentProject.name}
                       fill
                       sizes="(max-width: 768px) 90vw, 640px"
-                      className="object-cover"
+                      onLoad={markScreenReady}
+                      className={`object-cover transition-opacity duration-300 ${
+                        isScreenLoading ? "opacity-0" : "opacity-100"
+                      }`}
                     />
+                  )}
+
+                  {/* Loading state, painted on the screen itself. It inherits
+                      the screen's 3D transform, which is what keeps it looking
+                      like part of the device rather than a floating spinner. */}
+                  {isScreenLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div
+                        className={`h-[12%] max-h-10 min-h-5 animate-spin rounded-full border-2 aspect-square ${
+                          isDark
+                            ? "border-white/15 border-t-white/70"
+                            : "border-gray-300 border-t-gray-600"
+                        }`}
+                      />
+                    </div>
                   )}
 
                   {/* screen sheen, so the render doesn't look pasted on */}

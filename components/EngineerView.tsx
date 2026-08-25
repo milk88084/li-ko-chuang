@@ -35,6 +35,7 @@ import {
   Terminal,
   CalendarDays,
   MessageCircle,
+  Rocket,
 } from "lucide-react";
 import content from "@/data/content.json";
 import { useLanguage } from "@/providers/LanguageProvider";
@@ -689,9 +690,83 @@ export function EngineerView() {
         <SectionBridge toColor={fadeToGray} />
       </section>
 
+      {/* Shipped Solo — a narrow stat band, not a full section: it sits in the
+          same gray run as the projects below it (no bridge, no background
+          change) and exists to frame them. The two apps here are the only
+          things on the page with a public App Store link. */}
+      <section
+        id="eng-shipped"
+        className="px-6 pt-24 pb-0 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
+      >
+        <div className="max-w-5xl mx-auto">
+          <div className="reveal rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111112] px-6 py-8 md:px-10 md:py-10 transition-colors duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <Rocket className="w-4 h-4 text-gray-400" />
+              <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">
+                {data.shipped.label}
+              </h2>
+            </div>
+
+            <div className="grid gap-10 md:grid-cols-[1.1fr_1fr] md:gap-12">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                  {data.shipped.title}
+                </h3>
+                <p className="mt-3 text-sm font-light leading-relaxed text-gray-600 dark:text-gray-400">
+                  {data.shipped.description}
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {data.shipped.apps.map((app) => (
+                    <a
+                      key={app.name}
+                      href={app.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${app.name} — ${data.shipped.appStoreLabel}`}
+                      className="group inline-flex items-center gap-2.5 rounded-full border border-gray-200 dark:border-white/10 py-1.5 pr-4 pl-1.5 transition-colors hover:border-gray-900/30 dark:hover:border-white/30 hover:bg-gray-50 dark:hover:bg-white/5"
+                    >
+                      {/* the real App Store icon. araS's is near-white, so the
+                          ring is what keeps it from dissolving into the card. */}
+                      <Image
+                        src={app.icon}
+                        alt=""
+                        width={64}
+                        height={64}
+                        className="h-8 w-8 rounded-[9px] object-cover ring-1 ring-black/10 dark:ring-white/15"
+                      />
+                      <span className="text-sm font-medium text-gray-900 dark:text-white">
+                        {app.name}
+                      </span>
+                      <span className="text-xs font-light text-gray-500 dark:text-gray-500">
+                        {app.caption}
+                      </span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <dl className="grid grid-cols-2 content-start gap-x-6 gap-y-8">
+                {data.shipped.stats.map((stat) => (
+                  <div key={stat.label}>
+                    <dt className="text-xl md:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                      {stat.value}
+                    </dt>
+                    <dd className="mt-1 text-xs font-light leading-relaxed text-gray-500 dark:text-gray-500">
+                      {stat.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
         id="eng-projects"
-        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
+        className="pt-16 pb-24 px-6 bg-gray-50 dark:bg-[#050505] relative z-10 transition-colors duration-300"
       >
         <div className="max-w-5xl mx-auto">
           <div className="reveal mb-12 text-center">
