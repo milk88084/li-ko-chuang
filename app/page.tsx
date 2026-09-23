@@ -208,7 +208,7 @@ export default function Home() {
             LI KO
           </h1>
           <h1 className="text-[13vw] md:text-[12vw] lg:text-[11vw] font-black leading-[0.85] tracking-[-0.04em] transition-opacity duration-300 delay-75 opacity-100 text-[#3250FE]">
-            CHUANG
+            CHUAN
           </h1>
           <p
             className={`text-sm font-medium tracking-wider mt-4 ${isDark ? "text-gray-400" : "text-gray-600"}`}

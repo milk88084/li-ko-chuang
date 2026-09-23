@@ -1,0 +1,300 @@
+/* Scroll-driven portrait hero.
+   Adapted from example/index.html. The standalone page's own chrome (logo,
+   nav, burger, Work/Process/Contact, footer) is gone — Navigation and Footer
+   already cover that — so what survives here is the pinned stage only. */
+
+.root {
+  /* Light: the studio backdrop the frames were shot against, so the canvas
+     letterboxing and the page melt together. Dark: the page's own near-black,
+     with the portrait pushed down by .scrim below. */
+  --sp-ground: #ecedf1;
+  --sp-ink: #1c2a3f;
+  --sp-muted: #667085;
+  --sp-accent: #3c5a8a;
+  --sp-rule: rgba(28, 42, 63, 0.16);
+  --sp-chip-bg: rgba(255, 255, 255, 0.55);
+  /* Background of the section that follows, for the closing seam. */
+  --sp-seam: #ffffff;
+  --sp-gutter: clamp(16px, 2.4vw, 40px);
+  /* Height of the fixed Navigation (h-12 plus its 1px bottom border),
+     which the pinned stage starts below. */
+  --sp-nav: 49px;
+
+  --sp-italic: var(--font-bodoni), "Didot", Georgia, serif;
+  --sp-mono: var(--font-jetbrains-mono), ui-monospace, Menlo, monospace;
+
+  position: relative;
+  background: var(--sp-ground);
+  color: var(--sp-ink);
+}
+
+:global(.dark) .root {
+  --sp-ground: #0a0a0a;
+  --sp-ink: #f5f5f7;
+  --sp-muted: #9aa3b2;
+  --sp-accent: #7d9ede;
+  --sp-rule: rgba(255, 255, 255, 0.16);
+  --sp-chip-bg: rgba(20, 24, 33, 0.55);
+  --sp-seam: #0a0a0a;
+}
+
+/* Melts the last screen of the stage into the section below, the way the
+   SectionBridge does elsewhere on this page — without it the ground colour
+   meets that section's white at a visible step. */
+.root::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 24vh;
+  z-index: 6;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--sp-seam));
+}
+
+/* ---------- pinned stage ---------- */
+
+.stage {
+  position: relative;
+  height: 620vh;
+}
+
+/* Starts BELOW the fixed Navigation rather than behind it. The portrait's head
+   sits in the top ~8% of the frame, which lands inside the nav band at ordinary
+   window sizes, so a full-height pin puts his head behind the header. */
+.pin {
+  position: sticky;
+  top: var(--sp-nav);
+  height: calc(100vh - var(--sp-nav));
+  height: calc(100svh - var(--sp-nav));
+  overflow: hidden;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  will-change: filter, opacity;
+}
+
+/* The 192 frames bake in a light studio backdrop, so dark mode cannot come
+   from the image — a multiply scrim has to do it. A FLAT scrim forces a bad
+   choice: light enough to keep the subject readable leaves the backdrop a
+   muddy grey, dark enough to kill the backdrop flattens him to a silhouette.
+   So the scrim is a radial instead — barely there over the subject, near-opaque
+   at the edges. The frame meets the dark page at black, and the falloff reads
+   as studio lighting rather than as a filter. A dedicated dark frame set would
+   still be cleaner; this is the compromise. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    52% 64% at 50% 44%,
+    rgba(10, 10, 10, 0.3),
+    rgba(10, 10, 10, 0.8) 72%,
+    #0a0a0a 100%
+  );
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s ease;
+}
+
+:global(.dark) .scrim {
+  opacity: 1;
+}
+
+/* ---------- stage content ---------- */
+
+.intro {
+  position: absolute;
+  left: var(--sp-gutter);
+  top: 44%;
+  max-width: 25ch;
+  margin: 0;
+  font-size: clamp(18px, 1.7vw, 26px);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+}
+
+.cta {
+  position: absolute;
+  left: var(--sp-gutter);
+  bottom: calc(var(--sp-gutter) + env(safe-area-inset-bottom, 0px));
+  background: var(--sp-ink);
+  color: var(--sp-ground);
+  text-decoration: none;
+  font-size: 15px;
+  padding: 13px 22px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.cta:hover {
+  background: var(--sp-accent);
+}
+
+.cta:focus-visible,
+.root a:focus-visible {
+  outline: 2px solid var(--sp-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.statement {
+  position: absolute;
+  left: var(--sp-gutter);
+  top: 28%;
+  max-width: 17ch;
+  margin: 0;
+  font-size: clamp(30px, 3.6vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+/* Per-word spans injected by the component; the rAF loop owns their
+   opacity / filter / transform. */
+.statement span {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(0.25em);
+  will-change: opacity, filter, transform;
+}
+
+.spec {
+  position: absolute;
+  right: var(--sp-gutter);
+  bottom: calc(var(--sp-gutter) + env(safe-area-inset-bottom, 0px));
+  width: min(560px, 40vw);
+  margin: 0;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--sp-rule);
+  font-size: clamp(14px, 1.1vw, 17px);
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.specRow dt {
+  font-weight: 500;
+}
+
+.specRow dd {
+  margin: 0;
+  color: var(--sp-muted);
+  text-align: right;
+}
+
+.chip {
+  position: absolute;
+  font-family: var(--sp-mono);
+  font-size: clamp(11px, 0.9vw, 14px);
+  color: var(--sp-ink);
+  background: var(--sp-chip-bg);
+  border: 1px solid var(--sp-rule);
+  padding: 7px 11px;
+  border-radius: 2px;
+  white-space: nowrap;
+  opacity: 0;
+  will-change: transform, opacity;
+  backdrop-filter: blur(4px);
+}
+
+.bigword {
+  position: absolute;
+  left: calc(var(--sp-gutter) - 0.06em);
+  top: 14vh;
+  margin: 0;
+  font-size: clamp(110px, 19vw, 330px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  font-weight: 400;
+  transform: translateY(100vh);
+  will-change: transform;
+}
+
+.bigword i {
+  font-family: var(--sp-italic);
+  font-style: italic;
+}
+
+.hint {
+  position: absolute;
+  left: 50%;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  font-family: var(--sp-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sp-muted);
+}
+
+.meter {
+  position: absolute;
+  right: var(--sp-gutter);
+  top: 50%;
+  width: 1.5px;
+  height: 120px;
+  background: var(--sp-rule);
+  transform: translateY(-50%);
+}
+
+.meterFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background: var(--sp-ink);
+}
+
+@media (max-width: 760px) {
+  .intro {
+    top: auto;
+    bottom: 96px;
+    max-width: 20ch;
+    font-size: 18px;
+  }
+
+  .statement {
+    top: auto;
+    bottom: 34%;
+    font-size: 30px;
+    max-width: 14ch;
+    text-shadow: 0 0 24px var(--sp-ground);
+  }
+
+  .spec {
+    width: auto;
+    left: var(--sp-gutter);
+    right: var(--sp-gutter);
+  }
+
+  .specRow {
+    padding: 10px 0;
+    font-size: 13px;
+  }
+
+  .chip,
+  .meter {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statement span {
+    filter: none;
+    transform: none;
+  }
+}

@@ -3,7 +3,7 @@
     "common": {
       "portfolio": "MAX",
       "description": "Building Interfaces, Telling Stories.",
-      "footerTitle": "Li Ko Chuang 2026",
+      "footerTitle": "Li Ko CHUAN 2026",
       "footerSubtitle": "Frontend Engineer · Project Management · Marketing Background",
       "footerLocation": "Taipei, Taiwan",
       "homeHint": "Click anywhere to bounce · Drag tags to move",
@@ -22,6 +22,22 @@
         "description": "PM vision, committed to building products that meet market needs.",
         "descriptionSub": "Building products with a PM's perspective, frontend engineer with over 8 years of marketing and project management background.",
         "ctaText": "Explore"
+      },
+      "scrollHero": {
+        "intro": "Frontend engineer, Taipei. React, Next.js, TypeScript. My own apps, built and shipped alone.",
+        "ctaText": "See the work",
+        "statement": "Eight years in marketing, with a background in project management and campaign planning. A generalist, by design.",
+        "spec": [
+          { "label": "Web", "value": "React · Next.js · TypeScript" },
+          { "label": "App", "value": "React Native · Expo" },
+          {
+            "label": "Workflow",
+            "value": "Brief → spec → review → build → test → commit"
+          },
+          { "label": "Daily tools", "value": "Claude Code · Gemini · Cursor" }
+        ],
+        "hint": "Scroll",
+        "bigword": "MAX"
       },
       "philosophy": {
         "title": "Vibe Coding in the AI Era",
@@ -842,7 +858,7 @@
     "common": {
       "portfolio": "MAX",
       "description": "建構介面，訴說故事。",
-      "footerTitle": "Li Ko Chuang 2026",
+      "footerTitle": "Li Ko CHUAN 2026",
       "footerSubtitle": "前端工程師 · 專案管理 · 行銷背景",
       "footerLocation": "台北, 台灣",
       "homeHint": "點擊空白處彈跳 · 拖曳標籤移動",
@@ -861,6 +877,22 @@
         "description": "擁有 PM 視角，致力於構建符合市場需求的產品。",
         "descriptionSub": "擁有 8 年以上行銷與專案管理背景，能將產品思維融入技術開發的前端工程師。",
         "ctaText": "探索"
+      },
+      "scrollHero": {
+        "intro": "前端工程師，在台北。React、Next.js、TypeScript。自己的 App，一個人從頭做到上架。",
+        "ctaText": "看看作品",
+        "statement": "做了八年行銷，我擁有專案管理、行銷企劃的背景。全方位的專業人才。",
+        "spec": [
+          { "label": "web", "value": "React · Next.js · TypeScript" },
+          { "label": "app", "value": "React Native · Expo" },
+          {
+            "label": "工作流",
+            "value": "需求 → spec → 檢視/調整 → 開發 → 測試 → commit"
+          },
+          { "label": "日常工具", "value": "Claude Code · Gemini、Cursor" }
+        ],
+        "hint": "向下捲動",
+        "bigword": "MAX"
       },
       "philosophy": {
         "title": "與AI共融的Vibe Coding",

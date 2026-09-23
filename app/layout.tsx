@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bodoni_Moda, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { LanguageProvider } from "@/providers/LanguageProvider";
@@ -12,6 +12,23 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+// Used only by the engineer page's scroll-portrait hero: Bodoni for the
+// italic accent letter, JetBrains Mono for the code chips and spec labels.
+const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  style: ["italic"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-bodoni",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+});
+
 const ogDescription =
   "Front-end Engineer & Podcaster bridging logic and emotion. Specializing in React, Next.js, and user-centric interfaces.";
 
@@ -22,7 +39,7 @@ export const metadata: Metadata = {
   title: {
     default: siteConfig.title,
     // Child routes only need to set `title: "Engineer"` and this renders
-    // "Engineer | Li Ko Chuang".
+    // "Engineer | Li Ko CHUAN".
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -103,7 +120,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-sans bg-[#FBFBFD] text-[#1D1D1F] dark:bg-black dark:text-[#F5F5F7] transition-colors duration-300 antialiased relative`}
+        className={`${inter.variable} ${bodoni.variable} ${jetbrainsMono.variable} font-sans bg-[#FBFBFD] text-[#1D1D1F] dark:bg-black dark:text-[#F5F5F7] transition-colors duration-300 antialiased relative`}
         suppressHydrationWarning
       >
         <ThemeProvider>

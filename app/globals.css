@@ -249,7 +249,6 @@ section {
    ───────────────────────────────────────────────────────────────── */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .scroll-out,
     .parallax {
       animation-timeline: view(), view();
       animation-timing-function: linear;
@@ -260,32 +259,6 @@ section {
        are driven by GSAP ScrollTrigger instead of a CSS scroll timeline — see
        hooks/useScrollReveal.ts. They slide in from a direction and fade, with
        no blur, so nothing stays soft in the middle of the viewport. */
-
-    /* Names the hero section's own view progress so the header inside it can
-       borrow it (timeline names resolve up the ancestor chain). */
-    .hero-timeline {
-      view-timeline-name: --hero;
-      view-timeline-axis: block;
-    }
-
-    /* Exit only — for content already on screen at load (the hero), where an
-       entry animation would just be a flash of nothing.
-
-       It rides the *section's* timeline, not its own: the header is a short
-       box sitting near the top of the page, so its own exit range is only its
-       own height (~150px) and the fade was over almost before it started.
-       Against the full-height section, the dissolve spans the first ~35% of
-       the hero scrolling away — which is the whole time the header is still
-       on screen. */
-    .scroll-out {
-      animation-name: reveal-out;
-      animation-timeline: --hero;
-      animation-range: exit 0% exit 35%;
-      animation-fill-mode: both;
-      --reveal-to: -80px;
-      --reveal-blur: 7px;
-      --reveal-scale: 1;
-    }
 
     /* The final section on the page can never scroll any further up, so its
        children physically cannot reach a vh-based entry offset — the last one
@@ -321,21 +294,6 @@ section {
     translate: 0 0;
     scale: 1;
     filter: blur(0);
-  }
-}
-
-@keyframes reveal-out {
-  from {
-    opacity: 1;
-    translate: 0 0;
-    scale: 1;
-    filter: blur(0);
-  }
-  to {
-    opacity: 0;
-    translate: 0 var(--reveal-to, -52px);
-    scale: var(--reveal-scale, 0.97);
-    filter: blur(var(--reveal-blur, 5px));
   }
 }
 
