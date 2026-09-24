@@ -84,7 +84,9 @@ function LoadingScreen({ fadingOut = false }: { fadingOut?: boolean }) {
   );
 }
 
-export default function Home() {
+// Shared by both locale homepages (/ and /zh). The copy it renders comes
+// from useLanguage(), which now reads the locale off the route.
+export function HomeView() {
   const mounted = useIsMounted();
   const { resolvedTheme, setTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
@@ -109,9 +111,13 @@ export default function Home() {
     // { id: "creator", label: t.nav.creator, href: "/creator" },
   ];
 
-  if (!mounted) {
-    return <LoadingScreen />;
-  }
+  // No early return for the unmounted state: bailing out to the loading
+  // screen here meant the SERVER only ever rendered <LoadingScreen />,
+  // since useIsMounted's server snapshot is always false. The homepage's
+  // HTML was the word LOADING and nothing else — invisible to the AI
+  // crawlers that do not run JavaScript, on the site's most important
+  // page. The overlay at the end of this component already covers the
+  // same ground visually, so the content can render straight away.
 
   return (
     <main
