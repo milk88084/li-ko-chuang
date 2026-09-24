@@ -19,12 +19,14 @@ const rawSiteUrl =
   (vercelProdUrl ? `https://${vercelProdUrl}` : "http://localhost:3000");
 
 export const siteConfig = {
-  name: "Li Ko Chuang",
-  title: "Li Ko Chuang | Portfolio",
+  name: "Li Ko Chuan",
+  title: "Li Ko Chuan | Portfolio",
   description: "Building Interfaces, Telling Stories.",
   // Strip any trailing slash so `${siteUrl}${path}` never double-slashes.
   siteUrl: rawSiteUrl.replace(/\/$/, ""),
-  ogImage: "/engineer_hero.png",
+  // No ogImage here on purpose: app/opengraph-image.tsx generates it at
+  // 1200x630 and Next.js wires it up by filename, so there is nothing to
+  // keep in sync. /engineer_hero.png is still used as a page image.
   social: {
     linkedin: "https://www.linkedin.com/in/kochuang/",
     github: "https://github.com/milk88084",

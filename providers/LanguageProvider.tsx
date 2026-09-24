@@ -1,15 +1,23 @@
 "use client";
 
+import { createContext, useContext, ReactNode, useCallback } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
-  createContext,
-  useContext,
-  ReactNode,
-  useState,
-  useSyncExternalStore,
-  useEffect,
-} from "react";
+  type Locale,
+  localePath,
+  otherLocalePath,
+} from "@/lib/locale";
 
-export type Language = "en" | "zh";
+// The language used to be React state backed by localStorage, which meant the
+// Chinese copy existed only after hydration: every crawler, and every AI
+// assistant that does not run JavaScript, saw the English page and nothing
+// else. It now comes from the URL (/engineer vs /zh/engineer), so both
+// languages are real pages that can be indexed, linked and cited.
+//
+// `language` is passed in by the route group's layout, which knows the locale
+// at render time on the server — so the first HTML is already correct.
+
+export type Language = Locale;
 
 interface LanguageContextType {
   language: Language;
@@ -21,46 +29,29 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined,
 );
 
-interface LanguageProviderProps {
+export function LanguageProvider({
+  language,
+  children,
+}: {
+  language: Language;
   children: ReactNode;
-}
+}) {
+  const pathname = usePathname();
+  const router = useRouter();
 
-function getStoredLanguage(): Language {
-  if (typeof window === "undefined") return "en";
-  const savedLanguage = localStorage.getItem("language");
-  return savedLanguage === "zh" ? "zh" : "en";
-}
+  // Switching language is navigation now, not a state change: it has to change
+  // the URL or the new language would not be shareable or indexable.
+  const toggleLanguage = useCallback(() => {
+    router.push(otherLocalePath(pathname ?? "/"));
+  }, [pathname, router]);
 
-function subscribeToLanguage(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
-  window.addEventListener("storage", callback);
-  return () => window.removeEventListener("storage", callback);
-}
-
-export function LanguageProvider({ children }: LanguageProviderProps) {
-  const storedLanguage = useSyncExternalStore(
-    subscribeToLanguage,
-    getStoredLanguage,
-    () => "en" as Language,
+  const setLanguage = useCallback(
+    (lang: Language) => {
+      if (lang === language) return;
+      router.push(otherLocalePath(pathname ?? localePath(language, "")));
+    },
+    [language, pathname, router],
   );
-
-  const [language, setLanguageState] = useState<Language>(storedLanguage);
-
-  useEffect(() => {
-    setLanguageState(storedLanguage);
-  }, [storedLanguage]);
-
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("language", lang);
-    }
-  };
-
-  const toggleLanguage = () => {
-    const newLang = language === "en" ? "zh" : "en";
-    setLanguage(newLang);
-  };
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>

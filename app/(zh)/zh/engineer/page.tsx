@@ -1,0 +1,15 @@
+import type { Metadata } from "next";
+import { EngineerContent } from "@/components/EngineerContent";
+import { StructuredData } from "@/components/StructuredData";
+import { sectionMetadata } from "@/lib/page-metadata";
+
+export const metadata: Metadata = sectionMetadata("zh", "engineer");
+
+export default function ZhEngineerPage() {
+  return (
+    <>
+      <StructuredData page="engineer" />
+      <EngineerContent />
+    </>
+  );
+}
