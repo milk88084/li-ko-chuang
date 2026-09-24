@@ -22,8 +22,8 @@ type LanguageKey = keyof typeof content;
 const CHIPS = [
   { text: "spec.md", x: 64, y: 16, speed: 1.4 },
   { text: "<Hero />", x: 76, y: 34, speed: 0.8 },
-  { text: "useScrollProgress()", x: 58, y: 58, speed: 1.8 },
-  { text: "tsc --noEmit ✓", x: 34, y: 74, speed: 1.1 },
+  { text: "useEffect()", x: 58, y: 58, speed: 1.8 },
+  { text: "npm run dev -- --port", x: 34, y: 74, speed: 1.1 },
   { text: "eas submit", x: 86, y: 12, speed: 2.2 },
 ];
 
@@ -220,7 +220,8 @@ export function ScrollPortraitHero() {
       chipEls.forEach((chip, i) => {
         const speed = CHIPS[i]?.speed ?? 1;
         const visible =
-          range(p, 0.36 + i * 0.02, 0.5 + i * 0.02) * (1 - range(p, 0.78, 0.86));
+          range(p, 0.36 + i * 0.02, 0.5 + i * 0.02) *
+          (1 - range(p, 0.78, 0.86));
         chip.style.opacity = String(visible);
         chip.style.transform = reduceMotion
           ? "none"
