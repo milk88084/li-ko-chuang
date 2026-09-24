@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   title: {
     default: siteConfig.title,
     // Child routes only need to set `title: "Engineer"` and this renders
-    // "Engineer | Li Ko CHUAN".
+    // "Engineer | Li Ko Chuan".
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,

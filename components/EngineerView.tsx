@@ -214,7 +214,7 @@ export function EngineerView() {
                   property the keyframes drive, so they cannot share an element. */}
               <Image
                 src="/engineer_intro.png"
-                alt="LI KO CHUAN site shown on a tilted iPhone"
+                alt="Li Ko Chuan site shown on a tilted iPhone"
                 width={808}
                 height={1024}
                 className="parallax w-[300px] drop-shadow-[0_50px_90px_-25px_rgba(60,70,150,0.5)] md:h-[calc(70vh_-_2.8rem)] md:w-auto md:min-h-[380px]"

@@ -19,8 +19,8 @@ const rawSiteUrl =
   (vercelProdUrl ? `https://${vercelProdUrl}` : "http://localhost:3000");
 
 export const siteConfig = {
-  name: "LI KO CHUAN",
-  title: "LI KO CHUAN | Portfolio",
+  name: "Li Ko Chuan",
+  title: "Li Ko Chuan | Portfolio",
   description: "Building Interfaces, Telling Stories.",
   // Strip any trailing slash so `${siteUrl}${path}` never double-slashes.
   siteUrl: rawSiteUrl.replace(/\/$/, ""),
