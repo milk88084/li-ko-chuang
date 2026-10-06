@@ -14,7 +14,7 @@
   --sp-rule: rgba(28, 42, 63, 0.16);
   --sp-chip-bg: rgba(255, 255, 255, 0.55);
   /* Background of the section that follows, for the closing seam. */
-  --sp-seam: #ffffff;
+  --sp-seam: var(--eng-bg, #ffffff);
   --sp-gutter: clamp(16px, 2.4vw, 40px);
   /* Height of the fixed Navigation (h-12 plus its 1px bottom border),
      which the pinned stage starts below. */
@@ -35,7 +35,7 @@
   --sp-accent: #7d9ede;
   --sp-rule: rgba(255, 255, 255, 0.16);
   --sp-chip-bg: rgba(20, 24, 33, 0.55);
-  --sp-seam: #0a0a0a;
+  --sp-seam: var(--eng-bg, #0a0a0a);
 }
 
 /* Melts the last screen of the stage into the section below, the way the

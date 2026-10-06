@@ -54,7 +54,7 @@ export function MediumArticles({
         {Array.from({ length: 3 }).map((_, i) => (
           <div
             key={i}
-            className="rounded-2xl bg-white dark:bg-[#1C1C1E] border border-gray-100 dark:border-white/10 overflow-hidden animate-pulse"
+            className="rounded-[10px] bg-(--eng-card) overflow-hidden animate-pulse"
           >
             <div className="h-48 bg-gray-100 dark:bg-white/5" />
             <div className="p-5 space-y-3">
@@ -84,10 +84,10 @@ export function MediumArticles({
             href={article.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col rounded-2xl bg-white dark:bg-[#1C1C1E] border border-gray-100 dark:border-white/10 overflow-hidden hover:border-gray-300 dark:hover:border-white/30 transition-all duration-300 hover:shadow-lg hover:shadow-gray-100/50 dark:hover:shadow-none hover:-translate-y-1"
+            className="group flex flex-col rounded-[10px] bg-(--eng-card) overflow-hidden transition-transform duration-300 hover:-translate-y-1"
           >
             {article.thumbnail ? (
-              <div className="h-48 overflow-hidden bg-gray-50 dark:bg-white/5">
+              <div className="h-48 overflow-hidden bg-(--eng-bg)">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={article.thumbnail}
@@ -96,7 +96,7 @@ export function MediumArticles({
                 />
               </div>
             ) : (
-              <div className="h-48 flex items-center justify-center bg-gray-50 dark:bg-white/5">
+              <div className="h-48 flex items-center justify-center bg-(--eng-bg)">
                 <BookOpen className="w-10 h-10 text-gray-200 dark:text-white/10" />
               </div>
             )}
@@ -107,7 +107,7 @@ export function MediumArticles({
                   {article.categories.map((cat) => (
                     <span
                       key={cat}
-                      className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded-full"
+                      className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-500 dark:text-gray-500 bg-(--eng-bg) px-2 py-0.5 rounded-full"
                     >
                       <Tag className="w-2.5 h-2.5" />
                       {cat}
@@ -116,15 +116,15 @@ export function MediumArticles({
                 </div>
               )}
 
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white leading-snug line-clamp-3 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+              <h3 className="text-base font-medium tracking-tight text-gray-900 dark:text-white leading-snug line-clamp-3 group-hover:text-(--eng-accent) transition-colors">
                 {article.title}
               </h3>
 
-              <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100 dark:border-white/5">
+              <div className="mt-auto flex items-center justify-between pt-3 border-t border-(--eng-ink)/10">
                 <span className="text-xs text-gray-400 dark:text-gray-600">
                   {formatDate(article.pubDate)}
                 </span>
-                <span className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-1 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+                <span className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-1 group-hover:text-(--eng-accent) transition-colors">
                   {readMore}
                   <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </span>
@@ -139,7 +139,7 @@ export function MediumArticles({
           href={mediumUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors border-b border-gray-300 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white pb-0.5"
+          className="inline-flex items-center gap-2 text-sm font-medium text-(--eng-accent) transition-colors border-b border-(--eng-accent)/30 hover:border-(--eng-accent) pb-0.5"
         >
           {viewAll}
           <ArrowUpRight className="w-4 h-4" />

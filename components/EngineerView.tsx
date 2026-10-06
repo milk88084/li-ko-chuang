@@ -71,25 +71,36 @@ const iconMap = {
   Terminal,
 };
 
-// Fades a section's bottom edge into the next section's background color, so
-// two sections with different backgrounds melt into each other instead of
-// meeting at a hard edge. Only needed where the two backgrounds actually
-// differ — adjacent same-color sections don't need a bridge.
-function SectionBridge({ toColor }: { toColor: string }) {
+// Shared opener for every section below the hero: a mono "// label" kicker in
+// the accent color over a large, tightly tracked, left-aligned heading.
+function SectionHeader({
+  label,
+  title,
+  subtitle,
+}: {
+  label: string;
+  title: string;
+  subtitle?: string;
+}) {
   return (
-    <div className="my-10 ">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-40 backdrop-blur-xl"
-        style={{
-          background: `linear-gradient(to bottom, transparent, ${toColor})`,
-          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 55%)",
-          maskImage: "linear-gradient(to bottom, transparent, black 55%)",
-        }}
-      />
+    <div className="reveal">
+      <p className="eng-label mb-4">{`// ${label}`}</p>
+      <h2 className="text-4xl font-medium leading-[1.05] tracking-[-0.04em] md:text-[3.25rem]">
+        {title}
+      </h2>
+      {subtitle && (
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-(--eng-muted)">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }
+
+// Every section shares the page ground; the opaque background is still needed
+// so each one covers the pinned hero stage as it rides up over it.
+const SECTION = "relative z-10 bg-(--eng-bg) px-6 py-24 md:py-32";
+const CARD = "rounded-[10px] bg-(--eng-card)";
 
 export function EngineerView() {
   const { language } = useLanguage();
@@ -133,11 +144,6 @@ export function EngineerView() {
     }, 100);
   }, []);
 
-  // Colors the section bridges fade into — the two alternating background
-  // tones used across the page (bg-white / bg-gray-50, and their dark variants).
-  const fadeToWhite = isDark ? "#0a0a0a" : "#ffffff";
-  const fadeToGray = isDark ? "#050505" : "#f9fafb";
-
   return (
     <main id="view-engineer" ref={rootRef}>
       {/* Opening act: the scroll-driven portrait turn. Owns its own pinned
@@ -146,7 +152,7 @@ export function EngineerView() {
 
       <section
         id="eng-intro"
-        className="relative z-10 flex flex-col justify-center overflow-clip bg-white px-6 py-20 transition-colors duration-300 md:h-screen md:py-10 dark:bg-[#0a0a0a]"
+        className="relative z-10 flex flex-col justify-center overflow-clip bg-(--eng-bg) px-6 py-20 md:h-screen md:py-10"
       >
         <div className="reveal mx-auto w-full max-w-6xl">
           {/* Giant headline — kept above the enlarged phone mockup (z-30 vs
@@ -154,7 +160,7 @@ export function EngineerView() {
               shadow keeps it legible where it overlaps the phone's light
               bezel/screen, since z-index alone doesn't guarantee contrast. */}
           <h2
-            className="parallax relative z-30 text-center text-[15vw] font-bold leading-[0.9] tracking-tighter text-gray-900 md:text-[clamp(3rem,9vh,8.5rem)] dark:text-white"
+            className="parallax relative z-30 text-center text-[15vw] font-bold leading-[0.9] tracking-[-0.05em] md:text-[clamp(3rem,9vh,8.5rem)]"
             style={
               {
                 filter: isDark
@@ -170,7 +176,7 @@ export function EngineerView() {
 
           {/* Banner with a phone breaking out of its bounds */}
           <div className="relative mt-8 md:mt-[3vh]">
-            <div className="relative min-h-[400px] overflow-clip rounded-4xl bg-white dark:bg-[#0a0a0a] md:h-[34vh] md:min-h-[260px] md:rounded-[2.5rem]">
+            <div className="relative min-h-[400px] overflow-clip rounded-[10px] bg-(--eng-card) md:h-[34vh] md:min-h-[260px]">
               {/* Blended monochrome photo on the right */}
               <div className="absolute inset-y-0 right-0 w-2/3 md:w-1/2">
                 {/* Over-scaled so the parallax drift always has image to
@@ -188,16 +194,16 @@ export function EngineerView() {
                     } as CSSProperties
                   }
                 />
-                <div className="absolute inset-0 bg-white dark:bg-[#0a0a0a] mix-blend-color opacity-70" />
-                <div className="absolute inset-0 bg-linear-to-r from-white dark:from-[#0a0a0a] via-white/60 dark:via-[#0a0a0a]/60 to-transparent" />
+                <div className="absolute inset-0 bg-(--eng-card) mix-blend-color opacity-70" />
+                <div className="absolute inset-0 bg-linear-to-r from-(--eng-card) via-(--eng-card)/60 to-transparent" />
               </div>
 
               {/* Label inside the banner */}
               <div className="absolute bottom-7 left-7 z-10 md:bottom-6 md:left-10">
-                <p className="text-3xl font-bold text-gray-900 dark:text-white md:text-3xl">
+                <p className="text-3xl font-bold tracking-[-0.03em]">
                   LI KO CHUAN
                 </p>
-                <p className="mt-2 max-w-xs text-xs font-light leading-relaxed text-gray-600 dark:text-white/70 md:text-sm">
+                <p className="mt-2 max-w-xs text-xs leading-relaxed text-(--eng-muted) md:text-sm">
                   {data.philosophy.quote}
                 </p>
               </div>
@@ -230,16 +236,16 @@ export function EngineerView() {
 
           {/* Two-column overview */}
           <div className="mt-12 grid gap-8 md:mt-[3vh] md:grid-cols-2 md:gap-16">
-            <h3 className="text-2xl font-semibold leading-tight tracking-tight text-gray-900 md:text-[clamp(1.25rem,3vh,2.25rem)] dark:text-white">
+            <h3 className="text-2xl font-medium leading-tight tracking-[-0.03em] md:text-[clamp(1.25rem,3vh,2.25rem)]">
               {data.philosophy.quote}
             </h3>
             {/* Narrower + pushed to the right edge so the enlarged phone
                 mockup hanging down the middle doesn't cover this text. */}
             <div className="md:ml-auto md:max-w-[280px]">
-              <p className="mb-3 text-[10px] font-semibold uppercase tracking-wider text-gray-400 md:text-xs">
-                [OVERVIEW]
+              <p className="eng-label mb-3">
+                {"// overview"}
               </p>
-              <p className="text-sm font-light leading-relaxed text-gray-600 md:text-[clamp(0.75rem,1.6vh,1rem)] dark:text-gray-400">
+              <p className="text-sm leading-relaxed text-(--eng-muted) md:text-[clamp(0.75rem,1.6vh,1rem)]">
                 {data.philosophy.content}
               </p>
             </div>
@@ -249,7 +255,7 @@ export function EngineerView() {
 
       <section
         id="eng-showcase"
-        className="relative z-10 flex flex-col justify-center overflow-clip py-20 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 transition-colors duration-300 md:h-screen md:py-10"
+        className="relative z-10 flex flex-col justify-center overflow-clip bg-(--eng-bg) px-6 py-20 md:h-screen md:py-10"
       >
         <div className="reveal mx-auto w-full max-w-6xl">
           <ProjectShowcase
@@ -262,83 +268,73 @@ export function EngineerView() {
         </div>
       </section>
 
-      <section
-        id="eng-work"
-        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
-      >
-        <div className="max-w-3xl mx-auto">
-          <div className="reveal mb-16">
-            <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
-              {data.experience.title}
-            </h2>
-            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-              {data.experience.subtitle}
-            </p>
+      {/* Experience: header pinned on the left while the role cards stack
+          over each other on the right, each one sticking a little lower than
+          the last so the edges of the earlier cards stay visible. */}
+      <section id="eng-work" className={SECTION}>
+        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-16">
+          <div className="md:sticky md:top-32 md:self-start">
+            <SectionHeader
+              label="experience"
+              title={data.experience.title}
+              subtitle={data.experience.subtitle}
+            />
           </div>
-          <div className="reveal-stagger space-y-12 relative border-l border-gray-200 dark:border-gray-700 ml-3 md:ml-0 pl-8 md:pl-0">
+          <ol className="reveal-stagger space-y-4">
             {data.experience.items.map((item, index) => (
-              <div
+              <li
                 key={index}
-                className="relative md:grid md:grid-cols-[1fr_3fr] md:gap-10"
+                className={`${CARD} p-6 md:sticky md:p-8`}
+                style={{ top: `${8 + index}rem` }}
               >
-                <div className="hidden md:block text-right pt-1">
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">
-                    {item.period}
-                  </span>
-                </div>
-                <div
-                  className={`absolute -left-[37px] top-2 h-4 w-4 rounded-full border-4 border-gray-50 dark:border-[#050505] ${index === 0 ? "bg-gray-900 dark:bg-white" : "bg-gray-300 dark:bg-gray-600"} md:hidden`}
-                ></div>
-                <div>
-                  <span className="md:hidden text-xs font-semibold uppercase tracking-wide text-gray-500 mb-1 block">
-                    {item.period}
-                  </span>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {item.role}
-                  </h3>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">
-                    {item.company}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
+                <p className="flex items-center gap-3 font-(family-name:--font-jetbrains-mono) text-xs text-(--eng-muted)">
+                  <span className="h-2 w-2 bg-(--eng-accent)" />
+                  {item.period}
+                </p>
+                <h3 className="mt-5 text-xl font-medium tracking-tight md:text-2xl">
+                  {item.role}
+                </h3>
+                <p className="mt-1 text-sm text-(--eng-muted)">
+                  {item.company}
+                </p>
+                <p className="mt-4 leading-relaxed text-(--eng-muted)">
+                  {item.description}
+                </p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
-        <SectionBridge toColor={fadeToWhite} />
       </section>
 
-      <section
-        id="eng-now"
-        className="py-24 px-6 bg-white dark:bg-[#0a0a0a] relative z-10 transition-colors duration-300"
-      >
-        <div className="max-w-3xl mx-auto">
-          <div className="reveal flex items-center gap-3 mb-8">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">
+      <section id="eng-now" className={SECTION}>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeader label="now" title={data.now.subtitle} />
+            <p className="reveal flex items-center gap-2 text-sm text-(--eng-muted)">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
               {data.now.title}
-            </h2>
+            </p>
           </div>
-          <h3 className="reveal text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
-            {data.now.subtitle}
-          </h3>
-          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Bento: the first card spans the full row and the rest pair up; a
+              leftover last card spans the full row too instead of sitting
+              alone at half width. */}
+          <div className="reveal-stagger grid grid-cols-1 gap-3 md:grid-cols-2">
             {data.now.items.map((item, index) => {
               const IconComponent = iconMap[item.icon as keyof typeof iconMap];
+              const isLast = index === data.now.items.length - 1;
+              const fullRow = index === 0 || (isLast && index % 2 === 1);
               return (
                 <div
                   key={index}
-                  className="bg-gray-50 dark:bg-[#1C1C1E] p-6 rounded-xl border border-gray-100 dark:border-white/10 transition-colors duration-300"
+                  className={`${CARD} flex flex-col p-6 md:p-8 ${fullRow ? "md:col-span-2 md:min-h-56" : "md:min-h-48"}`}
                 >
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                    {IconComponent && (
-                      <IconComponent className="w-4 h-4 text-gray-400" />
-                    )}{" "}
+                  {IconComponent && (
+                    <IconComponent className="mb-auto h-5 w-5 text-(--eng-accent)" />
+                  )}
+                  <h3 className="mt-10 text-xl font-medium tracking-tight md:text-2xl">
                     {item.title}
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed">
+                  </h3>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-(--eng-muted)">
                     {item.description}
                   </p>
                 </div>
@@ -348,129 +344,79 @@ export function EngineerView() {
         </div>
       </section>
 
-      <section className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-clip">
-        <div className="reveal max-w-4xl mx-auto px-6 mb-16 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            {data.techStack.title}
-          </h2>
-          <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-            {data.techStack.subtitle}
-          </p>
+      <section className={`${SECTION} overflow-clip px-0`}>
+        <div className="mx-auto mb-14 max-w-6xl px-6">
+          <SectionHeader
+            label="stack"
+            title={data.techStack.title}
+            subtitle={data.techStack.subtitle}
+          />
         </div>
 
         {/* No blur on the way in/out here: these rows are viewport-wide and
             already running an infinite marquee, so a scrubbed filter on top
             of that is the one place it actually costs frames. */}
         <div
-          className="reveal flex flex-col gap-8"
+          className="reveal flex flex-col gap-3"
           style={{ "--reveal-blur": "0px" } as CSSProperties}
         >
-          <div className="flex whitespace-nowrap overflow-hidden">
-            <div className="flex animate-marquee-right gap-6 px-3 w-max">
-              {[
-                ...data.techStack.items.slice(
-                  0,
-                  Math.ceil(data.techStack.items.length / 2),
-                ),
-                ...data.techStack.items.slice(
-                  0,
-                  Math.ceil(data.techStack.items.length / 2),
-                ),
-              ].map((item, index) => {
-                const IconComponent =
-                  iconMap[item.icon as keyof typeof iconMap];
-                return (
-                  <div
-                    key={`row1-${index}`}
-                    className="group relative bg-[#0a0a0a]/5 dark:bg-white/5 px-8 py-6 rounded-2xl border border-gray-900/10 dark:border-white/5 flex items-center gap-4 transition-all duration-500 min-w-[200px] hover:scale-105 cursor-default overflow-hidden hover:border-gray-900/20 dark:hover:border-white/20"
-                  >
-                    <div className="relative z-10 p-2.5 rounded-xl bg-white dark:bg-white/5 group-hover:bg-white dark:group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
-                      {IconComponent && (
-                        <IconComponent className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
-                      )}
-                    </div>
-                    <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
-                      {item.name}
-                    </span>
+          {[
+            {
+              key: "row1",
+              anim: "animate-marquee-right",
+              items: data.techStack.items.slice(
+                0,
+                Math.ceil(data.techStack.items.length / 2),
+              ),
+            },
+            {
+              key: "row2",
+              anim: "animate-marquee-left",
+              items: data.techStack.items.slice(
+                Math.ceil(data.techStack.items.length / 2),
+              ),
+            },
+          ].map((row) => (
+            <div key={row.key} className="flex overflow-hidden whitespace-nowrap">
+              <div className={`flex w-max gap-3 px-1.5 ${row.anim}`}>
+                {[...row.items, ...row.items].map((item, index) => {
+                  const IconComponent =
+                    iconMap[item.icon as keyof typeof iconMap];
+                  return (
                     <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
-                      style={{
-                        background: item.hoverColor
-                          ? `var(--color-${item.hoverColor})`
-                          : "#3b82f6",
-                      }}
-                    ></div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="flex whitespace-nowrap overflow-hidden">
-            <div className="flex animate-marquee-left gap-6 px-3 w-max">
-              {[
-                ...data.techStack.items.slice(
-                  Math.ceil(data.techStack.items.length / 2),
-                ),
-                ...data.techStack.items.slice(
-                  Math.ceil(data.techStack.items.length / 2),
-                ),
-              ].map((item, index) => {
-                const IconComponent =
-                  iconMap[item.icon as keyof typeof iconMap];
-                return (
-                  <div
-                    key={`row2-${index}`}
-                    className="group relative bg-[#0a0a0a]/5 dark:bg-white/5 px-8 py-6 rounded-2xl border border-gray-900/10 dark:border-white/5 flex items-center gap-4 transition-all duration-500 min-w-[200px] hover:scale-105 cursor-default overflow-hidden hover:border-gray-900/20 dark:hover:border-white/20"
-                  >
-                    <div className="relative z-10 p-2.5 rounded-xl bg-white dark:bg-white/5 group-hover:bg-white dark:group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
+                      key={`${row.key}-${index}`}
+                      className={`${CARD} group flex min-w-[200px] cursor-default items-center gap-4 px-7 py-5 transition-colors duration-300 hover:bg-(--eng-ink) hover:text-(--eng-bg)`}
+                    >
                       {IconComponent && (
-                        <IconComponent className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                        <IconComponent className="h-5 w-5 text-(--eng-muted) transition-colors group-hover:text-(--eng-accent)" />
                       )}
+                      <span className="text-lg font-medium">{item.name}</span>
                     </div>
-                    <span className="relative z-10 text-gray-700 dark:text-gray-300 font-medium text-lg group-hover:text-black dark:group-hover:text-white transition-colors">
-                      {item.name}
-                    </span>
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 z-0"
-                      style={{
-                        background: item.hoverColor
-                          ? `var(--color-${item.hoverColor})`
-                          : "#3b82f6",
-                      }}
-                    ></div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-        <SectionBridge toColor={fadeToGray} />
       </section>
 
-      {/* Shipped Solo — a narrow stat band, not a full section: it sits in the
-          same gray run as the projects below it (no bridge, no background
-          change) and exists to frame them. The two apps here are the only
-          things on the page with a public App Store link. */}
-      <section
-        id="eng-shipped"
-        className="px-6 pt-24 pb-0 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="reveal rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111112] px-6 py-8 md:px-10 md:py-10 transition-colors duration-300">
-            <div className="flex items-center gap-3 mb-6">
-              <Rocket className="w-4 h-4 text-gray-400" />
-              <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">
-                {data.shipped.label}
-              </h2>
-            </div>
+      {/* Shipped Solo — a stat band framing the projects below it. The two
+          apps here are the only things on the page with a public App Store
+          link. */}
+      <section id="eng-shipped" className={`${SECTION} py-0 md:py-0`}>
+        <div className="mx-auto max-w-6xl">
+          <div className={`reveal ${CARD} px-6 py-8 md:px-10 md:py-12`}>
+            <p className="eng-label mb-6 flex items-center gap-2">
+              <Rocket className="h-3.5 w-3.5" />
+              {data.shipped.label}
+            </p>
 
             <div className="grid gap-10 md:grid-cols-[1.1fr_1fr] md:gap-12">
               <div>
-                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <h3 className="text-3xl font-medium tracking-[-0.03em] md:text-4xl">
                   {data.shipped.title}
                 </h3>
-                <p className="mt-3 text-sm font-light leading-relaxed text-gray-600 dark:text-gray-400">
+                <p className="mt-4 text-sm leading-relaxed text-(--eng-muted)">
                   {data.shipped.description}
                 </p>
 
@@ -482,10 +428,10 @@ export function EngineerView() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${app.name} — ${data.shipped.appStoreLabel}`}
-                      className="group inline-flex items-center gap-2.5 rounded-full border border-gray-200 dark:border-white/10 py-1.5 pr-4 pl-1.5 transition-colors hover:border-gray-900/30 dark:hover:border-white/30 hover:bg-gray-50 dark:hover:bg-white/5"
+                      className="group inline-flex items-center gap-2.5 rounded-full bg-(--eng-bg) py-1.5 pr-4 pl-1.5 transition-colors hover:bg-(--eng-ink) hover:text-(--eng-bg)"
                     >
                       {/* the real App Store icon. araS's is near-white, so the
-                          ring is what keeps it from dissolving into the card. */}
+                          ring is what keeps it from dissolving into the pill. */}
                       <Image
                         src={app.icon}
                         alt=""
@@ -493,13 +439,9 @@ export function EngineerView() {
                         height={64}
                         className="h-8 w-8 rounded-[9px] object-cover ring-1 ring-black/10 dark:ring-white/15"
                       />
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
-                        {app.name}
-                      </span>
-                      <span className="text-xs font-light text-gray-500 dark:text-gray-500">
-                        {app.caption}
-                      </span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      <span className="text-sm font-medium">{app.name}</span>
+                      <span className="text-xs opacity-60">{app.caption}</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   ))}
                 </div>
@@ -507,11 +449,11 @@ export function EngineerView() {
 
               <dl className="grid grid-cols-2 content-start gap-x-6 gap-y-8">
                 {data.shipped.stats.map((stat) => (
-                  <div key={stat.label}>
-                    <dt className="text-xl md:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                  <div key={stat.label} className="border-t border-(--eng-ink)/10 pt-4">
+                    <dt className="text-2xl font-medium tracking-tight text-(--eng-accent) md:text-3xl">
                       {stat.value}
                     </dt>
-                    <dd className="mt-1 text-xs font-light leading-relaxed text-gray-500 dark:text-gray-500">
+                    <dd className="mt-1 text-xs leading-relaxed text-(--eng-muted)">
                       {stat.label}
                     </dd>
                   </div>
@@ -522,18 +464,14 @@ export function EngineerView() {
         </div>
       </section>
 
-      <section
-        id="eng-projects"
-        className="pt-16 pb-24 px-6 bg-gray-50 dark:bg-[#050505] relative z-10 transition-colors duration-300"
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="reveal mb-12 text-center">
-            <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
-              {data.projects.title}
-            </h2>
-            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-              {data.projects.subtitle}
-            </p>
+      <section id="eng-projects" className={SECTION}>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12">
+            <SectionHeader
+              label="projects"
+              title={data.projects.title}
+              subtitle={data.projects.subtitle}
+            />
           </div>
           <div className="reveal">
             <ProjectTimeline
@@ -547,21 +485,16 @@ export function EngineerView() {
             />
           </div>
         </div>
-        <SectionBridge toColor={fadeToWhite} />
       </section>
 
-      <section
-        id="eng-articles"
-        className="py-24 px-6 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300"
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="reveal mb-12 text-center">
-            <h2 className="text-3xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">
-              {data.mediumArticles.title}
-            </h2>
-            <p className="text-gray-500 dark:text-gray-500 mt-2 font-light">
-              {data.mediumArticles.subtitle}
-            </p>
+      <section id="eng-articles" className={SECTION}>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12">
+            <SectionHeader
+              label="writing"
+              title={data.mediumArticles.title}
+              subtitle={data.mediumArticles.subtitle}
+            />
           </div>
           <div className="reveal">
             <MediumArticles
@@ -573,98 +506,52 @@ export function EngineerView() {
             />
           </div>
         </div>
-        <SectionBridge toColor={fadeToGray} />
       </section>
+
       <section
         id="eng-offline-highlight"
-        className="py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 relative z-10 transition-colors duration-300 overflow-clip"
+        className={`${SECTION} overflow-clip`}
       >
-        <div className="max-w-3xl mx-auto">
-          <div className="reveal mb-12 text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              {offlineHighlightTitle}
-            </h2>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12">
+            <SectionHeader label="offline" title={offlineHighlightTitle} />
           </div>
 
           {/* The rows used to fade in once on mount with fixed delays; the
-              stagger is now carried by the scroll timeline instead. */}
-          <div className="reveal-stagger space-y-10">
+              stagger is now carried by the scroll timeline instead. The
+              middle row flips so photo and caption alternate sides. */}
+          <div className="reveal-stagger space-y-3">
             {offlineHighlights.map((item, index) => (
               <div
                 key={`${item.name}-${index}`}
-                className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch"
+                className="grid grid-cols-1 items-stretch gap-3 md:grid-cols-12"
               >
-                {index === 1 ? (
-                  <>
-                    <div className="md:col-span-4">
-                      <div className="h-full rounded-2xl border border-gray-100 dark:border-white/10 bg-gray-900/5 dark:bg-white/5 p-6 md:p-7 flex flex-col">
-                        <div className="space-y-5">
-                          <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
-                            <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                            {item.time}
-                          </p>
+                <div
+                  className={`relative overflow-hidden rounded-[10px] md:col-span-8 ${index === 1 ? "md:order-2" : ""}`}
+                >
+                  <div className="relative aspect-video">
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 66vw"
+                      className="object-cover"
+                      priority={false}
+                    />
+                  </div>
+                </div>
 
-                          <div>
-                            <h3 className="text-xl md:text-2xl font-semibold tracking-tight italic text-gray-900 dark:text-white">
-                              {item.name}
-                            </h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="md:col-span-8 relative">
-                      <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
-                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
-                        <div className="aspect-video relative">
-                          <Image
-                            src={item.imageSrc}
-                            alt={item.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 66vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                            priority={false}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="md:col-span-8 relative">
-                      <div className="relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/10 bg-white/5 shadow-sm">
-                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent pointer-events-none" />
-                        <div className="aspect-video relative">
-                          <Image
-                            src={item.imageSrc}
-                            alt={item.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 66vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                            priority={index === 0}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="md:col-span-4">
-                      <div className="h-full rounded-2xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#0a0a0a] p-6 md:p-7 flex flex-col">
-                        <div className="space-y-5">
-                          <p className="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 bg-gray-900/5 dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm">
-                            <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                            {item.time}
-                          </p>
-
-                          <div>
-                            <h3 className="text-xl md:text-2xl font-semibold italic tracking-tight text-gray-900 dark:text-white">
-                              {item.name}
-                            </h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                )}
+                <div
+                  className={`${CARD} flex flex-col justify-between gap-8 p-6 md:col-span-4 md:p-8`}
+                >
+                  <p className="flex items-center gap-2 font-(family-name:--font-jetbrains-mono) text-xs text-(--eng-muted)">
+                    <CalendarDays className="h-3.5 w-3.5 text-(--eng-accent)" />
+                    {item.time}
+                  </p>
+                  <h3 className="text-2xl font-medium tracking-tight md:text-3xl">
+                    {item.name}
+                  </h3>
+                </div>
               </div>
             ))}
           </div>
@@ -673,21 +560,30 @@ export function EngineerView() {
 
       {/* Last section: reveals against its own section timeline (see
           .reveal-in-section) because there is no page left to scroll after it. */}
-      <section className="section-timeline py-24 px-6 bg-gray-50 dark:bg-[#050505] border-t border-gray-100 dark:border-white/5 text-center relative z-10 transition-colors duration-300">
-        <div className="reveal-in-section max-w-2xl mx-auto space-y-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            {data.contact.title}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 font-light text-lg">
-            {data.contact.description}
-          </p>
-          <a
-            href={`mailto:${data.contact.email}`}
-            className="inline-flex items-center gap-2 text-xl font-medium text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors border-b border-gray-900 dark:border-white hover:border-gray-600 dark:hover:border-gray-300 pb-1"
+      <section className={`section-timeline ${SECTION}`}>
+        <div className="reveal-in-section mx-auto max-w-6xl">
+          <div
+            className={`${CARD} grid gap-10 p-8 md:grid-cols-[1.4fr_1fr] md:items-end md:p-14`}
           >
-            {data.contact.email}
-            <ArrowUpRight className="w-5 h-5" />
-          </a>
+            <div>
+              <p className="eng-label mb-4">{"// contact"}</p>
+              <h2 className="text-4xl font-medium leading-[1.05] tracking-[-0.04em] md:text-6xl">
+                {data.contact.title}
+              </h2>
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-(--eng-muted)">
+                {data.contact.description}
+              </p>
+            </div>
+            <div className="flex flex-col items-start gap-4 md:items-end">
+              <a
+                href={`mailto:${data.contact.email}`}
+                className="inline-flex items-center gap-2 rounded-md bg-(--eng-accent) px-6 py-3.5 text-base font-medium text-white transition-opacity hover:opacity-85"
+              >
+                {data.contact.email}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>

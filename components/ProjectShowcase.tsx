@@ -252,7 +252,7 @@ export function ProjectShowcase({
         className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
           isDark
             ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
-            : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+            : "bg-(--eng-card) text-gray-500 hover:text-gray-900"
         }`}
       >
         <ChevronLeft className="h-4 w-4" />
@@ -260,7 +260,7 @@ export function ProjectShowcase({
 
       <div
         className={`flex gap-1 rounded-full p-1 ${
-          isDark ? "bg-white/10" : "border border-gray-200 bg-white"
+          isDark ? "bg-white/10" : "bg-(--eng-card)"
         }`}
       >
         {DEVICES.map(({ key, label, icon: Icon }) => {
@@ -275,8 +275,8 @@ export function ProjectShowcase({
               className={`flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 font-sans text-xs font-medium transition-all ${
                 active
                   ? isDark
-                    ? "bg-white text-black"
-                    : "bg-gray-900 text-white"
+                    ? "bg-(--eng-accent) text-white"
+                    : "bg-(--eng-accent) text-white"
                   : isDark
                     ? "text-gray-400 hover:text-white"
                     : "text-gray-500 hover:text-gray-900"
@@ -296,7 +296,7 @@ export function ProjectShowcase({
         className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-all ${
           isDark
             ? "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
-            : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+            : "bg-(--eng-card) text-gray-500 hover:text-gray-900"
         }`}
       >
         <ChevronRight className="h-4 w-4" />
@@ -431,7 +431,7 @@ export function ProjectShowcase({
             >
               <div
                 className={`h-full rounded-full transition-all duration-100 ${
-                  isDark ? "bg-white" : "bg-gray-900"
+                  "bg-(--eng-accent)"
                 }`}
                 style={{ width: `${progress}%` }}
               />

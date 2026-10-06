@@ -139,7 +139,7 @@ export function ProjectTimeline({
             activeIndex === 0
               ? "opacity-30 cursor-not-allowed"
               : "opacity-100 hover:scale-110"
-          } ${isDark ? "bg-white/10 text-white" : "bg-gray-100 text-gray-900"}`}
+          } bg-(--eng-card) text-(--eng-ink)`}
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -151,7 +151,7 @@ export function ProjectTimeline({
             activeIndex === projects.length - 1
               ? "opacity-30 cursor-not-allowed"
               : "opacity-100 hover:scale-110"
-          } ${isDark ? "bg-white/10 text-white" : "bg-gray-100 text-gray-900"}`}
+          } bg-(--eng-card) text-(--eng-ink)`}
         >
           <ChevronRight className="w-5 h-5" />
         </button>
@@ -181,18 +181,18 @@ export function ProjectTimeline({
               className={`group relative shrink-0 px-5 py-3 rounded-xl transition-all duration-300 ${
                 index === activeIndex
                   ? isDark
-                    ? "bg-white text-black"
-                    : "bg-gray-900 text-white"
+                    ? "bg-(--eng-accent) text-white"
+                    : "bg-(--eng-accent) text-white"
                   : isDark
-                    ? "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900"
+                    ? "bg-(--eng-card) text-(--eng-muted) hover:text-(--eng-ink)"
+                    : "bg-(--eng-card) text-(--eng-muted) hover:text-(--eng-ink)"
               }`}
             >
               <span className="text-sm font-medium whitespace-nowrap">
                 {project.title}
               </span>
               {index === activeIndex && (
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-blue-500" />
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-(--eng-accent)" />
               )}
             </button>
           ))}
@@ -202,8 +202,8 @@ export function ProjectTimeline({
 
       <div
         ref={contentRef}
-        className={`relative overflow-hidden rounded-2xl border transition-all duration-300 ${
-          isDark ? "bg-[#1C1C1E] border-white/10" : "bg-white border-gray-100"
+        className={`relative overflow-hidden rounded-[10px] bg-(--eng-card) transition-all duration-300 ${
+          isDark ? "text-white" : "text-gray-900"
         }`}
       >
         <div
@@ -214,7 +214,7 @@ export function ProjectTimeline({
           }`}
         >
           <div
-            className={`p-6 md:p-8 border-b ${isDark ? "border-white/5" : "border-gray-100"}`}
+            className={`p-6 md:p-8 border-b border-(--eng-ink)/10`}
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
@@ -227,7 +227,7 @@ export function ProjectTimeline({
                   </span>
                 </div>
                 <h3
-                  className={`text-2xl md:text-3xl font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
+                  className={`text-2xl md:text-3xl font-medium tracking-[-0.03em] ${isDark ? "text-white" : "text-gray-900"}`}
                 >
                   {activeProject.title}
                 </h3>
@@ -244,8 +244,8 @@ export function ProjectTimeline({
                     key={i}
                     className={`px-3 py-1.5 text-xs font-medium rounded-full ${
                       isDark
-                        ? "bg-blue-500/20 text-blue-400"
-                        : "bg-blue-50 text-blue-600"
+                        ? "bg-(--eng-accent)/20 text-(--eng-accent)"
+                        : "bg-(--eng-accent)/10 text-(--eng-accent)"
                     }`}
                   >
                     {metric}
@@ -258,7 +258,7 @@ export function ProjectTimeline({
           <div className="p-6 md:p-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               <div
-                className={`rounded-xl p-5 ${isDark ? "bg-black/30" : "bg-gray-50"}`}
+                className={`rounded-lg p-5 bg-(--eng-bg)`}
               >
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-2 h-2 rounded-full bg-orange-500" />
@@ -276,7 +276,7 @@ export function ProjectTimeline({
               </div>
 
               <div
-                className={`rounded-xl p-5 ${isDark ? "bg-black/30" : "bg-gray-50"}`}
+                className={`rounded-lg p-5 bg-(--eng-bg)`}
               >
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-2 h-2 rounded-full bg-green-500" />
@@ -308,8 +308,8 @@ export function ProjectTimeline({
                     key={i}
                     className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
                       isDark
-                        ? "bg-white/10 text-gray-300 hover:bg-white/20"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        ? "bg-(--eng-bg) text-gray-300"
+                        : "bg-(--eng-bg) text-gray-700"
                     }`}
                   >
                     {techItem}
@@ -328,7 +328,7 @@ export function ProjectTimeline({
             onClick={() => handleProjectChange(index)}
             className={`h-1 rounded-full transition-all duration-300 ${
               index === activeIndex
-                ? `w-8 ${isDark ? "bg-white" : "bg-gray-900"}`
+                ? "w-8 bg-(--eng-accent)"
                 : `w-1.5 ${isDark ? "bg-white/20 hover:bg-white/40" : "bg-gray-300 hover:bg-gray-400"}`
             }`}
           />
