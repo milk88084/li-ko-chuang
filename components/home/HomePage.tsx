@@ -11,7 +11,6 @@ import { ArticleList } from "@/components/writing/ArticleList";
 import { HomeHero } from "./HomeHero";
 import { SelectedWork } from "./SelectedWork";
 import { WhatIBring } from "./WhatIBring";
-import { Toolbox } from "./Toolbox";
 import { KindWords } from "./KindWords";
 
 // Shared by / and /zh.
@@ -48,7 +47,6 @@ export async function HomePage({ locale }: { locale: Locale }) {
 
       <SelectedWork locale={locale} />
       <WhatIBring locale={locale} />
-      <Toolbox locale={locale} />
       <KindWords locale={locale} />
 
       <Section

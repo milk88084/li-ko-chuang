@@ -72,12 +72,6 @@
           ]
         }
       },
-      "toolbox": {
-        "label": "Toolbox",
-        "title": "Things I work with.",
-        "hint": "Drag the tags · click to bounce",
-        "frameLabel": "Frame · Skills"
-      },
       "words": {
         "label": "Kind Words",
         "title": "What people say."
@@ -113,6 +107,10 @@
         "highlights": "Highlights",
         "tech": "Built with",
         "next": "Next project"
+      },
+      "toolbox": {
+        "hint": "Drag the tags · click to bounce",
+        "frameLabel": "Frame · Skills"
       }
     },
     "about": {
@@ -375,12 +373,6 @@
           ]
         }
       },
-      "toolbox": {
-        "label": "Toolbox",
-        "title": "我常用的工具與能力。",
-        "hint": "拖曳標籤 · 點擊彈跳",
-        "frameLabel": "Frame · Skills"
-      },
       "words": {
         "label": "Kind Words",
         "title": "合作夥伴怎麼說。"
@@ -416,6 +408,10 @@
         "highlights": "重點",
         "tech": "使用技術",
         "next": "下一個專案"
+      },
+      "toolbox": {
+        "hint": "拖曳標籤 · 點擊彈跳",
+        "frameLabel": "Frame · Skills"
       }
     },
     "about": {

@@ -18,8 +18,9 @@
   --line: #dadad5;
   --accent: #3250fe;
   --accent-ink: #ffffff;
-  /* Height of the fixed SiteHeader, for anything that pins below it. */
-  --header-h: 64px;
+  /* Clearance below the floating SiteHeader dock (top offset + its height +
+     a little air), for anything that starts or pins beneath it. */
+  --header-h: 80px;
 }
 
 .dark {
