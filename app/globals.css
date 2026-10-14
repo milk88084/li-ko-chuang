@@ -221,3 +221,23 @@ html.has-custom-cursor [contenteditable="true"] {
     animation: none;
   }
 }
+
+/* PageLoading's indeterminate bar: a third-width segment sweeping across. */
+@keyframes loading-bar {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+/* NavigationProgress: rushes to about a third, then creeps toward the end. */
+@keyframes nav-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

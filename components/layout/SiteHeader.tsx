@@ -55,6 +55,9 @@ export function SiteHeader() {
 
   const isDark = mounted && resolvedTheme === "dark";
 
+  // /studio is an internal tool with its own chrome.
+  if (route.startsWith("/studio")) return null;
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 h-(--header-h) border-b border-line/70 bg-bg/80 backdrop-blur-md">
       <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between gap-4 px-4 md:px-8">

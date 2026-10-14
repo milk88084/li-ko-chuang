@@ -16,7 +16,7 @@
   /* Background of the section that follows, for the closing seam. */
   --sp-seam: var(--bg);
   --sp-gutter: clamp(16px, 2.4vw, 40px);
-  /* Height of the fixed SiteHeader (SiteHeader, --header-h),
+  /* Height of the fixed SiteHeader (--header-h),
      which the pinned stage starts below. */
   --sp-nav: var(--header-h);
 

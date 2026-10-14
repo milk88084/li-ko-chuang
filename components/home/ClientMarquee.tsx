@@ -30,7 +30,7 @@ export function ClientMarquee({ locale }: { locale: Locale }) {
   return (
     <section
       aria-label={label}
-      className="flex items-center gap-8 border-y border-line py-7"
+      className="relative flex shrink-0 items-center gap-8 border-t border-line bg-bg py-5 md:py-7"
     >
       <p className="shrink-0 pl-4 font-mono text-[11px] tracking-[0.06em] text-muted uppercase md:pl-8">
         {label}

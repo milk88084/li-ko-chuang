@@ -10,6 +10,8 @@ import { ThemeProvider } from "@/providers/ThemeProvider";
 import { LanguageProvider } from "@/providers/LanguageProvider";
 import { FaviconSync } from "@/components/FaviconSync";
 import { CustomCursor } from "@/components/CustomCursor";
+import { NavigationProgress } from "@/components/NavigationProgress";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { htmlLang, type Locale } from "@/lib/locale";
 
 // The <html>/<body> shell, shared by both locale route groups.
@@ -107,6 +109,10 @@ export function RootShell({
           <FaviconSync />
           <LanguageProvider language={locale}>
             <CustomCursor />
+            <NavigationProgress />
+            {/* Here rather than in each page so it stays mounted while the
+                next page (or its loading state) swaps in beneath it. */}
+            <SiteHeader />
             {children}
           </LanguageProvider>
         </ThemeProvider>

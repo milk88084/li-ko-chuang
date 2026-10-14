@@ -74,8 +74,19 @@ export function CustomCursor() {
 function Cursor() {
   const { language } = useLanguage();
   const labels = content[language].cursor;
+  const pathname = usePathname();
   const outerRef = useRef<HTMLDivElement>(null);
-  const [state, setState] = useState<CursorState>("hidden");
+  // The state is only re-read on pointer moves, so a page swapped in under a
+  // resting pointer would keep the old card's "View" disc. Each state remembers
+  // the page it was read on and falls back to the plain dot on any other.
+  const [reading, setReading] = useState<{ state: CursorState; on: string | null }>({
+    state: "hidden",
+    on: null,
+  });
+  const state: CursorState =
+    reading.on === pathname || reading.state === "hidden" ? reading.state : "default";
+  const setState = (next: CursorState) =>
+    setReading({ state: next, on: window.location.pathname });
 
   useEffect(() => {
     const root = document.documentElement;

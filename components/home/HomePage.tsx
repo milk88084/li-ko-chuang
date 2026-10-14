@@ -9,7 +9,6 @@ import { Section } from "@/components/layout/Section";
 import { ScrubText } from "@/components/motion/ScrubText";
 import { ArticleList } from "@/components/writing/ArticleList";
 import { HomeHero } from "./HomeHero";
-import { ClientMarquee } from "./ClientMarquee";
 import { SelectedWork } from "./SelectedWork";
 import { WhatIBring } from "./WhatIBring";
 import { Toolbox } from "./Toolbox";
@@ -23,7 +22,6 @@ export async function HomePage({ locale }: { locale: Locale }) {
   return (
     <PageShell footer={<SiteFooter locale={locale} />}>
       <HomeHero locale={locale} />
-      <ClientMarquee locale={locale} />
 
       <Section label={t.home.hello.label}>
         <ScrubText

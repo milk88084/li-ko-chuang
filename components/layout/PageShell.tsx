@@ -2,10 +2,10 @@
 
 import { useRef, type ReactNode } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { SiteHeader } from "./SiteHeader";
 
-// Header, the page's <main> (which scopes the .reveal entrances) and, passed
-// in from the server page, the footer.
+// The page's <main> (which scopes the .reveal entrances) and, passed in from
+// the server page, the footer. The header lives in RootShell so it survives
+// navigation.
 export function PageShell({
   children,
   footer,
@@ -18,7 +18,6 @@ export function PageShell({
 
   return (
     <>
-      <SiteHeader />
       <main ref={mainRef} id="top">
         {children}
       </main>
