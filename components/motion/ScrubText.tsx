@@ -13,9 +13,12 @@ const DIM = 0.18;
 export function ScrubText({
   text,
   className = "",
+  caret = false,
 }: {
   text: string;
   className?: string;
+  /** Ends the paragraph with a blinking text cursor, as if still being typed. */
+  caret?: boolean;
 }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const words = useMemo(
@@ -65,17 +68,30 @@ export function ScrubText({
     };
   }, [words]);
 
+  const last = words.length - 1;
+
   return (
     <p ref={ref} className={className}>
-      {words.map((word, i) =>
-        /^\s+$/.test(word) ? (
-          <span key={i}>{word}</span>
-        ) : (
+      {words.map((word, i) => {
+        if (/^\s+$/.test(word)) return <span key={i}>{word}</span>;
+        const span = (
           <span key={i} data-w className="transition-opacity duration-150">
             {word}
           </span>
-        ),
-      )}
+        );
+        if (!caret || i !== last) return span;
+        // The caret sits outside the dimmed word, so it is lit from the start,
+        // and shares a no-wrap box with it so it never wraps onto a line alone.
+        return (
+          <span key={i} className="whitespace-nowrap">
+            {span}
+            <span
+              aria-hidden
+              className="ml-[0.08em] inline-block h-[0.9em] w-[0.06em] min-w-[2px] translate-y-[0.12em] bg-accent motion-safe:animate-[caret-blink_1.06s_steps(1)_infinite]"
+            />
+          </span>
+        );
+      })}
     </p>
   );
 }

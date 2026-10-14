@@ -241,3 +241,13 @@ html.has-custom-cursor [contenteditable="true"] {
     transform: scaleX(1);
   }
 }
+
+/* ScrubText's typing caret: on for half the cycle, off for the other half. */
+@keyframes caret-blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

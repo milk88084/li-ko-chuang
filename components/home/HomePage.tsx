@@ -36,6 +36,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <ScrubText
           text={t.home.hello.text}
           className="text-[clamp(26px,3.4vw,46px)] leading-[1.22] tracking-[-0.025em] text-pretty"
+          caret
         />
         <span
           aria-hidden
