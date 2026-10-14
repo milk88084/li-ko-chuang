@@ -24,10 +24,25 @@ export async function HomePage({ locale }: { locale: Locale }) {
       <HomeHero locale={locale} />
 
       <Section label={t.home.hello.label}>
+        {/* Oversized serif quote marks bracket the paragraph — opening at its
+            top-left, closing at its bottom-right — on rows of their own, so
+            the text keeps the full width. Decoration only. */}
+        <span
+          aria-hidden
+          className="block h-[0.5em] font-serif text-[clamp(88px,10vw,160px)] leading-none text-accent select-none"
+        >
+          “
+        </span>
         <ScrubText
           text={t.home.hello.text}
           className="text-[clamp(26px,3.4vw,46px)] leading-[1.22] tracking-[-0.025em] text-pretty"
         />
+        <span
+          aria-hidden
+          className="mt-4 block h-[0.5em] text-right font-serif text-[clamp(88px,10vw,160px)] leading-none text-accent select-none"
+        >
+          ”
+        </span>
       </Section>
 
       <SelectedWork locale={locale} />
