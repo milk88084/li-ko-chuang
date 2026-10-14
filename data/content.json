@@ -41,7 +41,7 @@
       },
       "bring": {
         "label": "What I Bring",
-        "title": "Three disciplines, one person.",
+        "title": "One person, the whole project.",
         "items": [
           {
             "key": "engineering",
@@ -54,11 +54,23 @@
             "body": "Brand, social and cross-sector partnerships. Fundraising campaigns that raised 700k online and a CSR alliance with Far Eastern Department Store."
           },
           {
-            "key": "events",
-            "title": "Events",
-            "body": "30+ campus seminars in six months, offline forums and fundraising events — planned, budgeted and run end to end."
+            "key": "pm",
+            "title": "Project management",
+            "body": "Government bids, budgets and timelines: I coordinated 30+ campus seminars in six months, and run my own apps from spec to App Store review."
           }
-        ]
+        ],
+        "featured": {
+          "key": "hybrid",
+          "title": "A hybrid, by design",
+          "body": "I plan the marketing, run the events, build the website and the iOS app, and manage the project that ties them together. I can take an idea from brief to launch on my own — or step into any one of those seats on a team.",
+          "tags": [
+            "Marketing plans",
+            "Events",
+            "Web development",
+            "iOS apps",
+            "Project management"
+          ]
+        }
       },
       "toolbox": {
         "label": "Toolbox",
@@ -325,7 +337,7 @@
       },
       "bring": {
         "label": "What I Bring",
-        "title": "三種專業，一個人。",
+        "title": "一個人，就能走完整個專案。",
         "items": [
           {
             "key": "engineering",
@@ -334,15 +346,27 @@
           },
           {
             "key": "marketing",
-            "title": "行銷",
+            "title": "行銷企劃",
             "body": "品牌、社群與異業合作。線上募款專案募得 70 萬元，並促成與遠東百貨的 CSR 跨界合作。"
           },
           {
-            "key": "events",
-            "title": "活動",
-            "body": "半年內統籌 30 多場校園講座，也策劃線下論壇與募款活動，從企劃、預算到執行一手包辦。"
+            "key": "pm",
+            "title": "專案管理",
+            "body": "標案、預算與時程控管：半年內統籌 30 多場校園講座，也用 PM 的方式帶自己的 App 從規格走到 App Store 審核。"
           }
-        ]
+        ],
+        "featured": {
+          "key": "hybrid",
+          "title": "複合型人才",
+          "body": "我會行銷企劃、會辦活動，也能獨立開發網頁與 iOS App，還能自己當 PM，把專案從需求帶到上線。可以一個人把事情從頭做完，也能補上團隊裡任何一個位置。",
+          "tags": [
+            "行銷企劃",
+            "活動執行",
+            "網頁開發",
+            "App 開發",
+            "專案管理"
+          ]
+        }
       },
       "toolbox": {
         "label": "Toolbox",
