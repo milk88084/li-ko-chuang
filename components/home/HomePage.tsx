@@ -26,7 +26,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
       <Section label={t.home.hello.label}>
         <ScrubText
           text={t.home.hello.text}
-          className="max-w-5xl text-[clamp(26px,3.4vw,46px)] leading-[1.22] tracking-[-0.025em]"
+          className="text-[clamp(26px,3.4vw,46px)] leading-[1.22] tracking-[-0.025em] text-pretty"
         />
       </Section>
 
