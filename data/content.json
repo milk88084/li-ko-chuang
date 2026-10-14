@@ -1,200 +1,147 @@
 {
   "en": {
     "common": {
-      "portfolio": "MAX",
-      "description": "Building Interfaces, Telling Stories.",
-      "footerTitle": "Li Ko Chuan 2026",
-      "footerSubtitle": "Frontend Engineer · Project Management · Marketing Background",
-      "footerLocation": "Taipei, Taiwan",
-      "homeHint": "Click anywhere to bounce · Drag tags to move",
-      "explore": "Explore"
+      "name": "Max",
+      "fullName": "Li Ko Chuan",
+      "location": "Taipei, Taiwan",
+      "role": "Frontend Engineer · Marketing · Events"
     },
     "nav": {
-      "engineer": "Engineer",
-      "marketer": "Marketer",
-      "creator": "Creator"
+      "work": "Work",
+      "about": "About",
+      "events": "Events",
+      "writing": "Writing",
+      "contact": "Contact",
+      "home": "Home",
+      "language": "中文",
+      "languageLabel": "Switch to Chinese",
+      "themeLabel": "Toggle dark mode",
+      "menu": "Menu",
+      "close": "Close"
     },
-    "engineer": {
+    "home": {
       "hero": {
-        "badge": "Frontend Engineer",
-        "title": "Design-sense",
-        "titleHighlight": "Cross-disciplinary Engineer",
-        "description": "PM vision, committed to building products that meet market needs.",
-        "descriptionSub": "Building products with a PM's perspective, frontend engineer with over 8 years of marketing and project management background.",
-        "ctaText": "Explore"
+        "line1": "Building interfaces,",
+        "line2": "telling stories.",
+        "intro": "I'm Max, a frontend engineer in Taipei with eight years in marketing and events behind me. I build products in React and Next.js, and ship my own iOS apps alone.",
+        "frameLabel": "Frame · Col 9–12",
+        "imageAlt": "Max at work"
       },
+      "clients": {
+        "label": "Worked with"
+      },
+      "hello": {
+        "label": "Hello",
+        "text": "I'm Max — an engineer who used to be the marketer. Eight years of campaigns, fundraising and events taught me what users actually respond to; now I write the code that puts it in front of them, from the first spec to the App Store."
+      },
+      "work": {
+        "label": "Selected Work",
+        "title": "Selected work",
+        "viewAll": "View all work"
+      },
+      "bring": {
+        "label": "What I Bring",
+        "title": "Three disciplines, one person.",
+        "items": [
+          {
+            "key": "engineering",
+            "title": "Engineering",
+            "body": "React, Next.js and TypeScript on the web; React Native and Expo on iOS. Two apps designed, built and shipped to the App Store solo."
+          },
+          {
+            "key": "marketing",
+            "title": "Marketing",
+            "body": "Brand, social and cross-sector partnerships. Fundraising campaigns that raised 700k online and a CSR alliance with Far Eastern Department Store."
+          },
+          {
+            "key": "events",
+            "title": "Events",
+            "body": "30+ campus seminars in six months, offline forums and fundraising events — planned, budgeted and run end to end."
+          }
+        ]
+      },
+      "toolbox": {
+        "label": "Toolbox",
+        "title": "Things I work with.",
+        "hint": "Drag the tags · click to bounce",
+        "frameLabel": "Frame · Skills"
+      },
+      "words": {
+        "label": "Kind Words",
+        "title": "What people say."
+      },
+      "writing": {
+        "label": "Writing",
+        "title": "Latest writing",
+        "viewAll": "All writing"
+      }
+    },
+    "work": {
+      "label": "Work",
+      "title": "Work",
+      "intro": "Products I've built as an engineer, and campaigns I ran as a marketer.",
+      "filters": {
+        "all": "All",
+        "engineering": "Engineering",
+        "marketing": "Marketing"
+      },
+      "types": {
+        "engineering": "Engineering",
+        "marketing": "Marketing"
+      },
+      "detail": {
+        "back": "All work",
+        "type": "Type",
+        "category": "Category",
+        "stack": "Stack",
+        "link": "Link",
+        "visit": "Visit",
+        "problem": "The problem",
+        "outcome": "The outcome",
+        "highlights": "Highlights",
+        "tech": "Built with",
+        "next": "Next project"
+      }
+    },
+    "about": {
+      "label": "About",
       "scrollHero": {
         "intro": "Frontend engineer, Taipei. React, Next.js, TypeScript. My own apps, built and shipped alone.",
         "ctaText": "See the work",
         "statement": "Eight years in marketing, with a background in project management and campaign planning. A generalist, by design.",
         "spec": [
-          { "label": "Web", "value": "React · Next.js · TypeScript" },
-          { "label": "App", "value": "React Native · Expo" },
+          {
+            "label": "Web",
+            "value": "React · Next.js · TypeScript"
+          },
+          {
+            "label": "App",
+            "value": "React Native · Expo"
+          },
           {
             "label": "Workflow",
             "value": "Brief → spec → review → build → test → commit"
           },
-          { "label": "Daily tools", "value": "Claude Code · Gemini · Cursor" }
+          {
+            "label": "Daily tools",
+            "value": "Claude Code · Gemini · Cursor"
+          }
         ],
         "hint": "Scroll",
         "bigword": "MAX"
       },
-      "philosophy": {
+      "story": {
+        "label": "Story",
         "title": "Vibe Coding in the AI Era",
         "quote": "Bridging technical development and product thinking.",
-        "content": "With over 2 years of frontend development experience combined with 8 years of marketing background, I not only write scalable code but also optimize products from user experience and business goal perspectives."
-      },
-      "showcase": {
-        "title": "Featured Projects",
-        "subtitle": "Interactive Demo Showcase",
-        "nextProject": "Next Project",
-        "viewProject": "View Project",
-        "projects": [
-          {
-            "id": 0,
-            "name": "araS",
-            "description": "Asset, portfolio and retirement tracker — live on the App Store",
-            "tech": [
-              "Next.js 15",
-              "React 19",
-              "TypeScript",
-              "Expo",
-              "Expo Router",
-              "Prisma",
-              "PostgreSQL",
-              "Clerk",
-              "Zod",
-              "RevenueCat",
-              "Sentry",
-              "EAS",
-              "Vercel"
-            ],
-            "color": "#F59E0B",
-            "img": "/00_araS.webp",
-            "video": "/00_araS.mp4",
-            "link": "https://apps.apple.com/app/id6785747999"
-          },
-          {
-            "id": 1,
-            "name": "reteP",
-            "description": "Food and calorie tracking iOS app — live on the App Store",
-            "tech": [
-              "Expo SDK 54",
-              "React Native",
-              "TypeScript",
-              "Expo Router",
-              "Zustand",
-              "Clerk",
-              "FastAPI",
-              "react-native-svg",
-              "EAS"
-            ],
-            "color": "#10B981",
-            "img": "/05_reteP.webp",
-            "video": "",
-            "link": "https://apps.apple.com/app/id6798490139",
-            "imgMobile": "/05_reteP_mobile.webp"
-          },
-          {
-            "id": 2,
-            "name": "U-Turn",
-            "description": "Badminton Grouping System",
-            "tech": [
-              "React",
-              "TypeScript",
-              "n8n",
-              "Vite",
-              "PostgreSQL",
-              "Clerk",
-              "Zeabur"
-            ],
-            "color": "#F59E0B",
-            "img": "/01_U-Turn.webp",
-            "video": "/01_U-Turn.mp4",
-            "link": "#"
-          },
-          {
-            "id": 3,
-            "name": "Market Trend Tracking Platform",
-            "description": "Finding market trends, mastering market pulses",
-            "tech": [
-              "Next.js",
-              "React",
-              "TypeScript",
-              "Jotai",
-              "Tailwind CSS",
-              "Redux Toolkit",
-              "Docker",
-              "RWD"
-            ],
-            "color": "#F59E0B",
-            "img": "/02_AI快研究.webp",
-            "video": "/02_AI快研究.mp4",
-            "link": "#"
-          },
-          {
-            "id": 4,
-            "name": "Digital Chatroom",
-            "description": "Chatroom switching tools based on environment variables",
-            "tech": [
-              "Next.js",
-              "React",
-              "Redux Toolkit",
-              "TypeScript",
-              "Sass",
-              "Mui material",
-              "Docker",
-              "RWD"
-            ],
-            "color": "#10B981",
-            "img": "/03_Landscape.webp",
-            "video": "/03_Landscape.mp4",
-            "link": "#"
-          },
-          {
-            "id": 5,
-            "name": "Taiwan Info Service Provider Database",
-            "description": "Connecting to MOEA database for searching and filtering providers",
-            "tech": [
-              "React",
-              "TypeScript",
-              "axios",
-              "Restful API",
-              "Tailwind CSS",
-              "Jotai",
-              "husky",
-              "Docker",
-              "RWD"
-            ],
-            "color": "#8B5CF6",
-            "img": "/03_數位聊天室.webp",
-            "video": "/03_數位聊天室.mp4",
-            "link": "#"
-          },
-          {
-            "id": 6,
-            "name": "AI Agent Collaboration Platform",
-            "description": "Personalized chatbot with knowledge base integration",
-            "tech": [
-              "React",
-              "TypeScript",
-              "Sass",
-              "axios",
-              "Restful API",
-              "React Router",
-              "Docker",
-              "RWD"
-            ],
-            "color": "#3B82F6",
-            "img": "/04_Agent_Fabric.webp",
-            "video": "/04_Agent_Fabric.mp4",
-            "link": "#"
-          }
+        "body": [
+          "With over 2 years of frontend development experience combined with 8 years of marketing background, I not only write scalable code but also optimize products from user experience and business goal perspectives.",
+          "With 5 years of experience in marketing and project management, I know how to use data tools to track performance and ensure projects are executed precisely within budget through effective communication and coordination."
         ]
       },
       "experience": {
-        "title": "Experience",
-        "subtitle": "Technical Journey.",
+        "label": "Experience",
+        "title": "Where I've worked",
         "items": [
           {
             "period": "2024/07 — Present",
@@ -207,385 +154,7 @@
             "role": "Frontend Engineer",
             "company": "Aiworks (AppWorks School)",
             "description": "Developed blog SPA platforms and e-commerce websites. Used React, Firebase, GSAP to create immersive experiences."
-          }
-        ]
-      },
-      "now": {
-        "title": "Current Focus",
-        "subtitle": "Full-stack Development X Vibe Coding",
-        "items": [
-          {
-            "icon": "Code2",
-            "title": "React Ecosystem",
-            "description": "Deep dive into Next.js architecture and complex state management implementation (Zustand, Jotai, Redux)."
           },
-          {
-            "icon": "Terminal",
-            "title": "Shipping Full-stack",
-            "description": "Ran two iOS apps through the whole product lifecycle — API design, auth, database, App Store review and subscription billing."
-          },
-          {
-            "icon": "Workflow",
-            "title": "Automation",
-            "description": "Strengthening n8n automation flow systems."
-          },
-          {
-            "icon": "Database",
-            "title": "Database Design",
-            "description": "Designing production Prisma + PostgreSQL schemas: relations, indexing and per-user data isolation."
-          }
-        ]
-      },
-      "shipped": {
-        "label": "Shipped Solo",
-        "title": "Two products I built and shipped alone.",
-        "description": "Schema design, backend API, iOS builds, App Store review, subscription billing, crash monitoring and over-the-air updates — every layer of both apps is mine.",
-        "stats": [
-          {
-            "value": "2",
-            "label": "Apps live on the App Store"
-          },
-          {
-            "value": "1",
-            "label": "Person, idea to review"
-          },
-          {
-            "value": "Web + iOS",
-            "label": "Sharing one API and auth"
-          },
-          {
-            "value": "OTA",
-            "label": "Updates shipped in production"
-          }
-        ],
-        "apps": [
-          {
-            "name": "araS",
-            "icon": "/icon-araS.webp",
-            "caption": "Asset & retirement tracker",
-            "href": "https://apps.apple.com/app/id6785747999"
-          },
-          {
-            "name": "reteP",
-            "icon": "/icon-reteP.webp",
-            "caption": "Food & calorie tracker",
-            "href": "https://apps.apple.com/app/id6798490139"
-          }
-        ],
-        "appStoreLabel": "View on the App Store"
-      },
-      "projects": {
-        "title": "Projects",
-        "subtitle": "Solving problems with code.",
-        "problemLabel": "The Problem",
-        "outcomeLabel": "The Outcome",
-        "techLabel": "Tech Stack",
-        "items": [
-          {
-            "title": "araS",
-            "subtitle": "Personal asset, portfolio and retirement tracker — designed, built and shipped to the App Store solo.",
-            "tech": [
-              "Next.js 15",
-              "React 19",
-              "TypeScript",
-              "Expo",
-              "Expo Router",
-              "Prisma",
-              "PostgreSQL",
-              "Clerk",
-              "Zod",
-              "RevenueCat",
-              "Sentry",
-              "EAS",
-              "Vercel"
-            ],
-            "problem": "Assets, liabilities, holdings and insurance policies sit scattered across banks, brokers and spreadsheets, so net worth is never visible at a glance — and no existing tool covers TW/US holdings, dividends and retirement projection in one place.",
-            "outcome": "Built end to end alone: a Turborepo monorepo where a Next.js 15 web/API and an Expo iOS app share one API surface, one set of Zod schemas and one Clerk auth flow. Version 1.3 is on the App Store, with a RevenueCat premium subscription, Sentry crash monitoring and JS updates pushed over the air through EAS.",
-            "metrics": [
-              "On the App Store",
-              "Solo-built",
-              "Web + iOS monorepo",
-              "Premium subscription",
-              "OTA updates"
-            ]
-          },
-          {
-            "title": "reteP",
-            "subtitle": "Daily food and calorie logging, ported from the web app into a native iOS app.",
-            "tech": [
-              "Expo SDK 54",
-              "React Native",
-              "TypeScript",
-              "Expo Router",
-              "Zustand",
-              "Clerk",
-              "FastAPI",
-              "react-native-svg",
-              "EAS"
-            ],
-            "problem": "The web version already worked, but opening a browser for every meal is friction nobody repeats three times a day — food logging only sticks when it is one tap away on the phone.",
-            "outcome": "Ported the web UI one-to-one into an Expo app that reuses the existing FastAPI backend and Clerk auth, then shipped it to the App Store on 19 Aug 2026: Sign in with Apple, macro rings, calendar history, yearly SVG trend charts and a personal food library — with day-to-day updates delivered over the air.",
-            "metrics": [
-              "On the App Store",
-              "Solo-built",
-              "Calorie & macro tracking",
-              "Sign in with Apple",
-              "OTA updates"
-            ]
-          },
-          {
-            "title": "U-Turn",
-            "subtitle": "Automated badminton grouping and match scheduling system.",
-            "tech": [
-              "React",
-              "TypeScript",
-              "n8n",
-              "Vite",
-              "PostgreSQL",
-              "Clerk",
-              "Zeabur"
-            ],
-            "problem": "Organizing badminton meetups requires manually grouping players by skill level and balancing teams, which is time-consuming and error-prone.",
-            "outcome": "Built an automated grouping system that generates balanced matchups in seconds, streamlining registration and scheduling for badminton groups.",
-            "metrics": [
-              "Auto Grouping",
-              "Match Scheduling",
-              "Registration",
-              "Auth System",
-              "Database Management"
-            ]
-          },
-          {
-            "title": "Market Trend Tracking Platform",
-            "subtitle": "Monitoring growth data from GitHub, Hugging Face, etc., to provide policy suggestions.",
-            "tech": [
-              "Next.js",
-              "React",
-              "TypeScript",
-              "Jotai",
-              "Tailwind CSS",
-              "Redux Toolkit",
-              "Docker",
-              "RWD"
-            ],
-            "problem": "Integrating heterogeneous data sources with frequent updates posed a significant challenge to system performance.",
-            "outcome": "Built a relational database mapping tech to vendors, matching international trends with domestic supply chains for strategic advising.",
-            "metrics": [
-              "News Briefs",
-              "Auth System",
-              "Favorites",
-              "Subscription",
-              "Trend Analysis",
-              "Deep Research"
-            ]
-          },
-          {
-            "title": "Digital Chatroom",
-            "subtitle": "Configurable chatroom switching via environment variables.",
-            "tech": [
-              "Next.js",
-              "React",
-              "Redux Toolkit",
-              "TypeScript",
-              "Sass",
-              "Mui material",
-              "RWD"
-            ],
-            "problem": "Facing diverse chat needs across business units, lacking a universal swappable solution.",
-            "outcome": "Developed a flexible chat platform using env vars to control endpoints and styles, supporting multiple internal tools.",
-            "metrics": [
-              "Knowledge Base",
-              "History",
-              "Voice Input",
-              "Model Switching",
-              "Auth System"
-            ]
-          },
-          {
-            "title": "Taiwan Info Service Database",
-            "subtitle": "Connecting to MOEA database for searching and filtering providers.",
-            "tech": [
-              "React",
-              "TypeScript",
-              "axios",
-              "Restful API",
-              "Tailwind CSS",
-              "Jotai",
-              "husky",
-              "RWD"
-            ],
-            "problem": "Difficulty in finding info service providers due to lack of transparency and intuitive filtering mechanisms.",
-            "outcome": "Connected to MOEA API, built a high-performance responsive platform with React and Jotai, optimizing info retrieval.",
-            "metrics": [
-              "Auth System",
-              "Multi-criteria Filter",
-              "Conversational Search",
-              "AI Bot Search"
-            ]
-          },
-          {
-            "title": "AI Agent Collaboration Platform",
-            "subtitle": "Dify-like AI tool integration platform.",
-            "tech": [
-              "React",
-              "TypeScript",
-              "sass",
-              "axios",
-              "Restful API",
-              "React Router",
-              "RWD"
-            ],
-            "problem": "Enterprises need quick, custom AI bot construction, but existing solutions lack flexibility.",
-            "outcome": "Created a GPT-like interface with knowledge base support, multi-turn dialogue, and task automation.",
-            "metrics": [
-              "Bot Chat",
-              "Knowledge Base",
-              "Model Switching",
-              "File Upload",
-              "Auth System"
-            ]
-          }
-        ]
-      },
-      "techStack": {
-        "title": "Tech Stack",
-        "subtitle": "The Engineer's Toolkit.",
-        "items": [
-          {
-            "icon": "Code2",
-            "name": "React.js",
-            "hoverColor": "blue-500"
-          },
-          {
-            "icon": "Zap",
-            "name": "Next.js",
-            "hoverColor": "black-500"
-          },
-          {
-            "icon": "Type",
-            "name": "TypeScript",
-            "hoverColor": "blue-600"
-          },
-          {
-            "icon": "Globe",
-            "name": "HTML",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Palette",
-            "name": "CSS",
-            "hoverColor": "blue-400"
-          },
-          {
-            "icon": "FileJson",
-            "name": "JavaScript",
-            "hoverColor": "yellow-400"
-          },
-          {
-            "icon": "Shield",
-            "name": "Husky",
-            "hoverColor": "red-500"
-          },
-          {
-            "icon": "CheckCircle2",
-            "name": "Jest",
-            "hoverColor": "red-600"
-          },
-          {
-            "icon": "Link",
-            "name": "Axios",
-            "hoverColor": "purple-500"
-          },
-          {
-            "icon": "Workflow",
-            "name": "Redux Toolkit",
-            "hoverColor": "purple-600"
-          },
-          {
-            "icon": "Atom",
-            "name": "Jotai",
-            "hoverColor": "gray-500"
-          },
-          {
-            "icon": "Waves",
-            "name": "Zustand",
-            "hoverColor": "amber-700"
-          },
-          {
-            "icon": "Wind",
-            "name": "Tailwind CSS",
-            "hoverColor": "cyan-500"
-          },
-          {
-            "icon": "Brush",
-            "name": "Sass",
-            "hoverColor": "pink-400"
-          },
-          {
-            "icon": "Zap",
-            "name": "Vite",
-            "hoverColor": "yellow-500"
-          },
-          {
-            "icon": "Box",
-            "name": "Docker",
-            "hoverColor": "blue-600"
-          },
-          {
-            "icon": "GitBranch",
-            "name": "Git",
-            "hoverColor": "orange-600"
-          },
-          {
-            "icon": "Sparkles",
-            "name": "Firebase",
-            "hoverColor": "indigo-500"
-          },
-          {
-            "icon": "MousePointer2",
-            "name": "Cursor",
-            "hoverColor": "blue-500"
-          },
-          {
-            "icon": "Sparkles",
-            "name": "AntiGravity",
-            "hoverColor": "indigo-500"
-          }
-        ]
-      },
-      "mediumArticles": {
-        "title": "Latest Articles",
-        "subtitle": "Thoughts on frontend engineering, AI, and product.",
-        "readMore": "Read on Medium",
-        "viewAll": "View All Articles",
-        "loading": "Loading articles...",
-        "noArticles": "No articles found.",
-        "mediumUrl": "https://medium.com/@dearno.3"
-      },
-      "contact": {
-        "title": "Contact Me",
-        "description": "Feel free to reach out for collaborations or any questions.",
-        "email": "milk88084@gmail.com"
-      }
-    },
-    "marketer": {
-      "hero": {
-        "badge": "Project Management & Strategy",
-        "title": "Marketing Planning",
-        "titleHighlight": "Events",
-        "description": "Transforming complex requirements into actionable and successful projects.",
-        "descriptionSub": "5 years of experience in marketing and government bid management, specializing in cross-departmental communication.",
-        "ctaText": "Explore"
-      },
-      "philosophy": {
-        "title": "Marketing Strategy Philosophy",
-        "quote": "Combining AI and data analysis to create high-performance marketing strategies.",
-        "content": "With 5 years of experience in marketing and project management, I know how to use data tools to track performance and ensure projects are executed precisely within budget through effective communication and coordination."
-      },
-      "experience": {
-        "title": "Career Experience",
-        "subtitle": "Management and Analysis Expertise.",
-        "items": [
           {
             "period": "2021/12 — 2024/01",
             "role": "Advocacy Specialist",
@@ -612,444 +181,251 @@
           }
         ]
       },
-      "projects": {
-        "title": "Featured Projects",
-        "subtitle": "Past Case Studies",
-        "problemLabel": "Mission",
-        "resultLabel": "Result",
+      "now": {
+        "label": "Now",
+        "title": "Current Focus",
+        "subtitle": "Full-stack Development X Vibe Coding",
         "items": [
           {
-            "icon": "FileText",
-            "title": "Campus Gender Equality Program",
-            "tech": "Gov Bid",
-            "techColor": "amber",
-            "bgColor": "amber",
-            "image": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            "problem": "Traditional education lacks systematic gender and safety advocacy.",
-            "result": "Managed gov bids, coordinated 30+ seminars in 6 months, reaching 1,000+ students and staff."
+            "title": "React Ecosystem",
+            "description": "Deep dive into Next.js architecture and complex state management implementation (Zustand, Jotai, Redux)."
           },
           {
-            "icon": "Users",
-            "title": "Dept. Store CSR Alliance",
-            "tech": "Strategic Alliance",
-            "techColor": "purple",
-            "bgColor": "purple",
-            "image": "https://magazine.feg.com.tw/magazine/upload/article/358-21-2.jpg",
-            "problem": "Low awareness and fundraising difficulty for vulnerable groups like teen pregnancy.",
-            "result": "Partnered with Far Eastern Dept. Store, leveraging CSR resources to raise 100k+ in a single event."
+            "title": "Shipping Full-stack",
+            "description": "Ran two iOS apps through the whole product lifecycle — API design, auth, database, App Store review and subscription billing."
           },
           {
-            "icon": "TrendingUp",
-            "title": "Digital Fundraising Project",
-            "tech": "Digital Marketing",
-            "techColor": "blue",
-            "bgColor": "blue",
-            "image": "https://images.unsplash.com/photo-1591522810850-58128c5fb089?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            "problem": "Offline fundraising limited by geography, making it hard to scale.",
-            "result": "Implemented digital strategies, optimized donation paths, successfully raised 700k."
+            "title": "Automation",
+            "description": "Strengthening n8n automation flow systems."
           },
           {
-            "icon": "Video",
-            "title": "Omni-channel Production",
-            "tech": "Multimedia",
-            "techColor": "pink",
-            "bgColor": "pink",
-            "image": "https://images.unsplash.com/photo-1757955622421-b75472080224?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            "problem": "Lack of credible brand assets led to high trust costs for lead generation.",
-            "result": "Coordinated ad and video production, building brand trust and driving 3M+ in sales growth."
+            "title": "Database Design",
+            "description": "Designing production Prisma + PostgreSQL schemas: relations, indexing and per-user data isolation."
           }
         ]
       },
-      "marketingStack": {
-        "title": "Core Competencies",
-        "subtitle": "Challenges and Innovation.",
-        "items": [
-          {
-            "icon": "Presentation",
-            "name": "Event Planning",
-            "hoverColor": "amber-600"
-          },
-          {
-            "icon": "Users",
-            "name": "Project Management",
-            "hoverColor": "green-600"
-          },
-          {
-            "icon": "Megaphone",
-            "name": "Press Release Writing",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "MessageCircle",
-            "name": "Cross-dept. Comm.",
-            "hoverColor": "purple-600"
-          },
-          {
-            "icon": "Store",
-            "name": "Business Development",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Send",
-            "name": "Bid Proposal",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Wallet",
-            "name": "Budget Control",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Share2",
-            "name": "Social Media",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Sparkles",
-            "name": "AI Proficient",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Handshake",
-            "name": "Partnerships",
-            "hoverColor": "orange-500"
-          }
+      "skills": {
+        "label": "Skills",
+        "title": "Toolkit",
+        "engineering": "Engineering",
+        "marketing": "Marketing & events",
+        "engineeringItems": [
+          "React.js",
+          "Next.js",
+          "TypeScript",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Husky",
+          "Jest",
+          "Axios",
+          "Redux Toolkit",
+          "Jotai",
+          "Zustand",
+          "Tailwind CSS",
+          "Sass",
+          "Vite",
+          "Docker",
+          "Git",
+          "Firebase",
+          "Cursor",
+          "AntiGravity"
+        ],
+        "marketingItems": [
+          "Event Planning",
+          "Project Management",
+          "Press Release Writing",
+          "Cross-dept. Comm.",
+          "Business Development",
+          "Bid Proposal",
+          "Budget Control",
+          "Social Media",
+          "AI Proficient",
+          "Partnerships"
         ]
-      },
-      "contact": {
-        "title": "Contact Me",
-        "description": "If you have any initial thoughts on collaboration or questions, please feel free to reach out.",
-        "email": "milk88084@gmail.com"
       }
     },
-    "creator": {
-      "hero": {
-        "badge": "Life & Creativity",
-        "title": "Personal Brand",
-        "titleHighlight": "Creation",
-        "description": "Between work and life,",
-        "descriptionSub": "exploring healing, companionship, and self-growth journey.",
-        "ctaPrimary": "Explore"
+    "events": {
+      "label": "Events",
+      "title": "Events",
+      "intro": "The events I planned and ran as a marketer, and the tech communities I show up to now.",
+      "organized": {
+        "label": "Organized",
+        "title": "Events I planned"
       },
-      "about": {
-        "title": "About Me",
-        "quote": "Feeding authentic growth with tiny daily discoveries.",
-        "content": "Beyond the fast-paced professional world, I am passionate about exploring healing and companionship through my podcast 'Tiny Daily Life' and creative writing. For me, learning and self-challenge are not just goals, but a way to savor every moment of life. This space documents how I rediscover a more soulful version of myself beyond data and code."
+      "attended": {
+        "label": "Attended",
+        "title": "Communities I show up to"
       },
-      "podcast": {
-        "badge": "Podcast",
-        "title": "Tiny Daily Life",
-        "titleSub": "/ Tiny Daily Life",
-        "image": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "description": "A space about life, healing, and companionship. Here, we talk about daily feelings and stories that data can't capture.",
-        "podcastLink": "https://podcasts.apple.com/tw/podcast/%E5%BE%AE%E5%B0%8F%E6%97%A5%E5%B8%B8/id1529054627",
-        "spotifyLink": "https://open.spotify.com/show/3wCLU0GfVEmJi64JQjDoYk?si=fa66da1d507b48f0",
-        "platforms": [
-          {
-            "name": "Apple Podcasts",
-            "color": "gray"
-          },
-          {
-            "name": "Spotify",
-            "color": "green"
-          }
-        ],
-        "episodesTitle": "Latest Episodes",
-        "episodes": [
-          {
-            "title": "EP113 | Museum of Old Things",
-            "duration": "46:00",
-            "link": "https://podcasts.apple.com/tw/podcast/ep113-%E8%88%8A%E7%89%A9%E5%8D%9A%E7%89%A9%E9%A4%A8/id1529054627?i=1000747009534"
-          },
-          {
-            "title": "EP 99 | Vitality is the foundation of love: Secrets of choosing a partner after 40",
-            "duration": "20:00",
-            "link": "https://podcasts.apple.com/tw/podcast/ep-99-%E7%94%9F%E5%91%BD%E5%8A%9B%E6%89%8D%E6%98%AF%E6%84%9B%E6%83%85%E5%BA%95%E6%B0%A3-40%E6%AD%B2%E5%BE%8C%E9%81%B8%E4%BC%B4%E4%BE%B6%E7%9A%84%E7%A7%98%E5%AF%86/id1529054627?i=1000738515330"
-          },
-          {
-            "title": "EP64 | Falling hard and fast: Have you moved on from those infatuated days?",
-            "duration": "20:00",
-            "link": "https://podcasts.apple.com/tw/podcast/ep64-%E6%9A%88%E5%88%B0%E7%84%A1%E6%B3%95%E8%87%AA%E6%8B%94-%E9%82%A3%E4%BA%9B%E6%9A%88%E8%88%B9%E7%9A%84%E6%97%A5%E5%AD%90-%E4%BD%A0%E4%B8%8A%E5%B2%B8%E4%BA%86%E5%97%8E/id1529054627?i=1000608611116"
-          }
-        ]
-      },
-      "interests": {
-        "title": "Daily Interests",
-        "subtitle": "Exploring life beyond work",
-        "items": [
-          {
-            "icon": "Film",
-            "name": "Movies",
-            "hoverColor": "amber-600"
-          },
-          {
-            "icon": "Activity",
-            "name": "Volleyball",
-            "hoverColor": "blue-500"
-          },
-          {
-            "icon": "Trophy",
-            "name": "Badminton",
-            "hoverColor": "amber-600"
-          },
-          {
-            "icon": "Palette",
-            "name": "Contemporary Art",
-            "hoverColor": "amber-600"
-          },
-          {
-            "icon": "Music",
-            "name": "Music",
-            "hoverColor": "purple-500"
-          },
-          {
-            "icon": "BookOpen",
-            "name": "Reading",
-            "hoverColor": "green-500"
-          }
-        ],
-        "socialTitle": "Follow Me",
-        "socialLinks": [
-          {
-            "platform": "Instagram",
-            "url": "https://www.instagram.com/little.by.little.official/",
-            "gradient": "from-purple-500 to-pink-500"
-          },
-          {
-            "platform": "YouTube",
-            "url": "https://www.youtube.com/@Little.by.Little.2025",
-            "color": "red-500"
-          },
-          {
-            "platform": "Threads",
-            "url": "https://www.threads.com/@little.by.little.official?xmt=AQF0v9RIwI_n5FWdMfPE_Xve3cdicIzkS1AHm-Wb6eplSt8",
-            "color": "red-500"
-          }
-        ]
-      },
-      "values": {
-        "title": "Life Values",
-        "subtitle": "Things I believe in",
-        "items": [
-          {
-            "icon": "Heart",
-            "title": "Authenticity Over Perfection",
-            "description": "Don't pursue a perfect persona, just be your authentic self."
-          },
-          {
-            "icon": "Sparkles",
-            "title": "The Power of Tiny Moments",
-            "description": "Great changes often start with tiny choices in daily life."
-          },
-          {
-            "icon": "Coffee",
-            "title": "The Art of Slowing Down",
-            "description": "In a fast-paced world, learn to enjoy every moment."
-          }
-        ]
-      },
-      "contact": {
-        "title": "Wanna talk?",
-        "description": "Whether it's for collaboration, life chats, or just to say hi, feel free to reach out."
-      }
+      "viewProject": "See the project"
+    },
+    "writing": {
+      "label": "Writing",
+      "title": "Writing",
+      "intro": "Thoughts on frontend engineering, AI, and product.",
+      "readMore": "Read on Medium",
+      "viewAll": "View All Articles",
+      "loading": "Loading articles...",
+      "noArticles": "No articles found.",
+      "mediumUrl": "https://medium.com/@dearno.3"
+    },
+    "footer": {
+      "blurb": "Frontend engineer with a marketer's instincts. I build interfaces people understand, and tell the story around them.",
+      "sitemap": "Sitemap",
+      "elsewhere": "Elsewhere",
+      "ctaTitle": "Interested in working together?",
+      "ctaBody": "Whether it's a role, a project or just a conversation about products, I'd be glad to hear from you.",
+      "ctaButton": "Write to me",
+      "rights": "All rights reserved."
+    },
+    "cursor": {
+      "view": "View",
+      "drag": "Drag"
     }
   },
   "zh": {
     "common": {
-      "portfolio": "MAX",
-      "description": "建構介面，訴說故事。",
-      "footerTitle": "Li Ko Chuan 2026",
-      "footerSubtitle": "前端工程師 · 專案管理 · 行銷背景",
-      "footerLocation": "台北, 台灣",
-      "homeHint": "點擊空白處彈跳 · 拖曳標籤移動",
-      "explore": "探索"
+      "name": "Max",
+      "fullName": "Li Ko Chuan",
+      "location": "台北，台灣",
+      "role": "前端工程師 · 行銷 · 活動"
     },
     "nav": {
-      "engineer": "工程師",
-      "marketer": "品牌行銷",
-      "creator": "創作者"
+      "work": "作品",
+      "about": "關於我",
+      "events": "活動",
+      "writing": "文章",
+      "contact": "聯絡我",
+      "home": "首頁",
+      "language": "EN",
+      "languageLabel": "切換為英文",
+      "themeLabel": "切換深淺色",
+      "menu": "選單",
+      "close": "關閉"
     },
-    "engineer": {
+    "home": {
       "hero": {
-        "badge": "前端工程師",
-        "title": "設計感",
-        "titleHighlight": "跨領域工程師",
-        "description": "擁有 PM 視角，致力於構建符合市場需求的產品。",
-        "descriptionSub": "擁有 8 年以上行銷與專案管理背景，能將產品思維融入技術開發的前端工程師。",
-        "ctaText": "探索"
+        "line1": "寫程式打造介面，",
+        "line2": "用行銷說好故事。",
+        "intro": "我是 Max，台北的前端工程師，在這之前做了八年行銷與活動。用 React、Next.js 打造產品，也獨自開發並上架自己的 iOS App。",
+        "frameLabel": "Frame · Col 9–12",
+        "imageAlt": "工作中的 Max"
       },
+      "clients": {
+        "label": "曾合作的單位"
+      },
+      "hello": {
+        "label": "Hello",
+        "text": "我是 Max，一個曾經是行銷人的工程師。八年的活動、募款與品牌經驗，讓我知道使用者真正在意什麼；現在我用程式把它做出來，從第一份規格一路到 App Store 上架。"
+      },
+      "work": {
+        "label": "Selected Work",
+        "title": "精選作品",
+        "viewAll": "看全部作品"
+      },
+      "bring": {
+        "label": "What I Bring",
+        "title": "三種專業，一個人。",
+        "items": [
+          {
+            "key": "engineering",
+            "title": "工程",
+            "body": "網頁用 React、Next.js、TypeScript，iOS 用 React Native 與 Expo。兩款 App 從設計、開發到上架 App Store 全程獨立完成。"
+          },
+          {
+            "key": "marketing",
+            "title": "行銷",
+            "body": "品牌、社群與異業合作。線上募款專案募得 70 萬元，並促成與遠東百貨的 CSR 跨界合作。"
+          },
+          {
+            "key": "events",
+            "title": "活動",
+            "body": "半年內統籌 30 多場校園講座，也策劃線下論壇與募款活動，從企劃、預算到執行一手包辦。"
+          }
+        ]
+      },
+      "toolbox": {
+        "label": "Toolbox",
+        "title": "我常用的工具與能力。",
+        "hint": "拖曳標籤 · 點擊彈跳",
+        "frameLabel": "Frame · Skills"
+      },
+      "words": {
+        "label": "Kind Words",
+        "title": "合作夥伴怎麼說。"
+      },
+      "writing": {
+        "label": "Writing",
+        "title": "最新文章",
+        "viewAll": "看全部文章"
+      }
+    },
+    "work": {
+      "label": "Work",
+      "title": "作品",
+      "intro": "身為工程師打造的產品，以及身為行銷人執行的專案。",
+      "filters": {
+        "all": "全部",
+        "engineering": "工程",
+        "marketing": "行銷"
+      },
+      "types": {
+        "engineering": "工程",
+        "marketing": "行銷"
+      },
+      "detail": {
+        "back": "全部作品",
+        "type": "類型",
+        "category": "類別",
+        "stack": "技術",
+        "link": "連結",
+        "visit": "前往",
+        "problem": "要解決的問題",
+        "outcome": "成果",
+        "highlights": "重點",
+        "tech": "使用技術",
+        "next": "下一個專案"
+      }
+    },
+    "about": {
+      "label": "About",
       "scrollHero": {
         "intro": "前端工程師，在台北。React、Next.js、TypeScript。自己的 App，一個人從頭做到上架。",
         "ctaText": "看看作品",
         "statement": "做了八年行銷，我擁有專案管理、行銷企劃的背景。全方位的專業人才。",
         "spec": [
-          { "label": "web", "value": "React · Next.js · TypeScript" },
-          { "label": "app", "value": "React Native · Expo" },
+          {
+            "label": "web",
+            "value": "React · Next.js · TypeScript"
+          },
+          {
+            "label": "app",
+            "value": "React Native · Expo"
+          },
           {
             "label": "工作流",
             "value": "需求 → spec → 檢視/調整 → 開發 → 測試 → commit"
           },
-          { "label": "日常工具", "value": "Claude Code · Gemini、Cursor" }
+          {
+            "label": "日常工具",
+            "value": "Claude Code · Gemini、Cursor"
+          }
         ],
         "hint": "向下捲動",
         "bigword": "MAX"
       },
-      "philosophy": {
+      "story": {
+        "label": "Story",
         "title": "與AI共融的Vibe Coding",
         "quote": "橋接技術開發與產品思維。",
-        "content": "我擁有 2 年以上的前端開發經驗，並結合過去 8 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。"
-      },
-      "showcase": {
-        "title": "精選專案",
-        "subtitle": "互動式作品展示",
-        "nextProject": "下一個專案",
-        "viewProject": "查看專案",
-        "projects": [
-          {
-            "id": 0,
-            "name": "araS",
-            "description": "資產、投資組合與退休試算 App — 已上架 App Store",
-            "tech": [
-              "Next.js 15",
-              "React 19",
-              "TypeScript",
-              "Expo",
-              "Expo Router",
-              "Prisma",
-              "PostgreSQL",
-              "Clerk",
-              "Zod",
-              "RevenueCat",
-              "Sentry",
-              "EAS",
-              "Vercel"
-            ],
-            "color": "#F59E0B",
-            "img": "/00_araS.webp",
-            "video": "/00_araS.mp4",
-            "link": "https://apps.apple.com/app/id6785747999"
-          },
-          {
-            "id": 1,
-            "name": "reteP",
-            "description": "飲食熱量記錄 iOS App — 已上架 App Store",
-            "tech": [
-              "Expo SDK 54",
-              "React Native",
-              "TypeScript",
-              "Expo Router",
-              "Zustand",
-              "Clerk",
-              "FastAPI",
-              "react-native-svg",
-              "EAS"
-            ],
-            "color": "#10B981",
-            "img": "/05_reteP.webp",
-            "video": "",
-            "link": "https://apps.apple.com/app/id6798490139",
-            "imgMobile": "/05_reteP_mobile.webp"
-          },
-          {
-            "id": 2,
-            "name": "U-Turn",
-            "description": "羽球分組系統",
-            "tech": [
-              "React",
-              "TypeScript",
-              "n8n",
-              "Vite",
-              "PostgreSQL",
-              "Clerk",
-              "Zeabur"
-            ],
-            "color": "#F59E0B",
-            "img": "/01_U-Turn.webp",
-            "video": "/01_U-Turn.mp4",
-            "link": "#"
-          },
-          {
-            "id": 3,
-            "name": "國內市場趨勢追蹤平台",
-            "description": "尋找市場趨勢，掌握市場脈動",
-            "tech": [
-              "Next.js",
-              "React",
-              "TypeScript",
-              "Jotai",
-              "Tailwind CSS",
-              "Redux Toolkit",
-              "Docker",
-              "RWD"
-            ],
-            "color": "#F59E0B",
-            "img": "/02_AI快研究.webp",
-            "video": "/02_AI快研究.mp4",
-            "link": "#"
-          },
-          {
-            "id": 4,
-            "name": "數位聊天室",
-            "description": "依環境變數切換不同數位工具的聊天室",
-            "tech": [
-              "Next.js",
-              "React",
-              "Redux Toolkit",
-              "TypeScript",
-              "Sass",
-              "Mui material",
-              "Docker",
-              "RWD"
-            ],
-            "color": "#10B981",
-            "img": "/03_Landscape.webp",
-            "video": "/03_Landscape.mp4",
-            "link": "#"
-          },
-          {
-            "id": 5,
-            "name": "台灣資訊服務業者資料庫",
-            "description": "串接經濟部資料庫，提供台灣資訊服務業者的查詢與篩選功能",
-            "tech": [
-              "React",
-              "TypeScript",
-              "axios",
-              "Restful API",
-              "Tailwind CSS",
-              "Jotai",
-              "husky",
-              "Docker",
-              "RWD"
-            ],
-            "color": "#8B5CF6",
-            "img": "/03_數位聊天室.webp",
-            "video": "/03_數位聊天室.mp4",
-            "link": "#"
-          },
-          {
-            "id": 6,
-            "name": "AI Agent 協作平台",
-            "description": "建立機器人聊天室，掛載個人知識庫，提供個人化服務，提高工作效率",
-            "tech": [
-              "React",
-              "TypeScript",
-              "Sass",
-              "axios",
-              "Restful API",
-              "React Router",
-              "Docker",
-              "RWD"
-            ],
-            "color": "#3B82F6",
-            "img": "/04_Agent_Fabric.webp",
-            "video": "/04_Agent_Fabric.mp4",
-            "link": "#"
-          }
+        "body": [
+          "我擁有 2 年以上的前端開發經驗，並結合過去 8 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。",
+          "憑藉 5 年的行銷與專案管理經驗，我深知如何利用數據工具追蹤成效，並透過有效的溝通協調，確保專案在預算內精準執行。"
         ]
       },
       "experience": {
+        "label": "Experience",
         "title": "工作經歷",
-        "subtitle": "技術旅程。",
         "items": [
           {
             "period": "2024/07 — 至今",
@@ -1062,385 +438,7 @@
             "role": "前端工程師",
             "company": "Aiworks (AppWorks School)",
             "description": "開發部落格式 SPA 平台與電商網站。使用 React, Firebase, GSAP 打造沉浸式體驗。"
-          }
-        ]
-      },
-      "now": {
-        "title": "目前技術焦點",
-        "subtitle": "全端開發 X Vibe Coding",
-        "items": [
-          {
-            "icon": "Code2",
-            "title": "React 生態系深耕",
-            "description": "專注於 Next.js 架構優化與複雜狀態管理（Zustand, Jotai, Redux）的實作應用。"
           },
-          {
-            "icon": "Terminal",
-            "title": "獨立產品開發與上架",
-            "description": "完整跑過兩款 iOS App 的產品生命週期：API 設計、認證流程、資料庫、App Store 送審到訂閱金流。"
-          },
-          {
-            "icon": "Workflow",
-            "title": "自動化流程",
-            "description": "強化 n8n 自動化流程系統。"
-          },
-          {
-            "icon": "Database",
-            "title": "資料庫設計",
-            "description": "以 Prisma 與 PostgreSQL 設計正式上線的資料模型，處理關聯、索引與使用者資料隔離。"
-          }
-        ]
-      },
-      "shipped": {
-        "label": "獨立開發並上架",
-        "title": "兩款從零打造、獨立送審上線的產品。",
-        "description": "資料庫設計、後端 API、iOS 打包、App Store 送審，到訂閱金流、當機監控與 OTA 熱更新，兩款 App 的每一層都是自己做的。",
-        "stats": [
-          {
-            "value": "2",
-            "label": "款 App 已上架 App Store"
-          },
-          {
-            "value": "1",
-            "label": "人，從構想做到送審"
-          },
-          {
-            "value": "Web + iOS",
-            "label": "共用同一套 API 與認證"
-          },
-          {
-            "value": "OTA",
-            "label": "線上營運中的熱更新"
-          }
-        ],
-        "apps": [
-          {
-            "name": "araS",
-            "icon": "/icon-araS.webp",
-            "caption": "資產與退休試算",
-            "href": "https://apps.apple.com/app/id6785747999"
-          },
-          {
-            "name": "reteP",
-            "icon": "/icon-reteP.webp",
-            "caption": "飲食熱量記錄",
-            "href": "https://apps.apple.com/app/id6798490139"
-          }
-        ],
-        "appStoreLabel": "到 App Store 看看"
-      },
-      "projects": {
-        "title": "專案",
-        "subtitle": "用程式碼解決問題。",
-        "problemLabel": "解決的問題",
-        "outcomeLabel": "專案成果",
-        "techLabel": "使用技術",
-        "items": [
-          {
-            "title": "araS",
-            "subtitle": "個人資產、投資組合與退休試算 App，從設計、開發到上架 App Store 全程獨立完成。",
-            "tech": [
-              "Next.js 15",
-              "React 19",
-              "TypeScript",
-              "Expo",
-              "Expo Router",
-              "Prisma",
-              "PostgreSQL",
-              "Clerk",
-              "Zod",
-              "RevenueCat",
-              "Sentry",
-              "EAS",
-              "Vercel"
-            ],
-            "problem": "資產、負債、持股與保單分散在各家銀行、券商與試算表，淨資產永遠看不到全貌；市面上也沒有同時涵蓋台股美股持股、股息與退休金試算的工具。",
-            "outcome": "一人從頭做到底：以 Turborepo 讓 Next.js 15 網頁／API 與 Expo iOS App 共用同一套 API、Zod schema 與 Clerk 認證。目前 App Store 版本 1.3，並以 RevenueCat 提供 Premium 訂閱、Sentry 監控當機、EAS OTA 直接推送即時更新。",
-            "metrics": [
-              "已上架 App Store",
-              "獨立開發",
-              "Web + iOS Monorepo",
-              "訂閱制付費",
-              "OTA 熱更新"
-            ]
-          },
-          {
-            "title": "reteP",
-            "subtitle": "每日飲食與熱量記錄，從網頁版移植為原生 iOS App。",
-            "tech": [
-              "Expo SDK 54",
-              "React Native",
-              "TypeScript",
-              "Expo Router",
-              "Zustand",
-              "Clerk",
-              "FastAPI",
-              "react-native-svg",
-              "EAS"
-            ],
-            "problem": "網頁版已經能用，但每一餐都要打開瀏覽器記錄，摩擦大到沒人願意一天做三次；飲食追蹤只有在手機上一鍵可達時才留得住使用者。",
-            "outcome": "將網頁版 UI 1:1 移植成 Expo App，共用既有的 FastAPI 後端與 Clerk 認證，2026/08/19 上架 App Store：支援 Sign in with Apple、營養素環圈、日曆歷史紀錄、以 SVG 純 JS 繪製的年度趨勢圖與個人食物庫，日常更新以 OTA 直接推送。",
-            "metrics": [
-              "已上架 App Store",
-              "獨立開發",
-              "熱量與營養素追蹤",
-              "Sign in with Apple",
-              "OTA 熱更新"
-            ]
-          },
-          {
-            "title": "U-Turn",
-            "subtitle": "自動化羽球分組與賽程安排系統",
-            "tech": [
-              "React",
-              "TypeScript",
-              "n8n",
-              "Vite",
-              "PostgreSQL",
-              "Clerk",
-              "Zeabur"
-            ],
-            "problem": "羽球團體活動需手動依程度與人數平衡分組，耗時且容易出錯。",
-            "outcome": "建立自動化分組系統，依程度快速產生平衡賽程，簡化報名與分組流程，提升活動運作效率。",
-            "metrics": [
-              "自動分組",
-              "賽程安排",
-              "報名系統",
-              "登入系統",
-              "資料庫管理"
-            ]
-          },
-          {
-            "title": "國內市場趨勢追蹤平台",
-            "subtitle": "依據網路爬蟲領域關鍵字、監測Github Hugging Face等相關成長數據，對應國內公司資訊，依照微光、新興、主流趨勢，提供相對應政策",
-            "tech": [
-              "Next.js",
-              "React",
-              "TypeScript",
-              "Jotai",
-              "Tailwind CSS",
-              "Redux Toolkit",
-              "Docker",
-              "RWD"
-            ],
-            "problem": "需整合異質數據源（網路爬蟲、API、內部資料庫），且數據更新頻繁，對系統效能造成巨大挑戰。",
-            "outcome": "建立「技術-廠商」關聯資料庫，智慧媒合國際趨勢與國內供應鏈，為政府與投資人提供具體的策略建議地圖。",
-            "metrics": [
-              "新聞快訊",
-              "登入功能",
-              "收藏功能",
-              "電子報訂閱",
-              "趨勢分析",
-              "深度研究"
-            ]
-          },
-          {
-            "title": "數位聊天室",
-            "subtitle": "依環境變數切換不同數位工具的聊天室",
-            "tech": [
-              "Next.js",
-              "React",
-              "Redux Toolkit",
-              "TypeScript",
-              "Sass",
-              "Mui material",
-              "RWD"
-            ],
-            "problem": "面對不同業務端的聊天需求，缺乏一套能夠快速抽換設定的通用解決方案。",
-            "outcome": "開發具備高度彈性的聊天平台，利用環境變數控制 API 端點與 UI 風格，成功支援多組內部工具的即時通訊需求。",
-            "metrics": [
-              "知識庫串接",
-              "歷史紀錄",
-              "語音輸入",
-              "多模型切換",
-              "登入系統"
-            ]
-          },
-          {
-            "title": "台灣資訊服務業者資料庫",
-            "subtitle": "串接經濟部資料庫，提供台灣資訊服務業者的查詢與篩選功能",
-            "tech": [
-              "React",
-              "TypeScript",
-              "axios",
-              "Restful API",
-              "Tailwind CSS",
-              "Jotai",
-              "husky",
-              "RWD"
-            ],
-            "problem": "企業尋找資訊服務商如同大海撈針，缺乏透明的資訊與比較基準；缺乏直覺的篩選與搜尋機制，使用者必須手動比對資料，耗時且效率低落。",
-            "outcome": "成功串接經濟部 API，運用 React 與 Jotai 打造高效能的響應式查詢平台，實現即時多條件篩選，大幅優化資訊檢索體驗。",
-            "metrics": [
-              "登入系統",
-              "多條件篩選",
-              "對話式搜尋",
-              "機器人聊天搜尋系統"
-            ]
-          },
-          {
-            "title": "AI Agent 協作平台",
-            "subtitle": "類Dify串接AI工具平台",
-            "tech": [
-              "React",
-              "TypeScript",
-              "sass",
-              "axios",
-              "Restful API",
-              "React Router",
-              "RWD"
-            ],
-            "problem": "企業需要快速建構客製化 AI 聊天機器人，但現有方案缺乏彈性且整合困難。需要一個能連接多種 AI 模型、支援即時互動的平台。",
-            "outcome": "成功打造 GPT-like 對話介面與知識庫系統，支援多輪對話、檔案上傳、任務自動化功能，大幅降低企業導入 AI 的門檻。",
-            "metrics": [
-              "機器人聊天",
-              "知識庫串接",
-              "多模型切換",
-              "檔案上傳",
-              "登入系統"
-            ]
-          }
-        ]
-      },
-      "techStack": {
-        "title": "技術棧",
-        "subtitle": "工程師的工具箱。",
-        "items": [
-          {
-            "icon": "Code2",
-            "name": "React.js",
-            "hoverColor": "blue-500"
-          },
-          {
-            "icon": "Zap",
-            "name": "Next.js",
-            "hoverColor": "black-500"
-          },
-          {
-            "icon": "Type",
-            "name": "TypeScript",
-            "hoverColor": "blue-600"
-          },
-          {
-            "icon": "Globe",
-            "name": "HTML",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Palette",
-            "name": "CSS",
-            "hoverColor": "blue-400"
-          },
-          {
-            "icon": "FileJson",
-            "name": "JavaScript",
-            "hoverColor": "yellow-400"
-          },
-          {
-            "icon": "Shield",
-            "name": "Husky",
-            "hoverColor": "red-500"
-          },
-          {
-            "icon": "CheckCircle2",
-            "name": "Jest",
-            "hoverColor": "red-600"
-          },
-          {
-            "icon": "Link",
-            "name": "Axios",
-            "hoverColor": "purple-500"
-          },
-          {
-            "icon": "Workflow",
-            "name": "Redux Toolkit",
-            "hoverColor": "purple-600"
-          },
-          {
-            "icon": "Atom",
-            "name": "Jotai",
-            "hoverColor": "gray-500"
-          },
-          {
-            "icon": "Waves",
-            "name": "Zustand",
-            "hoverColor": "amber-700"
-          },
-          {
-            "icon": "Wind",
-            "name": "Tailwind CSS",
-            "hoverColor": "cyan-500"
-          },
-          {
-            "icon": "Brush",
-            "name": "Sass",
-            "hoverColor": "pink-400"
-          },
-          {
-            "icon": "Zap",
-            "name": "Vite",
-            "hoverColor": "yellow-500"
-          },
-          {
-            "icon": "Box",
-            "name": "Docker",
-            "hoverColor": "blue-600"
-          },
-          {
-            "icon": "GitBranch",
-            "name": "Git",
-            "hoverColor": "orange-600"
-          },
-          {
-            "icon": "Sparkles",
-            "name": "Firebase",
-            "hoverColor": "indigo-500"
-          },
-          {
-            "icon": "MousePointer2",
-            "name": "Cursor",
-            "hoverColor": "blue-500"
-          },
-          {
-            "icon": "Sparkles",
-            "name": "AntiGravity",
-            "hoverColor": "indigo-500"
-          }
-        ]
-      },
-      "mediumArticles": {
-        "title": "最新文章",
-        "subtitle": "關於前端工程、AI 與產品的思考與紀錄。",
-        "readMore": "在 Medium 閱讀",
-        "viewAll": "查看所有文章",
-        "loading": "載入文章中...",
-        "noArticles": "目前沒有文章。",
-        "mediumUrl": "https://medium.com/@your-medium-username"
-      },
-      "contact": {
-        "title": "聯絡我",
-        "description": "有合作意向或任何問題，請隨時聯繫我。",
-        "email": "milk88084@gmail.com"
-      }
-    },
-    "marketer": {
-      "hero": {
-        "badge": "專案管理與策略",
-        "title": "行銷企劃",
-        "titleHighlight": "活動",
-        "description": "將複雜需求轉化為具體可執行的成功專案。",
-        "descriptionSub": "具備 5 年行銷與政府標案管理經驗，擅長跨部門溝通。",
-        "ctaText": "探索"
-      },
-      "philosophy": {
-        "title": "產品行銷思惟",
-        "quote": "結合AI與數據分析，打造高效能行銷策略。",
-        "content": "憑藉 5 年的行銷與專案管理經驗，我深知如何利用數據工具追蹤成效，並透過有效的溝通協調，確保專案在預算內精準執行。"
-      },
-      "experience": {
-        "title": "職涯經歷",
-        "subtitle": "管理與分析經驗。",
-        "items": [
           {
             "period": "2021/12 — 2024/01",
             "role": "倡議專員",
@@ -1467,246 +465,106 @@
           }
         ]
       },
-      "projects": {
-        "title": "精選專案",
-        "subtitle": "過去專案案例",
-        "problemLabel": "任務",
-        "resultLabel": "成果",
+      "now": {
+        "label": "Now",
+        "title": "目前技術焦點",
+        "subtitle": "全端開發 X Vibe Coding",
         "items": [
           {
-            "icon": "FileText",
-            "title": "校園性別平權宣講計畫",
-            "tech": "政府標案",
-            "techColor": "amber",
-            "bgColor": "amber",
-            "image": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            "problem": "既有教育體系缺乏多元性別與自我保護的系統性宣導。",
-            "result": "承接並執行政府標案，半年內統籌 30+ 場講座，精準觸及超過 1,000 名學生與教職人員。"
+            "title": "React 生態系深耕",
+            "description": "專注於 Next.js 架構優化與複雜狀態管理（Zustand, Jotai, Redux）的實作應用。"
           },
           {
-            "icon": "Users",
-            "title": "百貨 CSR 異業結盟",
-            "tech": "異業合作",
-            "techColor": "purple",
-            "bgColor": "purple",
-            "image": "https://magazine.feg.com.tw/magazine/upload/article/358-21-2.jpg",
-            "problem": "家暴與未成年懷孕等弱勢議題關注度低，推廣與募款困難。",
-            "result": "促成與遠東百貨跨界合作，結合企業 CSR 資源提升品牌能見度，單檔活動募得逾 10 萬元善款。"
+            "title": "獨立產品開發與上架",
+            "description": "完整跑過兩款 iOS App 的產品生命週期：API 設計、認證流程、資料庫、App Store 送審到訂閱金流。"
           },
           {
-            "icon": "TrendingUp",
-            "title": "數位轉型募款專案",
-            "tech": "數位行銷",
-            "techColor": "blue",
-            "bgColor": "blue",
-            "image": "https://images.unsplash.com/photo-1591522810850-58128c5fb089?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            "problem": "傳統線下募款受限於地域性，難以擴大受眾規模。",
-            "result": "導入數位行銷策略突破地域限制，優化線上捐款路徑，成功募資達 70 萬元。"
+            "title": "自動化流程",
+            "description": "強化 n8n 自動化流程系統。"
           },
           {
-            "icon": "Video",
-            "title": "全媒體內容行銷製作",
-            "tech": "多媒體製作",
-            "techColor": "pink",
-            "bgColor": "pink",
-            "image": "https://images.unsplash.com/photo-1757955622421-b75472080224?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            "problem": "業務推廣缺乏具公信力的品牌素材，導致客戶信任成本高。",
-            "result": "統籌廣告與影音內容產製，建立品牌信賴資產，協助業務團隊創造約 300 萬業績成長。"
+            "title": "資料庫設計",
+            "description": "以 Prisma 與 PostgreSQL 設計正式上線的資料模型，處理關聯、索引與使用者資料隔離。"
           }
         ]
       },
-      "marketingStack": {
-        "title": "基本能力",
-        "subtitle": "挑戰與創新。",
-        "items": [
-          {
-            "icon": "Presentation",
-            "name": "活動企劃",
-            "hoverColor": "amber-600"
-          },
-          {
-            "icon": "Users",
-            "name": "專案管理",
-            "hoverColor": "green-600"
-          },
-          {
-            "icon": "Megaphone",
-            "name": "新聞稿撰寫",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "MessageCircle",
-            "name": "跨部門溝通",
-            "hoverColor": "purple-600"
-          },
-          {
-            "icon": "Store",
-            "name": "店家開發",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Send",
-            "name": "標案提案",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Wallet",
-            "name": "預算控管",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Share2",
-            "name": "社群經營",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Sparkles",
-            "name": "善用AI工具",
-            "hoverColor": "orange-500"
-          },
-          {
-            "icon": "Handshake",
-            "name": "異業結盟",
-            "hoverColor": "orange-500"
-          }
+      "skills": {
+        "label": "Skills",
+        "title": "能力清單",
+        "engineering": "工程",
+        "marketing": "行銷與活動",
+        "engineeringItems": [
+          "React.js",
+          "Next.js",
+          "TypeScript",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Husky",
+          "Jest",
+          "Axios",
+          "Redux Toolkit",
+          "Jotai",
+          "Zustand",
+          "Tailwind CSS",
+          "Sass",
+          "Vite",
+          "Docker",
+          "Git",
+          "Firebase",
+          "Cursor",
+          "AntiGravity"
+        ],
+        "marketingItems": [
+          "活動企劃",
+          "專案管理",
+          "新聞稿撰寫",
+          "跨部門溝通",
+          "店家開發",
+          "標案提案",
+          "預算控管",
+          "社群經營",
+          "善用AI工具",
+          "異業結盟"
         ]
-      },
-      "contact": {
-        "title": "聯絡我",
-        "description": "有合作意向或任何問題，請隨時聯繫我。",
-        "email": "milk88084@gmail.com"
       }
     },
-    "creator": {
-      "hero": {
-        "badge": "生活與創作",
-        "title": "個人品牌",
-        "titleHighlight": "創作",
-        "description": "在工作與生活之間，",
-        "descriptionSub": "探索療癒、陪伴與自我成長的旅程。",
-        "ctaPrimary": "探索"
+    "events": {
+      "label": "Events",
+      "title": "活動",
+      "intro": "身為行銷人策劃執行過的活動，以及現在持續參與的技術社群。",
+      "organized": {
+        "label": "Organized",
+        "title": "我策劃的活動"
       },
-      "about": {
-        "title": "關於我",
-        "quote": "用微小的發現，餵養真實的成長。",
-        "content": "在快節奏的工作之外，我熱衷於透過 Podcast 《微小日常》與文字創作，探索生活中的療癒與陪伴。對我而言，學習新事物與挑戰自我不只是目標，更是一種享受當下的生活方式。這裡紀錄了我如何在資料與程式碼之外，找回更有感溫度的自己。"
+      "attended": {
+        "label": "Attended",
+        "title": "我參加的技術社群活動"
       },
-      "podcast": {
-        "badge": "Podcast",
-        "title": "微小日常",
-        "titleSub": "/ Tiny Daily Life",
-        "image": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "description": "一個關於生活、療癒與陪伴的空間。在這裡，我們聊日常、聊感受、聊那些數據無法捕捉的故事。",
-        "podcastLink": "https://podcasts.apple.com/tw/podcast/%E5%BE%AE%E5%B0%8F%E6%97%A5%E5%B8%B8/id1529054627",
-        "spotifyLink": "https://open.spotify.com/show/3wCLU0GfVEmJi64JQjDoYk?si=fa66da1d507b48f0",
-        "platforms": [
-          {
-            "name": "Apple Podcasts",
-            "color": "gray"
-          },
-          {
-            "name": "Spotify",
-            "color": "green"
-          }
-        ],
-        "episodesTitle": "最新單集",
-        "episodes": [
-          {
-            "title": "EP113 | 舊物博物館",
-            "duration": "46:00",
-            "link": "https://podcasts.apple.com/tw/podcast/ep113-%E8%88%8A%E7%89%A9%E5%8D%9A%E7%89%A9%E9%A4%A8/id1529054627?i=1000747009534"
-          },
-          {
-            "title": "EP 99 | 生命力才是愛情底氣：40歲後選伴侶的秘",
-            "duration": "20:00",
-            "link": "https://podcasts.apple.com/tw/podcast/ep-99-%E7%94%9F%E5%91%BD%E5%8A%9B%E6%89%8D%E6%98%AF%E6%84%9B%E6%83%85%E5%BA%95%E6%B0%A3-40%E6%AD%B2%E5%BE%8C%E9%81%B8%E4%BC%B4%E4%BE%B6%E7%9A%84%E7%A7%98%E5%AF%86/id1529054627?i=1000738515330"
-          },
-          {
-            "title": "EP64｜暈到無法自拔，那些暈船的日子，你上岸了嗎？？",
-            "duration": "20:00",
-            "link": "https://podcasts.apple.com/tw/podcast/ep64-%E6%9A%88%E5%88%B0%E7%84%A1%E6%B3%95%E8%87%AA%E6%8B%94-%E9%82%A3%E4%BA%9B%E6%9A%88%E8%88%B9%E7%9A%84%E6%97%A5%E5%AD%90-%E4%BD%A0%E4%B8%8A%E5%B2%B8%E4%BA%86%E5%97%8E/id1529054627?i=1000608611116"
-          }
-        ]
-      },
-      "interests": {
-        "title": "日常興趣",
-        "subtitle": "工作以外的生活探索",
-        "items": [
-          {
-            "icon": "Film",
-            "name": "電影",
-            "hoverColor": "amber-600"
-          },
-          {
-            "icon": "Activity",
-            "name": "排球",
-            "hoverColor": "blue-500"
-          },
-          {
-            "icon": "Trophy",
-            "name": "羽球",
-            "hoverColor": "amber-600"
-          },
-          {
-            "icon": "Palette",
-            "name": "當代藝術",
-            "hoverColor": "amber-600"
-          },
-          {
-            "icon": "Music",
-            "name": "音樂",
-            "hoverColor": "purple-500"
-          },
-          {
-            "icon": "BookOpen",
-            "name": "閱讀",
-            "hoverColor": "green-500"
-          }
-        ],
-        "socialTitle": "歡迎追蹤",
-        "socialLinks": [
-          {
-            "platform": "Instagram",
-            "url": "https://www.instagram.com/little.by.little.official/",
-            "gradient": "from-purple-500 to-pink-500"
-          },
-          {
-            "platform": "YouTube",
-            "url": "https://www.youtube.com/@Little.by.Little.2025",
-            "color": "red-500"
-          },
-          {
-            "platform": "Threads",
-            "url": "https://www.threads.com/@little.by.little.official?xmt=AQF0v9RIwI_n5FWdMfPE_Xve3cdicIzkS1AHm-Wb6eplSt8",
-            "color": "red-500"
-          }
-        ]
-      },
-      "values": {
-        "title": "生活信念",
-        "subtitle": "我相信的事情",
-        "items": [
-          {
-            "icon": "Heart",
-            "title": "真實勝過完美",
-            "description": "不追求完美的人設，只做真實的自己。"
-          },
-          {
-            "icon": "Sparkles",
-            "title": "微小時刻的力量",
-            "description": "偉大的改變往往始於日常中的微小選擇。"
-          },
-          {
-            "icon": "Coffee",
-            "title": "慢下來的藝術",
-            "description": "在快節奏的世界中，學會享受當下的每一刻。"
-          }
-        ]
-      },
-      "contact": {
-        "title": "想聊聊嗎？",
-        "description": "無論是合作邀約、聊聊生活，或只是想打個招呼，都歡迎來"
-      }
+      "viewProject": "看專案介紹"
+    },
+    "writing": {
+      "label": "Writing",
+      "title": "文章",
+      "intro": "關於前端工程、AI 與產品的思考與紀錄。",
+      "readMore": "在 Medium 閱讀",
+      "viewAll": "查看所有文章",
+      "loading": "載入文章中...",
+      "noArticles": "目前沒有文章。",
+      "mediumUrl": "https://medium.com/@dearno.3"
+    },
+    "footer": {
+      "blurb": "帶著行銷直覺的前端工程師。打造讓人一看就懂的介面，也說好介面背後的故事。",
+      "sitemap": "網站地圖",
+      "elsewhere": "其他連結",
+      "ctaTitle": "想一起合作嗎？",
+      "ctaBody": "不論是職缺、專案，或只是想聊聊產品，都很歡迎來信。",
+      "ctaButton": "寫信給我",
+      "rights": "版權所有。"
+    },
+    "cursor": {
+      "view": "查看",
+      "drag": "拖曳"
     }
   }
 }

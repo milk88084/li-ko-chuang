@@ -6,8 +6,8 @@ import { siteConfig } from "@/lib/site-config";
 // at 824x926 — nearly square, and declared in metadata as 1024x926, so both
 // the ratio and the numbers were wrong.
 //
-// It also only ever reached the homepage: /engineer, /marketer and /creator
-// each declare their own `openGraph` block, and a child segment's openGraph
+// It also only ever reached the homepage: every other route declares its own
+// `openGraph` block, and a child segment's openGraph
 // REPLACES the parent's rather than merging, which dropped `images` entirely.
 // Hence one of these files per route.
 

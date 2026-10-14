@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
     default: siteConfig.title,
-    // Child routes only need to set `title: "Engineer"` and this renders
-    // "Engineer | Li Ko Chuan".
+    // Child routes only need to set `title: "Work"` and this renders
+    // "Work | Li Ko Chuan".
     template: `%s | ${siteConfig.name}`,
   },
   // Day-mode default; FaviconSync swaps to the white icon at night.
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
   keywords: [
     "React",
     "Next.js",
-    "Marketing Strategy",
-    "UI/UX",
     "Frontend Engineer",
-    "Podcast",
+    "Marketing Strategy",
+    "Event Planning",
+    "UI/UX",
   ],
   authors: [{ name: siteConfig.name }],
   robots: {

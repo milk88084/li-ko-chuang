@@ -1,6 +1,6 @@
 /* Scroll-driven portrait hero.
    Adapted from example/index.html. The standalone page's own chrome (logo,
-   nav, burger, Work/Process/Contact, footer) is gone — Navigation and Footer
+   nav, burger, Work/Process/Contact, footer) is gone — SiteHeader and SiteFooter
    already cover that — so what survives here is the pinned stage only. */
 
 .root {
@@ -10,15 +10,15 @@
   --sp-ground: #ecedf1;
   --sp-ink: #1c2a3f;
   --sp-muted: #667085;
-  --sp-accent: #3c5a8a;
+  --sp-accent: var(--accent);
   --sp-rule: rgba(28, 42, 63, 0.16);
   --sp-chip-bg: rgba(255, 255, 255, 0.55);
   /* Background of the section that follows, for the closing seam. */
-  --sp-seam: var(--eng-bg, #ffffff);
+  --sp-seam: var(--bg);
   --sp-gutter: clamp(16px, 2.4vw, 40px);
-  /* Height of the fixed Navigation (h-12 plus its 1px bottom border),
+  /* Height of the fixed SiteHeader (SiteHeader, --header-h),
      which the pinned stage starts below. */
-  --sp-nav: 49px;
+  --sp-nav: var(--header-h);
 
   --sp-italic: var(--font-bodoni), "Didot", Georgia, serif;
   --sp-mono: var(--font-jetbrains-mono), ui-monospace, Menlo, monospace;
@@ -32,10 +32,10 @@
   --sp-ground: #0a0a0a;
   --sp-ink: #f5f5f7;
   --sp-muted: #9aa3b2;
-  --sp-accent: #7d9ede;
+  --sp-accent: var(--accent);
   --sp-rule: rgba(255, 255, 255, 0.16);
   --sp-chip-bg: rgba(20, 24, 33, 0.55);
-  --sp-seam: var(--eng-bg, #0a0a0a);
+  --sp-seam: var(--bg);
 }
 
 /* Melts the last screen of the stage into the section below, the way the
@@ -59,7 +59,7 @@
   height: 620vh;
 }
 
-/* Starts BELOW the fixed Navigation rather than behind it. The portrait's head
+/* Starts BELOW the fixed SiteHeader rather than behind it. The portrait's head
    sits in the top ~8% of the frame, which lands inside the nav band at ordinary
    window sizes, so a full-height pin puts his head behind the header. */
 .pin {

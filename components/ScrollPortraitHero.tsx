@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useMemo, useRef } from "react";
 import content from "@/data/content.json";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { localePath } from "@/lib/locale";
 import {
   FRAME_COUNT,
   clamp,
@@ -41,7 +42,7 @@ const GROUND = { light: "#ECEDF1", dark: "#0A0A0A" } as const;
  */
 export function ScrollPortraitHero() {
   const { language } = useLanguage();
-  const data = content[language as LanguageKey].engineer.scrollHero;
+  const data = content[language as LanguageKey].about.scrollHero;
 
   // Frames live outside the effect: switching language re-runs it (to pick up
   // the freshly rendered word spans) and must not re-download 192 images.
@@ -297,7 +298,7 @@ export function ScrollPortraitHero() {
           <p ref={introRef} className={styles.intro}>
             {data.intro}
           </p>
-          <a ref={ctaRef} className={styles.cta} href="#eng-projects">
+          <a ref={ctaRef} className={styles.cta} href={localePath(language, "/work")}>
             {data.ctaText}
           </a>
 

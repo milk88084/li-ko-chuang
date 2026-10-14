@@ -166,3 +166,11 @@ ScrollPortraitHero（內容移到 `about.scrollHero`，CTA 改連 `#about-story`
 3. /work 與 /work/[slug]
 4. /about、/events、/writing
 5. SEO 更新、移除舊程式、測試、視覺驗收
+
+## 實作時的補充決定
+
+- Medium 文章改在伺服器端抓取（`lib/medium.ts`，每小時重新整理），文章會出現在 HTML 裡；`/api/medium-rss` 已無使用者，因此移除
+- 首頁 Hero 的人像框使用捲動人像的第 1 格影格；滑鼠在框內左右移動會讓人像轉向側面（只在 hover 時才下載其他影格）
+- 中文頁面不套用斜體（中文沒有真正的斜體），標題字距放寬，逐字動畫遵守行頭禁則
+- 修正舊資料中對調的圖片：「數位聊天室」與「台灣資訊服務業者資料庫」的封面／影片、「OpenClaw」與「Dify AI」Meetup 的照片
+- 遠東百貨 CSR 活動的年份無法從現有資料判斷，先留空

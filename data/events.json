@@ -1,0 +1,85 @@
+{
+  "organized": [
+    {
+      "slug": "campus-gender-equality",
+      "image": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "en": {
+        "name": "Campus gender-equality seminars",
+        "org": "The Garden of Hope Foundation",
+        "period": "2021 — 2024",
+        "description": "Managed gov bids, coordinated 30+ seminars in 6 months, reaching 1,000+ students and staff."
+      },
+      "zh": {
+        "name": "校園性別平權宣講",
+        "org": "勵馨基金會",
+        "period": "2021 — 2024",
+        "description": "承接並執行政府標案，半年內統籌 30+ 場講座，精準觸及超過 1,000 名學生與教職人員。"
+      }
+    },
+    {
+      "slug": "dept-store-csr",
+      "image": "https://magazine.feg.com.tw/magazine/upload/article/358-21-2.jpg",
+      "en": {
+        "name": "Far Eastern Department Store CSR event",
+        "org": "The Garden of Hope Foundation",
+        "period": null,
+        "description": "Partnered with Far Eastern Dept. Store, leveraging CSR resources to raise 100k+ in a single event."
+      },
+      "zh": {
+        "name": "遠東百貨 CSR 公益活動",
+        "org": "勵馨基金會",
+        "period": null,
+        "description": "促成與遠東百貨跨界合作，結合企業 CSR 資源提升品牌能見度，單檔活動募得逾 10 萬元善款。"
+      }
+    },
+    {
+      "slug": "digital-fundraising",
+      "image": "https://images.unsplash.com/photo-1591522810850-58128c5fb089?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "en": {
+        "name": "Online and offline fundraising events",
+        "org": "The Garden of Hope Foundation",
+        "period": "2017 — 2020",
+        "description": "Implemented digital strategies, optimized donation paths, successfully raised 700k."
+      },
+      "zh": {
+        "name": "線上與線下募款活動",
+        "org": "勵馨基金會",
+        "period": "2017 — 2020",
+        "description": "導入數位行銷策略突破地域限制，優化線上捐款路徑，成功募資達 70 萬元。"
+      }
+    },
+    {
+      "slug": null,
+      "image": null,
+      "en": {
+        "name": "Offline forums and member events",
+        "org": "Youth Urban Regeneration Association",
+        "period": "2020 — 2021",
+        "description": "Planned offline forums and member recruitment events, and produced their live streams."
+      },
+      "zh": {
+        "name": "線下論壇與會員活動",
+        "org": "社團法人青年都會再生協會",
+        "period": "2020 — 2021",
+        "description": "策劃線下論壇與會員招募活動，並製作活動直播。"
+      }
+    }
+  ],
+  "attended": [
+    {
+      "name": "OpenClaw Meetup",
+      "date": "2026/03/04",
+      "image": "/meetup_02.webp"
+    },
+    {
+      "name": "Dify AI Meetup",
+      "date": "2026/01/22",
+      "image": "/meetup_01.webp"
+    },
+    {
+      "name": "Claude Code Meetup",
+      "date": "2025/12/30",
+      "image": "/meetup_03.webp"
+    }
+  ]
+}

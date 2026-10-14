@@ -1,5 +1,6 @@
 import content from "@/data/content.json";
 import { siteConfig } from "@/lib/site-config";
+import { getProjects } from "@/lib/projects";
 
 // Serves /llms.txt — the convention for telling AI assistants what a site is
 // and which pages are worth reading, in the plain Markdown they parse best.
@@ -18,47 +19,51 @@ const en = content.en;
 const link = (title: string, path: string, description: string) =>
   `- [${title}](${siteConfig.siteUrl}${path}): ${description}`;
 
+const projectLines = (type: "engineering" | "marketing") =>
+  getProjects("en", type)
+    .map((p) => link(p.title, `/work/${p.slug}`, p.summary))
+    .join("\n");
+
 export function GET() {
   const body = `# ${siteConfig.name}
 
 > Frontend engineer in Taipei building interfaces in React, Next.js and
-> TypeScript, with eight years in marketing and project management before that.
-> Designs, builds and ships his own iOS apps alone.
-
-${en.engineer.hero.descriptionSub}
+> TypeScript, with eight years in marketing, campaigns and event planning
+> before that. Designs, builds and ships his own iOS apps alone.
 
 This site is a personal portfolio, published in English at the URLs below and
 in Traditional Chinese under ${siteConfig.siteUrl}/zh (the same pages, e.g.
-${siteConfig.siteUrl}/zh/engineer).
+${siteConfig.siteUrl}/zh/work).
 
 ## Pages
 
-${link("Home", "/", "Name, positioning and the three areas of work")}
-${link("Engineer", "/engineer", en.engineer.hero.descriptionSub)}
-${link("Marketer", "/marketer", en.marketer.hero.descriptionSub)}
-${link("Creator", "/creator", "Podcast, writing and personal projects outside engineering")}
+${link("Home", "/", "Positioning, selected work and the three disciplines: engineering, marketing, events")}
+${link("Work", "/work", en.work.intro)}
+${link("About", "/about", "Background, full work history, current focus and toolkit")}
+${link("Events", "/events", en.events.intro)}
+${link("Writing", "/writing", en.writing.intro)}
 
-## Shipped products
+## Engineering projects
 
-- **araS Asset** — personal finance app for iOS, built with React Native and
-  Expo. Designed, developed and submitted to the App Store by one person.
-- **reteP** — per-meal calorie tracking app for iOS, React Native and Expo.
-  Same: one person, every layer.
+${projectLines("engineering")}
 
-${en.engineer.shipped.description}
+## Marketing projects
+
+${projectLines("marketing")}
 
 ## Background
 
 - Frontend engineer at the Institute for Information Industry's Digital
   Transformation Division since 2024.
-- Over eight years in marketing, campaign planning and government-funded
-  programme management before moving into engineering.
+- Over eight years in marketing, fundraising campaigns, event planning and
+  government-funded programme management before moving into engineering.
 - Works in React, Next.js, TypeScript, React Native and Expo.
 
 ## Elsewhere
 
 - [LinkedIn](${siteConfig.social.linkedin})
 - [GitHub](${siteConfig.social.github})
+- [Medium](${siteConfig.social.medium})
 - Email: ${siteConfig.social.email}
 `;
 

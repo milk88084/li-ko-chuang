@@ -2,61 +2,56 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* ─────────────────────────────────────────────────────────────────
+   Design tokens
+
+   One warm-grey ground, one ink, and the site's blue as the only colour.
+   Every component reads these through the Tailwind theme below (bg-bg,
+   text-ink, border-line, text-accent…), so dark mode is nothing more than
+   the .dark block redefining them.
+   ───────────────────────────────────────────────────────────────── */
 :root {
-  --background: #fbfbfd;
-  --foreground: #1d1d1f;
-  --card-bg: #ffffff;
-  --card-alt-bg: #f9fafb;
-  --border-color: #f3f4f6;
+  --bg: #f4f4f2;
+  --surface: #eaeae6;
+  --ink: #141414;
+  --muted: #6b6b6b;
+  --line: #dadad5;
+  --accent: #3250fe;
+  --accent-ink: #ffffff;
+  /* Height of the fixed SiteHeader, for anything that pins below it. */
+  --header-h: 64px;
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #f5f5f7;
-  --card-bg: #1c1c1e;
-  --card-alt-bg: #0a0a0a;
-  --border-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Engineer page palette. Scoped to #view-engineer so the other pages keep
-   their own look: one flat ground, darker tonal cards instead of borders, and
-   the home page's blue as the single accent. */
-#view-engineer {
-  --eng-bg: #f2f3f5;
-  --eng-card: #e4e6ea;
-  --eng-ink: #1c1d1f;
-  --eng-muted: rgb(28 29 31 / 0.6);
-  --eng-accent: #3250fe;
-  background-color: var(--eng-bg);
-  color: var(--eng-ink);
-}
-
-.dark #view-engineer {
-  --eng-bg: #0a0a0a;
-  --eng-card: #161618;
-  --eng-ink: #f5f5f7;
-  --eng-muted: rgb(245 245 247 / 0.6);
-  --eng-accent: #7d8fff;
-}
-
-/* "// label" kicker above each engineer section heading. */
-.eng-label {
-  font-family: var(--font-jetbrains-mono), ui-monospace, Menlo, monospace;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--eng-accent);
+  --bg: #0e0e0f;
+  --surface: #18181a;
+  --ink: #ededea;
+  --muted: #9a9a96;
+  --line: #2a2a2c;
+  --accent: #5b74ff;
+  --accent-ink: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card-bg: var(--card-bg);
-  --color-card-alt-bg: var(--card-alt-bg);
-  --color-border: var(--border-color);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  /* Latin face first, then its Traditional Chinese partner, so mixed copy
+     ("用 React 打造") takes each script from the font drawn for it. */
   --font-sans:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    var(--font-inter-tight), var(--font-noto-sans-tc), -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei",
+    sans-serif;
+  --font-serif:
+    var(--font-instrument-serif), var(--font-noto-serif-tc), Georgia,
+    "Songti TC", serif;
+  --font-mono:
+    var(--font-jetbrains-mono), ui-monospace, Menlo, Consolas, monospace;
 }
 
 html {
@@ -65,24 +60,11 @@ html {
 }
 
 /* No overflow-x here on purpose: a non-visible overflow on <body> makes it its
-   own scroll container, and since it never actually scrolls, every
-   view() timeline inside it goes inert. The rule on <html> above already
-   propagates to the viewport and clips horizontally, which is all this was for. */
+   own scroll container, which breaks the pinned scroll-portrait stage. The
+   rule on <html> above already clips horizontally. */
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition:
@@ -90,248 +72,152 @@ body {
     color 0.3s ease;
 }
 
-#canvas-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-#canvas-container canvas {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.delay-100 {
-  animation-delay: 0.1s;
-}
-.delay-200 {
-  animation-delay: 0.2s;
-}
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 ::selection {
-  background-color: #1d1d1f;
-  color: #fff;
-}
-
-.dark ::selection {
-  background-color: #f5f5f7;
-  color: #000;
+  background-color: var(--accent);
+  color: var(--accent-ink);
 }
 
 section {
   position: relative;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+/* Chinese has no italic: the browser would only shear the glyphs. The serif
+   accent stays upright in the Chinese pages and carries the contrast alone. */
+:lang(zh-Hant) .italic {
+  font-style: normal;
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-@keyframes marquee-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-right {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.animate-marquee-left {
-  animation: marquee-left 60s linear infinite;
-  will-change: transform;
-}
-
-.animate-marquee-right {
-  animation: marquee-right 60s linear infinite;
-  will-change: transform;
-}
-
-.animate-marquee-left:hover,
-.animate-marquee-right:hover {
-  animation-play-state: paused;
-}
-
-@keyframes mouse-wheel {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(6px);
-    opacity: 0;
-  }
-}
-
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animate-mouse-wheel {
-  animation: mouse-wheel 1.5s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
+/* The tight negative tracking drawn for Latin display type crushes Chinese
+   characters into each other; Han glyphs already fill their em box. */
+:lang(zh-Hant) :is(h1, h2) {
+  letter-spacing: -0.01em;
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   Scroll-scrubbed choreography
+   Custom cursor
 
-   These animations are driven by the element's own progress through
-   the viewport (animation-timeline: view()) rather than by time, so
-   the wheel *is* the playhead: scrolling down plays them forward,
-   scrolling up plays them backward. Nothing "fires once".
-
-   Everything lives inside the @supports guard on purpose — a browser
-   without scroll-driven animations simply renders the static, fully
-   visible layout instead of getting stuck on an opacity:0 first frame.
-
-   The keyframes animate the standalone `translate` / `scale`
-   properties, never `transform`. Tailwind v4's translate-* utilities
-   also compile to `translate`, so these classes must not be put on an
-   element that already carries one (the animation would win and eat
-   the utility's offset) — parallax goes on a wrapper or on the image
-   itself in those spots.
+   CustomCursor adds .has-custom-cursor to <html> only on a fine pointer, so
+   touch devices and no-JS visitors keep the system cursor. Form fields keep
+   theirs too: a caret you cannot see is a caret you cannot place.
    ───────────────────────────────────────────────────────────────── */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .parallax {
-      animation-timeline: view(), view();
-      animation-timing-function: linear;
-      will-change: opacity, translate, scale, filter;
-    }
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
 
-    /* Section/element reveals (.reveal, .reveal-stagger, .reveal-in-section)
-       are driven by GSAP ScrollTrigger instead of a CSS scroll timeline — see
-       hooks/useScrollReveal.ts. They slide in from a direction and fade, with
-       no blur, so nothing stays soft in the middle of the viewport. */
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor select,
+html.has-custom-cursor [contenteditable="true"] {
+  cursor: auto !important;
+}
 
-    /* The final section on the page can never scroll any further up, so its
-       children physically cannot reach a vh-based entry offset — the last one
-       tops out around 30vh and would sit at opacity 0.08 forever. So it rides
-       its *section's* timeline in percentages instead: the section's entry
-       always reaches 100% when the page bottoms out, whatever the viewport
-       height, so every child is guaranteed to finish. */
-    .section-timeline {
-      view-timeline-name: --sec;
-      view-timeline-axis: block;
-    }
+/* ─────────────────────────────────────────────────────────────────
+   Small shared pieces
+   ───────────────────────────────────────────────────────────────── */
 
-    /* Depth: layers travel at their own speed against the page. The range is
-       symmetric around the element being centred, so an element sitting
-       mid-viewport at load starts at zero offset. */
-    .parallax {
-      animation-name: parallax-drift;
-      animation-range: cover 0% cover 100%;
-      animation-fill-mode: both;
-    }
+/* "/ Hello" — the mono kicker that opens every section. */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
-@keyframes reveal-in {
+.animate-marquee {
+  animation: marquee 50s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Line-drawing for the "What I Bring" illustrations: each path carries
+   pathLength="1", so one dash the length of the path draws it in. */
+@keyframes draw {
   from {
-    opacity: 0;
-    translate: 0 var(--reveal-from, 64px);
-    scale: var(--reveal-scale, 0.97);
-    filter: blur(var(--reveal-blur, 5px));
+    stroke-dashoffset: 1;
   }
   to {
-    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+.draw-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.is-visible .draw-path {
+  animation: draw 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 180ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw-path {
+    stroke-dashoffset: 0;
+  }
+
+  .is-visible .draw-path {
+    animation: none;
+  }
+}
+
+@keyframes cursor-float {
+  0%,
+  100% {
     translate: 0 0;
-    scale: 1;
-    filter: blur(0);
+  }
+  50% {
+    translate: -14px 10px;
   }
 }
 
-@keyframes parallax-drift {
+/* SplitReveal: each word rises out of its own clipped line box. Pure CSS, so
+   it plays without JavaScript and the words are in the HTML from the start. */
+@keyframes word-rise {
   from {
-    translate: 0 var(--parallax-from, 40px);
+    transform: translateY(105%);
   }
   to {
-    translate: 0 var(--parallax-to, -40px);
+    transform: translateY(0);
+  }
+}
+
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* Room for descenders (g, y) and the serif's italic overhang. */
+  padding: 0 0.04em 0.12em;
+  margin: 0 -0.04em -0.12em;
+}
+
+.split-word > span {
+  display: inline-block;
+  animation: word-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms + var(--base-delay, 0ms));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-word > span {
+    animation: none;
   }
 }

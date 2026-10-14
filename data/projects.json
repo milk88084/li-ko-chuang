@@ -1,0 +1,504 @@
+[
+  {
+    "slug": "aras",
+    "type": "engineering",
+    "featured": true,
+    "cover": "/00_araS.webp",
+    "video": "/00_araS.mp4",
+    "link": "https://apps.apple.com/app/id6785747999",
+    "en": {
+      "title": "araS",
+      "summary": "Personal asset, portfolio and retirement tracker — designed, built and shipped to the App Store solo.",
+      "category": null,
+      "problem": "Assets, liabilities, holdings and insurance policies sit scattered across banks, brokers and spreadsheets, so net worth is never visible at a glance — and no existing tool covers TW/US holdings, dividends and retirement projection in one place.",
+      "outcome": "Built end to end alone: a Turborepo monorepo where a Next.js 15 web/API and an Expo iOS app share one API surface, one set of Zod schemas and one Clerk auth flow. Version 1.3 is on the App Store, with a RevenueCat premium subscription, Sentry crash monitoring and JS updates pushed over the air through EAS.",
+      "highlights": [
+        "On the App Store",
+        "Solo-built",
+        "Web + iOS monorepo",
+        "Premium subscription",
+        "OTA updates"
+      ],
+      "tech": [
+        "Next.js 15",
+        "React 19",
+        "TypeScript",
+        "Expo",
+        "Expo Router",
+        "Prisma",
+        "PostgreSQL",
+        "Clerk",
+        "Zod",
+        "RevenueCat",
+        "Sentry",
+        "EAS",
+        "Vercel"
+      ]
+    },
+    "zh": {
+      "title": "araS",
+      "summary": "個人資產、投資組合與退休試算 App，從設計、開發到上架 App Store 全程獨立完成。",
+      "category": null,
+      "problem": "資產、負債、持股與保單分散在各家銀行、券商與試算表，淨資產永遠看不到全貌；市面上也沒有同時涵蓋台股美股持股、股息與退休金試算的工具。",
+      "outcome": "一人從頭做到底：以 Turborepo 讓 Next.js 15 網頁／API 與 Expo iOS App 共用同一套 API、Zod schema 與 Clerk 認證。目前 App Store 版本 1.3，並以 RevenueCat 提供 Premium 訂閱、Sentry 監控當機、EAS OTA 直接推送即時更新。",
+      "highlights": [
+        "已上架 App Store",
+        "獨立開發",
+        "Web + iOS Monorepo",
+        "訂閱制付費",
+        "OTA 熱更新"
+      ],
+      "tech": [
+        "Next.js 15",
+        "React 19",
+        "TypeScript",
+        "Expo",
+        "Expo Router",
+        "Prisma",
+        "PostgreSQL",
+        "Clerk",
+        "Zod",
+        "RevenueCat",
+        "Sentry",
+        "EAS",
+        "Vercel"
+      ]
+    }
+  },
+  {
+    "slug": "retep",
+    "type": "engineering",
+    "featured": true,
+    "cover": "/05_reteP.webp",
+    "video": null,
+    "link": "https://apps.apple.com/app/id6798490139",
+    "en": {
+      "title": "reteP",
+      "summary": "Daily food and calorie logging, ported from the web app into a native iOS app.",
+      "category": null,
+      "problem": "The web version already worked, but opening a browser for every meal is friction nobody repeats three times a day — food logging only sticks when it is one tap away on the phone.",
+      "outcome": "Ported the web UI one-to-one into an Expo app that reuses the existing FastAPI backend and Clerk auth, then shipped it to the App Store on 19 Aug 2026: Sign in with Apple, macro rings, calendar history, yearly SVG trend charts and a personal food library — with day-to-day updates delivered over the air.",
+      "highlights": [
+        "On the App Store",
+        "Solo-built",
+        "Calorie & macro tracking",
+        "Sign in with Apple",
+        "OTA updates"
+      ],
+      "tech": [
+        "Expo SDK 54",
+        "React Native",
+        "TypeScript",
+        "Expo Router",
+        "Zustand",
+        "Clerk",
+        "FastAPI",
+        "react-native-svg",
+        "EAS"
+      ]
+    },
+    "zh": {
+      "title": "reteP",
+      "summary": "每日飲食與熱量記錄，從網頁版移植為原生 iOS App。",
+      "category": null,
+      "problem": "網頁版已經能用，但每一餐都要打開瀏覽器記錄，摩擦大到沒人願意一天做三次；飲食追蹤只有在手機上一鍵可達時才留得住使用者。",
+      "outcome": "將網頁版 UI 1:1 移植成 Expo App，共用既有的 FastAPI 後端與 Clerk 認證，2026/08/19 上架 App Store：支援 Sign in with Apple、營養素環圈、日曆歷史紀錄、以 SVG 純 JS 繪製的年度趨勢圖與個人食物庫，日常更新以 OTA 直接推送。",
+      "highlights": [
+        "已上架 App Store",
+        "獨立開發",
+        "熱量與營養素追蹤",
+        "Sign in with Apple",
+        "OTA 熱更新"
+      ],
+      "tech": [
+        "Expo SDK 54",
+        "React Native",
+        "TypeScript",
+        "Expo Router",
+        "Zustand",
+        "Clerk",
+        "FastAPI",
+        "react-native-svg",
+        "EAS"
+      ]
+    }
+  },
+  {
+    "slug": "u-turn",
+    "type": "engineering",
+    "featured": false,
+    "cover": "/01_U-Turn.webp",
+    "video": "/01_U-Turn.mp4",
+    "link": null,
+    "en": {
+      "title": "U-Turn",
+      "summary": "Automated badminton grouping and match scheduling system.",
+      "category": null,
+      "problem": "Organizing badminton meetups requires manually grouping players by skill level and balancing teams, which is time-consuming and error-prone.",
+      "outcome": "Built an automated grouping system that generates balanced matchups in seconds, streamlining registration and scheduling for badminton groups.",
+      "highlights": [
+        "Auto Grouping",
+        "Match Scheduling",
+        "Registration",
+        "Auth System",
+        "Database Management"
+      ],
+      "tech": [
+        "React",
+        "TypeScript",
+        "n8n",
+        "Vite",
+        "PostgreSQL",
+        "Clerk",
+        "Zeabur"
+      ]
+    },
+    "zh": {
+      "title": "U-Turn",
+      "summary": "自動化羽球分組與賽程安排系統",
+      "category": null,
+      "problem": "羽球團體活動需手動依程度與人數平衡分組，耗時且容易出錯。",
+      "outcome": "建立自動化分組系統，依程度快速產生平衡賽程，簡化報名與分組流程，提升活動運作效率。",
+      "highlights": [
+        "自動分組",
+        "賽程安排",
+        "報名系統",
+        "登入系統",
+        "資料庫管理"
+      ],
+      "tech": [
+        "React",
+        "TypeScript",
+        "n8n",
+        "Vite",
+        "PostgreSQL",
+        "Clerk",
+        "Zeabur"
+      ]
+    }
+  },
+  {
+    "slug": "market-trend-tracking",
+    "type": "engineering",
+    "featured": false,
+    "cover": "/02_AI快研究.webp",
+    "video": "/02_AI快研究.mp4",
+    "link": null,
+    "en": {
+      "title": "Market Trend Tracking Platform",
+      "summary": "Monitoring growth data from GitHub, Hugging Face, etc., to provide policy suggestions.",
+      "category": null,
+      "problem": "Integrating heterogeneous data sources with frequent updates posed a significant challenge to system performance.",
+      "outcome": "Built a relational database mapping tech to vendors, matching international trends with domestic supply chains for strategic advising.",
+      "highlights": [
+        "News Briefs",
+        "Auth System",
+        "Favorites",
+        "Subscription",
+        "Trend Analysis",
+        "Deep Research"
+      ],
+      "tech": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Jotai",
+        "Tailwind CSS",
+        "Redux Toolkit",
+        "Docker",
+        "RWD"
+      ]
+    },
+    "zh": {
+      "title": "國內市場趨勢追蹤平台",
+      "summary": "依據網路爬蟲領域關鍵字、監測Github Hugging Face等相關成長數據，對應國內公司資訊，依照微光、新興、主流趨勢，提供相對應政策",
+      "category": null,
+      "problem": "需整合異質數據源（網路爬蟲、API、內部資料庫），且數據更新頻繁，對系統效能造成巨大挑戰。",
+      "outcome": "建立「技術-廠商」關聯資料庫，智慧媒合國際趨勢與國內供應鏈，為政府與投資人提供具體的策略建議地圖。",
+      "highlights": [
+        "新聞快訊",
+        "登入功能",
+        "收藏功能",
+        "電子報訂閱",
+        "趨勢分析",
+        "深度研究"
+      ],
+      "tech": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Jotai",
+        "Tailwind CSS",
+        "Redux Toolkit",
+        "Docker",
+        "RWD"
+      ]
+    }
+  },
+  {
+    "slug": "digital-chatroom",
+    "type": "engineering",
+    "featured": false,
+    "cover": "/03_數位聊天室.webp",
+    "video": "/03_數位聊天室.mp4",
+    "link": null,
+    "en": {
+      "title": "Digital Chatroom",
+      "summary": "Configurable chatroom switching via environment variables.",
+      "category": null,
+      "problem": "Facing diverse chat needs across business units, lacking a universal swappable solution.",
+      "outcome": "Developed a flexible chat platform using env vars to control endpoints and styles, supporting multiple internal tools.",
+      "highlights": [
+        "Knowledge Base",
+        "History",
+        "Voice Input",
+        "Model Switching",
+        "Auth System"
+      ],
+      "tech": [
+        "Next.js",
+        "React",
+        "Redux Toolkit",
+        "TypeScript",
+        "Sass",
+        "Mui material",
+        "RWD"
+      ]
+    },
+    "zh": {
+      "title": "數位聊天室",
+      "summary": "依環境變數切換不同數位工具的聊天室",
+      "category": null,
+      "problem": "面對不同業務端的聊天需求，缺乏一套能夠快速抽換設定的通用解決方案。",
+      "outcome": "開發具備高度彈性的聊天平台，利用環境變數控制 API 端點與 UI 風格，成功支援多組內部工具的即時通訊需求。",
+      "highlights": [
+        "知識庫串接",
+        "歷史紀錄",
+        "語音輸入",
+        "多模型切換",
+        "登入系統"
+      ],
+      "tech": [
+        "Next.js",
+        "React",
+        "Redux Toolkit",
+        "TypeScript",
+        "Sass",
+        "Mui material",
+        "RWD"
+      ]
+    }
+  },
+  {
+    "slug": "taiwan-info-service-database",
+    "type": "engineering",
+    "featured": false,
+    "cover": "/03_Landscape.webp",
+    "video": "/03_Landscape.mp4",
+    "link": null,
+    "en": {
+      "title": "Taiwan Info Service Provider Database",
+      "summary": "Connecting to MOEA database for searching and filtering providers.",
+      "category": null,
+      "problem": "Difficulty in finding info service providers due to lack of transparency and intuitive filtering mechanisms.",
+      "outcome": "Connected to MOEA API, built a high-performance responsive platform with React and Jotai, optimizing info retrieval.",
+      "highlights": [
+        "Auth System",
+        "Multi-criteria Filter",
+        "Conversational Search",
+        "AI Bot Search"
+      ],
+      "tech": [
+        "React",
+        "TypeScript",
+        "axios",
+        "Restful API",
+        "Tailwind CSS",
+        "Jotai",
+        "husky",
+        "RWD"
+      ]
+    },
+    "zh": {
+      "title": "台灣資訊服務業者資料庫",
+      "summary": "串接經濟部資料庫，提供台灣資訊服務業者的查詢與篩選功能",
+      "category": null,
+      "problem": "企業尋找資訊服務商如同大海撈針，缺乏透明的資訊與比較基準；缺乏直覺的篩選與搜尋機制，使用者必須手動比對資料，耗時且效率低落。",
+      "outcome": "成功串接經濟部 API，運用 React 與 Jotai 打造高效能的響應式查詢平台，實現即時多條件篩選，大幅優化資訊檢索體驗。",
+      "highlights": [
+        "登入系統",
+        "多條件篩選",
+        "對話式搜尋",
+        "機器人聊天搜尋系統"
+      ],
+      "tech": [
+        "React",
+        "TypeScript",
+        "axios",
+        "Restful API",
+        "Tailwind CSS",
+        "Jotai",
+        "husky",
+        "RWD"
+      ]
+    }
+  },
+  {
+    "slug": "agent-fabric",
+    "type": "engineering",
+    "featured": true,
+    "cover": "/04_Agent_Fabric.webp",
+    "video": "/04_Agent_Fabric.mp4",
+    "link": null,
+    "en": {
+      "title": "AI Agent Collaboration Platform",
+      "summary": "Dify-like AI tool integration platform.",
+      "category": null,
+      "problem": "Enterprises need quick, custom AI bot construction, but existing solutions lack flexibility.",
+      "outcome": "Created a GPT-like interface with knowledge base support, multi-turn dialogue, and task automation.",
+      "highlights": [
+        "Bot Chat",
+        "Knowledge Base",
+        "Model Switching",
+        "File Upload",
+        "Auth System"
+      ],
+      "tech": [
+        "React",
+        "TypeScript",
+        "sass",
+        "axios",
+        "Restful API",
+        "React Router",
+        "RWD"
+      ]
+    },
+    "zh": {
+      "title": "AI Agent 協作平台",
+      "summary": "類Dify串接AI工具平台",
+      "category": null,
+      "problem": "企業需要快速建構客製化 AI 聊天機器人，但現有方案缺乏彈性且整合困難。需要一個能連接多種 AI 模型、支援即時互動的平台。",
+      "outcome": "成功打造 GPT-like 對話介面與知識庫系統，支援多輪對話、檔案上傳、任務自動化功能，大幅降低企業導入 AI 的門檻。",
+      "highlights": [
+        "機器人聊天",
+        "知識庫串接",
+        "多模型切換",
+        "檔案上傳",
+        "登入系統"
+      ],
+      "tech": [
+        "React",
+        "TypeScript",
+        "sass",
+        "axios",
+        "Restful API",
+        "React Router",
+        "RWD"
+      ]
+    }
+  },
+  {
+    "slug": "campus-gender-equality",
+    "type": "marketing",
+    "featured": true,
+    "cover": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "video": null,
+    "link": null,
+    "en": {
+      "title": "Campus Gender Equality Program",
+      "summary": "Government-funded campus programme on gender equality and personal safety.",
+      "category": "Gov Bid",
+      "problem": "Traditional education lacks systematic gender and safety advocacy.",
+      "outcome": "Managed gov bids, coordinated 30+ seminars in 6 months, reaching 1,000+ students and staff.",
+      "highlights": [],
+      "tech": []
+    },
+    "zh": {
+      "title": "校園性別平權宣講計畫",
+      "summary": "政府標案：校園多元性別與自我保護宣講計畫。",
+      "category": "政府標案",
+      "problem": "既有教育體系缺乏多元性別與自我保護的系統性宣導。",
+      "outcome": "承接並執行政府標案，半年內統籌 30+ 場講座，精準觸及超過 1,000 名學生與教職人員。",
+      "highlights": [],
+      "tech": []
+    }
+  },
+  {
+    "slug": "dept-store-csr",
+    "type": "marketing",
+    "featured": false,
+    "cover": "https://magazine.feg.com.tw/magazine/upload/article/358-21-2.jpg",
+    "video": null,
+    "link": null,
+    "en": {
+      "title": "Dept. Store CSR Alliance",
+      "summary": "A cross-sector CSR partnership with Far Eastern Department Store.",
+      "category": "Strategic Alliance",
+      "problem": "Low awareness and fundraising difficulty for vulnerable groups like teen pregnancy.",
+      "outcome": "Partnered with Far Eastern Dept. Store, leveraging CSR resources to raise 100k+ in a single event.",
+      "highlights": [],
+      "tech": []
+    },
+    "zh": {
+      "title": "百貨 CSR 異業結盟",
+      "summary": "與遠東百貨跨界合作的企業 CSR 公益活動。",
+      "category": "異業合作",
+      "problem": "家暴與未成年懷孕等弱勢議題關注度低，推廣與募款困難。",
+      "outcome": "促成與遠東百貨跨界合作，結合企業 CSR 資源提升品牌能見度，單檔活動募得逾 10 萬元善款。",
+      "highlights": [],
+      "tech": []
+    }
+  },
+  {
+    "slug": "digital-fundraising",
+    "type": "marketing",
+    "featured": false,
+    "cover": "https://images.unsplash.com/photo-1591522810850-58128c5fb089?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "video": null,
+    "link": null,
+    "en": {
+      "title": "Digital Fundraising Project",
+      "summary": "Moving a foundation's fundraising online to reach donors beyond one city.",
+      "category": "Digital Marketing",
+      "problem": "Offline fundraising limited by geography, making it hard to scale.",
+      "outcome": "Implemented digital strategies, optimized donation paths, successfully raised 700k.",
+      "highlights": [],
+      "tech": []
+    },
+    "zh": {
+      "title": "數位轉型募款專案",
+      "summary": "把基金會募款搬到線上，突破地域限制。",
+      "category": "數位行銷",
+      "problem": "傳統線下募款受限於地域性，難以擴大受眾規模。",
+      "outcome": "導入數位行銷策略突破地域限制，優化線上捐款路徑，成功募資達 70 萬元。",
+      "highlights": [],
+      "tech": []
+    }
+  },
+  {
+    "slug": "omni-channel-production",
+    "type": "marketing",
+    "featured": false,
+    "cover": "https://images.unsplash.com/photo-1757955622421-b75472080224?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "video": null,
+    "link": null,
+    "en": {
+      "title": "Omni-channel Production",
+      "summary": "Ad and video production that gave the sales team credible brand assets.",
+      "category": "Multimedia",
+      "problem": "Lack of credible brand assets led to high trust costs for lead generation.",
+      "outcome": "Coordinated ad and video production, building brand trust and driving 3M+ in sales growth.",
+      "highlights": [],
+      "tech": []
+    },
+    "zh": {
+      "title": "全媒體內容行銷製作",
+      "summary": "統籌廣告與影音製作，為業務團隊建立品牌素材。",
+      "category": "多媒體製作",
+      "problem": "業務推廣缺乏具公信力的品牌素材，導致客戶信任成本高。",
+      "outcome": "統籌廣告與影音內容產製，建立品牌信賴資產，協助業務團隊創造約 300 萬業績成長。",
+      "highlights": [],
+      "tech": []
+    }
+  }
+]
