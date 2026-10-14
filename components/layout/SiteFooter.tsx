@@ -1,19 +1,17 @@
 import Link from "next/link";
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
 import content from "@/data/content.json";
 import { siteConfig } from "@/lib/site-config";
 import { localePath, type Locale } from "@/lib/locale";
+import { GridLines } from "@/components/canvas/GridLines";
+import { Caret } from "@/components/motion/Caret";
+import { CopyEmailButton, TaipeiClock } from "./footer-parts";
 
-// The page's last screen and the target of every "Contact" link (#contact):
-// who this is, where everything is, and a single clear way to get in touch.
-
-const MediumIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
-    <ellipse cx="6.5" cy="12" rx="5.5" ry="6" />
-    <ellipse cx="16.5" cy="12" rx="2.75" ry="5.6" />
-    <ellipse cx="21.5" cy="12" rx="1" ry="5.1" />
-  </svg>
-);
+// The last screen of every page and the target of every "Contact" link
+// (#contact). The whole block flips to the accent colour so the page ends on
+// a single, loud invitation: a two-line prompt still being "typed", the email
+// address at display size, and the practical details laid out like a design
+// tool's inspect panel. Sitemap and copyright shrink to one line underneath.
 
 export function SiteFooter({ locale }: { locale: Locale }) {
   const t = content[locale];
@@ -29,85 +27,114 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   ];
 
   const elsewhere = [
-    { href: social.linkedin, label: "LinkedIn", Icon: Linkedin },
-    { href: social.github, label: "GitHub", Icon: Github },
-    { href: social.medium, label: "Medium", Icon: MediumIcon },
+    { href: social.linkedin, label: "LinkedIn" },
+    { href: social.github, label: "GitHub" },
+    { href: social.medium, label: "Medium" },
+  ];
+
+  const inspect = [
+    { label: f.localTime, value: <TaipeiClock /> },
+    { label: f.basedIn, value: t.common.location },
+    {
+      label: f.elsewhere,
+      value: (
+        <span className="flex flex-wrap gap-x-4 gap-y-1">
+          {elsewhere.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-0.5 underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
+            >
+              {link.label}
+              <ArrowUpRight className="size-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          ))}
+        </span>
+      ),
+    },
   ];
 
   return (
     <footer
       id="contact"
-      className="relative z-10 scroll-mt-(--header-h) border-t border-line bg-bg"
+      data-cursor-tone="light"
+      className="relative z-10 scroll-mt-(--header-h) overflow-hidden bg-accent text-accent-ink selection:bg-white selection:text-accent"
     >
-      <div className="mx-auto grid max-w-[1440px] gap-12 px-4 py-16 md:grid-cols-12 md:gap-6 md:px-8 md:py-20">
-        <div className="md:col-span-4">
-          <p className="font-serif text-[28px] leading-none">Max</p>
-          <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-muted">
-            {f.blurb}
-          </p>
-          <a
-            href={`mailto:${social.email}`}
-            className="mt-6 inline-block text-[15px] underline decoration-line underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
-          >
-            {social.email}
-          </a>
-          <ul className="mt-5 flex gap-2">
-            {elsewhere.map(({ href, label, Icon }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="flex size-9 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent"
-                >
-                  <Icon className="size-4" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <GridLines lineClassName="border-white/10" />
 
-        <nav aria-label={f.sitemap} className="md:col-span-2 md:col-start-6">
-          <p className="section-label mb-4">{f.sitemap}</p>
-          <ul className="space-y-2 text-[15px]">
-            {sitemap.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-muted transition-colors hover:text-ink">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+      <div className="relative mx-auto max-w-[1440px] px-4 pt-20 pb-10 md:px-8 md:pt-32">
+        <p className="font-mono text-[12px] tracking-[0.04em] text-white/70 uppercase">
+          {`/ ${f.label}`}
+        </p>
 
-        <div className="md:col-span-4 md:col-start-9">
-          <div className="flex h-full flex-col justify-between gap-10 rounded-[10px] bg-surface p-6 md:p-8">
-            <div>
-              <h2 className="text-[28px] leading-[1.15] tracking-[-0.02em]">
-                {f.ctaTitle}
-              </h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-muted">
-                {f.ctaBody}
-              </p>
-            </div>
+        <h2 className="mt-6 text-[clamp(48px,8.4vw,132px)] leading-[0.95] tracking-[-0.045em] text-balance">
+          <span className="block">{f.line1}</span>
+          <span className="block font-serif tracking-[-0.02em] italic">
+            {f.line2}
+            <Caret className="bg-white" />
+          </span>
+        </h2>
+
+        <div className="mt-14 flex flex-col items-start gap-5 md:mt-20 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-mono text-[11px] tracking-[0.06em] text-white/60 uppercase">
+              {f.emailHint}
+            </p>
             <a
               href={`mailto:${social.email}`}
-              className="inline-flex items-center gap-2 self-end rounded-full bg-accent px-5 py-2.5 text-[15px] text-accent-ink transition-transform hover:-translate-y-0.5"
+              className="mt-2 block text-[clamp(26px,4.6vw,64px)] leading-tight tracking-[-0.03em] break-all underline decoration-white/30 decoration-2 underline-offset-[0.18em] transition-colors hover:decoration-white"
             >
-              <Mail className="size-4" />
-              {f.ctaButton}
-              <ArrowUpRight className="size-4" />
+              {social.email}
+            </a>
+          </div>
+          <CopyEmailButton email={social.email} label={f.copy} doneLabel={f.copied} />
+        </div>
+
+        <dl className="mt-14 grid border-t border-white/25 md:mt-20 md:grid-cols-3">
+          {inspect.map((row, i) => (
+            <div
+              key={row.label}
+              className={`flex items-baseline justify-between gap-6 border-b border-white/25 py-5 md:block md:border-b-0 md:py-6 ${
+                i > 0 ? "md:border-l md:pl-6" : ""
+              }`}
+            >
+              <dt className="shrink-0 font-mono text-[11px] tracking-[0.06em] text-white/60 uppercase">
+                {row.label}
+              </dt>
+              <dd className="text-right text-[15px] md:mt-3 md:text-left md:text-[17px]">
+                {row.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="mt-16 flex flex-col gap-6 border-t border-white/25 pt-6 font-mono text-[11px] tracking-[0.04em] text-white/70 uppercase md:flex-row md:items-center md:justify-between">
+          <nav aria-label={f.sitemap}>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              {sitemap.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="flex items-center justify-between gap-6 md:justify-end">
+            <p>
+              © {new Date().getFullYear()} {siteConfig.name}. {f.rights}
+            </p>
+            <a
+              href="#top"
+              className="group inline-flex items-center gap-1.5 transition-colors hover:text-white"
+            >
+              {f.backToTop}
+              <ArrowUp className="size-3.5 transition-transform group-hover:-translate-y-0.5" />
             </a>
           </div>
         </div>
-      </div>
-
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-2 border-t border-line px-4 py-6 font-mono text-[11px] text-muted md:flex-row md:justify-between md:px-8">
-        <p>
-          © {new Date().getFullYear()} {siteConfig.name}. {f.rights}
-        </p>
-        <p>{t.common.location}</p>
       </div>
     </footer>
   );

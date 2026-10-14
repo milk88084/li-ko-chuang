@@ -79,14 +79,22 @@ function Cursor() {
   // The state is only re-read on pointer moves, so a page swapped in under a
   // resting pointer would keep the old card's "View" disc. Each state remembers
   // the page it was read on and falls back to the plain dot on any other.
-  const [reading, setReading] = useState<{ state: CursorState; on: string | null }>({
-    state: "hidden",
-    on: null,
-  });
+  const [reading, setReading] = useState<{
+    state: CursorState;
+    on: string | null;
+    light: boolean;
+  }>({ state: "hidden", on: null, light: false });
   const state: CursorState =
     reading.on === pathname || reading.state === "hidden" ? reading.state : "default";
-  const setState = (next: CursorState) =>
-    setReading({ state: next, on: window.location.pathname });
+  // Over an accent-coloured block (data-cursor-tone="light", e.g. the footer)
+  // a blue cursor would vanish, so it flips to white there.
+  const light = reading.on === pathname && reading.light;
+  const setState = (next: CursorState, over: Element | null = null) =>
+    setReading({
+      state: next,
+      on: window.location.pathname,
+      light: !!over?.closest('[data-cursor-tone="light"]'),
+    });
 
   useEffect(() => {
     const root = document.documentElement;
@@ -123,7 +131,8 @@ function Cursor() {
         current.y = target.y;
         seen = true;
       }
-      setState(stateFor(event.target as Element));
+      const over = event.target as Element;
+      setState(stateFor(over), over);
     };
 
     const onLeave = () => setState("hidden");
@@ -145,6 +154,9 @@ function Cursor() {
   const filled = state === "default" || state === "view" || state === "drag";
   const label =
     state === "view" ? labels.view : state === "drag" ? labels.drag : "";
+  const fill = light ? "bg-white" : "bg-accent";
+  const ring = light ? "border-white" : "border-accent";
+  const ink = light ? "text-accent" : "text-accent-ink";
 
   return (
     <div
@@ -154,10 +166,10 @@ function Cursor() {
       style={{ transform: "translate3d(-100px, -100px, 0)" }}
     >
       <div
-        className={`flex -translate-x-1/2 -translate-y-1/2 items-center justify-center font-mono text-[11px] tracking-wide text-accent-ink uppercase transition-[width,height,opacity,background-color,border-color,border-radius] duration-300 ease-out motion-reduce:transition-none ${
+        className={`flex -translate-x-1/2 -translate-y-1/2 items-center justify-center font-mono text-[11px] tracking-wide uppercase transition-[width,height,opacity,background-color,border-color,border-radius] duration-300 ease-out motion-reduce:transition-none ${ink} ${
           state === "text" ? "rounded-[1px]" : "rounded-full"
-        } ${filled || state === "text" ? "bg-accent" : "bg-transparent"} ${
-          state === "link" ? "border-[1.5px] border-accent" : "border-0"
+        } ${filled || state === "text" ? fill : "bg-transparent"} ${
+          state === "link" ? `border-[1.5px] ${ring}` : "border-0"
         } ${state === "hidden" ? "opacity-0" : "opacity-100"}`}
         style={{ width: size.w, height: size.h }}
       >

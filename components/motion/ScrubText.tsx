@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef } from "react";
+import { Caret } from "./Caret";
 
 // A paragraph whose words darken one after another as it scrolls up through
 // the viewport, so the scroll position reads as a reading cursor. The server
@@ -85,10 +86,7 @@ export function ScrubText({
         return (
           <span key={i} className="whitespace-nowrap">
             {span}
-            <span
-              aria-hidden
-              className="ml-[0.08em] inline-block h-[0.9em] w-[0.06em] min-w-[2px] translate-y-[0.12em] bg-accent motion-safe:animate-[caret-blink_1.06s_steps(1)_infinite]"
-            />
+            <Caret />
           </span>
         );
       })}

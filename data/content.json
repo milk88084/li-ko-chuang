@@ -283,12 +283,19 @@
     },
     "footer": {
       "blurb": "Frontend engineer with a marketer's instincts. I build interfaces people understand, and tell the story around them.",
-      "sitemap": "Sitemap",
+      "rights": "All rights reserved.",
+      "label": "Contact",
+      "line1": "Have an idea?",
+      "line2": "Let's build it together.",
+      "emailHint": "Write to me",
+      "copy": "Copy",
+      "copied": "Copied",
+      "localTime": "Local time",
+      "basedIn": "Based in",
+      "email": "Email",
       "elsewhere": "Elsewhere",
-      "ctaTitle": "Interested in working together?",
-      "ctaBody": "Whether it's a role, a project or just a conversation about products, I'd be glad to hear from you.",
-      "ctaButton": "Write to me",
-      "rights": "All rights reserved."
+      "sitemap": "Sitemap",
+      "backToTop": "Back to top"
     },
     "cursor": {
       "view": "View",
@@ -579,12 +586,19 @@
     },
     "footer": {
       "blurb": "帶著行銷直覺的前端工程師。打造讓人一看就懂的介面，也說好介面背後的故事。",
-      "sitemap": "網站地圖",
+      "rights": "版權所有。",
+      "label": "Contact",
+      "line1": "有想法嗎？",
+      "line2": "一起把它做出來。",
+      "emailHint": "寫信給我",
+      "copy": "複製",
+      "copied": "已複製",
+      "localTime": "當地時間",
+      "basedIn": "所在地",
+      "email": "Email",
       "elsewhere": "其他連結",
-      "ctaTitle": "想一起合作嗎？",
-      "ctaBody": "不論是職缺、專案，或只是想聊聊產品，都很歡迎來信。",
-      "ctaButton": "寫信給我",
-      "rights": "版權所有。"
+      "sitemap": "網站地圖",
+      "backToTop": "回到頂部"
     },
     "cursor": {
       "view": "查看",
