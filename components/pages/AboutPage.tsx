@@ -55,12 +55,15 @@ export function AboutPage({ locale }: { locale: Locale }) {
       <Section label={t.now.label} title={t.now.title} intro={t.now.subtitle}>
         <ul className="reveal-stagger grid gap-6 md:grid-cols-2">
           {t.now.items.map((item, i) => (
-            <li key={item.title} className="overflow-hidden rounded-[10px] bg-surface">
+            <li
+              key={item.title}
+              className="grid overflow-hidden rounded-[10px] bg-surface sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]"
+            >
               <FigureFrame
                 name={item.figure as FigureName}
-                className="aspect-[2/1] border-b border-line md:aspect-[3/1]"
+                className="aspect-[4/3] border-b border-line sm:aspect-auto sm:min-h-56 sm:border-r sm:border-b-0"
               />
-              <div className="p-6 md:px-8 md:py-7">
+              <div className="flex flex-col justify-center p-6 md:p-7">
                 <span className="font-mono text-[11px] text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>

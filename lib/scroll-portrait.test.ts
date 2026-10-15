@@ -3,6 +3,7 @@ import {
   PORTRAIT_ANCHOR_Y,
   PORTRAIT_TURN_END,
   clamp,
+  PORTRAIT_MIN_FILL,
   coverRect,
   ease,
   easeIO,
@@ -232,6 +233,17 @@ describe("coverRect", () => {
     expect(PORTRAIT_ANCHOR_Y).toBe(0);
     const { dy } = coverRect(1600, 620, IW, IH);
     expect(dy).toBe(0);
+  });
+
+  it("with minFill, fits the width instead of zooming in to fill the height", () => {
+    // 1440x900 is taller than 16:9: fitting the width covers 810 of 900.
+    const { dx, dy, dw, dh } = coverRect(1440, 900, IW, IH, 0, PORTRAIT_MIN_FILL);
+    expect({ dx, dy, dw, dh }).toEqual({ dx: 0, dy: 0, dw: 1440, dh: 810 });
+  });
+
+  it("with minFill, still zooms in on a tall window rather than leave a gap", () => {
+    const { dh } = coverRect(390, 844, IW, IH, 0, PORTRAIT_MIN_FILL);
+    expect(dh).toBeCloseTo(844 * PORTRAIT_MIN_FILL);
   });
 
   it("still supports a centred crop when asked", () => {

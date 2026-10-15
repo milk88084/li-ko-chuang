@@ -6,6 +6,8 @@ import { useLanguage } from "@/providers/LanguageProvider";
 import { localePath } from "@/lib/locale";
 import {
   FRAME_COUNT,
+  PORTRAIT_ANCHOR_Y,
+  PORTRAIT_MIN_FILL,
   clamp,
   coverRect,
   ease,
@@ -156,13 +158,27 @@ export function ScrollPortraitHero() {
         canvas.height,
         image.naturalWidth,
         image.naturalHeight,
+        PORTRAIT_ANCHOR_Y,
+        PORTRAIT_MIN_FILL,
       );
 
-      ctx.fillStyle = document.documentElement.classList.contains("dark")
+      const ground = document.documentElement.classList.contains("dark")
         ? GROUND.dark
         : GROUND.light;
+      ctx.fillStyle = ground;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(image, dx, dy, dw, dh);
+
+      // When the frame stops short of the bottom (it fits the width rather
+      // than zoom in), melt its lower edge into the ground so no seam shows.
+      const bottom = dy + dh;
+      if (bottom < canvas.height) {
+        const fade = ctx.createLinearGradient(0, bottom - dh * 0.12, 0, bottom);
+        fade.addColorStop(0, `${ground}00`);
+        fade.addColorStop(1, ground);
+        ctx.fillStyle = fade;
+        ctx.fillRect(0, bottom - dh * 0.12, canvas.width, dh * 0.12 + 1);
+      }
     };
 
     // ---- scroll progress ----
