@@ -11,11 +11,11 @@ export type ProjectType = (typeof PROJECT_TYPES)[number];
 
 /** The Hairline figures a project card can show (see components/work/ProjectFigure). */
 export const PROJECT_FIGURES = [
-  "vault",
-  "phone",
-  "settle",
-  "terrain",
-  "exploded",
+  "riffle",
+  "loupe",
+  "rebuild",
+  "format",
+  "terminal",
   "cabinet",
   "relay",
   "lockers",

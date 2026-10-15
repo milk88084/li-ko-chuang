@@ -4,7 +4,7 @@
     "type": "engineering",
     "featured": true,
     "cover": "/00_araS.webp",
-    "figure": "vault",
+    "figure": "riffle",
     "video": "/00_araS.mp4",
     "link": "https://apps.apple.com/app/id6785747999",
     "en": {
@@ -71,7 +71,7 @@
     "type": "engineering",
     "featured": true,
     "cover": "/05_reteP.webp",
-    "figure": "phone",
+    "figure": "loupe",
     "video": null,
     "link": "https://apps.apple.com/app/id6798490139",
     "en": {
@@ -130,7 +130,7 @@
     "type": "engineering",
     "featured": false,
     "cover": "/01_U-Turn.webp",
-    "figure": "settle",
+    "figure": "rebuild",
     "video": "/01_U-Turn.mp4",
     "link": null,
     "en": {
@@ -185,7 +185,7 @@
     "type": "engineering",
     "featured": false,
     "cover": "/02_AI快研究.webp",
-    "figure": "terrain",
+    "figure": "format",
     "video": "/02_AI快研究.mp4",
     "link": null,
     "en": {
@@ -244,7 +244,7 @@
     "type": "engineering",
     "featured": false,
     "cover": "/03_數位聊天室.webp",
-    "figure": "exploded",
+    "figure": "terminal",
     "video": "/03_數位聊天室.mp4",
     "link": null,
     "en": {

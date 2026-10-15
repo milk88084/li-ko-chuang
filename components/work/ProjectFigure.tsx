@@ -2,15 +2,15 @@ import type { CSSProperties } from "react";
 import {
   Cabinet,
   Dish,
-  Exploded,
+  Format,
   Hub,
   Lockers,
-  Phone,
+  Loupe,
+  Rebuild,
   Relay,
-  Settle,
+  Riffle,
   Slow,
-  Terrain,
-  Vault,
+  Terminal,
 } from "@lucasmarkes/hairline/react";
 import type { ProjectFigureName } from "@/lib/projects";
 
@@ -20,11 +20,11 @@ import type { ProjectFigureName } from "@/lib/projects";
 // sits idle in its own loop. The real screenshots stay on the project page.
 
 const FIGURES = {
-  vault: Vault,
-  phone: Phone,
-  settle: Settle,
-  terrain: Terrain,
-  exploded: Exploded,
+  riffle: Riffle,
+  loupe: Loupe,
+  rebuild: Rebuild,
+  format: Format,
+  terminal: Terminal,
   cabinet: Cabinet,
   relay: Relay,
   lockers: Lockers,
@@ -45,5 +45,7 @@ const PALETTE = {
 
 export function ProjectFigure({ name }: { name: ProjectFigureName }) {
   const Figure = FIGURES[name];
-  return <Figure play intensity={0.6} style={PALETTE} />;
+  // The card around it is the link, so the figure never takes focus itself
+  // (Riffle would otherwise add a tab stop for its arrow keys).
+  return <Figure play intensity={0.6} tabIndex={-1} style={PALETTE} />;
 }
