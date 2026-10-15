@@ -24,15 +24,16 @@ interface Testimonial {
 
 const ENTRIES = testimonials as unknown as Testimonial[];
 
-/** "Ming Wang" → "MW", "王小明" → "小明" (given name, as it is said aloud). */
+/**
+ * "Ming Wang" → "MW", "Wen Cheng Wong" → "WW" (first and last name),
+ * "王小明" → "小明" (given name, as it is said aloud).
+ */
 function initials(name: string) {
   if (/[㐀-鿿]/.test(name)) return name.length > 2 ? name.slice(-2) : name;
-  return name
-    .split(/\s+/)
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
+  const parts = name.trim().split(/\s+/);
+  const first = parts[0]?.[0] ?? "";
+  const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
+  return (first + last).toUpperCase();
 }
 
 function Avatar({ name, photo }: { name: string; photo?: string }) {
@@ -60,6 +61,8 @@ function Avatar({ name, photo }: { name: string; photo?: string }) {
 export function KindWords({ locale }: { locale: Locale }) {
   if (ENTRIES.length === 0) return null;
   const t = content[locale].home.words;
+  // Chinese text takes corner brackets, English takes curly quotes.
+  const [open, close] = locale === "zh" ? ["「", "」"] : ["“", "”"];
 
   return (
     <Section label={t.label} title={t.title}>
@@ -71,7 +74,9 @@ export function KindWords({ locale }: { locale: Locale }) {
           >
             <figure>
               <blockquote className="text-[17px] leading-relaxed">
-                “{entry.quote[locale]}”
+                {open}
+                {entry.quote[locale]}
+                {close}
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-3">
                 <Avatar name={entry.name[locale]} photo={entry.photo} />

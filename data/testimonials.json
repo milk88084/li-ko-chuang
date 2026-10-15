@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "name": { "en": "Leo Tzun", "zh": "Leo Tzun" },
+    "title": { "en": "Marketing Planner", "zh": "行銷企劃" },
+    "quote": {
+      "en": "Working with him, I found him careful, responsible and very organised. He plans his own schedule for whatever he's handed, and often delivers before the deadline. When we put campaign plans together, he sorted the information methodically, clarified the direction and turned ideas into reality step by step. He's a dependable, hard-working partner who keeps learning and growing.",
+      "zh": "過去與他共事的過程中，我覺得他是一個細心、有責任感且做事很有規劃的人。面對交付的任務，他能獨立安排工作進度，並經常在預定期限前完成。在一起籌備企劃的過程中，他也能有條理地整理資訊、釐清方向，並將想法逐步落實。我認為他是一位做事認真、值得信賴，也能持續學習與成長的夥伴。"
+    }
+  },
+  {
+    "name": { "en": "Julianna Guo", "zh": "Julianna Guo" },
+    "title": { "en": "Front-end Engineer", "zh": "前端工程師" },
+    "quote": {
+      "en": "Max has a great eye for design that takes our projects to the next level. He quickly turns complex requirements into clear details, almost like a mix of a designer and a PM. He is an incredible support to our team.",
+      "zh": "Max 對設計很有眼光，總能讓我們的專案更上一層樓。他能很快把複雜的需求整理成清楚的細節，幾乎就像設計師與 PM 的綜合體。他是我們團隊非常強大的後盾。"
+    }
+  },
+  {
+    "name": { "en": "Annie Liu", "zh": "Annie Liu" },
+    "title": { "en": "Marketing Planner", "zh": "行銷企劃" },
+    "quote": {
+      "en": "Max is a detail-oriented and thoughtful team member; we would be in big trouble without him.",
+      "zh": "Max 是一位注重細節又體貼周到的夥伴；少了他，我們可就麻煩大了。"
+    }
+  },
+  {
+    "name": { "en": "Wen Cheng Wong", "zh": "Wen Cheng Wong" },
+    "title": { "en": "Script Planner", "zh": "腳本企劃" },
+    "quote": {
+      "en": "Max is a detail-oriented and thoughtful team member; we would be in big trouble without him.",
+      "zh": "Max 是一位注重細節又體貼周到的夥伴；少了他，我們可就麻煩大了。"
+    }
+  }
+]
