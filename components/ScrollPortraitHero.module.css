@@ -16,10 +16,6 @@
   /* Background of the section that follows, for the closing seam. */
   --sp-seam: var(--bg);
   --sp-gutter: clamp(16px, 2.4vw, 40px);
-  /* Height of the fixed SiteHeader (--header-h),
-     which the pinned stage starts below. */
-  --sp-nav: var(--header-h);
-
   --sp-italic: var(--font-bodoni), "Didot", Georgia, serif;
   --sp-mono: var(--font-jetbrains-mono), ui-monospace, Menlo, monospace;
 
@@ -59,14 +55,14 @@
   height: 620vh;
 }
 
-/* Starts BELOW the fixed SiteHeader rather than behind it. The portrait's head
-   sits in the top ~8% of the frame, which lands inside the nav band at ordinary
-   window sizes, so a full-height pin puts his head behind the header. */
+/* Fills the whole window. The header is a floating dock now, not a bar, so
+   nothing needs a band of its own: the portrait's head still lands below the
+   dock, and the dock tucks away as soon as the stage starts to scroll. */
 .pin {
   position: sticky;
-  top: var(--sp-nav);
-  height: calc(100vh - var(--sp-nav));
-  height: calc(100svh - var(--sp-nav));
+  top: 0;
+  height: 100vh;
+  height: 100svh;
   overflow: hidden;
 }
 

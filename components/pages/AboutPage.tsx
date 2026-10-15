@@ -58,13 +58,13 @@ export function AboutPage({ locale }: { locale: Locale }) {
             <li key={item.title} className="overflow-hidden rounded-[10px] bg-surface">
               <FigureFrame
                 name={item.figure as FigureName}
-                className="aspect-[16/9] border-b border-line md:aspect-[2/1]"
+                className="aspect-[2/1] border-b border-line md:aspect-[3/1]"
               />
-              <div className="p-6 md:p-8">
+              <div className="p-6 md:px-8 md:py-7">
                 <span className="font-mono text-[11px] text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-6 text-[22px] tracking-[-0.015em]">{item.title}</h3>
+                <h3 className="mt-3 text-[22px] tracking-[-0.015em]">{item.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-muted">
                   {item.description}
                 </p>
