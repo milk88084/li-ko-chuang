@@ -198,19 +198,23 @@
         "items": [
           {
             "title": "React Ecosystem",
-            "description": "Deep dive into Next.js architecture and complex state management implementation (Zustand, Jotai, Redux)."
+            "description": "Deep dive into Next.js architecture and complex state management implementation (Zustand, Jotai, Redux).",
+            "figure": "exploded"
           },
           {
             "title": "Shipping Full-stack",
-            "description": "Ran two iOS apps through the whole product lifecycle — API design, auth, database, App Store review and subscription billing."
+            "description": "Ran two iOS apps through the whole product lifecycle — API design, auth, database, App Store review and subscription billing.",
+            "figure": "phone"
           },
           {
             "title": "Automation",
-            "description": "Strengthening n8n automation flow systems."
+            "description": "Strengthening n8n automation flow systems.",
+            "figure": "settle"
           },
           {
             "title": "Database Design",
-            "description": "Designing production Prisma + PostgreSQL schemas: relations, indexing and per-user data isolation."
+            "description": "Designing production Prisma + PostgreSQL schemas: relations, indexing and per-user data isolation.",
+            "figure": "drawer"
           }
         ]
       },
@@ -499,19 +503,23 @@
         "items": [
           {
             "title": "React 生態系深耕",
-            "description": "專注於 Next.js 架構優化與複雜狀態管理（Zustand, Jotai, Redux）的實作應用。"
+            "description": "專注於 Next.js 架構優化與複雜狀態管理（Zustand, Jotai, Redux）的實作應用。",
+            "figure": "exploded"
           },
           {
             "title": "獨立產品開發與上架",
-            "description": "完整跑過兩款 iOS App 的產品生命週期：API 設計、認證流程、資料庫、App Store 送審到訂閱金流。"
+            "description": "完整跑過兩款 iOS App 的產品生命週期：API 設計、認證流程、資料庫、App Store 送審到訂閱金流。",
+            "figure": "phone"
           },
           {
             "title": "自動化流程",
-            "description": "強化 n8n 自動化流程系統。"
+            "description": "強化 n8n 自動化流程系統。",
+            "figure": "settle"
           },
           {
             "title": "資料庫設計",
-            "description": "以 Prisma 與 PostgreSQL 設計正式上線的資料模型，處理關聯、索引與使用者資料隔離。"
+            "description": "以 Prisma 與 PostgreSQL 設計正式上線的資料模型，處理關聯、索引與使用者資料隔離。",
+            "figure": "drawer"
           }
         ]
       },

@@ -4,6 +4,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section } from "@/components/layout/Section";
 import { ScrollPortraitHero } from "@/components/ScrollPortraitHero";
+import { FigureFrame, type FigureName } from "@/components/canvas/FigureFrame";
 
 // The person: the scroll-driven portrait turn, then the story, the full work
 // history (engineering and marketing in one timeline), what Max is focused on
@@ -54,14 +55,20 @@ export function AboutPage({ locale }: { locale: Locale }) {
       <Section label={t.now.label} title={t.now.title} intro={t.now.subtitle}>
         <ul className="reveal-stagger grid gap-6 md:grid-cols-2">
           {t.now.items.map((item, i) => (
-            <li key={item.title} className="rounded-[10px] bg-surface p-6 md:p-8">
-              <span className="font-mono text-[11px] text-accent">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-6 text-[22px] tracking-[-0.015em]">{item.title}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-muted">
-                {item.description}
-              </p>
+            <li key={item.title} className="overflow-hidden rounded-[10px] bg-surface">
+              <FigureFrame
+                name={item.figure as FigureName}
+                className="aspect-[16/9] border-b border-line md:aspect-[2/1]"
+              />
+              <div className="p-6 md:p-8">
+                <span className="font-mono text-[11px] text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-6 text-[22px] tracking-[-0.015em]">{item.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted">
+                  {item.description}
+                </p>
+              </div>
             </li>
           ))}
         </ul>

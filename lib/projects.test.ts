@@ -8,6 +8,7 @@ import {
   isProjectType,
 } from "@/lib/projects";
 import { LOCALES } from "@/lib/locale";
+import content from "@/data/content.json";
 
 describe("project data", () => {
   it("gives every project a unique, URL-safe slug", () => {
@@ -32,6 +33,15 @@ describe("project data", () => {
     const figures = getProjects("en").map((p) => p.figure);
     for (const figure of figures) expect(PROJECT_FIGURES).toContain(figure);
     expect(new Set(figures).size).toBe(figures.length);
+  });
+
+  it("never reuses a project's figure on the About page", () => {
+    const projectFigures = getProjects("en").map((p): string => p.figure);
+    for (const locale of LOCALES) {
+      const aboutFigures = content[locale].about.now.items.map((i) => i.figure);
+      expect(new Set(aboutFigures).size).toBe(aboutFigures.length);
+      for (const figure of aboutFigures) expect(projectFigures).not.toContain(figure);
+    }
   });
 });
 

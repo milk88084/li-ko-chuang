@@ -9,7 +9,7 @@ import type { Locale } from "@/lib/locale";
 export const PROJECT_TYPES = ["engineering", "marketing"] as const;
 export type ProjectType = (typeof PROJECT_TYPES)[number];
 
-/** The Hairline figures a project card can show (see components/work/ProjectFigure). */
+/** The Hairline figures a project card can show (see components/canvas/FigureFrame). */
 export const PROJECT_FIGURES = [
   "riffle",
   "loupe",
