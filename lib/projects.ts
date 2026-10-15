@@ -9,6 +9,22 @@ import type { Locale } from "@/lib/locale";
 export const PROJECT_TYPES = ["engineering", "marketing"] as const;
 export type ProjectType = (typeof PROJECT_TYPES)[number];
 
+/** The Hairline figures a project card can show (see components/work/ProjectFigure). */
+export const PROJECT_FIGURES = [
+  "vault",
+  "phone",
+  "settle",
+  "terrain",
+  "exploded",
+  "cabinet",
+  "relay",
+  "lockers",
+  "hub",
+  "dish",
+  "slow",
+] as const;
+export type ProjectFigureName = (typeof PROJECT_FIGURES)[number];
+
 type RawProject = (typeof projectData)[number];
 
 /** A project with its copy resolved to one language. */
@@ -17,6 +33,8 @@ export interface Project {
   type: ProjectType;
   featured: boolean;
   cover: string;
+  /** The Hairline line figure that stands in for the cover on cards. */
+  figure: ProjectFigureName;
   video: string | null;
   link: string | null;
   title: string;
@@ -43,6 +61,7 @@ function resolve(raw: RawProject, locale: Locale): Project {
     type: raw.type as ProjectType,
     featured: raw.featured,
     cover: raw.cover,
+    figure: raw.figure as ProjectFigureName,
     video: raw.video,
     link: raw.link,
     title: copy.title,

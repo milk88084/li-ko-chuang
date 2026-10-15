@@ -1,4 +1,5 @@
 import {
+  PROJECT_FIGURES,
   PROJECT_SLUGS,
   getFeaturedProjects,
   getNextProject,
@@ -25,6 +26,12 @@ describe("project data", () => {
         expect(project.outcome.trim()).not.toBe("");
       }
     }
+  });
+
+  it("gives every project a known figure, each used once", () => {
+    const figures = getProjects("en").map((p) => p.figure);
+    for (const figure of figures) expect(PROJECT_FIGURES).toContain(figure);
+    expect(new Set(figures).size).toBe(figures.length);
   });
 });
 

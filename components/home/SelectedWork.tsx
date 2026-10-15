@@ -18,13 +18,12 @@ export function SelectedWork({ locale }: { locale: Locale }) {
   return (
     <Section label={t.home.work.label} title={t.home.work.title}>
       <div className="grid gap-x-6 gap-y-12 md:grid-cols-12">
-        {[first, second].map((project, i) => (
+        {[first, second].map((project) => (
           <div key={project.slug} className="reveal md:col-span-6">
             <ProjectCard
               project={project}
               href={href(project.slug)}
               typeLabel={typeLabel(project.type)}
-              priority={i === 0}
             />
           </div>
         ))}
@@ -36,7 +35,6 @@ export function SelectedWork({ locale }: { locale: Locale }) {
               href={href(project.slug)}
               typeLabel={typeLabel(project.type)}
               aspect="aspect-[4/3]"
-              sizes="(min-width: 768px) 33vw, 100vw"
             />
           </div>
         ))}
