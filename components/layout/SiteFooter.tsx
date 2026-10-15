@@ -64,39 +64,43 @@ export function SiteFooter({ locale }: { locale: Locale }) {
     >
       <GridLines lineClassName="border-white/10" />
 
-      <div className="relative mx-auto max-w-[1440px] px-4 pt-20 pb-10 md:px-8 md:pt-32">
+      <div className="relative mx-auto max-w-[1440px] px-4 pt-14 pb-8 md:px-8 md:pt-20">
         <p className="font-mono text-[12px] tracking-[0.04em] text-white/70 uppercase">
           {`/ ${f.label}`}
         </p>
 
-        <h2 className="mt-6 text-[clamp(48px,8.4vw,132px)] leading-[0.95] tracking-[-0.045em] text-balance">
-          <span className="block">{f.line1}</span>
-          <span className="block font-serif tracking-[-0.02em] italic">
-            {f.line2}
-            <Caret className="bg-white" />
-          </span>
-        </h2>
+        {/* Prompt on the left, address on the right: side by side on wide
+            screens, so the block stays well under a screen tall. */}
+        <div className="mt-5 grid gap-10 md:grid-cols-12 md:items-end md:gap-6">
+          <h2 className="text-[clamp(40px,6vw,92px)] leading-[0.95] tracking-[-0.045em] text-balance md:col-span-7">
+            <span className="block">{f.line1}</span>
+            <span className="block font-serif tracking-[-0.02em] italic">
+              {f.line2}
+              <Caret className="bg-white" />
+            </span>
+          </h2>
 
-        <div className="mt-14 flex flex-col items-start gap-5 md:mt-20 md:flex-row md:items-end md:justify-between">
-          <div>
+          <div className="md:col-span-5 md:justify-self-end md:pb-2">
             <p className="font-mono text-[11px] tracking-[0.06em] text-white/60 uppercase">
               {f.emailHint}
             </p>
             <a
               href={`mailto:${social.email}`}
-              className="mt-2 block text-[clamp(26px,4.6vw,64px)] leading-tight tracking-[-0.03em] break-all underline decoration-white/30 decoration-2 underline-offset-[0.18em] transition-colors hover:decoration-white"
+              className="mt-2 block text-[clamp(24px,2.9vw,42px)] leading-tight tracking-[-0.03em] break-all underline decoration-white/30 decoration-2 underline-offset-[0.18em] transition-colors hover:decoration-white"
             >
               {social.email}
             </a>
+            <div className="mt-5">
+              <CopyEmailButton email={social.email} label={f.copy} doneLabel={f.copied} />
+            </div>
           </div>
-          <CopyEmailButton email={social.email} label={f.copy} doneLabel={f.copied} />
         </div>
 
-        <dl className="mt-14 grid border-t border-white/25 md:mt-20 md:grid-cols-3">
+        <dl className="mt-12 grid border-t border-white/25 md:mt-16 md:grid-cols-3">
           {inspect.map((row, i) => (
             <div
               key={row.label}
-              className={`flex items-baseline justify-between gap-6 border-b border-white/25 py-5 md:block md:border-b-0 md:py-6 ${
+              className={`flex items-baseline justify-between gap-6 border-b border-white/25 py-4 last:border-b-0 md:block md:border-b-0 md:py-5 ${
                 i > 0 ? "md:border-l md:pl-6" : ""
               }`}
             >
@@ -110,7 +114,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           ))}
         </dl>
 
-        <div className="mt-16 flex flex-col gap-6 border-t border-white/25 pt-6 font-mono text-[11px] tracking-[0.04em] text-white/70 uppercase md:flex-row md:items-center md:justify-between">
+        <div className="mt-8 flex flex-col gap-5 border-t border-white/25 pt-6 font-mono text-[11px] tracking-[0.04em] text-white/70 uppercase md:flex-row md:items-center md:justify-between">
           <nav aria-label={f.sitemap}>
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
               {sitemap.map((link) => (
