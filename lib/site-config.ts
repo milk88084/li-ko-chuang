@@ -22,7 +22,7 @@ export const siteConfig = {
   name: "Li Ko Chuan",
   title: "Li Ko Chuan | Portfolio",
   description:
-    "Frontend engineer in Taipei with a background in marketing and events. Building interfaces, telling stories.",
+    "AI engineer in Taipei. Frontend first, iOS apps shipped solo, and AI automations that turn a team's needs into working tools.",
   // Strip any trailing slash so `${siteUrl}${path}` never double-slashes.
   siteUrl: rawSiteUrl.replace(/\/$/, ""),
   // No ogImage here on purpose: app/opengraph-image.tsx generates it at

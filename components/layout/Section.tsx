@@ -32,7 +32,7 @@ export function Section({
         <div>
           <SectionLabel>{label}</SectionLabel>
           {title && (
-            <h2 className="mt-5 max-w-4xl text-[clamp(34px,5vw,64px)] leading-[1.08] tracking-[-0.04em] text-balance">
+            <h2 className="mt-5 max-w-4xl text-[clamp(34px,5vw,64px)] leading-[1.08] tracking-[-0.04em] whitespace-pre-line text-balance">
               {title}
             </h2>
           )}

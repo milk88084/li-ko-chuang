@@ -7,12 +7,12 @@ import { useInView } from "@/hooks/useInView";
 import { Section } from "@/components/layout/Section";
 import { BringIllustration } from "./bring-illustrations";
 
-// The strengths section: one wide card for the headline claim — a hybrid who
-// can plan, build and manage on their own — then three cards for the
-// disciplines behind it. Illustrations assemble themselves once the block
+// The strengths section: one wide card for the headline claim — an engineer
+// who works through AI — then three cards for what that covers: frontend and
+// apps, translating needs, and AI automation. Illustrations assemble themselves once the block
 // scrolls into view.
 
-type CardKey = "engineering" | "marketing" | "pm";
+type CardKey = "build" | "translate" | "automate";
 
 export function WhatIBring({ locale }: { locale: Locale }) {
   const t = content[locale].home.bring;

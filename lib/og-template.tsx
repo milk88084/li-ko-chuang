@@ -88,7 +88,7 @@ export function OgCard({
         }}
       >
         <div style={{ display: "flex" }}>
-          Frontend Engineer · Marketing · Events · Taipei
+          AI Engineer · Frontend · Automation · Taipei
         </div>
         <div style={{ display: "flex", color: BLUE }}>
           {siteConfig.siteUrl.replace(/^https?:\/\//, "")}

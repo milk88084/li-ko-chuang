@@ -17,7 +17,7 @@ import { useId, type CSSProperties, type ReactNode, type SVGProps } from "react"
 // further for the layers in front — and the ground shadow breathes in step,
 // so the stack reads as floating with depth.
 
-type Key = "hybrid" | "engineering" | "marketing" | "pm";
+type Key = "hybrid" | "build" | "translate" | "automate";
 
 /**
  * One layer of a drawing. The outer group plays the entrance; the inner one
@@ -140,8 +140,8 @@ const DRAWINGS: Record<Key, (id: string) => ReactNode> = {
     </>
   ),
 
-  // A code window with a phone sliding in front of it.
-  engineering: (id) => (
+  // Frontend & apps: a code window with a phone sliding in front of it.
+  build: (id) => (
     <>
       <Layer i={0} breathe>
         <Shadow id={id} cx={112} cy={136} rx={70} />
@@ -167,8 +167,8 @@ const DRAWINGS: Record<Key, (id: string) => ReactNode> = {
     </>
   ),
 
-  // A tilted brief with a rising campaign line, and a pencil across it.
-  marketing: (id) => (
+  // Translating needs: a tilted brief with a rising line, a pencil across it.
+  translate: (id) => (
     <>
       <Layer i={0} breathe>
         <Shadow id={id} cx={108} cy={138} rx={64} />
@@ -199,8 +199,8 @@ const DRAWINGS: Record<Key, (id: string) => ReactNode> = {
     </>
   ),
 
-  // A timeline board (Gantt bars) with a completed-tick badge in front.
-  pm: (id) => (
+  // AI automation: a board of steps running in order, a done-tick in front.
+  automate: (id) => (
     <>
       <Layer i={0} breathe>
         <Shadow id={id} cx={110} cy={136} rx={70} />
@@ -225,9 +225,9 @@ const DRAWINGS: Record<Key, (id: string) => ReactNode> = {
 
 const VIEWBOX: Record<Key, string> = {
   hybrid: "0 0 320 196",
-  engineering: "0 0 200 150",
-  marketing: "0 0 200 150",
-  pm: "0 0 200 150",
+  build: "0 0 200 150",
+  translate: "0 0 200 150",
+  automate: "0 0 200 150",
 };
 
 export function BringIllustration({

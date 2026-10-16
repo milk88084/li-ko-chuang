@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   // Day-mode default; FaviconSync swaps to the white icon at night.
   icons: { icon: "/favicon_black.ico" },
-  keywords: ["React", "Next.js", "前端工程師", "行銷企劃", "活動企劃", "UI/UX"],
+  keywords: ["AI 工程師", "AI 自動化", "React", "Next.js", "前端開發", "App 開發", "n8n"],
   authors: [{ name: siteConfig.name }],
   robots: {
     index: true,

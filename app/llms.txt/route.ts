@@ -27,9 +27,10 @@ const projectLines = (type: "engineering" | "marketing") =>
 export function GET() {
   const body = `# ${siteConfig.name}
 
-> Frontend engineer in Taipei building interfaces in React, Next.js and
-> TypeScript, with eight years in marketing, campaigns and event planning
-> before that. Designs, builds and ships his own iOS apps alone.
+> AI engineer in Taipei. Works mainly on the frontend (React, Next.js,
+> TypeScript), designs, builds and ships iOS apps alone, and turns other
+> people's requirements into AI automations and tools. Eight years in
+> marketing, campaigns and event planning before that.
 
 This site is a personal portfolio, published in English at the URLs below and
 in Traditional Chinese under ${siteConfig.siteUrl}/zh (the same pages, e.g.
@@ -37,7 +38,7 @@ ${siteConfig.siteUrl}/zh/work).
 
 ## Pages
 
-${link("Home", "/", "Positioning, selected work and the three disciplines: engineering, marketing, events")}
+${link("Home", "/", "Positioning, selected work and what the work covers: frontend and apps, translating needs, AI automation")}
 ${link("Work", "/work", en.work.intro)}
 ${link("About", "/about", "Background, full work history, current focus and toolkit")}
 ${link("Events", "/events", en.events.intro)}
@@ -57,7 +58,8 @@ ${projectLines("marketing")}
   Transformation Division since 2024.
 - Over eight years in marketing, fundraising campaigns, event planning and
   government-funded programme management before moving into engineering.
-- Works in React, Next.js, TypeScript, React Native and Expo.
+- Works in React, Next.js, TypeScript, React Native and Expo, and builds
+  AI automations with n8n and AI agents.
 
 ## Elsewhere
 

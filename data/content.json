@@ -4,7 +4,7 @@
       "name": "Max",
       "fullName": "Li Ko Chuan",
       "location": "Taipei, Taiwan",
-      "role": "Frontend Engineer · Marketing · Events"
+      "role": "AI Engineer · Frontend · Automation"
     },
     "nav": {
       "work": "Work",
@@ -21,9 +21,9 @@
     },
     "home": {
       "hero": {
-        "line1": "Building interfaces,",
-        "line2": "telling stories.",
-        "intro": "I'm Max, a frontend engineer in Taipei with eight years in marketing and events behind me. I build products in React and Next.js, and ship my own iOS apps alone.",
+        "line1": "Building with AI,",
+        "line2": "doing more with less.",
+        "intro": "I'm Max, an AI engineer in Taipei. Frontend is my core — React and Next.js — and I ship my own iOS apps solo. I also turn other people's needs into AI automations and tools that get the work done in half the effort.",
         "frameLabel": "Frame · Col 9–12",
         "imageAlt": "Max at work"
       },
@@ -32,7 +32,7 @@
       },
       "hello": {
         "label": "Hello",
-        "text": "I'm Max — an engineer who used to be the marketer. Eight years of campaigns, fundraising and events taught me what users actually respond to; now I write the code that puts it in front of them, from the first spec to the App Store."
+        "text": "I'm Max — an engineer who builds with AI. Eight years in marketing and events taught me to hear what people actually need; now I use AI to turn it into working software: frontends, apps on the App Store, and automations that take the busywork off a team's plate."
       },
       "work": {
         "label": "Selected Work",
@@ -41,33 +41,33 @@
       },
       "bring": {
         "label": "What I Bring",
-        "title": "One person, the whole project.",
+        "title": "One person and AI,\nthe whole project.",
         "items": [
           {
-            "key": "engineering",
-            "title": "Engineering",
-            "body": "React, Next.js and TypeScript on the web; React Native and Expo on iOS. Two apps designed, built and shipped to the App Store solo."
+            "key": "build",
+            "title": "Frontend & apps",
+            "body": "React, Next.js and TypeScript on the web; React Native and Expo on iOS. With AI as my pair, two apps designed, built and shipped to the App Store solo."
           },
           {
-            "key": "marketing",
-            "title": "Marketing",
-            "body": "Brand, social and cross-sector partnerships. Fundraising campaigns that raised 700k online and a CSR alliance with Far Eastern Department Store."
+            "key": "translate",
+            "title": "Translating needs",
+            "body": "Eight years in marketing and project management taught me which questions to ask. I turn a team's loose requests into clear specs that AI and code can deliver."
           },
           {
-            "key": "pm",
-            "title": "Project management",
-            "body": "Government bids, budgets and timelines: I coordinated 30+ campus seminars in six months, and run my own apps from spec to App Store review."
+            "key": "automate",
+            "title": "AI automation",
+            "body": "n8n flows, AI agents and small internal tools that take repetitive work off people's hands, so a team gets twice the result for half the effort."
           }
         ],
         "featured": {
           "key": "hybrid",
-          "title": "A hybrid, by design",
-          "body": "I plan the marketing, run the events, build the website and the iOS app, and manage the project that ties them together. I can take an idea from brief to launch on my own — or step into any one of those seats on a team.",
+          "title": "An AI engineer",
+          "body": "AI is how I work, not a feature I bolt on. With it I build web frontends, ship iOS apps on my own, and translate a team's needs into automations and tools. Eight years of marketing and project management behind me make sure what I build is what people actually needed.",
           "tags": [
-            "Marketing plans",
-            "Events",
-            "Web development",
+            "Frontend",
             "iOS apps",
+            "AI automation",
+            "Translating needs",
             "Project management"
           ]
         }
@@ -116,9 +116,9 @@
     "about": {
       "label": "About",
       "scrollHero": {
-        "intro": "Frontend engineer, Taipei. React, Next.js, TypeScript. My own apps, built and shipped alone.",
+        "intro": "AI engineer, Taipei. Frontend first — React, Next.js, TypeScript. My own apps, built and shipped alone.",
         "ctaText": "See the work",
-        "statement": "Eight years in marketing, with a background in project management and campaign planning. A generalist, by design.",
+        "statement": "Eight years in marketing and project management taught me what people need. AI is how I build it.",
         "spec": [
           {
             "label": "Web",
@@ -127,6 +127,10 @@
           {
             "label": "App",
             "value": "React Native · Expo"
+          },
+          {
+            "label": "Automation",
+            "value": "n8n · AI Agent"
           },
           {
             "label": "Workflow",
@@ -143,10 +147,10 @@
       "story": {
         "label": "Story",
         "title": "Vibe Coding in the AI Era",
-        "quote": "Bridging technical development and product thinking.",
+        "quote": "Turning what people need into what AI can build.",
         "body": [
-          "With over 2 years of frontend development experience combined with 8 years of marketing background, I not only write scalable code but also optimize products from user experience and business goal perspectives.",
-          "With 5 years of experience in marketing and project management, I know how to use data tools to track performance and ensure projects are executed precisely within budget through effective communication and coordination."
+          "I've worked as a frontend engineer for over two years, and I build with AI every day — from planning the spec to writing, testing and shipping the code. That's how I took two iOS apps to the App Store on my own.",
+          "Before that, eight years in marketing, fundraising and project management taught me to hear the real need behind a request. Now I translate those needs into AI workflows and tools, so teams get more done with less effort."
         ]
       },
       "experience": {
@@ -194,7 +198,7 @@
       "now": {
         "label": "Now",
         "title": "Current Focus",
-        "subtitle": "Full-stack Development X Vibe Coding",
+        "subtitle": "Frontend × AI automation",
         "items": [
           {
             "title": "React Ecosystem",
@@ -207,8 +211,8 @@
             "figure": "phone"
           },
           {
-            "title": "Automation",
-            "description": "Strengthening n8n automation flow systems.",
+            "title": "AI Automation",
+            "description": "Building n8n flows and AI agents that turn a team's repetitive work into pipelines that run themselves.",
             "figure": "settle"
           },
           {
@@ -221,7 +225,7 @@
       "skills": {
         "label": "Skills",
         "title": "Toolkit",
-        "engineering": "Engineering",
+        "engineering": "Engineering & AI",
         "marketing": "Marketing & events",
         "engineeringItems": [
           "React.js",
@@ -243,7 +247,10 @@
           "Git",
           "Firebase",
           "Cursor",
-          "AntiGravity"
+          "AntiGravity",
+          "Claude Code",
+          "Gemini",
+          "n8n"
         ],
         "marketingItems": [
           "Event Planning",
@@ -284,7 +291,7 @@
       "mediumUrl": "https://medium.com/@dearno.3"
     },
     "footer": {
-      "blurb": "Frontend engineer with a marketer's instincts. I build interfaces people understand, and tell the story around them.",
+      "blurb": "An AI engineer who speaks marketing. I turn what people need into frontends, apps and automations that do more with less.",
       "rights": "All rights reserved.",
       "label": "Contact",
       "line1": "Have an idea?",
@@ -309,7 +316,7 @@
       "name": "Max",
       "fullName": "Li Ko Chuan",
       "location": "台北，台灣",
-      "role": "前端工程師 · 行銷 · 活動"
+      "role": "AI 工程師 · 前端 · 自動化"
     },
     "nav": {
       "work": "作品",
@@ -326,9 +333,9 @@
     },
     "home": {
       "hero": {
-        "line1": "寫程式打造介面，",
-        "line2": "用行銷說好故事。",
-        "intro": "我是 Max，台北的前端工程師，在這之前做了八年行銷與活動。用 React、Next.js 打造產品，也獨自開發並上架自己的 iOS App。",
+        "line1": "用 AI 打造產品，",
+        "line2": "讓工作事半功倍。",
+        "intro": "我是 Max，台北的 AI 工程師。以前端開發為主，用 React、Next.js 打造產品，也獨立開發並上架 iOS App，更能把別人的需求轉譯成 AI 自動化流程與工具，讓工作事半功倍。",
         "frameLabel": "Frame · Col 9–12",
         "imageAlt": "工作中的 Max"
       },
@@ -337,7 +344,7 @@
       },
       "hello": {
         "label": "Hello",
-        "text": "我是 Max，一個曾經是行銷人的工程師。八年的活動、募款與品牌經驗，讓我知道使用者真正在意什麼；現在我用程式把它做出來，從第一份規格一路到 App Store 上架。"
+        "text": "我是 Max，一個用 AI 做事的工程師。八年的行銷與活動經驗，讓我聽得懂別人真正需要什麼；現在我用 AI 把需求變成能用的軟體：網頁介面、上架 App Store 的 App，以及替團隊省下重複工作的自動化流程。"
       },
       "work": {
         "label": "Selected Work",
@@ -346,33 +353,33 @@
       },
       "bring": {
         "label": "What I Bring",
-        "title": "一個人，就能走完整個專案。",
+        "title": "一個人加上 AI，\n就能走完整個專案。",
         "items": [
           {
-            "key": "engineering",
-            "title": "工程",
-            "body": "網頁用 React、Next.js、TypeScript，iOS 用 React Native 與 Expo。兩款 App 從設計、開發到上架 App Store 全程獨立完成。"
+            "key": "build",
+            "title": "前端與 App 開發",
+            "body": "網頁用 React、Next.js、TypeScript，iOS 用 React Native 與 Expo。搭配 AI 協作，兩款 App 從設計、開發到上架 App Store 全程獨立完成。"
           },
           {
-            "key": "marketing",
-            "title": "行銷企劃",
-            "body": "品牌、社群與異業合作。線上募款專案募得 70 萬元，並促成與遠東百貨的 CSR 跨界合作。"
+            "key": "translate",
+            "title": "需求轉譯",
+            "body": "八年的行銷與專案管理經驗，讓我知道該問什麼問題。我把團隊模糊的需求整理成清楚的規格，再交給 AI 與程式實現。"
           },
           {
-            "key": "pm",
-            "title": "專案管理",
-            "body": "標案、預算與時程控管：半年內統籌 30 多場校園講座，也用 PM 的方式帶自己的 App 從規格走到 App Store 審核。"
+            "key": "automate",
+            "title": "AI 自動化",
+            "body": "用 n8n 流程、AI Agent 與內部小工具，接手重複又耗時的工作，讓團隊事半功倍。"
           }
         ],
         "featured": {
           "key": "hybrid",
-          "title": "複合型人才",
-          "body": "我會行銷企劃、會辦活動，也能獨立開發網頁與 iOS App，還能自己當 PM，把專案從需求帶到上線。可以一個人把事情從頭做完，也能補上團隊裡任何一個位置。",
+          "title": "AI 工程師",
+          "body": "AI 是我的工作方式，不只是加上去的功能。我用它開發網頁前端、獨立上架 iOS App，也把團隊的需求轉譯成自動化流程與工具；八年的行銷與專案管理經驗，讓我做出來的東西就是對方真正需要的。",
           "tags": [
-            "行銷企劃",
-            "活動執行",
-            "網頁開發",
-            "App 開發",
+            "前端開發",
+            "App 上架",
+            "AI 自動化",
+            "需求轉譯",
             "專案管理"
           ]
         }
@@ -421,9 +428,9 @@
     "about": {
       "label": "About",
       "scrollHero": {
-        "intro": "前端工程師，在台北。React、Next.js、TypeScript。自己的 App，一個人從頭做到上架。",
+        "intro": "AI 工程師，在台北。以前端為主：React、Next.js、TypeScript。自己的 App，一個人從頭做到上架。",
         "ctaText": "看看作品",
-        "statement": "做了八年行銷，我擁有專案管理、行銷企劃的背景。全方位的專業人才。",
+        "statement": "八年的行銷與專案管理，讓我懂得別人需要什麼；AI，讓我把它做出來。",
         "spec": [
           {
             "label": "web",
@@ -432,6 +439,10 @@
           {
             "label": "app",
             "value": "React Native · Expo"
+          },
+          {
+            "label": "自動化",
+            "value": "n8n · AI Agent"
           },
           {
             "label": "工作流",
@@ -448,10 +459,10 @@
       "story": {
         "label": "Story",
         "title": "與AI共融的Vibe Coding",
-        "quote": "橋接技術開發與產品思維。",
+        "quote": "把人的需求，轉成 AI 做得出來的東西。",
         "body": [
-          "我擁有 2 年以上的前端開發經驗，並結合過去 8 年的行銷背景，這讓我這不僅能寫出可擴展的程式碼，更能從使用者體驗與商業目標的角度優化產品。",
-          "憑藉 5 年的行銷與專案管理經驗，我深知如何利用數據工具追蹤成效，並透過有效的溝通協調，確保專案在預算內精準執行。"
+          "我有兩年以上的前端開發經驗，每天都和 AI 一起工作：從規劃規格、撰寫程式、測試到上線。也是靠這樣的方式，我一個人把兩款 iOS App 送上 App Store。",
+          "在這之前，八年的行銷、募款與專案管理經驗，讓我習慣聽出需求背後真正的問題。現在我把這些需求轉譯成 AI 自動化流程與工具，讓團隊用更少的力氣完成更多事。"
         ]
       },
       "experience": {
@@ -499,7 +510,7 @@
       "now": {
         "label": "Now",
         "title": "目前技術焦點",
-        "subtitle": "全端開發 X Vibe Coding",
+        "subtitle": "前端開發 × AI 自動化",
         "items": [
           {
             "title": "React 生態系深耕",
@@ -512,8 +523,8 @@
             "figure": "phone"
           },
           {
-            "title": "自動化流程",
-            "description": "強化 n8n 自動化流程系統。",
+            "title": "AI 自動化流程",
+            "description": "以 n8n 與 AI Agent 打造自動化流程，把團隊重複的工作變成自動執行的流水線。",
             "figure": "settle"
           },
           {
@@ -526,7 +537,7 @@
       "skills": {
         "label": "Skills",
         "title": "能力清單",
-        "engineering": "工程",
+        "engineering": "工程與 AI",
         "marketing": "行銷與活動",
         "engineeringItems": [
           "React.js",
@@ -548,7 +559,10 @@
           "Git",
           "Firebase",
           "Cursor",
-          "AntiGravity"
+          "AntiGravity",
+          "Claude Code",
+          "Gemini",
+          "n8n"
         ],
         "marketingItems": [
           "活動企劃",
@@ -589,7 +603,7 @@
       "mediumUrl": "https://medium.com/@dearno.3"
     },
     "footer": {
-      "blurb": "帶著行銷直覺的前端工程師。打造讓人一看就懂的介面，也說好介面背後的故事。",
+      "blurb": "懂行銷的 AI 工程師。把別人的需求變成網頁、App 與自動化流程，讓工作事半功倍。",
       "rights": "版權所有。",
       "label": "Contact",
       "line1": "有想法嗎？",

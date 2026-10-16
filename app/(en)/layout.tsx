@@ -20,12 +20,13 @@ export const metadata: Metadata = {
   // Day-mode default; FaviconSync swaps to the white icon at night.
   icons: { icon: "/favicon_black.ico" },
   keywords: [
+    "AI Engineer",
+    "AI Automation",
     "React",
     "Next.js",
-    "Frontend Engineer",
-    "Marketing Strategy",
-    "Event Planning",
-    "UI/UX",
+    "Frontend Development",
+    "iOS App Development",
+    "n8n",
   ],
   authors: [{ name: siteConfig.name }],
   robots: {
