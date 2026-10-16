@@ -1,10 +1,12 @@
 // Locale routing. English is unprefixed and Chinese lives under /zh, so the
-// URLs that are already indexed (/engineer, /marketer, …) keep working and the
+// URLs that are already indexed (/work, /about, …) keep working and the
 // Chinese pages become real, crawlable pages instead of a client-side toggle
 // that search engines and AI crawlers never see.
 //
 // Pure functions only — the provider, the layouts and the sitemap all derive
 // their paths from here so the two locales cannot drift apart.
+
+import { PROJECT_SLUGS } from "@/lib/projects";
 
 export const LOCALES = ["en", "zh"] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -15,9 +17,10 @@ export const ZH_PREFIX = "/zh";
 /** Routes that exist in both languages. /studio is an internal tool, English only. */
 export const LOCALIZED_ROUTES = [
   "",
-  "/engineer",
-  "/marketer",
-  "/creator",
+  "/work",
+  "/about",
+  "/events",
+  "/writing",
 ] as const;
 export type LocalizedRoute = (typeof LOCALIZED_ROUTES)[number];
 
@@ -64,6 +67,14 @@ export function routeFromPathname(pathname: string): string {
 export function otherLocalePath(pathname: string): string {
   const target = otherLocale(localeFromPathname(pathname));
   const route = routeFromPathname(pathname);
-  const isTranslated = (LOCALIZED_ROUTES as readonly string[]).includes(route);
-  return localePath(target, isTranslated ? route : "");
+  if ((LOCALIZED_ROUTES as readonly string[]).includes(route)) {
+    return localePath(target, route);
+  }
+  // Every project page exists in both languages under the same slug; an
+  // unknown one goes to the work index rather than the homepage.
+  if (route.startsWith("/work/")) {
+    const slug = route.slice("/work/".length);
+    return localePath(target, PROJECT_SLUGS.includes(slug) ? route : "/work");
+  }
+  return localePath(target, "");
 }

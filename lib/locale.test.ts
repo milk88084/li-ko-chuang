@@ -12,12 +12,12 @@ import {
 describe("localeFromPathname", () => {
   it("reads zh from the /zh prefix", () => {
     expect(localeFromPathname("/zh")).toBe("zh");
-    expect(localeFromPathname("/zh/engineer")).toBe("zh");
+    expect(localeFromPathname("/zh/work")).toBe("zh");
   });
 
   it("treats everything else as English", () => {
     expect(localeFromPathname("/")).toBe("en");
-    expect(localeFromPathname("/engineer")).toBe("en");
+    expect(localeFromPathname("/work")).toBe("en");
   });
 
   it("does not mistake a route that merely starts with the letters", () => {
@@ -32,12 +32,12 @@ describe("localeFromPathname", () => {
 describe("localePath", () => {
   it("leaves English paths unprefixed, so existing URLs keep working", () => {
     expect(localePath("en", "")).toBe("/");
-    expect(localePath("en", "/engineer")).toBe("/engineer");
+    expect(localePath("en", "/work")).toBe("/work");
   });
 
   it("prefixes Chinese paths", () => {
     expect(localePath("zh", "")).toBe(ZH_PREFIX);
-    expect(localePath("zh", "/engineer")).toBe(`${ZH_PREFIX}/engineer`);
+    expect(localePath("zh", "/work")).toBe(`${ZH_PREFIX}/work`);
   });
 
   it("never produces a double slash", () => {
@@ -66,9 +66,18 @@ describe("otherLocale", () => {
 
 describe("otherLocalePath", () => {
   it("crosses to the mirrored page, not back to the homepage", () => {
-    expect(otherLocalePath("/engineer")).toBe("/zh/engineer");
-    expect(otherLocalePath("/zh/engineer")).toBe("/engineer");
-    expect(otherLocalePath("/marketer")).toBe("/zh/marketer");
+    expect(otherLocalePath("/work")).toBe("/zh/work");
+    expect(otherLocalePath("/zh/work")).toBe("/work");
+    expect(otherLocalePath("/about")).toBe("/zh/about");
+  });
+
+  it("crosses a project page to the same project in the other language", () => {
+    expect(otherLocalePath("/work/aras")).toBe("/zh/work/aras");
+    expect(otherLocalePath("/zh/work/aras")).toBe("/work/aras");
+  });
+
+  it("sends an unknown project to the other locale's work index", () => {
+    expect(otherLocalePath("/work/nope")).toBe("/zh/work");
   });
 
   it("maps the two homepages onto each other", () => {
@@ -93,8 +102,8 @@ describe("otherLocalePath", () => {
   });
 
   it("ignores a query string or hash on the current path", () => {
-    expect(otherLocalePath("/engineer?a=1")).toBe("/zh/engineer");
-    expect(otherLocalePath("/engineer#eng-projects")).toBe("/zh/engineer");
+    expect(otherLocalePath("/work?type=marketing")).toBe("/zh/work");
+    expect(otherLocalePath("/work#top")).toBe("/zh/work");
   });
 });
 

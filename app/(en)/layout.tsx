@@ -13,19 +13,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
     default: siteConfig.title,
-    // Child routes only need to set `title: "Engineer"` and this renders
-    // "Engineer | Li Ko Chuan".
+    // Child routes only need to set `title: "Work"` and this renders
+    // "Work | Li Ko Chuan".
     template: `%s | ${siteConfig.name}`,
   },
   // Day-mode default; FaviconSync swaps to the white icon at night.
   icons: { icon: "/favicon_black.ico" },
   keywords: [
+    "AI Engineer",
+    "AI Automation",
     "React",
     "Next.js",
-    "Marketing Strategy",
-    "UI/UX",
-    "Frontend Engineer",
-    "Podcast",
+    "Frontend Development",
+    "iOS App Development",
+    "n8n",
   ],
   authors: [{ name: siteConfig.name }],
   robots: {

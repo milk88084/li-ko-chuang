@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { HomeView } from "@/components/HomeView";
+import { HomePage } from "@/components/home/HomePage";
 import { StructuredData } from "@/components/StructuredData";
 import { homeMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = homeMetadata("en");
 
-export default function HomePage() {
+// Re-fetches the latest Medium posts at most once an hour.
+export const revalidate = 3600;
+
+export default function EnHome() {
   return (
     <>
       <StructuredData page="home" />
-      <HomeView />
+      <HomePage locale="en" />
     </>
   );
 }

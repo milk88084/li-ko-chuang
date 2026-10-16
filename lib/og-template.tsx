@@ -6,10 +6,11 @@ import { siteConfig } from "@/lib/site-config";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
+// Mirrors the light-mode tokens in app/globals.css.
 const BLUE = "#3250FE";
-const INK = "#1D1D1F";
-const MUTED = "#667085";
-const PAPER = "#FBFBFD";
+const INK = "#141414";
+const MUTED = "#6B6B6B";
+const PAPER = "#F4F4F2";
 
 /**
  * A card with the site's blue wordmark, the page's own title and a strapline.
@@ -87,7 +88,7 @@ export function OgCard({
         }}
       >
         <div style={{ display: "flex" }}>
-          Frontend Engineer · Taipei · React · Next.js · TypeScript
+          AI Engineer · Frontend · Automation · Taipei
         </div>
         <div style={{ display: "flex", color: BLUE }}>
           {siteConfig.siteUrl.replace(/^https?:\/\//, "")}

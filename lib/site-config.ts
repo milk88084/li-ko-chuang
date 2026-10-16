@@ -21,7 +21,8 @@ const rawSiteUrl =
 export const siteConfig = {
   name: "Li Ko Chuan",
   title: "Li Ko Chuan | Portfolio",
-  description: "Building Interfaces, Telling Stories.",
+  description:
+    "AI engineer in Taipei. Frontend first, iOS apps shipped solo, and AI automations that turn a team's needs into working tools.",
   // Strip any trailing slash so `${siteUrl}${path}` never double-slashes.
   siteUrl: rawSiteUrl.replace(/\/$/, ""),
   // No ogImage here on purpose: app/opengraph-image.tsx generates it at
@@ -30,6 +31,7 @@ export const siteConfig = {
   social: {
     linkedin: "https://www.linkedin.com/in/kochuang/",
     github: "https://github.com/milk88084",
+    medium: "https://medium.com/@dearno.3",
     email: "milk88084@gmail.com",
   },
 } as const;

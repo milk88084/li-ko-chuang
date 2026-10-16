@@ -103,15 +103,27 @@ export const splitStatement = (text: string) => {
  * Where the vertical crop is anchored: 0 = top, 0.5 = centre, 1 = bottom.
  *
  * The frames are 1280x720 landscape and the subject's head starts about 8% down,
- * so a centred crop eats the head on any viewport wider than 16:9 — and the
- * pinned stage, sitting below the fixed nav, is wider than 16:9 more often than
- * not. Anchoring to the top spends the overflow on his feet instead.
+ * so a centred crop eats the head on any viewport wider than 16:9. Anchoring
+ * to the top spends the overflow on the feet instead.
  */
 export const PORTRAIT_ANCHOR_Y = 0;
 
 /**
+ * How much of the stage's height the portrait must cover, at least.
+ *
+ * The stage fills the window, which is usually taller than 16:9. Covering it
+ * fully would zoom the frames in past their natural framing, so instead the
+ * frames fit the width and may leave up to this share of the height at the
+ * bottom to the plain ground colour (which the studio backdrop fades into).
+ * Only a window taller than that — a phone, say — zooms in to cover.
+ */
+export const PORTRAIT_MIN_FILL = 0.9;
+
+/**
  * The `object-fit: cover` rectangle for drawing an image into a box: scaled to
  * cover it completely, centred horizontally, anchored vertically by `anchorY`.
+ * With `minFill` below 1 it only has to cover that share of the height, so the
+ * image is never scaled up past its width just to fill the last strip.
  */
 export const coverRect = (
   boxWidth: number,
@@ -119,8 +131,12 @@ export const coverRect = (
   imageWidth: number,
   imageHeight: number,
   anchorY = PORTRAIT_ANCHOR_Y,
+  minFill = 1,
 ) => {
-  const scale = Math.max(boxWidth / imageWidth, boxHeight / imageHeight);
+  const scale = Math.max(
+    boxWidth / imageWidth,
+    (boxHeight * minFill) / imageHeight,
+  );
   const dw = imageWidth * scale;
   const dh = imageHeight * scale;
   const dx = (boxWidth - dw) / 2;

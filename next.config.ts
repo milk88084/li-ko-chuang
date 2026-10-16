@@ -13,6 +13,21 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // The site used to be split by role (/engineer, /marketer, /creator). Those
+  // URLs are indexed and shared, so each one lands on its closest page in the
+  // content-based structure rather than a 404. Permanent (308), so search
+  // engines move their ranking across.
+  async redirects() {
+    const moved = [
+      { from: "/engineer", to: "/work?type=engineering" },
+      { from: "/marketer", to: "/work?type=marketing" },
+      { from: "/creator", to: "/about" },
+    ];
+    return moved.flatMap(({ from, to }) => [
+      { source: from, destination: to, permanent: true },
+      { source: `/zh${from}`, destination: `/zh${to}`, permanent: true },
+    ]);
+  },
   async headers() {
     return [
       {

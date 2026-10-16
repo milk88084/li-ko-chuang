@@ -1,24 +1,19 @@
 import type { Metadata } from "next";
 import content from "@/data/content.json";
 import { siteConfig } from "@/lib/site-config";
-import {
-  LOCALES,
-  htmlLang,
-  localePath,
-  type Locale,
-  type LocalizedRoute,
-} from "@/lib/locale";
+import { getProject } from "@/lib/projects";
+import { LOCALES, htmlLang, localePath, type Locale } from "@/lib/locale";
 
 // Metadata for a localized page, built in one place so the canonical URL and
 // the hreflang pairs can never disagree with the routes that actually exist.
 //
-// hreflang is what tells a search engine that /engineer and /zh/engineer are
+// hreflang is what tells a search engine that /work and /zh/work are
 // the same page in two languages rather than duplicates competing with each
 // other. It has to be reciprocal — each page pointing at both — plus an
 // x-default naming the version to serve when no language matches.
 
 /** `languages` for `alternates`: every locale, plus x-default on English. */
-function languageAlternates(route: LocalizedRoute) {
+function languageAlternates(route: string) {
   const languages: Record<string, string> = {};
   for (const locale of LOCALES) {
     languages[htmlLang(locale)] = localePath(locale, route);
@@ -27,11 +22,9 @@ function languageAlternates(route: LocalizedRoute) {
   return languages;
 }
 
-type Section = "engineer" | "marketer" | "creator";
-
 export function localeMetadata(
   locale: Locale,
-  route: LocalizedRoute,
+  route: string,
   page: { title?: string; description: string; ogTitle: string },
 ): Metadata {
   const canonical = localePath(locale, route);
@@ -53,15 +46,36 @@ export function localeMetadata(
   };
 }
 
-/** Title/description for a section page, in the requested language. */
-export function sectionMetadata(locale: Locale, section: Section): Metadata {
-  const hero = content[locale][section].hero;
-  return localeMetadata(locale, `/${section}`, {
-    // The nav label, not a capitalised route name: the Chinese page's tab
-    // should read "工程師 | Li Ko Chuan", not "Engineer | Li Ko Chuan".
-    title: content[locale].nav[section],
-    description: hero.descriptionSub,
-    ogTitle: `${hero.title} ${hero.titleHighlight}`,
+type Page = "work" | "about" | "events" | "writing";
+
+/** Where each page's description comes from in content.json. */
+const DESCRIPTION: Record<Page, (locale: Locale) => string> = {
+  work: (l) => content[l].work.intro,
+  about: (l) => content[l].footer.blurb,
+  events: (l) => content[l].events.intro,
+  writing: (l) => content[l].writing.intro,
+};
+
+/** Title/description for a top-level page, in the requested language. */
+export function pageMetadata(locale: Locale, page: Page): Metadata {
+  // The nav label, not a capitalised route name: the Chinese page's tab
+  // should read "作品 | Li Ko Chuan", not "Work | Li Ko Chuan".
+  const title = content[locale].nav[page];
+  return localeMetadata(locale, `/${page}`, {
+    title,
+    description: DESCRIPTION[page](locale),
+    ogTitle: `${title} — ${siteConfig.name}`,
+  });
+}
+
+/** A project page; empty for a slug that does not exist (the page 404s). */
+export function projectMetadata(locale: Locale, slug: string): Metadata {
+  const project = getProject(slug, locale);
+  if (!project) return {};
+  return localeMetadata(locale, `/work/${slug}`, {
+    title: project.title,
+    description: project.summary,
+    ogTitle: `${project.title} — ${siteConfig.name}`,
   });
 }
 
