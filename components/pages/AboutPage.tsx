@@ -17,12 +17,19 @@ export function AboutPage({ locale }: { locale: Locale }) {
     <PageShell footer={<SiteFooter locale={locale} />}>
       <ScrollPortraitHero />
 
-      <Section id="about-story" label={t.story.label} title={t.story.title}>
-        <div className="grid gap-10 md:grid-cols-12 md:gap-6">
-          <blockquote className="reveal font-serif text-[clamp(28px,3.4vw,44px)] leading-[1.15] text-accent italic md:col-span-5">
-            “{t.story.quote}”
-          </blockquote>
-          <div className="reveal space-y-6 text-[17px] leading-relaxed text-muted md:col-span-6 md:col-start-7">
+      {/* Heading and quote share the left column, so the story starts level
+          with the heading instead of below an empty band. */}
+      <Section id="about-story" label={t.story.label}>
+        <div className="-mt-7 grid gap-10 md:-mt-11 md:grid-cols-12 md:gap-6">
+          <div className="reveal md:col-span-5">
+            <h2 className="text-[clamp(34px,4.4vw,64px)] leading-[1.08] tracking-[-0.04em] text-balance">
+              {t.story.title}
+            </h2>
+            <blockquote className="mt-10 font-serif text-[clamp(26px,2.8vw,40px)] leading-[1.15] text-accent italic md:mt-14">
+              “{t.story.quote}”
+            </blockquote>
+          </div>
+          <div className="reveal space-y-6 text-[17px] leading-relaxed text-muted md:col-span-6 md:col-start-7 md:pt-3">
             {t.story.body.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -67,7 +74,9 @@ export function AboutPage({ locale }: { locale: Locale }) {
                 <span className="font-mono text-[11px] text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-3 text-[22px] tracking-[-0.015em]">{item.title}</h3>
+                <h3 className="mt-3 text-[22px] tracking-[-0.015em]">
+                  {item.title}
+                </h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-muted">
                   {item.description}
                 </p>
