@@ -154,11 +154,12 @@
       },
       "story": {
         "label": "Story",
-        "title": "Vibe Coding in the AI Era",
-        "quote": "Turning what people need into what AI can build.",
+        "title": "A marketer, a planner and an engineer",
+        "quote": "From the pitch to the launch, I can carry the whole project.",
         "body": [
-          "I've worked as a frontend engineer for over two years, and I build with AI every day — from planning the spec to writing, testing and shipping the code. That's how I took two iOS apps to the App Store on my own.",
-          "Before that, eight years in marketing, fundraising and project management taught me to hear the real need behind a request. Now I translate those needs into AI workflows and tools, so teams get more done with less effort."
+          "I spent my first eight years in marketing and the nonprofit world: planning fundraising campaigns and campus events, writing government tender bids and partnership proposals, bringing companies and local partners together, and producing ads and video. That taught me how a project gets proposed, how it wins people over, and how it lands on budget and on time.",
+          "Then I became a frontend engineer. For over two years I have built SaaS products with React and Next.js, shipped two iOS apps to the App Store on my own, and turned teams' needs into AI automations and tools.",
+          "Engineers who understand marketing are rare; planners who can write code are rarer. I can think through how something will be built while it is still a proposal, and remember who it is for while I am building it. With the brief, the plan and the code in one person, less gets lost along the way."
         ]
       },
       "experience": {
@@ -474,11 +475,12 @@
       },
       "story": {
         "label": "Story",
-        "title": "與AI共融的Vibe Coding",
-        "quote": "把人的需求，轉成 AI 做得出來的東西。",
+        "title": "懂行銷、會企劃，也寫得出程式",
+        "quote": "從提案、企劃到上線，一個人就能接起整個專案。",
         "body": [
-          "我有兩年以上的前端開發經驗，每天都和 AI 一起工作：從規劃規格、撰寫程式、測試到上線。也是靠這樣的方式，我一個人把兩款 iOS App 送上 App Store。",
-          "在這之前，八年的行銷、募款與專案管理經驗，讓我習慣聽出需求背後真正的問題。現在我把這些需求轉譯成 AI 自動化流程與工具，讓團隊用更少的力氣完成更多事。"
+          "我的前八年在行銷與非營利領域：策劃募款與校園活動、撰寫政府標案與合作提案、串起企業與在地的異業結盟，也做過廣告與影片的執行製作。這些經驗讓我知道一個專案怎麼被提出、怎麼說服人，又怎麼在預算和時程內落地。",
+          "後來我轉職成前端工程師，兩年多來用 React、Next.js 打造 SaaS 產品，一個人把兩款 iOS App 送上 App Store，也把團隊的需求做成 AI 自動化流程與工具。",
+          "懂行銷的工程師不多，會寫程式的企劃更少。我能在提案階段就想清楚要怎麼做，也能在開發時記得是為誰而做；需求、企劃和技術都在同一個人身上，傳遞中流失的就最少。"
         ]
       },
       "experience": {
