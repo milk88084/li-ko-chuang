@@ -32,7 +32,7 @@
       },
       "hello": {
         "label": "Hello",
-        "text": "I'm Max — an engineer who builds with AI. Eight years in marketing and events taught me to hear what people actually need; now I use AI to turn it into working software: frontends, apps on the App Store, and automations that take the busywork off a team's plate."
+        "text": "I'm Max — an engineer who builds with AI, but doesn't let it do the thinking. I know the fundamentals: how to structure components, architecture and state, and how to cut re-renders, bundle size and load time. So every line AI writes for me, I can read, fix, and tell when it's wrong. Eight years in marketing taught me the rest: what people actually need."
       },
       "work": {
         "label": "Selected Work",
@@ -344,7 +344,7 @@
       },
       "hello": {
         "label": "Hello",
-        "text": "我是 Max，一個用 AI 做事的工程師。八年的行銷與活動經驗，讓我聽得懂別人真正需要什麼；現在我用 AI 把需求變成能用的軟體：網頁介面、上架 App Store 的 App，以及替團隊省下重複工作的自動化流程。"
+        "text": "我是 Max，一個用 AI 開發、但不讓 AI 替我思考的工程師。我有前端的基本功：懂得怎麼拆元件、規劃架構與狀態管理，也知道怎麼減少重新渲染、縮小打包體積、加快載入速度；所以 AI 寫出來的每一行程式，我都看得懂、改得動，也知道哪裡不該這樣寫。八年的行銷經驗，則讓我聽得懂別人真正需要什麼。"
       },
       "work": {
         "label": "Selected Work",
