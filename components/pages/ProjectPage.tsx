@@ -8,7 +8,6 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionLabel } from "@/components/canvas/SectionLabel";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { ProjectGallery } from "@/components/work/ProjectGallery";
-import { ScrollReset } from "@/components/ScrollReset";
 
 // One project: title and summary, a facts row, all of its media as a loose
 // collage, then problem → outcome → highlights → stack, and a large link
@@ -36,7 +35,6 @@ export function ProjectPage({
 
   return (
     <PageShell footer={<SiteFooter locale={locale} />}>
-      <ScrollReset key={project.slug} />
       <article>
         <header className="mx-auto max-w-[1440px] px-4 pt-[calc(var(--header-h)+48px)] md:px-8 md:pt-[calc(var(--header-h)+80px)]">
           <Link
@@ -91,7 +89,11 @@ export function ProjectPage({
         </header>
 
         <div className="mx-auto mt-12 max-w-[1440px] px-4 md:mt-20 md:px-8">
-          <ProjectGallery media={project.media} title={project.title} locale={locale} />
+          <ProjectGallery
+            media={project.media}
+            title={project.title}
+            locale={locale}
+          />
         </div>
 
         <div className="mx-auto grid max-w-[1440px] gap-16 px-4 py-20 md:grid-cols-12 md:gap-6 md:px-8 md:py-32">

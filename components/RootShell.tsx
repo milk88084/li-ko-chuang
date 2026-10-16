@@ -12,6 +12,7 @@ import { FaviconSync } from "@/components/FaviconSync";
 import { CustomCursor } from "@/components/CustomCursor";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { ScrollManager } from "@/components/ScrollManager";
 import { htmlLang, type Locale } from "@/lib/locale";
 
 // The <html>/<body> shell, shared by both locale route groups.
@@ -113,6 +114,7 @@ export function RootShell({
             {/* Here rather than in each page so it stays mounted while the
                 next page (or its loading state) swaps in beneath it. */}
             <SiteHeader />
+            <ScrollManager />
             {children}
           </LanguageProvider>
         </ThemeProvider>

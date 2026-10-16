@@ -70,6 +70,21 @@ export function useScrollReveal(scopeRef: RefObject<HTMLElement | null>) {
       });
     }, scope);
 
+    // A refresh measures at scroll 0 and then puts back the position it
+    // recorded — but the first one after the previous page's triggers were
+    // reverted skips recording and reuses that page's position, so the new
+    // page jumped down to where the reader left the old one. Every refresh
+    // here keeps the scroll exactly where it was, and running one now settles
+    // that stale state before ScrollTrigger's own queued refresh can.
+    const refreshInPlace = () => {
+      const y = window.scrollY;
+      ScrollTrigger.refresh();
+      if (Math.abs(window.scrollY - y) >= 1) {
+        window.scrollTo({ top: y, behavior: "instant" });
+      }
+    };
+    refreshInPlace();
+
     // Trigger positions are captured from the layout as it stands right now —
     // but Next/Image lazy-loads the photos further down the page and every one
     // of them shifts everything below it. Without a recompute an entrance can
@@ -79,7 +94,7 @@ export function useScrollReveal(scopeRef: RefObject<HTMLElement | null>) {
     let raf = 0;
     const refresh = () => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => ScrollTrigger.refresh());
+      raf = requestAnimationFrame(refreshInPlace);
     };
 
     // Observe the scope element itself (the <main> wrapping every section):
