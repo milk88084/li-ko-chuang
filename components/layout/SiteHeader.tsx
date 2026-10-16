@@ -84,6 +84,15 @@ export function SiteHeader() {
     active: isActive(r),
   }));
 
+  // Next.js leaves the scroll position alone when a link points at the page
+  // already open, so a click on the current page's own link (or the logo on
+  // the home page) scrolls back to the top, and closes the mobile sheet.
+  const toTopIfCurrent = (href: string) => () => {
+    if (href !== pathname) return;
+    setOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const isDark = mounted && resolvedTheme === "dark";
   const hidden = scrolledAway && !open;
 
@@ -103,12 +112,15 @@ export function SiteHeader() {
               <li key={link.href} className="border-b border-line">
                 <Link
                   href={link.href}
+                  onClick={toTopIfCurrent(link.href)}
                   aria-current={link.active ? "page" : undefined}
                   className={`flex items-baseline gap-4 py-5 text-[40px] leading-none tracking-[-0.03em] ${
                     link.active ? "text-accent" : ""
                   }`}
                 >
-                  <span className="font-mono text-[12px] text-muted">{link.index}</span>
+                  <span className="font-mono text-[12px] text-muted">
+                    {link.index}
+                  </span>
                   {link.label}
                 </Link>
               </li>
@@ -133,6 +145,7 @@ export function SiteHeader() {
         <div className="pointer-events-auto relative flex h-14 w-full items-center justify-between gap-1 rounded-full border border-line bg-bg/75 p-1.5 shadow-[0_10px_30px_-14px_rgb(0_0_0/0.3)] backdrop-blur-xl md:w-auto md:justify-start">
           <Link
             href={localePath(language, "")}
+            onClick={toTopIfCurrent(localePath(language, ""))}
             className="flex items-center gap-2 rounded-full px-4 font-serif text-[24px] leading-none tracking-tight"
           >
             <span aria-hidden className="size-2 rounded-full bg-accent" />
@@ -147,6 +160,7 @@ export function SiteHeader() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    onClick={toTopIfCurrent(link.href)}
                     aria-current={link.active ? "page" : undefined}
                     className={`flex items-baseline gap-1.5 rounded-full px-3.5 py-2.5 text-[14px] leading-none transition-colors ${
                       link.active
@@ -154,7 +168,9 @@ export function SiteHeader() {
                         : "text-muted hover:bg-surface hover:text-ink"
                     }`}
                   >
-                    <span className="font-mono text-[10px] opacity-60">{link.index}</span>
+                    <span className="font-mono text-[10px] opacity-60">
+                      {link.index}
+                    </span>
                     {link.label}
                   </Link>
                 </li>
@@ -179,7 +195,11 @@ export function SiteHeader() {
               aria-label={t.themeLabel}
               className="flex size-11 items-center justify-center rounded-full text-muted transition-colors hover:bg-surface hover:text-ink"
             >
-              {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+              {isDark ? (
+                <Sun className="size-4" />
+              ) : (
+                <Moon className="size-4" />
+              )}
             </button>
             <a
               href="#contact"
