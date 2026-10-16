@@ -3,9 +3,27 @@
     "slug": "aras",
     "type": "engineering",
     "featured": true,
-    "cover": "/00_araS.webp",
+    "media": [
+      {
+        "src": "/00_araS.webp",
+        "kind": "mockup",
+        "width": 2012,
+        "height": 1132
+      },
+      {
+        "src": "/00_araS.mp4",
+        "kind": "phone",
+        "width": 630,
+        "height": 1280
+      },
+      {
+        "src": "/icon-araS.webp",
+        "kind": "icon",
+        "width": 128,
+        "height": 128
+      }
+    ],
     "figure": "riffle",
-    "video": "/00_araS.mp4",
     "link": "https://apps.apple.com/app/id6785747999",
     "en": {
       "title": "araS",
@@ -70,9 +88,27 @@
     "slug": "retep",
     "type": "engineering",
     "featured": true,
-    "cover": "/05_reteP.webp",
+    "media": [
+      {
+        "src": "/05_reteP.webp",
+        "kind": "mockup",
+        "width": 1600,
+        "height": 899
+      },
+      {
+        "src": "/05_reteP_mobile.webp",
+        "kind": "phone",
+        "width": 310,
+        "height": 691
+      },
+      {
+        "src": "/icon-reteP.webp",
+        "kind": "icon",
+        "width": 128,
+        "height": 128
+      }
+    ],
     "figure": "loupe",
-    "video": null,
     "link": "https://apps.apple.com/app/id6798490139",
     "en": {
       "title": "reteP",
@@ -129,9 +165,21 @@
     "slug": "u-turn",
     "type": "engineering",
     "featured": false,
-    "cover": "/01_U-Turn.webp",
+    "media": [
+      {
+        "src": "/01_U-Turn.webp",
+        "kind": "mockup",
+        "width": 1266,
+        "height": 711
+      },
+      {
+        "src": "/01_U-Turn.mp4",
+        "kind": "phone",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
     "figure": "rebuild",
-    "video": "/01_U-Turn.mp4",
     "link": null,
     "en": {
       "title": "U-Turn",
@@ -184,9 +232,21 @@
     "slug": "market-trend-tracking",
     "type": "engineering",
     "featured": false,
-    "cover": "/02_AI快研究.webp",
+    "media": [
+      {
+        "src": "/02_AI快研究.webp",
+        "kind": "browser",
+        "width": 1800,
+        "height": 892
+      },
+      {
+        "src": "/02_AI快研究.mp4",
+        "kind": "phone",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
     "figure": "format",
-    "video": "/02_AI快研究.mp4",
     "link": null,
     "en": {
       "title": "Market Trend Tracking Platform",
@@ -243,9 +303,21 @@
     "slug": "digital-chatroom",
     "type": "engineering",
     "featured": false,
-    "cover": "/03_數位聊天室.webp",
+    "media": [
+      {
+        "src": "/03_數位聊天室.webp",
+        "kind": "browser",
+        "width": 1879,
+        "height": 979
+      },
+      {
+        "src": "/03_數位聊天室.mp4",
+        "kind": "phone",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
     "figure": "terminal",
-    "video": "/03_數位聊天室.mp4",
     "link": null,
     "en": {
       "title": "Digital Chatroom",
@@ -298,9 +370,21 @@
     "slug": "taiwan-info-service-database",
     "type": "engineering",
     "featured": false,
-    "cover": "/03_Landscape.webp",
+    "media": [
+      {
+        "src": "/03_Landscape.webp",
+        "kind": "browser",
+        "width": 1903,
+        "height": 982
+      },
+      {
+        "src": "/03_Landscape.mp4",
+        "kind": "phone",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
     "figure": "cabinet",
-    "video": "/03_Landscape.mp4",
     "link": null,
     "en": {
       "title": "Taiwan Info Service Provider Database",
@@ -353,9 +437,21 @@
     "slug": "agent-fabric",
     "type": "engineering",
     "featured": true,
-    "cover": "/04_Agent_Fabric.webp",
+    "media": [
+      {
+        "src": "/04_Agent_Fabric.webp",
+        "kind": "browser",
+        "width": 811,
+        "height": 394
+      },
+      {
+        "src": "/04_Agent_Fabric.mp4",
+        "kind": "phone",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
     "figure": "relay",
-    "video": "/04_Agent_Fabric.mp4",
     "link": null,
     "en": {
       "title": "AI Agent Collaboration Platform",
@@ -408,9 +504,15 @@
     "slug": "campus-gender-equality",
     "type": "marketing",
     "featured": true,
-    "cover": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "media": [
+      {
+        "src": "https://images.unsplash.com/photo-1538449327350-43b4fcfd35ac?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "kind": "photo",
+        "width": 1173,
+        "height": 779
+      }
+    ],
     "figure": "lockers",
-    "video": null,
     "link": null,
     "en": {
       "title": "Campus Gender Equality Program",
@@ -435,9 +537,15 @@
     "slug": "dept-store-csr",
     "type": "marketing",
     "featured": false,
-    "cover": "https://magazine.feg.com.tw/magazine/upload/article/358-21-2.jpg",
+    "media": [
+      {
+        "src": "https://magazine.feg.com.tw/magazine/upload/article/358-21-2.jpg",
+        "kind": "photo",
+        "width": 800,
+        "height": 485
+      }
+    ],
     "figure": "hub",
-    "video": null,
     "link": null,
     "en": {
       "title": "Dept. Store CSR Alliance",
@@ -462,9 +570,15 @@
     "slug": "digital-fundraising",
     "type": "marketing",
     "featured": false,
-    "cover": "https://images.unsplash.com/photo-1591522810850-58128c5fb089?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "media": [
+      {
+        "src": "https://images.unsplash.com/photo-1591522810850-58128c5fb089?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "kind": "photo",
+        "width": 1170,
+        "height": 780
+      }
+    ],
     "figure": "dish",
-    "video": null,
     "link": null,
     "en": {
       "title": "Digital Fundraising Project",
@@ -489,9 +603,15 @@
     "slug": "omni-channel-production",
     "type": "marketing",
     "featured": false,
-    "cover": "https://images.unsplash.com/photo-1757955622421-b75472080224?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "media": [
+      {
+        "src": "https://images.unsplash.com/photo-1757955622421-b75472080224?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "kind": "photo",
+        "width": 1170,
+        "height": 780
+      }
+    ],
     "figure": "slow",
-    "video": null,
     "link": null,
     "en": {
       "title": "Omni-channel Production",

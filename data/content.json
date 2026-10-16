@@ -106,7 +106,15 @@
         "outcome": "The outcome",
         "highlights": "Highlights",
         "tech": "Built with",
-        "next": "Next project"
+        "next": "Next project",
+        "media": {
+          "mockup": "Mockup",
+          "browser": "Web",
+          "phone": "Mobile",
+          "recording": "Screen recording",
+          "icon": "App icon",
+          "photo": "Photo"
+        }
       },
       "toolbox": {
         "hint": "Drag the tags · click to bounce",
@@ -418,7 +426,15 @@
         "outcome": "成果",
         "highlights": "重點",
         "tech": "使用技術",
-        "next": "下一個專案"
+        "next": "下一個專案",
+        "media": {
+          "mockup": "情境圖",
+          "browser": "網頁版",
+          "phone": "手機畫面",
+          "recording": "操作錄影",
+          "icon": "App 圖示",
+          "photo": "照片"
+        }
       },
       "toolbox": {
         "hint": "拖曳標籤 · 點擊彈跳",

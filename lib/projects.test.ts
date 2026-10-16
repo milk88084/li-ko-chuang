@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
 import {
   PROJECT_FIGURES,
   PROJECT_SLUGS,
@@ -33,6 +35,22 @@ describe("project data", () => {
     const figures = getProjects("en").map((p) => p.figure);
     for (const figure of figures) expect(PROJECT_FIGURES).toContain(figure);
     expect(new Set(figures).size).toBe(figures.length);
+  });
+
+  it("lists media that exists, at its real size, lead piece first", () => {
+    const kinds = ["mockup", "browser", "phone", "icon", "photo"];
+    for (const project of getProjects("en")) {
+      expect(project.media.length).toBeGreaterThan(0);
+      expect(["mockup", "browser", "photo"]).toContain(project.media[0].kind);
+      for (const m of project.media) {
+        expect(kinds).toContain(m.kind);
+        expect(m.width).toBeGreaterThan(0);
+        expect(m.height).toBeGreaterThan(0);
+        if (m.src.startsWith("/")) {
+          expect(existsSync(path.join(process.cwd(), "public", m.src))).toBe(true);
+        }
+      }
+    }
   });
 
   it("never reuses a project's figure on the About page", () => {

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import content from "@/data/content.json";
@@ -8,9 +7,10 @@ import { PageShell } from "@/components/layout/PageShell";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionLabel } from "@/components/canvas/SectionLabel";
 import { SplitReveal } from "@/components/motion/SplitReveal";
+import { ProjectGallery } from "@/components/work/ProjectGallery";
 
-// One project: title and summary, a facts row, the cover (or its screen
-// recording), then problem → outcome → highlights → stack, and a large link
+// One project: title and summary, a facts row, all of its media as a loose
+// collage, then problem → outcome → highlights → stack, and a large link
 // on to the next project so the work reads as a sequence.
 
 export function ProjectPage({
@@ -88,28 +88,8 @@ export function ProjectPage({
           </dl>
         </header>
 
-        <div className="mx-auto mt-12 max-w-[1440px] px-4 md:mt-16 md:px-8">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-[10px] bg-surface">
-            {project.video ? (
-              <video
-                src={project.video}
-                poster={project.cover}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="h-full w-full object-cover motion-reduce:hidden"
-              />
-            ) : null}
-            <Image
-              src={project.cover}
-              alt={project.title}
-              fill
-              priority
-              sizes="(min-width: 1440px) 1376px, 100vw"
-              className={`object-cover ${project.video ? "hidden motion-reduce:block" : ""}`}
-            />
-          </div>
+        <div className="mx-auto mt-12 max-w-[1440px] px-4 md:mt-20 md:px-8">
+          <ProjectGallery media={project.media} title={project.title} locale={locale} />
         </div>
 
         <div className="mx-auto grid max-w-[1440px] gap-16 px-4 py-20 md:grid-cols-12 md:gap-6 md:px-8 md:py-32">

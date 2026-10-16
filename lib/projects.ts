@@ -27,15 +27,35 @@ export type ProjectFigureName = (typeof PROJECT_FIGURES)[number];
 
 type RawProject = (typeof projectData)[number];
 
+/**
+ * One piece of a project's media, at its intrinsic pixel size so the page can
+ * reserve its box and never draw it larger than it really is.
+ *
+ * - `mockup`  a composed shot (devices on a backdrop), shown as is
+ * - `browser` a desktop screenshot, framed as a browser window
+ * - `phone`   a portrait screen (still or .mp4 recording), framed as a phone
+ * - `icon`    the app icon
+ * - `photo`   a photograph from a campaign or event
+ */
+export type ProjectMediaKind = "mockup" | "browser" | "phone" | "icon" | "photo";
+export interface ProjectMedia {
+  src: string;
+  kind: ProjectMediaKind;
+  width: number;
+  height: number;
+}
+
+export const isVideo = (media: ProjectMedia) => media.src.endsWith(".mp4");
+
 /** A project with its copy resolved to one language. */
 export interface Project {
   slug: string;
   type: ProjectType;
   featured: boolean;
-  cover: string;
-  /** The Hairline line figure that stands in for the cover on cards. */
+  /** The Hairline line figure that stands for the project on cards. */
   figure: ProjectFigureName;
-  video: string | null;
+  /** Everything shown on the project page, lead piece first. */
+  media: ProjectMedia[];
   link: string | null;
   title: string;
   summary: string;
@@ -60,9 +80,8 @@ function resolve(raw: RawProject, locale: Locale): Project {
     slug: raw.slug,
     type: raw.type as ProjectType,
     featured: raw.featured,
-    cover: raw.cover,
     figure: raw.figure as ProjectFigureName,
-    video: raw.video,
+    media: raw.media as ProjectMedia[],
     link: raw.link,
     title: copy.title,
     summary: copy.summary,
