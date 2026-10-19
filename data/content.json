@@ -170,37 +170,37 @@
             "period": "2024/07 — Present",
             "role": "Frontend Engineer",
             "company": "E-Sheng Information (Assigned to III Digital Transformation Dept.)",
-            "description": "Focusing on SaaS product development, using React, Next.js, and TypeScript to build system interfaces and real-time interactive web pages."
+            "description": "Lead the frontend of products including AI Research, Agent Fabric and LandScape, from clarifying requirements and assessing feasibility to production launch, for public-sector and enterprise clients. Built SSE streaming that renders Deep Research reports as they arrive, split state with Jotai so the relationship graph no longer recomputes in full, and set up an AI workflow with Claude Code: brief → spec → review → build → test → commit."
           },
           {
             "period": "2024/01 — 2024/06",
             "role": "Frontend Engineer",
             "company": "Aiworks (AppWorks School)",
-            "description": "Developed blog SPA platforms and e-commerce websites. Used React, Firebase, GSAP to create immersive experiences."
+            "description": "Studied React, Next.js and TypeScript in the AppWorks School training program, building a blog-style SPA online diary and an e-commerce site on my own, with Firebase and GSAP for immersive interactions."
           },
           {
             "period": "2021/12 — 2024/01",
             "role": "Advocacy Specialist",
             "company": "The Garden of Hope Foundation",
-            "description": "Managing government bids and budget execution, campus theme-based advocacy, and coordinate collaborations between schools and local enterprises."
+            "description": "Led large government tender projects single-handedly, from writing the proposal through budget execution, resource allocation and vendor coordination to the final results presentation. Served as the single point of contact between external partners and internal teams, and planned 40+ campus advocacy talks connecting schools with local businesses."
           },
           {
             "period": "2020/12 — 2021/06",
             "role": "Member Development Group Leader",
             "company": "Youth Urban Regeneration Association",
-            "description": "Managing member recruitment and event planning, offline forum planning, and live video production."
+            "description": "Ran member recruitment and event planning, hosting general assemblies, tech forums and parenting talks. Produced Facebook live interview shows end to end, from planning and on-site filming to OBS directing."
           },
           {
             "period": "2017/07 — 2020/10",
             "role": "Marketing Specialist",
             "company": "The Garden of Hope Foundation",
-            "description": "Fundraising event planning (online/offline), strategic alliances, and social media management."
+            "description": "Planned offline and online fundraising campaigns, managed social media and built cross-industry partnerships. Pitched and secured donations of NT$1.2M from Rotary and NT$300K from Qualcomm; a KOL campaign reached nearly 120,000 people and earned 15,000 likes."
           },
           {
             "period": "2015/11 — 2017/06",
             "role": "Production Assistant",
             "company": "Yu-Shun International",
-            "description": "Production assistant for commercials, TV programs, and web videos."
+            "description": "Production assistant for commercials, TV programs and web videos, where my skills in video planning and on-set execution began."
           }
         ]
       },
@@ -220,13 +220,13 @@
             "figure": "phone"
           },
           {
-            "title": "AI Automation",
-            "description": "Building n8n flows and AI agents that turn a team's repetitive work into pipelines that run themselves.",
+            "title": "Helping AI Land",
+            "description": "When a request comes in, I work out the problem it really needs to solve, then write it up as clear specs and rules so others can hand the work to AI and get reliable results.",
             "figure": "settle"
           },
           {
-            "title": "Database Design",
-            "description": "Designing production Prisma + PostgreSQL schemas: relations, indexing and per-user data isolation.",
+            "title": "Always Exploring",
+            "description": "Constantly trying new AI tools like Claude Code, while branching out into databases, n8n and backend systems, so I can carry more of a project myself.",
             "figure": "drawer"
           }
         ]
@@ -384,13 +384,7 @@
           "key": "hybrid",
           "title": "AI 工程師",
           "body": "AI 是我的工作方式，不只是加上去的功能。我用它開發網頁前端、獨立上架 iOS App，也把團隊的需求轉譯成自動化流程與工具；八年的行銷與專案管理經驗，讓我做出來的東西就是對方真正需要的。",
-          "tags": [
-            "前端開發",
-            "App 上架",
-            "AI 自動化",
-            "需求轉譯",
-            "專案管理"
-          ]
+          "tags": ["前端開發", "App 上架", "AI 自動化", "需求轉譯", "專案管理"]
         }
       },
       "words": {
@@ -491,37 +485,37 @@
             "period": "2024/07 — 至今",
             "role": "前端工程師",
             "company": "易勝資訊 (委派至資策會數位轉型部門)",
-            "description": "專注於 SaaS 產品開發，運用 React 、Next.js、TypeScript 等現代前端技術，進行系統介面建構與即時互動功能網頁。"
+            "description": "主導 AI 快研究、Agent Fabric、LandScape 等產品的前端，從需求釐清、技術評估到正式上線，客戶為公部門與企業。實作 Deep Research 的 SSE 串流即時呈現研究報告，以 Jotai 拆分狀態避免關係圖整張重算，並用 Claude Code 建立「需求 → spec → 檢視 → 開發 → 測試 → commit」的 AI 協作流程。"
           },
           {
             "period": "2024/01 — 2024/06",
             "role": "前端工程師",
             "company": "Aiworks (AppWorks School)",
-            "description": "開發部落格式 SPA 平台與電商網站。使用 React, Firebase, GSAP 打造沉浸式體驗。"
+            "description": "在 AppWorks School 培訓計畫中系統性學習 React、Next.js 與 TypeScript，獨立完成部落格式 SPA 線上日記「疼痛收容所」與電商網站，並以 Firebase、GSAP 打造沉浸式互動體驗。"
           },
           {
             "period": "2021/12 — 2024/01",
             "role": "倡議專員",
             "company": "勵馨基金會",
-            "description": "管理政府標案與預算執行、校園主題式宣講活動、結合校園與在地企業合作。"
+            "description": "主責大型政府標案，從撰寫計畫書、掌握預算執行、資源調度與廠商協調到最後的成果發表，全部由一人執行；擔任內外部單一窗口對齊需求與期待，並規劃 40 場以上校園主題宣講，串連學校與在地企業合作。"
           },
           {
             "period": "2020/12 — 2021/06",
             "role": "會員發展組 組長",
             "company": "社團法人青年都會再生協會",
-            "description": "管理會員招募與活動策劃、線下論壇活動策畫、直播影片製作。"
+            "description": "負責會員招募與活動策劃，舉辦會員大會、科技論壇與親職座談；FB 人物專訪直播從企劃、現場拍攝到 OBS 導播一手包辦。"
           },
           {
             "period": "2017/07 — 2020/10",
             "role": "行銷企劃",
             "company": "勵馨基金會",
-            "description": "募款活動策劃、線上募款活動策劃、異業結盟、社群經營。"
+            "description": "策劃實體與線上募款活動、經營社群並推動異業結盟；成功提案爭取扶輪社 120 萬、高通國際 30 萬捐款，KOL 合作企劃觸及近 12 萬人次、帶來 1.5 萬次按讚。"
           },
           {
             "period": "2015/11 — 2017/06",
             "role": "執行製作",
             "company": "堉舜國際",
-            "description": "廣告、電視節目、網路影片執行製作。"
+            "description": "參與廣告、電視節目與網路影片的執行製作，也是我影像企劃與現場執行能力的起點。"
           }
         ]
       },
@@ -541,13 +535,13 @@
             "figure": "phone"
           },
           {
-            "title": "AI 自動化流程",
-            "description": "以 n8n 與 AI Agent 打造自動化流程，把團隊重複的工作變成自動執行的流水線。",
+            "title": "協助 AI 落地",
+            "description": "收到需求時，先弄懂對方真正要解決的問題，再把它寫成清楚的 spec 與規則，讓其他人也能交給 AI 穩定產出，把想法真正落地。",
             "figure": "settle"
           },
           {
-            "title": "資料庫設計",
-            "description": "以 Prisma 與 PostgreSQL 設計正式上線的資料模型，處理關聯、索引與使用者資料隔離。",
+            "title": "持續探索與學習",
+            "description": "不斷嘗試新的 AI 工具，像是 Claude Code；同時往資料庫、n8n 與後端系統延伸，讓自己能接起的範圍越來越完整。",
             "figure": "drawer"
           }
         ]

@@ -29,19 +29,21 @@
       "title": "araS",
       "summary": "Personal asset, portfolio and retirement tracker — designed, built and shipped to the App Store solo.",
       "category": null,
-      "problem": "Assets, liabilities, holdings and insurance policies sit scattered across banks, brokers and spreadsheets, so net worth is never visible at a glance — and no existing tool covers TW/US holdings, dividends and retirement projection in one place.",
-      "outcome": "Built end to end alone: a Turborepo monorepo where a Next.js 15 web/API and an Expo iOS app share one API surface, one set of Zod schemas and one Clerk auth flow. Version 1.3 is on the App Store, with a RevenueCat premium subscription, Sentry crash monitoring and JS updates pushed over the air through EAS.",
+      "problem": "Assets, liabilities, TW/US holdings, dividends and insurance policies sit scattered across banks, brokers and spreadsheets, so net worth is never visible at a glance — and no single tool handles multi-currency holdings, dividends and retirement projection together.",
+      "outcome": "Built end to end alone: a Turborepo monorepo where a Next.js 15 web/API and an Expo iOS app share one API, one set of Zod schemas and one Clerk auth flow. Ten Prisma models, every query scoped to its userId. Version 1.6 is on the App Store with a RevenueCat premium subscription, Face ID lock, overseas stocks with a currency converter and a demo mode; Sentry watches for crashes, PostHog breaks down the paywall funnel, and updates ship over the air through EAS.",
       "highlights": [
         "On the App Store",
         "Solo-built",
         "Web + iOS monorepo",
         "Premium subscription",
+        "Face ID lock",
         "OTA updates"
       ],
       "tech": [
         "Next.js 15",
         "React 19",
         "TypeScript",
+        "Tailwind CSS 4",
         "Expo",
         "Expo Router",
         "Prisma",
@@ -50,27 +52,32 @@
         "Zod",
         "RevenueCat",
         "Sentry",
+        "PostHog",
+        "Turborepo",
+        "Vitest",
         "EAS",
         "Vercel"
       ]
     },
     "zh": {
       "title": "araS",
-      "summary": "個人資產、投資組合與退休試算 App，從設計、開發到上架 App Store 全程獨立完成。",
+      "summary": "個人資產、投資組合與退休試算 App，從產品設計、開發到上架 App Store 全程一人完成。",
       "category": null,
-      "problem": "資產、負債、持股與保單分散在各家銀行、券商與試算表，淨資產永遠看不到全貌；市面上也沒有同時涵蓋台股美股持股、股息與退休金試算的工具。",
-      "outcome": "一人從頭做到底：以 Turborepo 讓 Next.js 15 網頁／API 與 Expo iOS App 共用同一套 API、Zod schema 與 Clerk 認證。目前 App Store 版本 1.3，並以 RevenueCat 提供 Premium 訂閱、Sentry 監控當機、EAS OTA 直接推送即時更新。",
+      "problem": "資產、負債、台美股持股、股息與保單分散在各家銀行、券商與試算表，淨資產永遠看不到全貌；市面上也沒有一套工具能同時處理多幣別持股、股利與退休試算。",
+      "outcome": "一人從頭做到底：以 Turborepo 讓 Next.js 15 網頁／API 與 Expo iOS App 共用同一套 API、Zod schema 與 Clerk 認證；Prisma 設計 10 個資料模型，每筆查詢都以 userId 隔離。目前 App Store 版本 1.6，含 RevenueCat Premium 訂閱、Face ID 鎖定、海外股票與換匯計算、示範模式；以 Sentry 監控當機、PostHog 拆解付費漏斗，日常更新透過 EAS OTA 推送。",
       "highlights": [
         "已上架 App Store",
         "獨立開發",
         "Web + iOS Monorepo",
         "訂閱制付費",
+        "Face ID 鎖定",
         "OTA 熱更新"
       ],
       "tech": [
         "Next.js 15",
         "React 19",
         "TypeScript",
+        "Tailwind CSS 4",
         "Expo",
         "Expo Router",
         "Prisma",
@@ -79,6 +86,9 @@
         "Zod",
         "RevenueCat",
         "Sentry",
+        "PostHog",
+        "Turborepo",
+        "Vitest",
         "EAS",
         "Vercel"
       ]
@@ -112,14 +122,15 @@
     "link": "https://apps.apple.com/app/id6798490139",
     "en": {
       "title": "reteP",
-      "summary": "Daily food and calorie logging, ported from the web app into a native iOS app.",
+      "summary": "Daily food and calorie logging — web app, iOS app and FastAPI backend, all built solo.",
       "category": null,
-      "problem": "The web version already worked, but opening a browser for every meal is friction nobody repeats three times a day — food logging only sticks when it is one tap away on the phone.",
-      "outcome": "Ported the web UI one-to-one into an Expo app that reuses the existing FastAPI backend and Clerk auth, then shipped it to the App Store on 19 Aug 2026: Sign in with Apple, macro rings, calendar history, yearly SVG trend charts and a personal food library — with day-to-day updates delivered over the air.",
+      "problem": "Most food-logging apps can't find the dishes people in Taiwan actually eat, and any extra step between a meal and the log is enough to make people stop after a few days.",
+      "outcome": "Built a FastAPI + PostgreSQL backend that imports thousands of Taiwanese foods from the Taiwan FDA nutrition database, verifies Clerk JWTs so each user only sees their own data, and runs on Zeabur. The web PWA adds AI photo recognition through an n8n workflow. Then ported the web UI one-to-one into an Expo app on the same backend and auth, shipped to the App Store on 19 Aug 2026 with Sign in with Apple, macro rings, yearly trend charts and a personal food library.",
       "highlights": [
         "On the App Store",
-        "Solo-built",
-        "Calorie & macro tracking",
+        "Solo full-stack",
+        "Taiwan FDA food data",
+        "AI photo recognition",
         "Sign in with Apple",
         "OTA updates"
       ],
@@ -127,24 +138,29 @@
         "Expo SDK 54",
         "React Native",
         "TypeScript",
-        "Expo Router",
         "Zustand",
+        "Vite",
         "Clerk",
         "FastAPI",
-        "react-native-svg",
+        "SQLAlchemy",
+        "PostgreSQL",
+        "n8n",
+        "Docker",
+        "Zeabur",
         "EAS"
       ]
     },
     "zh": {
       "title": "reteP",
-      "summary": "每日飲食與熱量記錄，從網頁版移植為原生 iOS App。",
+      "summary": "每日飲食與熱量紀錄，網頁版、iOS App 與 FastAPI 後端皆由我一人完成。",
       "category": null,
-      "problem": "網頁版已經能用，但每一餐都要打開瀏覽器記錄，摩擦大到沒人願意一天做三次；飲食追蹤只有在手機上一鍵可達時才留得住使用者。",
-      "outcome": "將網頁版 UI 1:1 移植成 Expo App，共用既有的 FastAPI 後端與 Clerk 認證，2026/08/19 上架 App Store：支援 Sign in with Apple、營養素環圈、日曆歷史紀錄、以 SVG 純 JS 繪製的年度趨勢圖與個人食物庫，日常更新以 OTA 直接推送。",
+      "problem": "多數飲食 App 的食物庫查不到台灣人常吃的食物；而記錄只要多一個步驟，就很難一天三餐天天持續。",
+      "outcome": "以 FastAPI + PostgreSQL 建後端，匯入食藥署上千筆台灣食物營養資料，Clerk JWT 驗簽讓每位使用者只能存取自己的資料，部署於 Zeabur；網頁版 PWA 以 n8n 串接 AI 拍照辨識熱量。再把網頁 UI 1:1 移植成 Expo App，共用同一組後端與認證，2026/08/19 上架 App Store，支援 Sign in with Apple、營養素環圈、年度趨勢圖與個人食物庫。",
       "highlights": [
         "已上架 App Store",
-        "獨立開發",
-        "熱量與營養素追蹤",
+        "獨立全端開發",
+        "食藥署營養資料",
+        "AI 拍照辨識",
         "Sign in with Apple",
         "OTA 熱更新"
       ],
@@ -152,11 +168,15 @@
         "Expo SDK 54",
         "React Native",
         "TypeScript",
-        "Expo Router",
         "Zustand",
+        "Vite",
         "Clerk",
         "FastAPI",
-        "react-native-svg",
+        "SQLAlchemy",
+        "PostgreSQL",
+        "n8n",
+        "Docker",
+        "Zeabur",
         "EAS"
       ]
     }
@@ -183,47 +203,47 @@
     "link": null,
     "en": {
       "title": "U-Turn",
-      "summary": "Automated badminton grouping and match scheduling system.",
+      "summary": "A badminton team-making and court-scheduling PWA, built with a friend — I led the UI redesign.",
       "category": null,
-      "problem": "Organizing badminton meetups requires manually grouping players by skill level and balancing teams, which is time-consuming and error-prone.",
-      "outcome": "Built an automated grouping system that generates balanced matchups in seconds, streamlining registration and scheduling for badminton groups.",
+      "problem": "Before every badminton session someone has to sort players into teams by hand, juggling headcount, gender and who has played how many games — slow, and rarely fair.",
+      "outcome": "Rules generate rotating 2v2 games across multiple courts: at most one woman per pair, nobody plays or sits out more than two games in a row, and repeat pairings are avoided. The host signs in to run the session; players join with a code and watch it live. I redesigned the sign-in, home, player-select and schedule screens, writing the design spec first and then building the dark stage-style player picker and bottom-sheet alerts.",
       "highlights": [
-        "Auto Grouping",
-        "Match Scheduling",
-        "Registration",
-        "Auth System",
-        "Database Management"
+        "Auto team-making",
+        "Multi-court rotation",
+        "Live view by code",
+        "PWA",
+        "Dark mode"
       ],
       "tech": [
-        "React",
-        "TypeScript",
-        "n8n",
+        "React 19",
         "Vite",
-        "PostgreSQL",
         "Clerk",
+        "Motion",
+        "PWA",
+        "FastAPI",
         "Zeabur"
       ]
     },
     "zh": {
       "title": "U-Turn",
-      "summary": "自動化羽球分組與賽程安排系統",
+      "summary": "羽球活動自動分隊與場次安排 PWA，與朋友合作開發，我負責 UI 重構與視覺設計。",
       "category": null,
-      "problem": "羽球團體活動需手動依程度與人數平衡分組，耗時且容易出錯。",
-      "outcome": "建立自動化分組系統，依程度快速產生平衡賽程，簡化報名與分組流程，提升活動運作效率。",
+      "problem": "羽球團每次開打前，都要有人手動依人數、性別與上場次數排隊伍，既耗時又很難排得公平。",
+      "outcome": "依規則自動產生多場地的 2v2 輪替：每隊最多一名女生、不連續上場或休息超過兩場、盡量避免重複搭配。主揪登入後安排場次，球友輸入代號就能即時觀看。我負責登入頁、首頁、選人頁與賽程頁的 UI 重構，先寫設計規格，再實作深色舞台風格的選人畫面與底部提示元件。",
       "highlights": [
-        "自動分組",
-        "賽程安排",
-        "報名系統",
-        "登入系統",
-        "資料庫管理"
+        "自動分隊",
+        "多場地輪替",
+        "代號即時觀看",
+        "PWA",
+        "深色模式"
       ],
       "tech": [
-        "React",
-        "TypeScript",
-        "n8n",
+        "React 19",
         "Vite",
-        "PostgreSQL",
         "Clerk",
+        "Motion",
+        "PWA",
+        "FastAPI",
         "Zeabur"
       ]
     }
@@ -249,53 +269,59 @@
     "figure": "format",
     "link": null,
     "en": {
-      "title": "Market Trend Tracking Platform",
-      "summary": "Monitoring growth data from GitHub, Hugging Face, etc., to provide policy suggestions.",
+      "title": "AI Research",
+      "summary": "A trend-watching and decision-support platform for the MOEA Department of Industrial Technology, tracking emerging tech, industry news and early weak signals. I am the main frontend developer.",
       "category": null,
-      "problem": "Integrating heterogeneous data sources with frequent updates posed a significant challenge to system performance.",
-      "outcome": "Built a relational database mapping tech to vendors, matching international trends with domestic supply chains for strategic advising.",
+      "problem": "Policy and investment calls depend on spotting global tech trends early, but the signals are scattered across news, papers, open-source communities and startup data — gathered by hand, with no way to tell a faint new signal from a mainstream one.",
+      "outcome": "Built the whole frontend in Next.js 14. Deep Research streams its reports through an SSE proxy that injects heartbeats while the upstream is idle, so the gateway never drops the connection. Around it: a STEEP trend map, a leader radar, a tech-portfolio decision center with fishbone backcasting and Delphi expert review, a startup match board and a daily AI newsletter. Content is personalized by the user's industry, and signed share codes open selected reports without a login.",
       "highlights": [
-        "News Briefs",
-        "Auth System",
-        "Favorites",
-        "Subscription",
-        "Trend Analysis",
-        "Deep Research"
+        "Deep Research streaming",
+        "STEEP trend map",
+        "Leader radar",
+        "Tech portfolio",
+        "Startup matching",
+        "Daily newsletter"
       ],
       "tech": [
-        "Next.js",
+        "Next.js 14",
         "React",
         "TypeScript",
+        "TanStack Query",
         "Jotai",
+        "Zod",
         "Tailwind CSS",
-        "Redux Toolkit",
-        "Docker",
-        "RWD"
+        "shadcn/ui",
+        "Recharts",
+        "D3",
+        "Docker"
       ]
     },
     "zh": {
-      "title": "國內市場趨勢追蹤平台",
-      "summary": "依據網路爬蟲領域關鍵字、監測Github Hugging Face等相關成長數據，對應國內公司資訊，依照微光、新興、主流趨勢，提供相對應政策",
+      "title": "AI 快研究",
+      "summary": "經濟部技術司的趨勢觀測與決策支援平台，追蹤前瞻技術、產業動態與早期弱信號；我是主要前端開發者。",
       "category": null,
-      "problem": "需整合異質數據源（網路爬蟲、API、內部資料庫），且數據更新頻繁，對系統效能造成巨大挑戰。",
-      "outcome": "建立「技術-廠商」關聯資料庫，智慧媒合國際趨勢與國內供應鏈，為政府與投資人提供具體的策略建議地圖。",
+      "problem": "政策與投資判斷需要及早掌握全球技術趨勢，但訊號散落在新聞、論文、開源社群與新創資料裡，只能人工蒐集，也分不出哪些是剛冒出的微光、哪些已是主流。",
+      "outcome": "以 Next.js 14 打造全站前端：Deep Research 以 SSE 串流代理即時呈現研究報告，上游閒置時注入 heartbeat 避免閘道斷線；另有 STEEP 趨勢圖譜、領袖雷達、技術投資組合決策中心（魚骨圖回推與 Delphi 專家評估）、新創媒合看板與每日 AI 電子報。登入後依使用者產業別個人化內容，並以簽章分享碼開放免登入的報告分享頁。",
       "highlights": [
-        "新聞快訊",
-        "登入功能",
-        "收藏功能",
-        "電子報訂閱",
-        "趨勢分析",
-        "深度研究"
+        "Deep Research 串流",
+        "STEEP 趨勢圖譜",
+        "領袖雷達",
+        "技術投資組合",
+        "新創媒合",
+        "每日電子報"
       ],
       "tech": [
-        "Next.js",
+        "Next.js 14",
         "React",
         "TypeScript",
+        "TanStack Query",
         "Jotai",
+        "Zod",
         "Tailwind CSS",
-        "Redux Toolkit",
-        "Docker",
-        "RWD"
+        "shadcn/ui",
+        "Recharts",
+        "D3",
+        "Docker"
       ]
     }
   },
@@ -321,48 +347,50 @@
     "link": null,
     "en": {
       "title": "Digital Chatroom",
-      "summary": "Configurable chatroom switching via environment variables.",
+      "summary": "One codebase, switched by environment variables, powering AI guide chatbots for venues such as a planetarium and several historical-figure guides.",
       "category": null,
-      "problem": "Facing diverse chat needs across business units, lacking a universal swappable solution.",
-      "outcome": "Developed a flexible chat platform using env vars to control endpoints and styles, supporting multiple internal tools.",
+      "problem": "Each venue wanted its own AI guide, each with different branding, languages and features — rebuilding a chat interface every time was too costly and impossible to maintain.",
+      "outcome": "Designed an env-driven architecture where branding, speech-to-text, login, knowledge-base editing and API endpoints all come from config; the same codebase now runs six branded deployments plus a shared-contract version. Chat streams LLM replies token by token with cited sources, alongside knowledge-base management, multilingual speech-to-text, speech synthesis, translation history and guest login, with CSP headers controlling which sites may embed it.",
       "highlights": [
-        "Knowledge Base",
-        "History",
-        "Voice Input",
-        "Model Switching",
-        "Auth System"
+        "Env-driven branding",
+        "Streamed replies",
+        "Knowledge base",
+        "Speech-to-text",
+        "Speech synthesis",
+        "Multilingual UI"
       ],
       "tech": [
         "Next.js",
         "React",
-        "Redux Toolkit",
         "TypeScript",
+        "Redux Toolkit",
+        "MUI",
         "Sass",
-        "Mui material",
-        "RWD"
+        "Framer Motion"
       ]
     },
     "zh": {
       "title": "數位聊天室",
-      "summary": "依環境變數切換不同數位工具的聊天室",
+      "summary": "一套程式碼、以環境變數切換的 AI 導覽聊天室，已上線為天文館、李登輝、雍正帝、愛因斯坦等多個導覽專案。",
       "category": null,
-      "problem": "面對不同業務端的聊天需求，缺乏一套能夠快速抽換設定的通用解決方案。",
-      "outcome": "開發具備高度彈性的聊天平台，利用環境變數控制 API 端點與 UI 風格，成功支援多組內部工具的即時通訊需求。",
+      "problem": "不同場館都想要自己的 AI 導覽員，品牌樣式、語言與功能需求各不相同；每次重寫一套聊天介面，成本太高也難以維護。",
+      "outcome": "設計環境變數驅動的架構，品牌樣式、語音轉文字、登入、知識庫是否可編輯與 API 端點都由設定檔控制，同一套程式碼已上線 6 個品牌專案與一個共同契約版本。聊天支援 LLM 逐字串流回應與引用來源，另有知識庫管理、多語語音轉文字、語音合成、翻譯紀錄與訪客登入，並以 CSP 標頭控管可嵌入的網域。",
       "highlights": [
-        "知識庫串接",
-        "歷史紀錄",
-        "語音輸入",
-        "多模型切換",
-        "登入系統"
+        "環境變數切換品牌",
+        "串流回應",
+        "知識庫管理",
+        "語音轉文字",
+        "語音合成",
+        "多語介面"
       ],
       "tech": [
         "Next.js",
         "React",
-        "Redux Toolkit",
         "TypeScript",
+        "Redux Toolkit",
+        "MUI",
         "Sass",
-        "Mui material",
-        "RWD"
+        "Framer Motion"
       ]
     }
   },
@@ -387,49 +415,55 @@
     "figure": "cabinet",
     "link": null,
     "en": {
-      "title": "Taiwan Info Service Provider Database",
-      "summary": "Connecting to MOEA database for searching and filtering providers.",
+      "title": "LandScape Industry Map",
+      "summary": "An industry map of Taiwan's IT service providers, bringing company profiles, categories and offerings together for internal decision-making and industry analysis.",
       "category": null,
-      "problem": "Difficulty in finding info service providers due to lack of transparency and intuitive filtering mechanisms.",
-      "outcome": "Connected to MOEA API, built a high-performance responsive platform with React and Jotai, optimizing info retrieval.",
+      "problem": "Finding the right IT service provider meant cross-checking company registries, OTC market data and subsidy records by hand — the data was scattered, filtering was clumsy, and investment and shareholding ties between companies were invisible.",
+      "outcome": "Browse companies by industry area and filter by capital, headcount, capability registration, subsidies and product category; each company page draws its investment and shareholding ties with Cytoscape.js. Filter state is split into Jotai atoms so changing one condition no longer recomputes the whole graph. Conversational search, crawler settings and data import round it out, with Cypress E2E tests, Husky hooks and Semgrep scans guarding quality.",
       "highlights": [
-        "Auth System",
-        "Multi-criteria Filter",
-        "Conversational Search",
-        "AI Bot Search"
+        "Multi-criteria filters",
+        "Company relationship graph",
+        "Conversational search",
+        "Data import",
+        "E2E tests"
       ],
       "tech": [
+        "Next.js 14",
         "React",
         "TypeScript",
-        "axios",
-        "Restful API",
-        "Tailwind CSS",
         "Jotai",
-        "husky",
-        "RWD"
+        "Cytoscape.js",
+        "Tailwind CSS",
+        "Axios",
+        "Cypress",
+        "Husky",
+        "Docker"
       ]
     },
     "zh": {
-      "title": "台灣資訊服務業者資料庫",
-      "summary": "串接經濟部資料庫，提供台灣資訊服務業者的查詢與篩選功能",
+      "title": "LandScape 產業地圖",
+      "summary": "台灣資訊服務業的產業地圖，整合企業資料、產業分類與產品服務，提供內部決策與產業分析。",
       "category": null,
-      "problem": "企業尋找資訊服務商如同大海撈針，缺乏透明的資訊與比較基準；缺乏直覺的篩選與搜尋機制，使用者必須手動比對資料，耗時且效率低落。",
-      "outcome": "成功串接經濟部 API，運用 React 與 Jotai 打造高效能的響應式查詢平台，實現即時多條件篩選，大幅優化資訊檢索體驗。",
+      "problem": "要找到合適的資訊服務業者，得在公司登記、櫃買中心與補助資料之間來回比對；資料分散、篩選不直覺，也看不出企業之間的投資與持股關係。",
+      "outcome": "依產業領域瀏覽企業，支援資本額、員工數、能量登錄、獲補助紀錄、產品類別等多條件篩選；企業詳情以 Cytoscape.js 呈現投資與持股關係圖。篩選狀態以 Jotai 原子化拆分，避免任一條件變動就重算整張圖；另提供對話式搜尋、爬蟲設定與資料匯入，並以 Cypress E2E、Husky 與 Semgrep 掃描把關品質。",
       "highlights": [
-        "登入系統",
         "多條件篩選",
+        "企業關係圖",
         "對話式搜尋",
-        "機器人聊天搜尋系統"
+        "資料匯入",
+        "E2E 測試"
       ],
       "tech": [
+        "Next.js 14",
         "React",
         "TypeScript",
-        "axios",
-        "Restful API",
-        "Tailwind CSS",
         "Jotai",
-        "husky",
-        "RWD"
+        "Cytoscape.js",
+        "Tailwind CSS",
+        "Axios",
+        "Cypress",
+        "Husky",
+        "Docker"
       ]
     }
   },
@@ -454,49 +488,53 @@
     "figure": "relay",
     "link": null,
     "en": {
-      "title": "AI Agent Collaboration Platform",
-      "summary": "Dify-like AI tool integration platform.",
+      "title": "Agent Fabric",
+      "summary": "A Dify-like platform that helps IT service providers build their own AI agents. I took over and led the frontend.",
       "category": null,
-      "problem": "Enterprises need quick, custom AI bot construction, but existing solutions lack flexibility.",
-      "outcome": "Created a GPT-like interface with knowledge base support, multi-turn dialogue, and task automation.",
+      "problem": "IT service providers wanted to adopt AI, but building an agent from scratch is a high bar, existing tools are hard to customize, and connecting them to a company's own documents and databases is harder still.",
+      "outcome": "Delivered three modules: the Architect, which generates an agent from a plain-language request; the Studio, which combines agents into applications; and the Knowledge Base, with multi-file upload and SQL database creation. Chat messages render Markdown, highlighted code, images, video and audio, with voice recording as input; the oversized Chat component was split into focused sub-components for readability and maintenance.",
       "highlights": [
-        "Bot Chat",
-        "Knowledge Base",
-        "Model Switching",
-        "File Upload",
-        "Auth System"
+        "Agent Architect",
+        "Studio",
+        "Knowledge base",
+        "Multi-file upload",
+        "Voice input",
+        "Rich media messages"
       ],
       "tech": [
-        "React",
+        "React 18",
         "TypeScript",
-        "sass",
-        "axios",
-        "Restful API",
-        "React Router",
-        "RWD"
+        "Redux Toolkit",
+        "MUI",
+        "React Flow",
+        "Sass",
+        "Axios",
+        "React Router"
       ]
     },
     "zh": {
-      "title": "AI Agent 協作平台",
-      "summary": "類Dify串接AI工具平台",
+      "title": "Agent Fabric",
+      "summary": "協助資訊服務業者快速建立自己 AI Agent 的平台（類 Dify），我接手並主導前端開發。",
       "category": null,
-      "problem": "企業需要快速建構客製化 AI 聊天機器人，但現有方案缺乏彈性且整合困難。需要一個能連接多種 AI 模型、支援即時互動的平台。",
-      "outcome": "成功打造 GPT-like 對話介面與知識庫系統，支援多輪對話、檔案上傳、任務自動化功能，大幅降低企業導入 AI 的門檻。",
+      "problem": "資訊服務業者想導入 AI，但從零打造 Agent 門檻高、現有工具難以客製，也不容易接上自家的文件與資料庫。",
+      "outcome": "完成三大模組：輸入需求即可生成 Agent 的「架構師」、組合多個 Agent 成應用的「工作室」，以及支援多檔上傳與建立 SQL 資料庫的「知識庫」。對話訊息支援 Markdown、程式碼高亮與圖片／影音渲染，並加入語音錄音輸入；將大型 Chat 元件拆成獨立子元件，提升可讀性與維護性。",
       "highlights": [
-        "機器人聊天",
-        "知識庫串接",
-        "多模型切換",
-        "檔案上傳",
-        "登入系統"
+        "架構師生成 Agent",
+        "工作室",
+        "知識庫",
+        "多檔上傳",
+        "語音輸入",
+        "多媒體訊息"
       ],
       "tech": [
-        "React",
+        "React 18",
         "TypeScript",
-        "sass",
-        "axios",
-        "Restful API",
-        "React Router",
-        "RWD"
+        "Redux Toolkit",
+        "MUI",
+        "React Flow",
+        "Sass",
+        "Axios",
+        "React Router"
       ]
     }
   },
