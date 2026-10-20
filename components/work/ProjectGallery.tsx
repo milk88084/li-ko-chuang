@@ -13,9 +13,9 @@ import { LoopVideo } from "./LoopVideo";
 // Images go out as they are: they are already small, compressed WebP, and
 // re-encoding a UI screenshot only softens its text.
 
-type Labels = (typeof content)["en"]["work"]["detail"]["media"];
+export type Labels =(typeof content)["en"]["work"]["detail"]["media"];
 
-function Caption({
+export function Caption({
   index,
   label,
   media,
@@ -30,16 +30,16 @@ function Caption({
         <span className="text-accent">
           {String(index + 1).padStart(2, "0")}
         </span>{" "}
-        · {label}
+        · {media.caption ?? label}
       </span>
-      <span>
+      <span className="shrink-0">
         {media.width} × {media.height}
       </span>
     </figcaption>
   );
 }
 
-function Still({
+export function Still({
   media,
   alt,
   sizes,
@@ -61,7 +61,7 @@ function Still({
   );
 }
 
-function Lead({
+export function Lead({
   media,
   alt,
   label,
@@ -104,7 +104,7 @@ function Lead({
   );
 }
 
-function Phone({
+export function Phone({
   media,
   alt,
   label,

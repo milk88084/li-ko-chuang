@@ -1,0 +1,330 @@
+{
+  "aras": {
+    "legend": { "en": "Where the data comes together", "zh": "資料匯流的關鍵步驟" },
+    "lanes": [
+      { "en": "1. iOS app", "zh": "1. iOS App" },
+      null,
+      { "en": "2. Web", "zh": "2. 網頁版" }
+    ],
+    "nodes": [
+      { "id": "ios", "at": [0, 0], "icon": "smartphone", "label": { "en": "iOS app", "zh": "iOS App" }, "note": { "en": "Face ID unlock", "zh": "Face ID 解鎖" } },
+      { "id": "web", "at": [2, 0], "icon": "monitor", "label": { "en": "Web app", "zh": "網頁版" }, "note": { "en": "In the browser", "zh": "瀏覽器登入" } },
+      { "id": "auth", "at": [1, 1], "icon": "shield-check", "label": { "en": "Clerk sign-in", "zh": "Clerk 登入" }, "note": { "en": "Google / LINE / Apple", "zh": "Google／LINE／Apple" } },
+      { "id": "api", "at": [1, 2], "icon": "server", "label": { "en": "One shared API", "zh": "共用同一套 API" }, "note": { "en": "Zod-validated\nscoped to each userId", "zh": "Zod 驗證\n每筆以 userId 隔離" }, "accent": true },
+      { "id": "premium", "at": [0, 3], "icon": "crown", "label": { "en": "Premium", "zh": "Premium 訂閱" }, "note": { "en": "RevenueCat", "zh": "RevenueCat" } },
+      { "id": "db", "at": [1, 3], "icon": "database", "label": { "en": "PostgreSQL", "zh": "PostgreSQL" }, "note": { "en": "10 Prisma models", "zh": "10 個 Prisma 模型" } },
+      { "id": "market", "at": [2, 3], "icon": "trending-up", "label": { "en": "Quotes & FX", "zh": "行情與匯率" }, "note": { "en": "TW / US stocks", "zh": "台美股報價" } },
+      { "id": "overview", "at": [1, 4], "icon": "pie-chart", "label": { "en": "Net worth", "zh": "淨資產總覽" }, "note": { "en": "Assets, debts, holdings", "zh": "資產・負債・持股" }, "accent": true },
+      { "id": "retire", "at": [0, 5], "icon": "target", "label": { "en": "Retirement plan", "zh": "退休試算" }, "note": { "en": "Projection to goal", "zh": "推算到退休目標" } },
+      { "id": "income", "at": [2, 5], "icon": "coins", "label": { "en": "Dividends & policies", "zh": "股利與保單" }, "note": { "en": "Cash flow over time", "zh": "長期現金流" } }
+    ],
+    "edges": [
+      { "from": "ios", "to": "auth" },
+      { "from": "web", "to": "auth" },
+      { "from": "auth", "to": "api", "label": { "en": "token", "zh": "token" } },
+      { "from": "ios", "to": "premium", "label": { "en": "subscribe", "zh": "訂閱" }, "dashed": true },
+      { "from": "api", "to": "db", "label": { "en": "Prisma", "zh": "Prisma" } },
+      { "from": "api", "to": "market", "dashed": true },
+      { "from": "db", "to": "overview" },
+      { "from": "market", "to": "overview" },
+      { "from": "overview", "to": "retire" },
+      { "from": "overview", "to": "income" }
+    ]
+  },
+  "retep": {
+    "legend": { "en": "AI step", "zh": "AI 參與的步驟" },
+    "lanes": [
+      { "en": "1. Web PWA", "zh": "1. 網頁 PWA" },
+      null,
+      { "en": "2. iOS app", "zh": "2. iOS App" }
+    ],
+    "nodes": [
+      { "id": "pwa", "at": [0, 0], "icon": "monitor", "label": { "en": "Web PWA", "zh": "網頁 PWA" }, "note": { "en": "Google sign-in", "zh": "Google 一鍵登入" } },
+      { "id": "ios", "at": [2, 0], "icon": "smartphone", "label": { "en": "iOS app", "zh": "iOS App" }, "note": { "en": "Sign in with Apple", "zh": "Sign in with Apple" } },
+      { "id": "auth", "at": [1, 1], "icon": "shield-check", "label": { "en": "Clerk JWT", "zh": "Clerk JWT" }, "note": { "en": "Verified by the API", "zh": "後端驗簽" } },
+      { "id": "photo", "at": [0, 2], "icon": "camera", "label": { "en": "Snap a meal", "zh": "拍照辨識" }, "note": { "en": "n8n + AI", "zh": "n8n＋AI 估熱量" }, "accent": true },
+      { "id": "search", "at": [2, 2], "icon": "search", "label": { "en": "Search foods", "zh": "搜尋食物" }, "note": { "en": "Taiwan FDA data", "zh": "食藥署營養資料" } },
+      { "id": "api", "at": [1, 3], "icon": "server", "label": { "en": "FastAPI", "zh": "FastAPI" }, "note": { "en": "Scoped to each user", "zh": "每位使用者隔離" } },
+      { "id": "db", "at": [1, 4], "icon": "database", "label": { "en": "PostgreSQL", "zh": "PostgreSQL" }, "note": { "en": "Thousands of\nTaiwanese foods", "zh": "上千筆台灣食物" } },
+      { "id": "log", "at": [1, 5], "icon": "utensils", "label": { "en": "Daily log", "zh": "每日紀錄" }, "note": { "en": "Calories & macros", "zh": "熱量與三大營養素" } },
+      { "id": "trend", "at": [0, 6], "icon": "chart-line", "label": { "en": "Yearly trends", "zh": "年度趨勢圖" } },
+      { "id": "rings", "at": [2, 6], "icon": "circle-dot", "label": { "en": "Macro rings", "zh": "營養素環圈" } }
+    ],
+    "edges": [
+      { "from": "pwa", "to": "auth" },
+      { "from": "ios", "to": "auth" },
+      { "from": "auth", "to": "photo" },
+      { "from": "auth", "to": "search" },
+      { "from": "photo", "to": "api", "label": { "en": "result", "zh": "辨識結果" } },
+      { "from": "search", "to": "api" },
+      { "from": "api", "to": "db", "label": { "en": "SQLAlchemy", "zh": "SQLAlchemy" } },
+      { "from": "db", "to": "log" },
+      { "from": "log", "to": "trend" },
+      { "from": "log", "to": "rings" }
+    ]
+  },
+  "u-turn": {
+    "legend": { "en": "Where the rules run", "zh": "規則運算的步驟" },
+    "lanes": [
+      { "en": "1. Host", "zh": "1. 主揪" },
+      null,
+      { "en": "2. Players", "zh": "2. 球友" }
+    ],
+    "nodes": [
+      { "id": "host", "at": [0, 0], "icon": "user", "label": { "en": "Host signs in", "zh": "主揪登入" }, "note": { "en": "Clerk", "zh": "Clerk" } },
+      { "id": "select", "at": [0, 1], "icon": "users", "label": { "en": "Pick today's players", "zh": "勾選今日成員" }, "note": { "en": "Search, filter by gender", "zh": "搜尋・性別篩選" } },
+      { "id": "setup", "at": [0, 2], "icon": "settings-2", "label": { "en": "Courts & rounds", "zh": "設定場地與場次" } },
+      { "id": "engine", "at": [1, 3], "icon": "shuffle", "label": { "en": "Auto team-making", "zh": "自動分隊" }, "note": { "en": "≤ 1 woman per pair\n≤ 2 games on or off in a row", "zh": "每隊女生最多 1 名\n連上／連休不超過 2 場" }, "accent": true },
+      { "id": "schedule", "at": [1, 4], "icon": "layout-grid", "label": { "en": "Multi-court schedule", "zh": "多場地賽程" }, "note": { "en": "Reshuffle in one tap", "zh": "可一鍵重排" } },
+      { "id": "code", "at": [1, 5], "icon": "qr-code", "label": { "en": "Share a code", "zh": "分享代號" } },
+      { "id": "join", "at": [2, 0], "icon": "smartphone", "label": { "en": "Enter the code", "zh": "輸入代號" }, "note": { "en": "No sign-in needed", "zh": "免登入" } },
+      { "id": "view", "at": [2, 6], "icon": "eye", "label": { "en": "Watch live", "zh": "即時觀看" }, "note": { "en": "Syncs every 3 s", "zh": "每 3 秒同步" } }
+    ],
+    "edges": [
+      { "from": "host", "to": "select" },
+      { "from": "select", "to": "setup" },
+      { "from": "setup", "to": "engine", "label": { "en": "roster + rules", "zh": "名單＋規則" } },
+      { "from": "engine", "to": "schedule" },
+      { "from": "schedule", "to": "code" },
+      { "from": "code", "to": "view" },
+      { "from": "join", "to": "view", "label": { "en": "join with the code", "zh": "用代號加入" }, "dashed": true }
+    ]
+  },
+  "market-trend-tracking": {
+    "legend": { "en": "AI step", "zh": "AI 參與的步驟" },
+    "lanes": [
+      { "en": "1. Researcher", "zh": "1. 研究人員" },
+      null,
+      { "en": "2. Signals", "zh": "2. 訊號來源" }
+    ],
+    "nodes": [
+      { "id": "login", "at": [0, 0], "icon": "log-in", "label": { "en": "Sign in", "zh": "登入" }, "note": { "en": "Personalised by industry", "zh": "依產業別個人化" } },
+      { "id": "sources", "at": [2, 0], "icon": "globe", "label": { "en": "Scattered signals", "zh": "分散的訊號" }, "note": { "en": "News, papers,\nopen source, startups", "zh": "新聞・論文\n開源・新創" } },
+      { "id": "steep", "at": [1, 1], "icon": "radar", "label": { "en": "STEEP trend map", "zh": "STEEP 趨勢圖譜" }, "note": { "en": "Weak signal to mainstream", "zh": "從弱信號到主流" }, "accent": true },
+      { "id": "leaders", "at": [0, 2], "icon": "users", "label": { "en": "Leader radar", "zh": "領袖雷達" } },
+      { "id": "match", "at": [2, 2], "icon": "handshake", "label": { "en": "Startup matching", "zh": "新創媒合看板" } },
+      { "id": "deep", "at": [1, 3], "icon": "sparkles", "label": { "en": "Deep Research", "zh": "Deep Research" }, "note": { "en": "Streamed over SSE", "zh": "SSE 即時串流報告" }, "accent": true },
+      { "id": "portfolio", "at": [0, 4], "icon": "briefcase-business", "label": { "en": "Tech portfolio", "zh": "技術投資組合" }, "note": { "en": "Backcasting, Delphi review", "zh": "魚骨圖回推・Delphi" } },
+      { "id": "share", "at": [1, 4], "icon": "share-2", "label": { "en": "Share a report", "zh": "分享報告" }, "note": { "en": "Signed share code", "zh": "簽章分享碼免登入" } },
+      { "id": "newsletter", "at": [2, 4], "icon": "mail", "label": { "en": "Daily AI newsletter", "zh": "每日 AI 電子報" }, "accent": true }
+    ],
+    "edges": [
+      { "from": "login", "to": "steep" },
+      { "from": "sources", "to": "steep", "label": { "en": "collected", "zh": "彙整" } },
+      { "from": "steep", "to": "leaders" },
+      { "from": "steep", "to": "match" },
+      { "from": "steep", "to": "deep", "label": { "en": "dig deeper", "zh": "深入研究" } },
+      { "from": "deep", "to": "portfolio", "label": { "en": "decide", "zh": "決策" } },
+      { "from": "deep", "to": "share" },
+      { "from": "match", "to": "newsletter", "dashed": true }
+    ]
+  },
+  "digital-chatroom": {
+    "legend": { "en": "AI step", "zh": "AI 參與的步驟" },
+    "lanes": [
+      { "en": "1. Per venue", "zh": "1. 各場館部署" },
+      null,
+      { "en": "2. Visitor", "zh": "2. 訪客" }
+    ],
+    "nodes": [
+      { "id": "env", "at": [0, 0], "icon": "file-cog", "label": { "en": "Env config", "zh": "環境變數設定" }, "note": { "en": "Brand, features, API", "zh": "品牌・功能・API" } },
+      { "id": "brands", "at": [0, 1], "icon": "building-2", "label": { "en": "Six venue brands", "zh": "6 個場館品牌" }, "note": { "en": "One codebase", "zh": "同一套程式碼" } },
+      { "id": "kb", "at": [0, 2], "icon": "book-open", "label": { "en": "Knowledge base", "zh": "知識庫" }, "note": { "en": "Editable if enabled", "zh": "依設定開放編輯" } },
+      { "id": "visitor", "at": [2, 0], "icon": "user", "label": { "en": "Visitor arrives", "zh": "訪客進站" }, "note": { "en": "Guest sign-in", "zh": "訪客登入" } },
+      { "id": "ask", "at": [2, 1], "icon": "mic", "label": { "en": "Ask by voice or text", "zh": "語音或文字提問" }, "note": { "en": "Multilingual speech-to-text", "zh": "多語語音轉文字" }, "accent": true },
+      { "id": "chat", "at": [1, 2], "icon": "message-square", "label": { "en": "Chat window", "zh": "聊天介面" }, "note": { "en": "Embeds limited by CSP", "zh": "CSP 控管可嵌入網域" } },
+      { "id": "llm", "at": [1, 3], "icon": "bot", "label": { "en": "LLM answers", "zh": "LLM 回答" }, "note": { "en": "Streamed token by token", "zh": "逐字串流" }, "accent": true },
+      { "id": "cite", "at": [1, 4], "icon": "quote", "label": { "en": "With sources", "zh": "附引用來源" } },
+      { "id": "tts", "at": [2, 5], "icon": "volume-2", "label": { "en": "Read aloud", "zh": "語音朗讀" }, "note": { "en": "Speech synthesis", "zh": "語音合成" }, "accent": true },
+      { "id": "history", "at": [0, 5], "icon": "history", "label": { "en": "Translation history", "zh": "翻譯紀錄" } }
+    ],
+    "edges": [
+      { "from": "env", "to": "brands" },
+      { "from": "brands", "to": "chat", "label": { "en": "branding", "zh": "套用品牌" } },
+      { "from": "visitor", "to": "ask" },
+      { "from": "ask", "to": "chat" },
+      { "from": "chat", "to": "llm" },
+      { "from": "kb", "to": "llm", "label": { "en": "retrieve", "zh": "檢索" }, "dashed": true },
+      { "from": "llm", "to": "cite" },
+      { "from": "cite", "to": "tts" },
+      { "from": "cite", "to": "history" }
+    ]
+  },
+  "taiwan-info-service-database": {
+    "legend": { "en": "Key view", "zh": "關鍵畫面" },
+    "lanes": [
+      { "en": "1. Data in", "zh": "1. 資料進來" },
+      null,
+      { "en": "2. Searching", "zh": "2. 使用者查詢" },
+      null
+    ],
+    "nodes": [
+      { "id": "crawler", "at": [0, 0], "icon": "download", "label": { "en": "Crawler settings", "zh": "爬蟲設定" }, "note": { "en": "Scheduled fetching", "zh": "排程抓取" } },
+      { "id": "import", "at": [0, 1], "icon": "upload", "label": { "en": "Data import", "zh": "資料匯入" }, "note": { "en": "Registry, OTC, subsidies", "zh": "公司登記・櫃買・補助" } },
+      { "id": "db", "at": [0, 2], "icon": "database", "label": { "en": "Company database", "zh": "企業資料庫" } },
+      { "id": "filter", "at": [2, 1], "icon": "filter", "label": { "en": "Multi-criteria filters", "zh": "多條件篩選" }, "note": { "en": "Capital, headcount, subsidies\nJotai atoms per condition", "zh": "資本額・員工數・補助\nJotai 原子化狀態" } },
+      { "id": "ask", "at": [3, 1], "icon": "message-square", "label": { "en": "Conversational search", "zh": "對話式搜尋" } },
+      { "id": "list", "at": [1, 3], "icon": "list", "label": { "en": "Matching companies", "zh": "符合的企業清單" }, "note": { "en": "By industry area", "zh": "依產業領域分類" } },
+      { "id": "detail", "at": [1, 4], "icon": "building-2", "label": { "en": "Company profile", "zh": "企業詳情" } },
+      { "id": "graph", "at": [1, 5], "icon": "network", "label": { "en": "Ownership graph", "zh": "投資持股關係圖" }, "note": { "en": "Cytoscape.js", "zh": "Cytoscape.js" }, "accent": true }
+    ],
+    "edges": [
+      { "from": "crawler", "to": "import" },
+      { "from": "import", "to": "db" },
+      { "from": "db", "to": "list" },
+      { "from": "filter", "to": "list" },
+      { "from": "ask", "to": "list", "dashed": true },
+      { "from": "list", "to": "detail" },
+      { "from": "detail", "to": "graph" }
+    ]
+  },
+  "agent-fabric": {
+    "legend": { "en": "AI step", "zh": "AI 參與的步驟" },
+    "lanes": [
+      { "en": "1. Build", "zh": "1. 建立 Agent" },
+      null,
+      { "en": "2. Knowledge & use", "zh": "2. 知識與使用" }
+    ],
+    "nodes": [
+      { "id": "need", "at": [0, 0], "icon": "pen-line", "label": { "en": "Describe the need", "zh": "輸入需求" }, "note": { "en": "In plain language", "zh": "用白話描述" } },
+      { "id": "architect", "at": [0, 1], "icon": "sparkles", "label": { "en": "Architect", "zh": "架構師" }, "note": { "en": "Generates the agent", "zh": "自動生成 Agent" }, "accent": true },
+      { "id": "upload", "at": [2, 0], "icon": "upload", "label": { "en": "Upload files", "zh": "上傳文件" }, "note": { "en": "Many at once", "zh": "支援多檔上傳" } },
+      { "id": "kb", "at": [2, 1], "icon": "book-open", "label": { "en": "Knowledge base", "zh": "知識庫" }, "note": { "en": "Documents + SQL databases", "zh": "文件＋SQL 資料庫" } },
+      { "id": "agent", "at": [1, 2], "icon": "bot", "label": { "en": "AI agent", "zh": "AI Agent" }, "accent": true },
+      { "id": "studio", "at": [1, 3], "icon": "blocks", "label": { "en": "Studio", "zh": "工作室" }, "note": { "en": "Combine several agents", "zh": "組合多個 Agent" } },
+      { "id": "app", "at": [1, 4], "icon": "app-window", "label": { "en": "AI application", "zh": "AI 應用" } },
+      { "id": "voice", "at": [2, 4], "icon": "mic", "label": { "en": "Voice input", "zh": "語音輸入" } },
+      { "id": "chat", "at": [1, 5], "icon": "message-square", "label": { "en": "Rich chat", "zh": "多媒體對話" }, "note": { "en": "Markdown, code,\nimages, audio, video", "zh": "Markdown・程式碼\n圖片・影音" } }
+    ],
+    "edges": [
+      { "from": "need", "to": "architect" },
+      { "from": "architect", "to": "agent" },
+      { "from": "upload", "to": "kb" },
+      { "from": "kb", "to": "agent", "label": { "en": "grounding", "zh": "提供知識" } },
+      { "from": "agent", "to": "studio" },
+      { "from": "studio", "to": "app" },
+      { "from": "app", "to": "chat" },
+      { "from": "voice", "to": "chat" }
+    ]
+  },
+  "nursing-payroll": {
+    "legend": { "en": "AI step", "zh": "AI 參與的步驟" },
+    "lanes": [
+      { "en": "1. Accountant", "zh": "1. 會計" },
+      null,
+      { "en": "2. Reports", "zh": "2. 產出報表" }
+    ],
+    "nodes": [
+      { "id": "scan", "at": [0, 0], "icon": "scan-line", "label": { "en": "Scan timesheets", "zh": "掃描工作表" }, "note": { "en": "Handwritten PDFs", "zh": "手寫表單 PDF" } },
+      { "id": "start", "at": [0, 1], "icon": "mouse-pointer-click", "label": { "en": "Double-click to start", "zh": "點兩下批次檔" } },
+      { "id": "claude", "at": [1, 2], "icon": "bot", "label": { "en": "Claude reads forms", "zh": "Claude 讀表單" }, "note": { "en": "Following a custom skill", "zh": "依自訂 skill 流程" }, "accent": true },
+      { "id": "json", "at": [1, 3], "icon": "file-json", "label": { "en": "One JSON\nper caregiver", "zh": "每位看護員\n一份 JSON" } },
+      { "id": "ids", "at": [2, 3], "icon": "id-card", "label": { "en": "ID lookup", "zh": "身分證對照" }, "note": { "en": "Fixes misread names", "zh": "更正讀錯的姓名" } },
+      { "id": "engine", "at": [1, 4], "icon": "calculator", "label": { "en": "Billing engine", "zh": "計費引擎" }, "note": { "en": "Days, shifts, amounts", "zh": "日／班／節與金額" } },
+      { "id": "confirm", "at": [0, 5], "icon": "clipboard-check", "label": { "en": "To-confirm list", "zh": "待確認清單" }, "note": { "en": "Answered in Chinese", "zh": "用中文回答 Claude" } },
+      { "id": "excel", "at": [2, 5], "icon": "file-spreadsheet", "label": { "en": "Excel report", "zh": "Excel 報表" }, "note": { "en": "Last month's layout", "zh": "沿用上個月格式" } },
+      { "id": "print", "at": [2, 6], "icon": "printer", "label": { "en": "Preview & print", "zh": "預覽與列印" } }
+    ],
+    "edges": [
+      { "from": "scan", "to": "start" },
+      { "from": "start", "to": "claude" },
+      { "from": "claude", "to": "json" },
+      { "from": "json", "to": "engine" },
+      { "from": "ids", "to": "engine" },
+      { "from": "engine", "to": "confirm" },
+      { "from": "engine", "to": "excel", "label": { "en": "Excel COM", "zh": "Excel COM" } },
+      { "from": "confirm", "to": "print", "label": { "en": "approved", "zh": "確認後" }, "dashed": true },
+      { "from": "excel", "to": "print" }
+    ]
+  },
+  "podcast-tool": {
+    "legend": { "en": "AI step", "zh": "AI 參與的步驟" },
+    "lanes": [
+      { "en": "1. On this computer — free, nothing uploaded", "zh": "1. 本機處理（免費、音檔不上傳）" },
+      null,
+      { "en": "2. Claude", "zh": "2. Claude" }
+    ],
+    "nodes": [
+      { "id": "audio", "at": [0, 0], "icon": "file-audio", "label": { "en": "Drop in an episode", "zh": "丟入音檔" }, "note": { "en": "Up to 60 min", "zh": "60 分鐘內" } },
+      { "id": "asr", "at": [0, 1], "icon": "audio-waveform", "label": { "en": "Speech recognition", "zh": "語音辨識" }, "note": { "en": "FFmpeg + faster-whisper", "zh": "FFmpeg＋faster-whisper" }, "accent": true },
+      { "id": "speakers", "at": [0, 2], "icon": "users", "label": { "en": "Who's speaking", "zh": "講者分離" }, "note": { "en": "pyannote", "zh": "pyannote" }, "accent": true },
+      { "id": "zh", "at": [0, 3], "icon": "languages", "label": { "en": "Traditional Chinese", "zh": "簡轉繁與校正" }, "note": { "en": "OpenCC + glossary", "zh": "OpenCC＋自訂詞庫" } },
+      { "id": "srt", "at": [0, 4], "icon": "subtitles", "label": { "en": "Subtitles & transcript", "zh": "字幕與逐字稿" }, "note": { "en": ".srt, speakers labelled", "zh": ".srt・標好講者" } },
+      { "id": "copy", "at": [2, 5], "icon": "sparkles", "label": { "en": "Claude writes copy", "zh": "Claude 寫文案" }, "note": { "en": "To the show's own rules", "zh": "依節目規範 skill" }, "accent": true },
+      { "id": "check", "at": [1, 6], "icon": "shield-check", "label": { "en": "Automatic checks", "zh": "自動檢查" }, "note": { "en": "Times, quotes, numbers\nmust match the transcript", "zh": "章節時間・金句・數字\n都要對得上逐字稿" } },
+      { "id": "upload", "at": [0, 6], "icon": "send", "label": { "en": "Publish", "zh": "上架" } }
+    ],
+    "edges": [
+      { "from": "audio", "to": "asr" },
+      { "from": "asr", "to": "speakers" },
+      { "from": "speakers", "to": "zh" },
+      { "from": "zh", "to": "srt" },
+      { "from": "srt", "to": "copy", "label": { "en": "text only", "zh": "只傳文字" } },
+      { "from": "copy", "to": "check" },
+      { "from": "srt", "to": "upload" }
+    ]
+  },
+  "little-daily-site": {
+    "legend": { "en": "AI step", "zh": "AI 參與的步驟" },
+    "lanes": [
+      { "en": "1. Listeners", "zh": "1. 聽眾" },
+      null,
+      { "en": "2. Building it", "zh": "2. 開發與上線" }
+    ],
+    "nodes": [
+      { "id": "visit", "at": [0, 0], "icon": "globe", "label": { "en": "Visit the site", "zh": "進入官網" } },
+      { "id": "quiz", "at": [0, 1], "icon": "list-checks", "label": { "en": "Personality quiz", "zh": "心理測驗" } },
+      { "id": "card", "at": [0, 2], "icon": "image", "label": { "en": "Personal card", "zh": "專屬小卡" }, "note": { "en": "1080×1350, share or save", "zh": "1080×1350 下載分享" } },
+      { "id": "letter", "at": [0, 3], "icon": "mail", "label": { "en": "Letter to the sea", "zh": "大海裡的信" }, "note": { "en": "Stories and messages", "zh": "投稿與留言" } },
+      { "id": "redis", "at": [1, 4], "icon": "database", "label": { "en": "Upstash Redis", "zh": "Upstash Redis" }, "note": { "en": "Rate-limited, honeypot", "zh": "限流・防機器人" } },
+      { "id": "discord", "at": [1, 5], "icon": "send", "label": { "en": "Relayed to Discord", "zh": "推送到 Discord" }, "note": { "en": "Hosts see it at once", "zh": "主持人即時收到" } },
+      { "id": "rules", "at": [2, 0], "icon": "file-text", "label": { "en": "CLAUDE.md", "zh": "CLAUDE.md" }, "note": { "en": "Project conventions", "zh": "開發慣例" } },
+      { "id": "claude", "at": [2, 1], "icon": "bot", "label": { "en": "Built with Claude Code", "zh": "Claude Code 開發" }, "note": { "en": "Layout from measured values", "zh": "依實測值重現版型" }, "accent": true },
+      { "id": "hooks", "at": [2, 2], "icon": "shield-check", "label": { "en": "Hooks guard", "zh": "Hooks 把關" }, "note": { "en": "Commit format, PR branch", "zh": "commit 格式・PR 分支" } },
+      { "id": "deploy", "at": [2, 3], "icon": "rocket", "label": { "en": "Live on Vercel", "zh": "Vercel 上線" } },
+      { "id": "llms", "at": [2, 4], "icon": "sparkles", "label": { "en": "llms.txt", "zh": "llms.txt" }, "note": { "en": "Readable by AI search", "zh": "讓 AI 搜尋讀懂" } }
+    ],
+    "edges": [
+      { "from": "visit", "to": "quiz" },
+      { "from": "quiz", "to": "card" },
+      { "from": "card", "to": "letter" },
+      { "from": "letter", "to": "redis", "label": { "en": "submit", "zh": "送出" } },
+      { "from": "redis", "to": "discord" },
+      { "from": "rules", "to": "claude" },
+      { "from": "claude", "to": "hooks" },
+      { "from": "hooks", "to": "deploy" },
+      { "from": "deploy", "to": "llms" }
+    ]
+  },
+  "claude-skills-workflow": {
+    "legend": { "en": "Claude leads the step", "zh": "Claude 主導的步驟" },
+    "lanes": [
+      { "en": "1. Plan", "zh": "1. 規劃" },
+      null,
+      { "en": "2. Build", "zh": "2. 實作" },
+      null,
+      { "en": "3. Guard & ship", "zh": "3. 把關與交付" }
+    ],
+    "nodes": [
+      { "id": "spec", "at": [0, 0], "icon": "pen-line", "label": { "en": "Spec interview", "zh": "規格訪談" }, "note": { "en": "/planning:spec\nrequirement → spec", "zh": "/planning:spec\n需求 → 規格文件" } },
+      { "id": "autopilot", "at": [0, 1], "icon": "sparkles", "label": { "en": "Self-completing spec", "zh": "規格自動補完" }, "note": { "en": "spec-autopilot decides\nevery open question", "zh": "spec-autopilot\n自行決定待定問題" }, "accent": true },
+      { "id": "review", "at": [0, 2], "icon": "clipboard-check", "label": { "en": "Staff-engineer review", "zh": "Staff 工程師審查" }, "note": { "en": "PASS / WARN / FAIL,\nthen apply-review", "zh": "PASS／WARN／FAIL\n再 apply-review 修正" }, "accent": true },
+      { "id": "branch", "at": [2, 3], "icon": "git-branch", "label": { "en": "Branch from main", "zh": "從 main 開分支" }, "note": { "en": "/git:branch", "zh": "/git:branch" } },
+      { "id": "tdd", "at": [2, 4], "icon": "flask-conical", "label": { "en": "Test-first build", "zh": "TDD 實作" }, "note": { "en": "Failing test first,\nthen the code", "zh": "先寫失敗測試\n再寫程式" }, "accent": true },
+      { "id": "rules", "at": [4, 2], "icon": "book-open", "label": { "en": "Standards & skills", "zh": "規範與 skills" }, "note": { "en": "OWASP, design system, API", "zh": "OWASP・設計系統・API" } },
+      { "id": "hooks", "at": [4, 3], "icon": "shield-check", "label": { "en": "Hooks on every edit", "zh": "Hooks 即時把關" }, "note": { "en": "Secrets, commit format,\nPR branch", "zh": "敏感檔・commit 格式\nPR 分支" } },
+      { "id": "verify", "at": [4, 5], "icon": "list-checks", "label": { "en": "Stop-hook check", "zh": "Stop hook 驗證" }, "note": { "en": "Lint, types, tests\nbefore \"done\"", "zh": "lint・型別・測試\n通過才算完成" } },
+      { "id": "pr", "at": [4, 6], "icon": "git-pull-request", "label": { "en": "PR + AI review", "zh": "PR＋AI 審查" }, "note": { "en": "/create-pr → develop,\nClaude Code Review + CI", "zh": "/create-pr → develop\nClaude Code Review＋CI" }, "accent": true }
+    ],
+    "edges": [
+      { "from": "spec", "to": "autopilot" },
+      { "from": "autopilot", "to": "review" },
+      { "from": "review", "to": "branch", "label": { "en": "approved plan", "zh": "定案計畫" } },
+      { "from": "branch", "to": "tdd" },
+      { "from": "rules", "to": "hooks" },
+      { "from": "hooks", "to": "tdd", "label": { "en": "blocks", "zh": "擋下違規" } },
+      { "from": "tdd", "to": "verify" },
+      { "from": "verify", "to": "pr" }
+    ]
+  }
+}

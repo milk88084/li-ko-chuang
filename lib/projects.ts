@@ -1,12 +1,12 @@
 import projectData from "@/data/projects.json";
 import type { Locale } from "@/lib/locale";
 
-// Every piece of work on the site — engineering products and marketing
-// campaigns alike — lives in data/projects.json as one list, so the homepage,
-// /work, /work/[slug], the sitemap and the structured data all read the same
-// slugs and cannot disagree about what exists.
+// Every piece of work on the site — engineering products, UI/UX design, AI
+// applications and marketing campaigns alike — lives in data/projects.json as
+// one list, so the homepage, /work, /work/[slug], the sitemap and the
+// structured data all read the same slugs and cannot disagree about what exists.
 
-export const PROJECT_TYPES = ["engineering", "marketing"] as const;
+export const PROJECT_TYPES = ["engineering", "design", "ai", "marketing"] as const;
 export type ProjectType = (typeof PROJECT_TYPES)[number];
 
 /** The Hairline figures a project card can show (see components/canvas/FigureFrame). */
@@ -22,6 +22,11 @@ export const PROJECT_FIGURES = [
   "hub",
   "dish",
   "slow",
+  "stack",
+  "sieve",
+  "router",
+  "turntable",
+  "terrain",
 ] as const;
 export type ProjectFigureName = (typeof PROJECT_FIGURES)[number];
 
@@ -43,7 +48,13 @@ export interface ProjectMedia {
   kind: ProjectMediaKind;
   width: number;
   height: number;
+  /** Which page or screen it shows ("Portfolio page"); design work names its shots. */
+  caption?: string;
 }
+
+type RawMedia = Omit<ProjectMedia, "caption"> & {
+  caption?: Record<Locale, string>;
+};
 
 export const isVideo = (media: ProjectMedia) => media.src.endsWith(".mp4");
 
@@ -52,9 +63,16 @@ export interface Project {
   slug: string;
   type: ProjectType;
   featured: boolean;
-  /** The Hairline line figure that stands for the project on cards. */
-  figure: ProjectFigureName;
-  /** Everything shown on the project page, lead piece first. */
+  /**
+   * The Hairline line figure that stands for the project on cards, or null
+   * when the card shows the lead screenshot instead (design work, where the
+   * site itself is the thing to see).
+   */
+  figure: ProjectFigureName | null;
+  /**
+   * Everything shown on the project page, lead piece first. Empty for work
+   * with nothing to screenshot (AI workflows); the page shows its figure.
+   */
   media: ProjectMedia[];
   link: string | null;
   title: string;
@@ -80,8 +98,11 @@ function resolve(raw: RawProject, locale: Locale): Project {
     slug: raw.slug,
     type: raw.type as ProjectType,
     featured: raw.featured,
-    figure: raw.figure as ProjectFigureName,
-    media: raw.media as ProjectMedia[],
+    figure: raw.figure as ProjectFigureName | null,
+    media: (raw.media as RawMedia[]).map(({ caption, ...m }) => ({
+      ...m,
+      ...(caption && { caption: caption[locale] }),
+    })),
     link: raw.link,
     title: copy.title,
     summary: copy.summary,

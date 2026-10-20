@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { Project, ProjectType } from "@/lib/projects";
-import { isProjectType } from "@/lib/projects";
+import { PROJECT_TYPES, isProjectType } from "@/lib/projects";
 import { localePath, type Locale } from "@/lib/locale";
 import { ProjectCard } from "./ProjectCard";
 
@@ -55,16 +55,15 @@ function GridView({
   active,
   onSelect,
 }: GridProps & { active: Filter; onSelect?: (filter: Filter) => void }) {
-  const counts: Record<Filter, number> = {
-    all: projects.length,
-    engineering: projects.filter((p) => p.type === "engineering").length,
-    marketing: projects.filter((p) => p.type === "marketing").length,
-  };
+  const count = (filter: Filter) =>
+    filter === "all"
+      ? projects.length
+      : projects.filter((p) => p.type === filter).length;
 
   return (
     <>
       <div role="group" aria-label="Filter" className="flex flex-wrap gap-2">
-        {(["all", "engineering", "marketing"] as const).map((filter) => (
+        {(["all", ...PROJECT_TYPES] as const).map((filter) => (
           <button
             key={filter}
             type="button"
@@ -78,7 +77,7 @@ function GridView({
           >
             {filters[filter]}
             <span className="ml-2 font-mono text-[11px] opacity-70">
-              {counts[filter]}
+              {count(filter)}
             </span>
           </button>
         ))}
