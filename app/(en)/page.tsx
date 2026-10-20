@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export default function EnHome() {
   return (
     <>
-      <StructuredData page="home" />
+      <StructuredData locale="en" page="home" />
       <HomePage locale="en" />
     </>
   );

@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata("zh", "events");
 export default function ZhEventsPage() {
   return (
     <>
-      <StructuredData page="events" />
+      <StructuredData locale="zh" page="events" />
       <EventsPage locale="zh" />
     </>
   );

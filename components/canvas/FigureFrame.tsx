@@ -12,9 +12,14 @@ import {
   Rebuild,
   Relay,
   Riffle,
+  Router,
   Settle,
+  Sieve,
   Slow,
+  Stack,
   Terminal,
+  Terrain,
+  Turntable,
 } from "@lucasmarkes/hairline/react";
 
 // A Hairline isometric line figure (github.com/lucasmarkes/hairline, MIT) on
@@ -36,6 +41,11 @@ const FIGURES = {
   hub: Hub,
   dish: Dish,
   slow: Slow,
+  stack: Stack,
+  sieve: Sieve,
+  router: Router,
+  turntable: Turntable,
+  terrain: Terrain,
   // About › Current focus (data/content.json)
   exploded: Exploded,
   phone: Phone,

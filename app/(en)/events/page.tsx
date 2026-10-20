@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata("en", "events");
 export default function EnEventsPage() {
   return (
     <>
-      <StructuredData page="events" />
+      <StructuredData locale="en" page="events" />
       <EventsPage locale="en" />
     </>
   );

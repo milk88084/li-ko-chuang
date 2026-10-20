@@ -3,6 +3,7 @@ import path from "node:path";
 import {
   PROJECT_FIGURES,
   PROJECT_SLUGS,
+  PROJECT_TYPES,
   getFeaturedProjects,
   getNextProject,
   getProject,
@@ -32,15 +33,30 @@ describe("project data", () => {
   });
 
   it("gives every project a known figure, each used once", () => {
-    const figures = getProjects("en").map((p) => p.figure);
+    const figures = getProjects("en").flatMap((p) => (p.figure ? [p.figure] : []));
     for (const figure of figures) expect(PROJECT_FIGURES).toContain(figure);
     expect(new Set(figures).size).toBe(figures.length);
+  });
+
+  // Design work is shown by the site itself: its card uses the lead
+  // screenshot, so it has no figure and must have media.
+  it("covers design work with its own screenshot instead of a figure", () => {
+    for (const project of getProjects("en")) {
+      if (project.type === "design") {
+        expect(project.figure).toBeNull();
+        expect(project.media.length).toBeGreaterThan(0);
+      } else {
+        expect(project.figure).not.toBeNull();
+      }
+    }
   });
 
   it("lists media that exists, at its real size, lead piece first", () => {
     const kinds = ["mockup", "browser", "phone", "icon", "photo"];
     for (const project of getProjects("en")) {
-      expect(project.media.length).toBeGreaterThan(0);
+      // Only AI work may go without media; its page shows the figure instead.
+      if (project.type !== "ai") expect(project.media.length).toBeGreaterThan(0);
+      if (project.media.length === 0) continue;
       expect(["mockup", "browser", "photo"]).toContain(project.media[0].kind);
       for (const m of project.media) {
         expect(kinds).toContain(m.kind);
@@ -54,7 +70,9 @@ describe("project data", () => {
   });
 
   it("never reuses a project's figure on the About page", () => {
-    const projectFigures = getProjects("en").map((p): string => p.figure);
+    const projectFigures = getProjects("en").flatMap((p): string[] =>
+      p.figure ? [p.figure] : [],
+    );
     for (const locale of LOCALES) {
       const aboutFigures = content[locale].about.now.items.map((i) => i.figure);
       expect(new Set(aboutFigures).size).toBe(aboutFigures.length);
@@ -69,13 +87,14 @@ describe("getProjects", () => {
   });
 
   it("filters by type", () => {
-    const engineering = getProjects("en", "engineering");
-    const marketing = getProjects("en", "marketing");
-    expect(engineering.length).toBeGreaterThan(0);
-    expect(marketing.length).toBeGreaterThan(0);
-    expect(engineering.every((p) => p.type === "engineering")).toBe(true);
-    expect(marketing.every((p) => p.type === "marketing")).toBe(true);
-    expect(engineering.length + marketing.length).toBe(PROJECT_SLUGS.length);
+    let total = 0;
+    for (const type of PROJECT_TYPES) {
+      const projects = getProjects("en", type);
+      expect(projects.length).toBeGreaterThan(0);
+      expect(projects.every((p) => p.type === type)).toBe(true);
+      total += projects.length;
+    }
+    expect(total).toBe(PROJECT_SLUGS.length);
   });
 
   it("returns the requested language", () => {
@@ -115,8 +134,10 @@ describe("getNextProject", () => {
 });
 
 describe("isProjectType", () => {
-  it("accepts only the two known types", () => {
+  it("accepts only the known types", () => {
     expect(isProjectType("engineering")).toBe(true);
+    expect(isProjectType("design")).toBe(true);
+    expect(isProjectType("ai")).toBe(true);
     expect(isProjectType("marketing")).toBe(true);
     expect(isProjectType("creator")).toBe(false);
     expect(isProjectType(null)).toBe(false);

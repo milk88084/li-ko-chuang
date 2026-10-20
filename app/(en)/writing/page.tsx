@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export default function EnWritingPage() {
   return (
     <>
-      <StructuredData page="writing" />
+      <StructuredData locale="en" page="writing" />
       <WritingPage locale="en" />
     </>
   );

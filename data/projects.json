@@ -26,7 +26,7 @@
     "figure": "riffle",
     "link": "https://apps.apple.com/app/id6785747999",
     "en": {
-      "title": "araS",
+      "title": "araS | Personal Asset, Portfolio & Retirement App",
       "summary": "Personal asset, portfolio and retirement tracker — designed, built and shipped to the App Store solo.",
       "category": null,
       "problem": "Assets, liabilities, TW/US holdings, dividends and insurance policies sit scattered across banks, brokers and spreadsheets, so net worth is never visible at a glance — and no single tool handles multi-currency holdings, dividends and retirement projection together.",
@@ -60,7 +60,7 @@
       ]
     },
     "zh": {
-      "title": "araS",
+      "title": "araS｜個人資產、投資組合與退休試算 App",
       "summary": "個人資產、投資組合與退休試算 App，從產品設計、開發到上架 App Store 全程一人完成。",
       "category": null,
       "problem": "資產、負債、台美股持股、股息與保單分散在各家銀行、券商與試算表，淨資產永遠看不到全貌；市面上也沒有一套工具能同時處理多幣別持股、股利與退休試算。",
@@ -121,7 +121,7 @@
     "figure": "loupe",
     "link": "https://apps.apple.com/app/id6798490139",
     "en": {
-      "title": "reteP",
+      "title": "reteP | Food & Calorie Tracking App",
       "summary": "Daily food and calorie logging — web app, iOS app and FastAPI backend, all built solo.",
       "category": null,
       "problem": "Most food-logging apps can't find the dishes people in Taiwan actually eat, and any extra step between a meal and the log is enough to make people stop after a few days.",
@@ -151,7 +151,7 @@
       ]
     },
     "zh": {
-      "title": "reteP",
+      "title": "reteP｜飲食與熱量紀錄 App",
       "summary": "每日飲食與熱量紀錄，網頁版、iOS App 與 FastAPI 後端皆由我一人完成。",
       "category": null,
       "problem": "多數飲食 App 的食物庫查不到台灣人常吃的食物；而記錄只要多一個步驟，就很難一天三餐天天持續。",
@@ -202,7 +202,7 @@
     "figure": "rebuild",
     "link": null,
     "en": {
-      "title": "U-Turn",
+      "title": "U-Turn | Badminton Team-Making & Court Scheduling PWA",
       "summary": "A badminton team-making and court-scheduling PWA, built with a friend — I led the UI redesign.",
       "category": null,
       "problem": "Before every badminton session someone has to sort players into teams by hand, juggling headcount, gender and who has played how many games — slow, and rarely fair.",
@@ -225,7 +225,7 @@
       ]
     },
     "zh": {
-      "title": "U-Turn",
+      "title": "U-Turn｜羽球自動分隊與排場 PWA",
       "summary": "羽球活動自動分隊與場次安排 PWA，與朋友合作開發，我負責 UI 重構與視覺設計。",
       "category": null,
       "problem": "羽球團每次開打前，都要有人手動依人數、性別與上場次數排隊伍，既耗時又很難排得公平。",
@@ -269,8 +269,8 @@
     "figure": "format",
     "link": null,
     "en": {
-      "title": "AI Research",
-      "summary": "A trend-watching and decision-support platform for the MOEA Department of Industrial Technology, tracking emerging tech, industry news and early weak signals. I am the main frontend developer.",
+      "title": "AI Research | Tech Trend Watching & Decision-Support Platform",
+      "summary": "A trend-watching and decision-support platform for the MOEA Department of Industrial Technology, tracking emerging tech and weak signals. I lead the frontend.",
       "category": null,
       "problem": "Policy and investment calls depend on spotting global tech trends early, but the signals are scattered across news, papers, open-source communities and startup data — gathered by hand, with no way to tell a faint new signal from a mainstream one.",
       "outcome": "Built the whole frontend in Next.js 14. Deep Research streams its reports through an SSE proxy that injects heartbeats while the upstream is idle, so the gateway never drops the connection. Around it: a STEEP trend map, a leader radar, a tech-portfolio decision center with fishbone backcasting and Delphi expert review, a startup match board and a daily AI newsletter. Content is personalized by the user's industry, and signed share codes open selected reports without a login.",
@@ -297,7 +297,7 @@
       ]
     },
     "zh": {
-      "title": "AI 快研究",
+      "title": "AI 快研究｜科技趨勢觀測與決策支援平台",
       "summary": "經濟部技術司的趨勢觀測與決策支援平台，追蹤前瞻技術、產業動態與早期弱信號；我是主要前端開發者。",
       "category": null,
       "problem": "政策與投資判斷需要及早掌握全球技術趨勢，但訊號散落在新聞、論文、開源社群與新創資料裡，只能人工蒐集，也分不出哪些是剛冒出的微光、哪些已是主流。",
@@ -346,7 +346,7 @@
     "figure": "terminal",
     "link": null,
     "en": {
-      "title": "Digital Chatroom",
+      "title": "Digital Chatroom | Multi-Venue AI Guide Chatbot",
       "summary": "One codebase, switched by environment variables, powering AI guide chatbots for venues such as a planetarium and several historical-figure guides.",
       "category": null,
       "problem": "Each venue wanted its own AI guide, each with different branding, languages and features — rebuilding a chat interface every time was too costly and impossible to maintain.",
@@ -370,7 +370,7 @@
       ]
     },
     "zh": {
-      "title": "數位聊天室",
+      "title": "數位聊天室｜多場館 AI 導覽聊天機器人",
       "summary": "一套程式碼、以環境變數切換的 AI 導覽聊天室，已上線為天文館、李登輝、雍正帝、愛因斯坦等多個導覽專案。",
       "category": null,
       "problem": "不同場館都想要自己的 AI 導覽員，品牌樣式、語言與功能需求各不相同；每次重寫一套聊天介面，成本太高也難以維護。",
@@ -415,8 +415,8 @@
     "figure": "cabinet",
     "link": null,
     "en": {
-      "title": "LandScape Industry Map",
-      "summary": "An industry map of Taiwan's IT service providers, bringing company profiles, categories and offerings together for internal decision-making and industry analysis.",
+      "title": "LandScape | IT Service Provider Search & Company Relationship Graph",
+      "summary": "An industry map of Taiwan's IT service providers, bringing company profiles, categories and offerings together for decision-making and industry analysis.",
       "category": null,
       "problem": "Finding the right IT service provider meant cross-checking company registries, OTC market data and subsidy records by hand — the data was scattered, filtering was clumsy, and investment and shareholding ties between companies were invisible.",
       "outcome": "Browse companies by industry area and filter by capital, headcount, capability registration, subsidies and product category; each company page draws its investment and shareholding ties with Cytoscape.js. Filter state is split into Jotai atoms so changing one condition no longer recomputes the whole graph. Conversational search, crawler settings and data import round it out, with Cypress E2E tests, Husky hooks and Semgrep scans guarding quality.",
@@ -441,7 +441,7 @@
       ]
     },
     "zh": {
-      "title": "LandScape 產業地圖",
+      "title": "LandScape ｜資訊服務業者查詢與企業關係圖譜",
       "summary": "台灣資訊服務業的產業地圖，整合企業資料、產業分類與產品服務，提供內部決策與產業分析。",
       "category": null,
       "problem": "要找到合適的資訊服務業者，得在公司登記、櫃買中心與補助資料之間來回比對；資料分散、篩選不直覺，也看不出企業之間的投資與持股關係。",
@@ -488,7 +488,7 @@
     "figure": "relay",
     "link": null,
     "en": {
-      "title": "Agent Fabric",
+      "title": "Agent Fabric | AI Agent Building Platform for Businesses",
       "summary": "A Dify-like platform that helps IT service providers build their own AI agents. I took over and led the frontend.",
       "category": null,
       "problem": "IT service providers wanted to adopt AI, but building an agent from scratch is a high bar, existing tools are hard to customize, and connecting them to a company's own documents and databases is harder still.",
@@ -513,7 +513,7 @@
       ]
     },
     "zh": {
-      "title": "Agent Fabric",
+      "title": "Agent Fabric｜企業 AI Agent 建置平台",
       "summary": "協助資訊服務業者快速建立自己 AI Agent 的平台（類 Dify），我接手並主導前端開發。",
       "category": null,
       "problem": "資訊服務業者想導入 AI，但從零打造 Agent 門檻高、現有工具難以客製，也不容易接上自家的文件與資料庫。",
@@ -535,6 +535,542 @@
         "Sass",
         "Axios",
         "React Router"
+      ]
+    }
+  },
+  {
+    "slug": "nivorae",
+    "type": "design",
+    "featured": false,
+    "media": [
+      {
+        "src": "/06_Nivorae.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "Home",
+          "zh": "首頁"
+        }
+      },
+      {
+        "src": "/06_Nivorae_services.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "Services",
+          "zh": "服務項目"
+        }
+      },
+      {
+        "src": "/06_Nivorae_why-us.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "Why us: the animated building",
+          "zh": "為什麼選我們：建築動畫"
+        }
+      },
+      {
+        "src": "/06_Nivorae_featured.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "Featured work",
+          "zh": "精選作品"
+        }
+      },
+      {
+        "src": "/06_Nivorae_portfolio.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "Portfolio: parallax masonry",
+          "zh": "作品集：視差瀑布流"
+        }
+      },
+      {
+        "src": "/06_Nivorae_plans.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 886,
+        "caption": {
+          "en": "Plans",
+          "zh": "方案頁"
+        }
+      },
+      {
+        "src": "/06_Nivorae_team.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "About Nivorae",
+          "zh": "關於 Nivorae"
+        }
+      },
+      {
+        "src": "/06_Nivorae_qa.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "FAQ",
+          "zh": "常見問題"
+        }
+      },
+      {
+        "src": "/06_Nivorae_mobile.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 844,
+        "caption": {
+          "en": "Home",
+          "zh": "首頁"
+        }
+      },
+      {
+        "src": "/06_Nivorae_mobile_portfolio.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 844,
+        "caption": {
+          "en": "Portfolio",
+          "zh": "作品集"
+        }
+      },
+      {
+        "src": "/06_Nivorae_mobile_plans.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 830,
+        "caption": {
+          "en": "Plans",
+          "zh": "方案頁"
+        }
+      },
+      {
+        "src": "/06_Nivorae_mobile_team.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 844,
+        "caption": {
+          "en": "About Nivorae",
+          "zh": "關於 Nivorae"
+        }
+      }
+    ],
+    "figure": null,
+    "link": "https://nivorae.net",
+    "en": {
+      "title": "Nivorae | Website for a Three-Engineer Software Studio",
+      "summary": "The bilingual site of Nivorae, the three-engineer software studio I'm part of. I built its portfolio, plans and team pages and the contact flow.",
+      "category": null,
+      "problem": "Clients choosing a small studio want proof of craft, a clear process and plain commercial terms before they get in touch; a generic template site says none of that, and for a studio that sells front-end work the site itself is the portfolio.",
+      "outcome": "Built on Vite, React and TypeScript with Traditional Chinese and English routes. I built the portfolio page, whose parallax masonry hero takes over the wheel and touch scroll, eases it with a lerp loop and moves the columns with GPU transforms only, letting the page scroll on once the columns end; plus an animated \"why us\" building illustration, the animated plans-page hero, the redesigned team hero, and the contact and feedback forms wired to the API, with testimonials read from it. Each route is prerendered with its JSON-LD for crawlers, Claude Code reviews every PR, and the site runs on Zeabur.",
+      "highlights": [
+        "Live site",
+        "Team of three",
+        "Bilingual zh / en",
+        "Parallax portfolio",
+        "Prerendered SEO",
+        "Contact form + API"
+      ],
+      "tech": [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Framer Motion",
+        "React Router",
+        "Radix UI",
+        "Vitest",
+        "Zeabur"
+      ]
+    },
+    "zh": {
+      "title": "Nivorae｜三人軟體開發團隊官網",
+      "summary": "與另外兩位工程師共組的軟體開發團隊 Nivorae 的中英雙語官網；我負責作品集、方案、團隊頁與聯絡表單的前端開發。",
+      "category": null,
+      "problem": "客戶挑選小型開發團隊時，想先看到作品品質、清楚的合作流程與白紙黑字的商務條件才願意聯繫；套版官網說不出這些，而對一個接前端案子的團隊來說，官網本身就是作品集。",
+      "outcome": "以 Vite + React + TypeScript 建站，提供繁中與英文路由。我負責作品集頁：視差瀑布流主視覺接管滾輪與觸控捲動，以 lerp 迴圈緩動，只用 GPU transform 移動各欄，欄位捲到底才把捲動還給頁面；另做了「為什麼選我們」的建築動畫插圖、方案頁動態主視覺、團隊頁主視覺改版，以及串接 API 的諮詢與回饋表單，客戶評價也改由 API 讀取。各路由預先渲染並附 JSON-LD 給搜尋引擎，每個 PR 由 Claude Code 審查，部署於 Zeabur。",
+      "highlights": [
+        "已上線",
+        "三人團隊",
+        "中英雙語",
+        "視差作品集",
+        "預渲染 SEO",
+        "表單串接 API"
+      ],
+      "tech": [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Framer Motion",
+        "React Router",
+        "Radix UI",
+        "Vitest",
+        "Zeabur"
+      ]
+    }
+  },
+  {
+    "slug": "little-daily-site",
+    "type": "design",
+    "featured": false,
+    "media": [
+      {
+        "src": "/07_Little_Daily_about.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "About us",
+          "zh": "關於我們"
+        }
+      },
+      {
+        "src": "/07_Little_Daily_story.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "Our stories",
+          "zh": "「我們」的故事"
+        }
+      },
+      {
+        "src": "/07_Little_Daily_self.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "Find yourself: the quiz",
+          "zh": "找回自己：心理測驗"
+        }
+      },
+      {
+        "src": "/07_Little_Daily.webp",
+        "kind": "browser",
+        "width": 1584,
+        "height": 900,
+        "caption": {
+          "en": "Home",
+          "zh": "首頁"
+        }
+      },
+      {
+        "src": "/07_Little_Daily_mobile.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 844,
+        "caption": {
+          "en": "Home",
+          "zh": "首頁"
+        }
+      },
+      {
+        "src": "/07_Little_Daily_mobile_about.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 844,
+        "caption": {
+          "en": "About us",
+          "zh": "關於我們"
+        }
+      },
+      {
+        "src": "/07_Little_Daily_mobile_story.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 844,
+        "caption": {
+          "en": "Our stories",
+          "zh": "「我們」的故事"
+        }
+      },
+      {
+        "src": "/07_Little_Daily_mobile_chapter.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 844,
+        "caption": {
+          "en": "A story's chapters",
+          "zh": "故事章節"
+        }
+      },
+      {
+        "src": "/07_Little_Daily_mobile_read.webp",
+        "kind": "phone",
+        "width": 375,
+        "height": 844,
+        "caption": {
+          "en": "Reading a story",
+          "zh": "閱讀故事"
+        }
+      }
+    ],
+    "figure": null,
+    "link": "https://2026-little.vercel.app",
+    "en": {
+      "title": "Little Daily Website | A Podcast Brand Site Built with Claude Code",
+      "summary": "The website for the podcast Little Daily — from the mobile layout to a personality quiz and a listener mailbox, built and shipped with Claude Code.",
+      "category": null,
+      "problem": "The show needed a home for its listeners — somewhere to introduce the podcast and let people take part and send in their stories — with one person to build a polished mobile experience in little time.",
+      "outcome": "Built on Next.js 16 and Tailwind CSS 4, with Claude Code reproducing a reference design's layout, spacing and interactions from measured values. It has a personality quiz whose answers combine into a shareable card (downloadable as a 1080×1350 image), a \"letter to the sea\" submission page, a story collection and an unlisted podcast mailbox; submissions are stored in Upstash Redis and relayed to Discord. A CLAUDE.md records the project's conventions, Claude Code hooks block malformed commits and PRs opened from the main branch, and an llms.txt helps AI search understand the site.",
+      "highlights": [
+        "Built with Claude Code",
+        "Personality quiz",
+        "Shareable cards",
+        "Discord relay",
+        "llms.txt"
+      ],
+      "tech": [
+        "Next.js 16",
+        "React 19",
+        "Tailwind CSS 4",
+        "Motion",
+        "Upstash Redis",
+        "Claude Code",
+        "Vercel"
+      ]
+    },
+    "zh": {
+      "title": "微小日常官網｜以 Claude Code 開發的 Podcast 品牌網站",
+      "summary": "Podcast「微小日常」的官網，從手機版版型、心理測驗到聽眾留言箱，全程以 Claude Code 開發並上線。",
+      "category": null,
+      "problem": "節目需要一個承接聽眾的地方：介紹節目、讓聽眾參與互動與投稿；但只有一個人開發，要在短時間內做出細緻的手機版體驗。",
+      "outcome": "以 Next.js 16 + Tailwind CSS 4 建站，由 Claude Code 依參考設計的實測值重現版型、間距與互動。網站有心理測驗與依作答組合產生的分享小卡（可下載 1080×1350 圖片）、「大海裡的信」投稿、故事集與不公開的 Podcast 留言箱，投稿以 Upstash Redis 保存並推送到 Discord。專案以 CLAUDE.md 記錄開發慣例，用 Claude Code hooks 擋下格式不符的 commit 與從主分支開的 PR，並提供 llms.txt 讓 AI 搜尋讀懂網站。",
+      "highlights": [
+        "Claude Code 開發",
+        "心理測驗",
+        "分享小卡",
+        "Discord 通知",
+        "llms.txt"
+      ],
+      "tech": [
+        "Next.js 16",
+        "React 19",
+        "Tailwind CSS 4",
+        "Motion",
+        "Upstash Redis",
+        "Claude Code",
+        "Vercel"
+      ]
+    }
+  },
+  {
+    "slug": "claude-skills-workflow",
+    "type": "ai",
+    "featured": false,
+    "media": [],
+    "figure": "stack",
+    "link": null,
+    "en": {
+      "title": "Custom Claude Skills | Development Workflow Written for AI",
+      "summary": "Spec-writing, testing and App Store lessons written down as reusable Claude Code skills, so AI follows the same process every time.",
+      "category": null,
+      "problem": "AI writes code fast, but every new conversation means explaining the rules again; specs come back with open questions nobody decided, and the same testing and release pitfalls get hit over and over.",
+      "outcome": "Wrote a set of skills for my own work. spec-autopilot makes the AI check a spec for gaps and decide every open question before handing it over. web-to-ios-expo-app turns the five stages of taking a web app to iOS — skeleton, UI port, EAS and App Store submission, Sentry and RevenueCat, OTA updates — into steps with checkpoints. Others cover Clerk auth setup, moving Clerk to production and diagnosing SEO and link previews. Work then runs spec → review → TDD → verification → AI code review. In the Nivorae studio repo the same flow is wired in for the whole team: /planning:spec, /planning:review and /planning:apply-review settle the plan, hooks block secrets, scoped commits and PRs from the wrong branch on every edit, a Stop hook runs lint, types and tests before Claude may call a task done, and every PR to develop gets a Claude Code Review in CI. This portfolio site was built the same way.",
+      "highlights": [
+        "Self-completing specs",
+        "Team-wide hooks",
+        "Web → iOS release playbook",
+        "Test-first (TDD)",
+        "Code review",
+        "Reusable skills"
+      ],
+      "tech": [
+        "Claude Code",
+        "Agent Skills",
+        "Superpowers",
+        "Claude Code Hooks",
+        "GitHub Actions",
+        "Jest",
+        "Vitest"
+      ]
+    },
+    "zh": {
+      "title": "自製 Claude Skills｜把開發流程寫成 AI 的工作規範",
+      "summary": "把規格撰寫、測試與上架的經驗寫成可重用的 Claude Code skills，讓 AI 每次都照同一套流程開發。",
+      "category": null,
+      "problem": "AI 寫程式很快，但每開一次新對話就要重新交代規範；規格常留下沒人決定的問題，測試與上架的坑也一再重踩。",
+      "outcome": "寫出一組自用 skill：spec-autopilot 讓 AI 交出規格前先自我檢查缺漏、自行決定所有待定問題；web-to-ios-expo-app 把網頁改做 iOS App 的五個階段（骨架、UI 移植、EAS 與 App Store 上架、Sentry 與 RevenueCat、OTA 更新）寫成步驟與檢查點；另有 Clerk 認證設定、Clerk 正式環境搬遷與 SEO／分享預覽診斷。開發時依 spec → 審查 → TDD → 驗證 → AI code review 的流程進行。在 Nivorae 團隊的 repo 裡，這套流程直接寫進專案：以 /planning:spec、/planning:review 與 /planning:apply-review 定案計畫；每次寫檔都由 hooks 擋下敏感檔、不合格式的 commit 與從錯誤分支開的 PR；Stop hook 跑完 lint、型別與測試，Claude 才能宣告完成；每個合進 develop 的 PR 都在 CI 由 Claude Code Review 審查。這個作品集網站也是這樣完成的。",
+      "highlights": [
+        "規格自動補完",
+        "團隊 Hooks 把關",
+        "Web → iOS 上架手冊",
+        "TDD 測試先行",
+        "Code review",
+        "可重用 skills"
+      ],
+      "tech": [
+        "Claude Code",
+        "Agent Skills",
+        "Superpowers",
+        "Claude Code Hooks",
+        "GitHub Actions",
+        "Jest",
+        "Vitest"
+      ]
+    }
+  },
+  {
+    "slug": "nursing-payroll",
+    "type": "ai",
+    "featured": false,
+    "media": [],
+    "figure": "sieve",
+    "link": null,
+    "en": {
+      "title": "Caregiver Payroll Automation | AI Reads Handwritten Timesheets",
+      "summary": "Hands an accountant's monthly caregiver timesheets — handwritten and scanned — to Claude, which works out the pay and produces the Excel report.",
+      "category": null,
+      "problem": "Every month the accountant checks handwritten caregiver timesheets line by line, converts them into care ratios, shifts and amounts, and types it all into Excel. The rules are detailed and the forms many, so it is slow and easy to get wrong — and the accountant does not code.",
+      "outcome": "Claude reads each scanned PDF by following a custom skill and writes one JSON file per caregiver. A Python engine applies the billing rules — splitting time into segments and working out days, shifts and amounts — then uses Excel COM to copy last month's layout into a new monthly report, a preview PDF and a list of items to confirm. The accountant double-clicks a batch file and answers Claude's questions in Chinese. Checked against the hand-made September report, all 78 entries for two caregivers match cell for cell.",
+      "highlights": [
+        "AI reads handwritten forms",
+        "Billing rules engine",
+        "Excel report generation",
+        "To-confirm list",
+        "Built for a non-engineer"
+      ],
+      "tech": [
+        "Claude Code",
+        "Agent Skills",
+        "Python",
+        "openpyxl",
+        "pywin32",
+        "Excel COM"
+      ]
+    },
+    "zh": {
+      "title": "看護費月報表自動化｜AI 讀手寫工作表算出看護費",
+      "summary": "把會計每月手寫掃描的照顧服務員工作表交給 Claude 讀取，自動算出看護費並產出 Excel 報表。",
+      "category": null,
+      "problem": "每個月會計都要對照手寫的照顧服務員工作表，逐筆換算照顧比例、班別與金額，再填進 Excel；規則細、表單多，既耗時又容易算錯，而會計本身不會寫程式。",
+      "outcome": "Claude 依自訂 skill 讀取掃描檔 PDF，每位看護員整理成一份 JSON；Python 計算引擎依計費規則切時段、算出日／班／節與金額，再以 Excel COM 複製上個月的格式，產出新月份報表、預覽 PDF 與待確認清單。會計只要點兩下批次檔、用中文回答 Claude 的問題即可。以 115 年 9 月的人工報表驗算，兩位看護員共 78 筆逐格一致。",
+      "highlights": [
+        "AI 讀手寫表單",
+        "計費規則引擎",
+        "Excel 報表自動產出",
+        "待確認清單",
+        "非工程師也能操作"
+      ],
+      "tech": [
+        "Claude Code",
+        "Agent Skills",
+        "Python",
+        "openpyxl",
+        "pywin32",
+        "Excel COM"
+      ]
+    }
+  },
+  {
+    "slug": "n8n-weather-line",
+    "type": "ai",
+    "featured": false,
+    "media": [],
+    "figure": "router",
+    "link": null,
+    "en": {
+      "title": "Daily Weather Push | n8n + AI Weather Reminders on LINE",
+      "summary": "An n8n workflow that pulls the Central Weather Administration forecast, has AI turn it into a plain reminder, and sends it to LINE every morning.",
+      "category": null,
+      "problem": "Checking the weather before heading out means opening an app and deciding for yourself whether to take an umbrella or a jacket; the forecast is a wall of numbers that doesn't say what matters today.",
+      "outcome": "Built a scheduled n8n workflow: each morning it calls the Central Weather Administration's open-data API for the local forecast, passes it to an LLM that turns temperature and rain chance into a few plain-language tips — take an umbrella, bring a jacket — and pushes them out through LINE. No backend or server to write; changing the message means editing a node or the prompt.",
+      "highlights": [
+        "Daily schedule",
+        "CWA open data",
+        "AI plain-language summary",
+        "LINE push",
+        "No-code workflow"
+      ],
+      "tech": [
+        "n8n",
+        "CWA Open Data API",
+        "LLM",
+        "LINE Messaging API"
+      ]
+    },
+    "zh": {
+      "title": "每日天氣推播｜n8n + AI 每天早上送天氣提醒到 LINE",
+      "summary": "用 n8n 排程抓取中央氣象署預報，交給 AI 寫成白話提醒，每天早上推播到 LINE。",
+      "category": null,
+      "problem": "出門前得自己打開 App 查天氣、判斷要不要帶傘或加外套；預報是一堆數字，一眼看不出今天該注意什麼。",
+      "outcome": "在 n8n 建立排程工作流：每天早上呼叫中央氣象署開放資料 API 取得當地預報，交給 LLM 依氣溫與降雨機率整理成幾句白話提醒（要不要帶傘、加外套），再透過 LINE 推播送出。不需要寫後端或架伺服器，想調整內容只要改節點或 prompt。",
+      "highlights": [
+        "每日排程",
+        "氣象署開放資料",
+        "AI 白話摘要",
+        "LINE 推播",
+        "無程式碼工作流"
+      ],
+      "tech": [
+        "n8n",
+        "中央氣象署 API",
+        "LLM",
+        "LINE Messaging API"
+      ]
+    }
+  },
+  {
+    "slug": "podcast-tool",
+    "type": "ai",
+    "featured": false,
+    "media": [],
+    "figure": "turntable",
+    "link": null,
+    "en": {
+      "title": "Podcast Tool | On-Device Transcription + AI-Written Show Notes",
+      "summary": "For the podcast Little Daily: on-device Traditional Chinese subtitles and transcripts from each episode, then show notes Claude writes in the show's voice.",
+      "category": null,
+      "problem": "Before each episode goes out someone has to transcribe it for subtitles, pick chapters and quotes, and write a title and description — hours of work per episode — while generic AI copy comes out formulaic and off-tone for the show.",
+      "outcome": "A Python pipeline chains FFmpeg preprocessing, faster-whisper speech recognition, pyannote speaker diarization and OpenCC conversion with a custom glossary, producing .srt subtitles and a speaker-labelled transcript locally — the audio never leaves the computer. Claude then writes the show notes from a custom skill that encodes the show's voice, and the tool checks that every chapter time, quote and number matches the transcript before writing the final files. A side-by-side test against a local Qwen model, which came out formulaic and got a fact wrong, settled on Claude and freed about 25 GB.",
+      "highlights": [
+        "On-device speech recognition",
+        "Speaker diarization",
+        "Traditional Chinese subtitles",
+        "AI show notes",
+        "Automatic fact checks"
+      ],
+      "tech": [
+        "Python",
+        "FFmpeg",
+        "faster-whisper",
+        "pyannote",
+        "OpenCC",
+        "Claude Code",
+        "pytest"
+      ]
+    },
+    "zh": {
+      "title": "Podcast 處理工具｜本機語音辨識 + AI 撰寫上架文案",
+      "summary": "為 Podcast「微小日常」打造：丟入音檔，在本機產出繁中字幕與逐字稿，再由 Claude 依節目規範寫上架文案。",
+      "category": null,
+      "problem": "每集上架前都要聽打字幕、整理章節與金句、寫標題與節目描述，一集就要花好幾個小時；交給一般 AI 寫，又常是制式、不符合節目調性的文案。",
+      "outcome": "以 Python 串起 FFmpeg 前處理、faster-whisper 語音辨識、pyannote 講者分離，以及 OpenCC 簡轉繁與自訂詞庫校正，在本機產出 .srt 字幕與標好講者的逐字稿，音檔不離開電腦。文案由 Claude 依自訂 skill 寫成的節目規範撰寫，工具再自動檢查章節時間、金句與數字都對得上逐字稿，全部通過才輸出。也曾與本機 Qwen 模型並排比較，Qwen 文案較制式還寫錯事實，最後統一改用 Claude，並省下約 25GB 空間。",
+      "highlights": [
+        "本機語音辨識",
+        "講者分離",
+        "繁中字幕",
+        "AI 上架文案",
+        "文案自動檢查"
+      ],
+      "tech": [
+        "Python",
+        "FFmpeg",
+        "faster-whisper",
+        "pyannote",
+        "OpenCC",
+        "Claude Code",
+        "pytest"
       ]
     }
   },

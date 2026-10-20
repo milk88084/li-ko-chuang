@@ -25,7 +25,7 @@ export default async function ZhProject({ params }: Props) {
 
   return (
     <>
-      <StructuredData page="project" slug={slug} />
+      <StructuredData locale="zh" page="project" slug={slug} />
       <ProjectPage project={project} locale="zh" />
     </>
   );

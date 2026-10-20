@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata("zh", "about");
 export default function ZhAboutPage() {
   return (
     <>
-      <StructuredData page="about" />
+      <StructuredData locale="zh" page="about" />
       <AboutPage locale="zh" />
     </>
   );

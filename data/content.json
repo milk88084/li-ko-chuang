@@ -85,14 +85,18 @@
     "work": {
       "label": "Work",
       "title": "Work",
-      "intro": "Products I've built as an engineer, and campaigns I ran as a marketer.",
+      "intro": "Products I've built as an engineer, sites I've designed, the places I've put AI to work, and campaigns I ran as a marketer.",
       "filters": {
         "all": "All",
         "engineering": "Engineering",
+        "design": "UI/UX Design",
+        "ai": "AI Applications",
         "marketing": "Marketing"
       },
       "types": {
         "engineering": "Engineering",
+        "design": "UI/UX Design",
+        "ai": "AI Applications",
         "marketing": "Marketing"
       },
       "detail": {
@@ -104,6 +108,9 @@
         "visit": "Visit",
         "problem": "The problem",
         "outcome": "The outcome",
+        "flow": "How it works",
+        "flowDashed": "Optional path",
+        "flowScroll": "Swipe to see the whole flow",
         "highlights": "Highlights",
         "tech": "Built with",
         "next": "Next project",
@@ -400,14 +407,18 @@
     "work": {
       "label": "Work",
       "title": "作品",
-      "intro": "身為工程師打造的產品，以及身為行銷人執行的專案。",
+      "intro": "身為工程師打造的產品、親手設計的網站、把 AI 落地到實際工作的應用，以及身為行銷人執行的專案。",
       "filters": {
         "all": "全部",
         "engineering": "工程",
+        "design": "UI/UX 設計",
+        "ai": "AI 應用",
         "marketing": "行銷"
       },
       "types": {
         "engineering": "工程",
+        "design": "UI/UX 設計",
+        "ai": "AI 應用",
         "marketing": "行銷"
       },
       "detail": {
@@ -419,6 +430,9 @@
         "visit": "前往",
         "problem": "要解決的問題",
         "outcome": "成果",
+        "flow": "運作流程",
+        "flowDashed": "選用路徑",
+        "flowScroll": "左右滑動看完整流程",
         "highlights": "重點",
         "tech": "使用技術",
         "next": "下一個專案",

@@ -25,7 +25,7 @@ export default async function EnProject({ params }: Props) {
 
   return (
     <>
-      <StructuredData page="project" slug={slug} />
+      <StructuredData locale="en" page="project" slug={slug} />
       <ProjectPage project={project} locale="en" />
     </>
   );

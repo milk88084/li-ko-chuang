@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata("zh", "work");
 export default function ZhWorkPage() {
   return (
     <>
-      <StructuredData page="work" />
+      <StructuredData locale="zh" page="work" />
       <WorkPage locale="zh" />
     </>
   );

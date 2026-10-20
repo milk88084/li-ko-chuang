@@ -1,6 +1,6 @@
 import content from "@/data/content.json";
 import { siteConfig } from "@/lib/site-config";
-import { getProjects } from "@/lib/projects";
+import { getProjects, type ProjectType } from "@/lib/projects";
 
 // Serves /llms.txt — the convention for telling AI assistants what a site is
 // and which pages are worth reading, in the plain Markdown they parse best.
@@ -19,7 +19,7 @@ const en = content.en;
 const link = (title: string, path: string, description: string) =>
   `- [${title}](${siteConfig.siteUrl}${path}): ${description}`;
 
-const projectLines = (type: "engineering" | "marketing") =>
+const projectLines = (type: ProjectType) =>
   getProjects("en", type)
     .map((p) => link(p.title, `/work/${p.slug}`, p.summary))
     .join("\n");
@@ -47,6 +47,14 @@ ${link("Writing", "/writing", en.writing.intro)}
 ## Engineering projects
 
 ${projectLines("engineering")}
+
+## UI/UX design projects
+
+${projectLines("design")}
+
+## AI applications
+
+${projectLines("ai")}
 
 ## Marketing projects
 
