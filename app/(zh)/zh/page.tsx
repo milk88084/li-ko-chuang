@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export default function ZhHome() {
   return (
     <>
-      <StructuredData page="home" />
+      <StructuredData locale="zh" page="home" />
       <HomePage locale="zh" />
     </>
   );

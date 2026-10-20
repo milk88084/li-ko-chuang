@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata("en", "about");
 export default function EnAboutPage() {
   return (
     <>
-      <StructuredData page="about" />
+      <StructuredData locale="en" page="about" />
       <AboutPage locale="en" />
     </>
   );

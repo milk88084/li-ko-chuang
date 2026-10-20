@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export default function ZhWritingPage() {
   return (
     <>
-      <StructuredData page="writing" />
+      <StructuredData locale="zh" page="writing" />
       <WritingPage locale="zh" />
     </>
   );

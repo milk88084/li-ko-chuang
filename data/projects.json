@@ -270,7 +270,7 @@
     "link": null,
     "en": {
       "title": "AI Research | Tech Trend Watching & Decision-Support Platform",
-      "summary": "A trend-watching and decision-support platform for the MOEA Department of Industrial Technology, tracking emerging tech, industry news and early weak signals. I am the main frontend developer.",
+      "summary": "A trend-watching and decision-support platform for the MOEA Department of Industrial Technology, tracking emerging tech and weak signals. I lead the frontend.",
       "category": null,
       "problem": "Policy and investment calls depend on spotting global tech trends early, but the signals are scattered across news, papers, open-source communities and startup data — gathered by hand, with no way to tell a faint new signal from a mainstream one.",
       "outcome": "Built the whole frontend in Next.js 14. Deep Research streams its reports through an SSE proxy that injects heartbeats while the upstream is idle, so the gateway never drops the connection. Around it: a STEEP trend map, a leader radar, a tech-portfolio decision center with fishbone backcasting and Delphi expert review, a startup match board and a daily AI newsletter. Content is personalized by the user's industry, and signed share codes open selected reports without a login.",
@@ -415,8 +415,8 @@
     "figure": "cabinet",
     "link": null,
     "en": {
-      "title": "LandScape Industry Map | IT Service Provider Search & Company Relationship Graph",
-      "summary": "An industry map of Taiwan's IT service providers, bringing company profiles, categories and offerings together for internal decision-making and industry analysis.",
+      "title": "LandScape | IT Service Provider Search & Company Relationship Graph",
+      "summary": "An industry map of Taiwan's IT service providers, bringing company profiles, categories and offerings together for decision-making and industry analysis.",
       "category": null,
       "problem": "Finding the right IT service provider meant cross-checking company registries, OTC market data and subsidy records by hand — the data was scattered, filtering was clumsy, and investment and shareholding ties between companies were invisible.",
       "outcome": "Browse companies by industry area and filter by capital, headcount, capability registration, subsidies and product category; each company page draws its investment and shareholding ties with Cytoscape.js. Filter state is split into Jotai atoms so changing one condition no longer recomputes the whole graph. Conversational search, crawler settings and data import round it out, with Cypress E2E tests, Husky hooks and Semgrep scans guarding quality.",
@@ -668,7 +668,7 @@
     "link": "https://nivorae.net",
     "en": {
       "title": "Nivorae | Website for a Three-Engineer Software Studio",
-      "summary": "The bilingual website of Nivorae, a software studio I run with two other engineers — I built the frontend for the portfolio, plans and team pages and the contact flow.",
+      "summary": "The bilingual site of Nivorae, the three-engineer software studio I'm part of. I built its portfolio, plans and team pages and the contact flow.",
       "category": null,
       "problem": "Clients choosing a small studio want proof of craft, a clear process and plain commercial terms before they get in touch; a generic template site says none of that, and for a studio that sells front-end work the site itself is the portfolio.",
       "outcome": "Built on Vite, React and TypeScript with Traditional Chinese and English routes. I built the portfolio page, whose parallax masonry hero takes over the wheel and touch scroll, eases it with a lerp loop and moves the columns with GPU transforms only, letting the page scroll on once the columns end; plus an animated \"why us\" building illustration, the animated plans-page hero, the redesigned team hero, and the contact and feedback forms wired to the API, with testimonials read from it. Each route is prerendered with its JSON-LD for crawlers, Claude Code reviews every PR, and the site runs on Zeabur.",
@@ -1029,7 +1029,7 @@
     "link": null,
     "en": {
       "title": "Podcast Tool | On-Device Transcription + AI-Written Show Notes",
-      "summary": "Built for the podcast Little Daily: drop in an episode and get Traditional Chinese subtitles and a transcript on your own machine, then show notes Claude writes to the show's own rules.",
+      "summary": "For the podcast Little Daily: on-device Traditional Chinese subtitles and transcripts from each episode, then show notes Claude writes in the show's voice.",
       "category": null,
       "problem": "Before each episode goes out someone has to transcribe it for subtitles, pick chapters and quotes, and write a title and description — hours of work per episode — while generic AI copy comes out formulaic and off-tone for the show.",
       "outcome": "A Python pipeline chains FFmpeg preprocessing, faster-whisper speech recognition, pyannote speaker diarization and OpenCC conversion with a custom glossary, producing .srt subtitles and a speaker-labelled transcript locally — the audio never leaves the computer. Claude then writes the show notes from a custom skill that encodes the show's voice, and the tool checks that every chapter time, quote and number matches the transcript before writing the final files. A side-by-side test against a local Qwen model, which came out formulaic and got a fact wrong, settled on Claude and freed about 25 GB.",

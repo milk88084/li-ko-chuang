@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata("en", "work");
 export default function EnWorkPage() {
   return (
     <>
-      <StructuredData page="work" />
+      <StructuredData locale="en" page="work" />
       <WorkPage locale="en" />
     </>
   );
