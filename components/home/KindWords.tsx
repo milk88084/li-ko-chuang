@@ -24,6 +24,13 @@ interface Testimonial {
 
 const ENTRIES = testimonials as unknown as Testimonial[];
 
+// Entry i goes to column i % 3, keeping its index for the narrow-screen order.
+const COLUMNS = [0, 1, 2].map((c) =>
+  ENTRIES.map((entry, index) => ({ entry, index })).filter(
+    ({ index }) => index % 3 === c,
+  ),
+);
+
 /**
  * "Ming Wang" → "MW", "Wen Cheng Wong" → "WW" (first and last name),
  * "王小明" → "小明" (given name, as it is said aloud).
@@ -66,33 +73,41 @@ export function KindWords({ locale }: { locale: Locale }) {
 
   return (
     <Section label={t.label} title={t.title}>
-      <ul className="columns-1 gap-6 md:columns-2 lg:columns-3">
-        {ENTRIES.map((entry) => (
-          <li
-            key={entry.name.en}
-            className="reveal mb-6 break-inside-avoid rounded-[10px] bg-surface p-6 md:p-7"
-          >
-            <figure>
-              <blockquote className="text-[17px] leading-relaxed">
-                {open}
-                {entry.quote[locale]}
-                {close}
-              </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3">
-                <Avatar name={entry.name[locale]} photo={entry.photo} />
-                <span>
-                  <span className="block text-[15px] text-accent">
-                    {entry.name[locale]}
-                  </span>
-                  <span className="block text-[13px] text-muted">
-                    {entry.title[locale]}
-                  </span>
-                </span>
-              </figcaption>
-            </figure>
-          </li>
+      {/* Entries are dealt across three columns in turn, so the first three
+          head the row on wide screens. Narrower, the columns dissolve
+          (display: contents) and `order` puts the cards back in file order. */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:items-start">
+        {COLUMNS.map((column, c) => (
+          <ul key={c} className="contents lg:flex lg:flex-col lg:gap-6">
+            {column.map(({ entry, index }) => (
+              <li
+                key={entry.name.en}
+                style={{ order: index }}
+                className="reveal rounded-[10px] bg-surface p-6 md:p-7"
+              >
+                <figure>
+                  <blockquote className="text-[17px] leading-relaxed">
+                    {open}
+                    {entry.quote[locale]}
+                    {close}
+                  </blockquote>
+                  <figcaption className="mt-6 flex items-center gap-3">
+                    <Avatar name={entry.name[locale]} photo={entry.photo} />
+                    <span>
+                      <span className="block text-[15px] text-accent">
+                        {entry.name[locale]}
+                      </span>
+                      <span className="block text-[13px] text-muted">
+                        {entry.title[locale]}
+                      </span>
+                    </span>
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
         ))}
-      </ul>
+      </div>
     </Section>
   );
 }

@@ -1,18 +1,17 @@
 [
   {
     "name": {
-      "en": "Leo Tzun",
-      "zh": "Leo Tzun"
+      "en": "Nick Wu",
+      "zh": "Nick Wu"
     },
     "title": {
-      "en": "Marketing Planner",
-      "zh": "行銷企劃"
+      "en": "Full-stack Engineer",
+      "zh": "全端工程師"
     },
     "quote": {
-      "en": "Working with him, I found him careful, responsible and very organised. He plans his own schedule for whatever he's handed, and often delivers before the deadline. When we put campaign plans together, he sorted the information methodically, clarified the direction and turned ideas into reality step by step. He's a dependable, hard-working partner who keeps learning and growing.",
-      "zh": "過去與他共事的過程中，我覺得他是一個細心、有責任感且做事很有規劃的人。面對交付的任務，他能獨立安排工作進度，並經常在預定期限前完成。在一起籌備企劃的過程中，他也能有條理地整理資訊、釐清方向，並將想法逐步落實。我認為他是一位做事認真、值得信賴，也能持續學習與成長的夥伴。"
-    },
-    "photo": "/testimonials/leo-tzun.webp"
+      "en": "Beyond his solid front-end skills, Max has a deep understanding of back-end development and product planning, and he communicates well. On top of being professional, he's genuinely happy to help: he steps in to solve problems for the team without being asked. He's a very dependable colleague.",
+      "zh": "Max 除了有紮實的前端技能，同時對後端開發和產品規劃有深入的了解，並且有良好的溝通能力，除了專業，還相當樂於助人，會主動幫團隊解決問題，是個非常可靠的同事。"
+    }
   },
   {
     "name": {
@@ -28,6 +27,21 @@
       "zh": "Max 對設計很有眼光，總能讓我們的專案更上一層樓。他能很快把複雜的需求整理成清楚的細節，幾乎就像設計師與 PM 的綜合體。他是我們團隊非常強大的後盾。"
     },
     "photo": "/testimonials/julianna-guo.webp"
+  },
+  {
+    "name": {
+      "en": "Wei Jay Shi",
+      "zh": "Wei Jay Shi"
+    },
+    "title": {
+      "en": "Software Engineer",
+      "zh": "軟體工程師"
+    },
+    "quote": {
+      "en": "Max has a great collaborative attitude and brings fresh front-end design techniques and concepts. Beyond his front-end skills, he also has a solid foundational understanding of back-end system architecture.",
+      "zh": "Max 的合作態度很好，也為團隊帶來新穎的前端設計技巧與概念。除了前端能力之外，他對後端系統架構也有扎實的基礎理解。"
+    },
+    "photo": "/testimonials/wei-jay-shi.webp"
   },
   {
     "name": {
@@ -54,23 +68,23 @@
       "zh": "腳本企劃"
     },
     "quote": {
-      "en": "Max is a detail-oriented and thoughtful team member; we would be in big trouble without him.",
-      "zh": "Max 是一位注重細節又體貼周到的夥伴；少了他，我們可就麻煩大了。"
+      "en": "Max always knew how to turn a rough script idea into something we could actually shoot. He kept every version organised and every deadline in view, which made the whole process feel calm.",
+      "zh": "Max 總能把粗略的腳本想法，整理成真正能拍出來的內容。他把每個版本整理得井井有條，也把每個期限放在心上，讓整個製作過程都很從容。"
     }
   },
   {
     "name": {
-      "en": "Wei Jay Shi",
-      "zh": "Wei Jay Shi"
+      "en": "Leo Tzun",
+      "zh": "Leo Tzun"
     },
     "title": {
-      "en": "Software Engineer",
-      "zh": "軟體工程師"
+      "en": "Marketing Planner",
+      "zh": "行銷企劃"
     },
     "quote": {
-      "en": "Max has a great collaborative attitude and brings fresh front-end design techniques and concepts. Beyond his front-end skills, he also has a solid foundational understanding of back-end system architecture.",
-      "zh": "Max 的合作態度很好，也為團隊帶來新穎的前端設計技巧與概念。除了前端能力之外，他對後端系統架構也有扎實的基礎理解。"
+      "en": "Working with him, I found him careful, responsible and very organised. He plans his own schedule for whatever he's handed, and often delivers before the deadline. When we put campaign plans together, he sorted the information methodically, clarified the direction and turned ideas into reality step by step. He's a dependable, hard-working partner who keeps learning and growing.",
+      "zh": "過去與他共事的過程中，我覺得他是一個細心、有責任感且做事很有規劃的人。面對交付的任務，他能獨立安排工作進度，並經常在預定期限前完成。在一起籌備企劃的過程中，他也能有條理地整理資訊、釐清方向，並將想法逐步落實。我認為他是一位做事認真、值得信賴，也能持續學習與成長的夥伴。"
     },
-    "photo": "/testimonials/wei-jay-shi.webp"
+    "photo": "/testimonials/leo-tzun.webp"
   }
 ]

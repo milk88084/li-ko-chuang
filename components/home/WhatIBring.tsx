@@ -58,7 +58,7 @@ export function WhatIBring({ locale }: { locale: Locale }) {
           >
             <BringIllustration
               kind={item.key as CardKey}
-              className="mb-8 h-auto w-full max-w-[240px] text-ink"
+              className="mx-auto mb-8 h-auto w-full max-w-[240px] text-ink"
             />
             <p className="font-mono text-[11px] text-muted">
               {String(index + 2).padStart(2, "0")}
