@@ -134,7 +134,15 @@ export function ProjectPage({
                   flow={flow}
                   id={`flow-${project.slug}`}
                   title={`${project.title} — ${d.flow}`}
-                  labels={{ dashed: d.flowDashed, scroll: d.flowScroll }}
+                  labels={{
+                    dashed: d.flowDashed,
+                    scroll: d.flowScroll,
+                    hint: d.flowHint,
+                    from: d.flowFrom,
+                    to: d.flowTo,
+                    close: d.flowClose,
+                  }}
+                  locale={locale}
                 />
               </div>
             </section>
