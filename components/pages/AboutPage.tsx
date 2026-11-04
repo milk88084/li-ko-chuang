@@ -5,10 +5,11 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section } from "@/components/layout/Section";
 import { ScrollPortraitHero } from "@/components/ScrollPortraitHero";
 import { FigureFrame, type FigureName } from "@/components/canvas/FigureFrame";
+import { ClaudeWorkflow } from "@/components/about/ClaudeWorkflow";
 
 // The person: the scroll-driven portrait turn, then the story, the full work
 // history (engineering and marketing in one timeline), what Max is focused on
-// now, and the two toolkits.
+// now, how Max works with Claude Code, and the two toolkits.
 
 export function AboutPage({ locale }: { locale: Locale }) {
   const t = content[locale].about;
@@ -85,6 +86,8 @@ export function AboutPage({ locale }: { locale: Locale }) {
           ))}
         </ul>
       </Section>
+
+      <ClaudeWorkflow locale={locale} />
 
       <Section label={t.skills.label} title={t.skills.title}>
         <div className="grid gap-12 md:grid-cols-2 md:gap-6">

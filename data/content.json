@@ -211,6 +211,16 @@
           }
         ]
       },
+      "workflow": {
+        "label": "Workflow",
+        "title": "How I work with Claude Code",
+        "intro": "The order is how I work. What each step does, and every command, comes from Anthropic's official Claude Code docs.",
+        "once": "One-time",
+        "loop": "Fails → fix again",
+        "hint": "Select a step to see what it does.",
+        "sourcesLabel": "Sources · Anthropic, Claude Code docs",
+        "source": "Source"
+      },
       "now": {
         "label": "Now",
         "title": "Current Focus",
@@ -532,6 +542,16 @@
             "description": "參與廣告、電視節目與網路影片的執行製作，也是我影像企劃與現場執行能力的起點。"
           }
         ]
+      },
+      "workflow": {
+        "label": "Workflow",
+        "title": "我和 Claude Code 的協作流程",
+        "intro": "順序是我實際的做法；每一步的內容與指令，都出自 Anthropic 官方的 Claude Code 文件。",
+        "once": "一次性",
+        "loop": "失敗 → 再改",
+        "hint": "點選步驟查看說明。",
+        "sourcesLabel": "出處 · Anthropic Claude Code 官方文件",
+        "source": "出處"
       },
       "now": {
         "label": "Now",
