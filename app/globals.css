@@ -181,6 +181,61 @@ html.has-custom-cursor [contenteditable="true"] {
   }
 }
 
+/* ProjectFlow: dashed arrows march toward their arrowhead, and a short accent
+   pulse runs along each solid one. The pulse path carries pathLength="100";
+   its 200-unit gap keeps a second dash off the path while it travels. */
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+@keyframes flow-pulse {
+  0% {
+    stroke-dashoffset: 6;
+  }
+  70%,
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+.flow-dash {
+  animation: flow-dash 0.9s linear infinite;
+}
+
+.flow-pulse {
+  stroke-dasharray: 6 200;
+  stroke-dashoffset: 6;
+  animation: flow-pulse 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.flow-node {
+  cursor: pointer;
+  outline: none;
+}
+
+.flow-node .flow-ring {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.flow-node:hover .flow-ring,
+.flow-node:focus-visible .flow-ring,
+.flow-node[aria-expanded="true"] .flow-ring {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-dash {
+    animation: none;
+  }
+
+  .flow-pulse {
+    display: none;
+  }
+}
+
 @keyframes cursor-float {
   0%,
   100% {

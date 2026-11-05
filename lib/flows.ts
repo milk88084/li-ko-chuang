@@ -18,6 +18,10 @@ interface RawNode {
   icon: string;
   label: Text;
   note?: Text;
+  /** A sentence or two shown when the station is hovered or tapped. */
+  detail: Text;
+  /** Tools behind the step, shown as chips in the station's card. */
+  tags?: string[];
   /** Drawn filled in the accent colour; the legend says what that means. */
   accent?: boolean;
 }
@@ -44,6 +48,8 @@ export interface FlowNode {
   icon: string;
   label: string;
   note: string | null;
+  detail: string;
+  tags: string[];
   accent: boolean;
 }
 
@@ -76,6 +82,8 @@ export function getFlow(slug: string, locale: Locale): Flow | undefined {
     icon: n.icon,
     label: n.label[locale],
     note: n.note?.[locale] ?? null,
+    detail: n.detail[locale],
+    tags: n.tags ?? [],
     accent: n.accent ?? false,
   }));
   return {

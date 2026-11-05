@@ -7,28 +7,35 @@
       { "en": "2. Web", "zh": "2. 網頁版" }
     ],
     "nodes": [
-      { "id": "ios", "at": [0, 0], "icon": "smartphone", "label": { "en": "iOS app", "zh": "iOS App" }, "note": { "en": "Face ID unlock", "zh": "Face ID 解鎖" } },
-      { "id": "web", "at": [2, 0], "icon": "monitor", "label": { "en": "Web app", "zh": "網頁版" }, "note": { "en": "In the browser", "zh": "瀏覽器登入" } },
-      { "id": "auth", "at": [1, 1], "icon": "shield-check", "label": { "en": "Clerk sign-in", "zh": "Clerk 登入" }, "note": { "en": "Google / LINE / Apple", "zh": "Google／LINE／Apple" } },
-      { "id": "api", "at": [1, 2], "icon": "server", "label": { "en": "One shared API", "zh": "共用同一套 API" }, "note": { "en": "Zod-validated\nscoped to each userId", "zh": "Zod 驗證\n每筆以 userId 隔離" }, "accent": true },
-      { "id": "premium", "at": [0, 3], "icon": "crown", "label": { "en": "Premium", "zh": "Premium 訂閱" }, "note": { "en": "RevenueCat", "zh": "RevenueCat" } },
-      { "id": "db", "at": [1, 3], "icon": "database", "label": { "en": "PostgreSQL", "zh": "PostgreSQL" }, "note": { "en": "10 Prisma models", "zh": "10 個 Prisma 模型" } },
-      { "id": "market", "at": [2, 3], "icon": "trending-up", "label": { "en": "Quotes & FX", "zh": "行情與匯率" }, "note": { "en": "TW / US stocks", "zh": "台美股報價" } },
-      { "id": "overview", "at": [1, 4], "icon": "pie-chart", "label": { "en": "Net worth", "zh": "淨資產總覽" }, "note": { "en": "Assets, debts, holdings", "zh": "資產・負債・持股" }, "accent": true },
-      { "id": "retire", "at": [0, 5], "icon": "target", "label": { "en": "Retirement plan", "zh": "退休試算" }, "note": { "en": "Projection to goal", "zh": "推算到退休目標" } },
-      { "id": "income", "at": [2, 5], "icon": "coins", "label": { "en": "Dividends & policies", "zh": "股利與保單" }, "note": { "en": "Cash flow over time", "zh": "長期現金流" } }
+      { "id": "ios", "at": [0, 0], "icon": "smartphone", "label": { "en": "iOS app", "zh": "iOS App" }, "note": { "en": "Face ID unlock", "zh": "Face ID 解鎖" }, "detail": { "en": "The App Store iOS app, built with Expo and Expo Router. Face ID locks it, and everyday updates ship over the air with EAS — no new review needed.", "zh": "以 Expo + Expo Router 開發、已上架 App Store 的 iOS App，可用 Face ID 鎖定；日常更新透過 EAS OTA 推送，不必每次重新送審。" }, "tags": ["Expo", "Expo Router", "EAS"] },
+      { "id": "web", "at": [2, 0], "icon": "monitor", "label": { "en": "Web app", "zh": "網頁版" }, "note": { "en": "In the browser", "zh": "瀏覽器登入" }, "detail": { "en": "The Next.js 15 web app. It lives in the same Turborepo as the iOS app and shares its API, Zod schemas and Clerk auth.", "zh": "Next.js 15 + React 19 的網頁版，和 iOS App 放在同一個 Turborepo，共用 API、Zod schema 與 Clerk 認證。" }, "tags": ["Next.js 15", "React 19", "Turborepo"] },
+      { "id": "clerk", "at": [1, 1], "icon": "shield-check", "label": { "en": "Clerk sign-in", "zh": "Clerk 登入" }, "note": { "en": "Google / LINE / Apple", "zh": "Google／LINE／Apple" }, "detail": { "en": "Both apps sign in through Clerk OAuth. The web app carries a session cookie, the iOS app a Bearer token — the backend trusts one identity either way.", "zh": "兩端都用 Clerk 處理 OAuth 登入：網頁帶 session cookie、iOS App 帶 Bearer token，後端只認同一種身分。" }, "tags": ["Clerk", "OAuth"] },
+      { "id": "premium", "at": [0, 1], "icon": "crown", "label": { "en": "Premium", "zh": "Premium 訂閱" }, "note": { "en": "RevenueCat", "zh": "RevenueCat" }, "detail": { "en": "Premium is an in-app subscription on iOS, handled by RevenueCat. PostHog breaks down the paywall funnel.", "zh": "iOS 的 Premium 訂閱以 RevenueCat 串接 App Store 內購，並用 PostHog 拆解付費漏斗。" }, "tags": ["RevenueCat", "PostHog"] },
+      { "id": "appstore", "at": [0, 2], "icon": "store", "label": { "en": "App Store", "zh": "App Store 通知" }, "note": { "en": "Server Notifications", "zh": "Server Notifications" }, "detail": { "en": "When a subscription starts, renews or lapses, App Store Server Notifications post a JWS-signed webhook to the API, which updates the Subscription table — the app never reports its own status.", "zh": "訂閱開通、續訂或取消時，App Store Server Notifications 以 JWS 簽章的 webhook 通知後端，寫進 Subscription 表；訂閱狀態不靠 App 自己回報。" }, "tags": ["JWS", "Webhook"] },
+      { "id": "middleware", "at": [1, 2], "icon": "lock", "label": { "en": "middleware.ts", "zh": "middleware.ts" }, "note": { "en": "Blocks signed-out calls", "zh": "擋下未登入請求" }, "detail": { "en": "Every request first passes clerkMiddleware, which verifies the session with Clerk and keeps signed-out calls away from the API with auth.protect().", "zh": "每個請求先經過 clerkMiddleware，向 Clerk 驗證 session，以 auth.protect() 把未登入的請求擋在 API 之外。" }, "tags": ["Clerk", "Vercel"] },
+      { "id": "routes", "at": [1, 3], "icon": "route", "label": { "en": "Route Handlers", "zh": "Route Handlers" }, "note": { "en": "app/api/**\nZod-validated", "zh": "app/api/**\nZod 驗證" }, "detail": { "en": "Each Route Handler calls auth() again and returns 401 without a userId. Request bodies are checked against Zod schemas the web and iOS apps share.", "zh": "每個 Route Handler 再自行呼叫 auth()，拿不到 userId 就回 401；請求內容以 Zod schema 驗證，網頁與 App 共用同一份 schema。" }, "tags": ["Next.js", "Zod"] },
+      { "id": "services", "at": [1, 4], "icon": "layers", "label": { "en": "Services", "zh": "Services" }, "note": { "en": "Business logic\nscoped to each userId", "zh": "商業邏輯\n每筆以 userId 隔離" }, "detail": { "en": "The business logic lives in one Services layer, and every query carries the userId — one user's data can never show up for another.", "zh": "商業邏輯集中在 Services 層，每一筆查詢都帶著 userId，使用者之間的資料不可能互相看到。" }, "tags": ["TypeScript", "Vitest"], "accent": true },
+      { "id": "db", "at": [1, 5], "icon": "database", "label": { "en": "PostgreSQL", "zh": "PostgreSQL" }, "note": { "en": "Supabase\n10 Prisma models", "zh": "Supabase\n10 個 Prisma 模型" }, "detail": { "en": "PostgreSQL on Supabase, modelled with 10 Prisma models — from assets and debts to holdings and subscription state.", "zh": "資料放在 Supabase 的 PostgreSQL，以 Prisma 設計 10 個資料模型，資產、負債、持股到訂閱狀態都在這裡。" }, "tags": ["Prisma", "PostgreSQL", "Supabase"] },
+      { "id": "market", "at": [2, 5], "icon": "trending-up", "label": { "en": "Quotes & FX", "zh": "行情與匯率" }, "note": { "en": "Yahoo · TWSE · Finnhub", "zh": "Yahoo・TWSE・Finnhub" }, "detail": { "en": "The backend fetches Taiwan and US quotes and exchange rates over HTTPS from Yahoo, TWSE, Finnhub and others, so overseas holdings convert to TWD.", "zh": "後端以 HTTPS 向 Yahoo、TWSE、Finnhub 等來源取得台美股報價與匯率，海外持股自動換算成台幣。" } },
+      { "id": "retire", "at": [0, 6], "icon": "target", "label": { "en": "Retirement plan", "zh": "退休試算" }, "note": { "en": "Projection to goal", "zh": "推算到退休目標" }, "detail": { "en": "Starting from today's net worth, it projects how far you are from your retirement goal.", "zh": "從目前的淨資產出發，推算距離退休目標還有多遠。" } },
+      { "id": "overview", "at": [1, 6], "icon": "pie-chart", "label": { "en": "Net worth", "zh": "淨資產總覽" }, "note": { "en": "Assets, debts, holdings", "zh": "資產・負債・持股" }, "detail": { "en": "Assets, debts and multi-currency holdings from every bank and broker, valued live and added up — the full picture of net worth in one place.", "zh": "把各家銀行、券商的資產、負債與多幣別持股，依即時市值彙整在一起，終於看得到淨資產全貌。" }, "accent": true },
+      { "id": "income", "at": [2, 6], "icon": "coins", "label": { "en": "Dividends & policies", "zh": "股利與保單" }, "note": { "en": "Cash flow over time", "zh": "長期現金流" }, "detail": { "en": "The long-term cash flow from dividends and insurance policies, with overseas dividends converted at the current rate.", "zh": "整理股利與保單帶來的長期現金流，海外股息依匯率換算。" } }
     ],
     "edges": [
-      { "from": "ios", "to": "auth" },
-      { "from": "web", "to": "auth" },
-      { "from": "auth", "to": "api", "label": { "en": "token", "zh": "token" } },
+      { "from": "ios", "to": "clerk", "label": { "en": "Bearer token", "zh": "Bearer token" } },
+      { "from": "web", "to": "clerk", "label": { "en": "session cookie", "zh": "session cookie" } },
       { "from": "ios", "to": "premium", "label": { "en": "subscribe", "zh": "訂閱" }, "dashed": true },
-      { "from": "api", "to": "db", "label": { "en": "Prisma", "zh": "Prisma" } },
-      { "from": "api", "to": "market", "dashed": true },
+      { "from": "premium", "to": "appstore", "label": { "en": "IAP", "zh": "內購" }, "dashed": true },
+      { "from": "clerk", "to": "middleware", "label": { "en": "verify session", "zh": "驗證 session" } },
+      { "from": "appstore", "to": "routes", "label": { "en": "JWS webhook", "zh": "JWS webhook" }, "dashed": true },
+      { "from": "middleware", "to": "routes", "label": { "en": "auth.protect()", "zh": "auth.protect()" } },
+      { "from": "routes", "to": "services", "label": { "en": "after Zod", "zh": "Zod 驗證後" } },
+      { "from": "services", "to": "db", "label": { "en": "Prisma", "zh": "Prisma" } },
+      { "from": "services", "to": "market", "label": { "en": "HTTPS", "zh": "HTTPS" }, "dashed": true },
       { "from": "db", "to": "overview" },
-      { "from": "market", "to": "overview" },
-      { "from": "overview", "to": "retire" },
-      { "from": "overview", "to": "income" }
+      { "from": "db", "to": "retire" },
+      { "from": "market", "to": "overview", "label": { "en": "live value", "zh": "即時市值" } },
+      { "from": "market", "to": "income" }
     ]
   },
   "retep": {
@@ -39,16 +46,16 @@
       { "en": "2. iOS app", "zh": "2. iOS App" }
     ],
     "nodes": [
-      { "id": "pwa", "at": [0, 0], "icon": "monitor", "label": { "en": "Web PWA", "zh": "網頁 PWA" }, "note": { "en": "Google sign-in", "zh": "Google 一鍵登入" } },
-      { "id": "ios", "at": [2, 0], "icon": "smartphone", "label": { "en": "iOS app", "zh": "iOS App" }, "note": { "en": "Sign in with Apple", "zh": "Sign in with Apple" } },
-      { "id": "auth", "at": [1, 1], "icon": "shield-check", "label": { "en": "Clerk JWT", "zh": "Clerk JWT" }, "note": { "en": "Verified by the API", "zh": "後端驗簽" } },
-      { "id": "photo", "at": [0, 2], "icon": "camera", "label": { "en": "Snap a meal", "zh": "拍照辨識" }, "note": { "en": "n8n + AI", "zh": "n8n＋AI 估熱量" }, "accent": true },
-      { "id": "search", "at": [2, 2], "icon": "search", "label": { "en": "Search foods", "zh": "搜尋食物" }, "note": { "en": "Taiwan FDA data", "zh": "食藥署營養資料" } },
-      { "id": "api", "at": [1, 3], "icon": "server", "label": { "en": "FastAPI", "zh": "FastAPI" }, "note": { "en": "Scoped to each user", "zh": "每位使用者隔離" } },
-      { "id": "db", "at": [1, 4], "icon": "database", "label": { "en": "PostgreSQL", "zh": "PostgreSQL" }, "note": { "en": "Thousands of\nTaiwanese foods", "zh": "上千筆台灣食物" } },
-      { "id": "log", "at": [1, 5], "icon": "utensils", "label": { "en": "Daily log", "zh": "每日紀錄" }, "note": { "en": "Calories & macros", "zh": "熱量與三大營養素" } },
-      { "id": "trend", "at": [0, 6], "icon": "chart-line", "label": { "en": "Yearly trends", "zh": "年度趨勢圖" } },
-      { "id": "rings", "at": [2, 6], "icon": "circle-dot", "label": { "en": "Macro rings", "zh": "營養素環圈" } }
+      { "id": "pwa", "at": [0, 0], "icon": "monitor", "label": { "en": "Web PWA", "zh": "網頁 PWA" }, "note": { "en": "Google sign-in", "zh": "Google 一鍵登入" }, "detail": { "en": "A Vite-built PWA that installs to the home screen, with one-tap Google sign-in.", "zh": "以 Vite 打造的網頁 PWA，可加到主畫面，Google 一鍵登入。" }, "tags": ["Vite", "PWA"] },
+      { "id": "ios", "at": [2, 0], "icon": "smartphone", "label": { "en": "iOS app", "zh": "iOS App" }, "note": { "en": "Sign in with Apple", "zh": "Sign in with Apple" }, "detail": { "en": "The web UI ported 1:1 to an Expo app, on the App Store since 2026/08/19, with Sign in with Apple.", "zh": "把網頁 UI 1:1 移植成 Expo App，2026/08/19 上架 App Store，支援 Sign in with Apple。" }, "tags": ["Expo SDK 54", "React Native", "Zustand"] },
+      { "id": "auth", "at": [1, 1], "icon": "shield-check", "label": { "en": "Clerk JWT", "zh": "Clerk JWT" }, "note": { "en": "Verified by the API", "zh": "後端驗簽" }, "detail": { "en": "Both apps sign in with Clerk; the backend verifies the Clerk JWT's signature, so each user can only reach their own data.", "zh": "兩端都用 Clerk 登入，後端驗證 Clerk JWT 的簽章，確保每位使用者只能存取自己的資料。" }, "tags": ["Clerk", "JWT"] },
+      { "id": "photo", "at": [0, 2], "icon": "camera", "label": { "en": "Snap a meal", "zh": "拍照辨識" }, "note": { "en": "n8n + AI", "zh": "n8n＋AI 估熱量" }, "detail": { "en": "Snap a meal and n8n hands the photo to AI to recognise the food and estimate calories — one step fewer, so logging lasts.", "zh": "拍下餐點，由 n8n 串接 AI 辨識食物並估算熱量；少一個手動步驟，記錄才容易持續。" }, "tags": ["n8n"], "accent": true },
+      { "id": "search", "at": [2, 2], "icon": "search", "label": { "en": "Search foods", "zh": "搜尋食物" }, "note": { "en": "Taiwan FDA data", "zh": "食藥署營養資料" }, "detail": { "en": "Search the imported Taiwan FDA nutrition data — it has the food people here actually eat. Favourites go into a personal food library.", "zh": "搜尋匯入的食藥署營養資料，查得到台灣人常吃的食物；常吃的也能存進個人食物庫。" } },
+      { "id": "api", "at": [1, 3], "icon": "server", "label": { "en": "FastAPI", "zh": "FastAPI" }, "note": { "en": "Scoped to each user", "zh": "每位使用者隔離" }, "detail": { "en": "A FastAPI backend handles every read and write, scoped to the user in the JWT, and runs in Docker on Zeabur.", "zh": "FastAPI 後端處理所有讀寫，依 JWT 的使用者身分隔離資料，以 Docker 部署在 Zeabur。" }, "tags": ["FastAPI", "Docker", "Zeabur"] },
+      { "id": "db", "at": [1, 4], "icon": "database", "label": { "en": "PostgreSQL", "zh": "PostgreSQL" }, "note": { "en": "Thousands of\nTaiwanese foods", "zh": "上千筆台灣食物" }, "detail": { "en": "PostgreSQL holds over a thousand Taiwanese foods from the FDA dataset and everyone's meal logs, accessed through SQLAlchemy.", "zh": "PostgreSQL 存放上千筆食藥署台灣食物營養資料與每個人的飲食紀錄，以 SQLAlchemy 存取。" }, "tags": ["PostgreSQL", "SQLAlchemy"] },
+      { "id": "log", "at": [1, 5], "icon": "utensils", "label": { "en": "Daily log", "zh": "每日紀錄" }, "note": { "en": "Calories & macros", "zh": "熱量與三大營養素" }, "detail": { "en": "Each logged meal adds up the day's calories and its protein, fat and carbs.", "zh": "每記下一餐，就自動加總當日熱量與蛋白質、脂肪、碳水三大營養素。" } },
+      { "id": "trend", "at": [0, 6], "icon": "chart-line", "label": { "en": "Yearly trends", "zh": "年度趨勢圖" }, "detail": { "en": "A yearly trend chart shows how intake moves over the long run.", "zh": "以年度趨勢圖看長期的熱量變化。" } },
+      { "id": "rings", "at": [2, 6], "icon": "circle-dot", "label": { "en": "Macro rings", "zh": "營養素環圈" }, "detail": { "en": "Rings show at a glance how much of each nutrient today has had.", "zh": "以環圈一眼看出今天各營養素吃了多少。" } }
     ],
     "edges": [
       { "from": "pwa", "to": "auth" },
@@ -71,14 +78,14 @@
       { "en": "2. Players", "zh": "2. 球友" }
     ],
     "nodes": [
-      { "id": "host", "at": [0, 0], "icon": "user", "label": { "en": "Host signs in", "zh": "主揪登入" }, "note": { "en": "Clerk", "zh": "Clerk" } },
-      { "id": "select", "at": [0, 1], "icon": "users", "label": { "en": "Pick today's players", "zh": "勾選今日成員" }, "note": { "en": "Search, filter by gender", "zh": "搜尋・性別篩選" } },
-      { "id": "setup", "at": [0, 2], "icon": "settings-2", "label": { "en": "Courts & rounds", "zh": "設定場地與場次" } },
-      { "id": "engine", "at": [1, 3], "icon": "shuffle", "label": { "en": "Auto team-making", "zh": "自動分隊" }, "note": { "en": "≤ 1 woman per pair\n≤ 2 games on or off in a row", "zh": "每隊女生最多 1 名\n連上／連休不超過 2 場" }, "accent": true },
-      { "id": "schedule", "at": [1, 4], "icon": "layout-grid", "label": { "en": "Multi-court schedule", "zh": "多場地賽程" }, "note": { "en": "Reshuffle in one tap", "zh": "可一鍵重排" } },
-      { "id": "code", "at": [1, 5], "icon": "qr-code", "label": { "en": "Share a code", "zh": "分享代號" } },
-      { "id": "join", "at": [2, 0], "icon": "smartphone", "label": { "en": "Enter the code", "zh": "輸入代號" }, "note": { "en": "No sign-in needed", "zh": "免登入" } },
-      { "id": "view", "at": [2, 6], "icon": "eye", "label": { "en": "Watch live", "zh": "即時觀看" }, "note": { "en": "Syncs every 3 s", "zh": "每 3 秒同步" } }
+      { "id": "host", "at": [0, 0], "icon": "user", "label": { "en": "Host signs in", "zh": "主揪登入" }, "note": { "en": "Clerk", "zh": "Clerk" }, "detail": { "en": "The organiser signs in with Clerk before setting up a session.", "zh": "主揪以 Clerk 登入後，才能建立活動、安排場次。" }, "tags": ["Clerk"] },
+      { "id": "select", "at": [0, 1], "icon": "users", "label": { "en": "Pick today's players", "zh": "勾選今日成員" }, "note": { "en": "Search, filter by gender", "zh": "搜尋・性別篩選" }, "detail": { "en": "Tick off who showed up today, with search and a gender filter — the dark, stage-style picker I redesigned.", "zh": "從球友名單勾選今天到場的人，可搜尋、依性別篩選；這是我重構的深色舞台風格選人畫面。" }, "tags": ["React 19", "Motion"] },
+      { "id": "setup", "at": [0, 2], "icon": "settings-2", "label": { "en": "Courts & rounds", "zh": "設定場地與場次" }, "detail": { "en": "Set how many courts and rounds there are — the constraints the schedule is built from.", "zh": "設定今天有幾面場地、要打幾場，作為排賽程的條件。" } },
+      { "id": "engine", "at": [1, 3], "icon": "shuffle", "label": { "en": "Auto team-making", "zh": "自動分隊" }, "note": { "en": "≤ 1 woman per pair\n≤ 2 games on or off in a row", "zh": "每隊女生最多 1 名\n連上／連休不超過 2 場" }, "detail": { "en": "Generates 2v2 rotations by rule: at most one woman per team, no one plays or sits out more than two rounds in a row, and repeat pairings are avoided.", "zh": "依規則自動產生 2v2 輪替：每隊最多一名女生、不連續上場或休息超過兩場，並盡量避免重複搭配。" }, "tags": ["FastAPI"], "accent": true },
+      { "id": "schedule", "at": [1, 4], "icon": "layout-grid", "label": { "en": "Multi-court schedule", "zh": "多場地賽程" }, "note": { "en": "Reshuffle in one tap", "zh": "可一鍵重排" }, "detail": { "en": "A schedule across several courts at once; one tap reshuffles it.", "zh": "產出多面場地同時進行的賽程，不滿意可一鍵重排。" } },
+      { "id": "code", "at": [1, 5], "icon": "qr-code", "label": { "en": "Share a code", "zh": "分享代號" }, "detail": { "en": "The schedule gets a code to drop into the group chat.", "zh": "賽程產生後得到一組代號，傳到群組就能分享給球友。" } },
+      { "id": "join", "at": [2, 0], "icon": "smartphone", "label": { "en": "Enter the code", "zh": "輸入代號" }, "note": { "en": "No sign-in needed", "zh": "免登入" }, "detail": { "en": "Players enter the code — no sign-up needed.", "zh": "球友不用註冊，輸入主揪給的代號就能加入。" } },
+      { "id": "view", "at": [2, 6], "icon": "eye", "label": { "en": "Watch live", "zh": "即時觀看" }, "note": { "en": "Syncs every 3 s", "zh": "每 3 秒同步" }, "detail": { "en": "Players see who's on next from their phones, synced every 3 seconds.", "zh": "球友在手機上即時看到輪到誰上場，每 3 秒同步一次。" }, "tags": ["PWA"] }
     ],
     "edges": [
       { "from": "host", "to": "select" },
@@ -98,15 +105,15 @@
       { "en": "2. Signals", "zh": "2. 訊號來源" }
     ],
     "nodes": [
-      { "id": "login", "at": [0, 0], "icon": "log-in", "label": { "en": "Sign in", "zh": "登入" }, "note": { "en": "Personalised by industry", "zh": "依產業別個人化" } },
-      { "id": "sources", "at": [2, 0], "icon": "globe", "label": { "en": "Scattered signals", "zh": "分散的訊號" }, "note": { "en": "News, papers,\nopen source, startups", "zh": "新聞・論文\n開源・新創" } },
-      { "id": "steep", "at": [1, 1], "icon": "radar", "label": { "en": "STEEP trend map", "zh": "STEEP 趨勢圖譜" }, "note": { "en": "Weak signal to mainstream", "zh": "從弱信號到主流" }, "accent": true },
-      { "id": "leaders", "at": [0, 2], "icon": "users", "label": { "en": "Leader radar", "zh": "領袖雷達" } },
-      { "id": "match", "at": [2, 2], "icon": "handshake", "label": { "en": "Startup matching", "zh": "新創媒合看板" } },
-      { "id": "deep", "at": [1, 3], "icon": "sparkles", "label": { "en": "Deep Research", "zh": "Deep Research" }, "note": { "en": "Streamed over SSE", "zh": "SSE 即時串流報告" }, "accent": true },
-      { "id": "portfolio", "at": [0, 4], "icon": "briefcase-business", "label": { "en": "Tech portfolio", "zh": "技術投資組合" }, "note": { "en": "Backcasting, Delphi review", "zh": "魚骨圖回推・Delphi" } },
-      { "id": "share", "at": [1, 4], "icon": "share-2", "label": { "en": "Share a report", "zh": "分享報告" }, "note": { "en": "Signed share code", "zh": "簽章分享碼免登入" } },
-      { "id": "newsletter", "at": [2, 4], "icon": "mail", "label": { "en": "Daily AI newsletter", "zh": "每日 AI 電子報" }, "accent": true }
+      { "id": "login", "at": [0, 0], "icon": "log-in", "label": { "en": "Sign in", "zh": "登入" }, "note": { "en": "Personalised by industry", "zh": "依產業別個人化" }, "detail": { "en": "After sign-in, the home page and research are tailored to the user's industry.", "zh": "登入後依使用者的產業別，個人化首頁與研究內容。" } },
+      { "id": "sources", "at": [2, 0], "icon": "globe", "label": { "en": "Scattered signals", "zh": "分散的訊號" }, "note": { "en": "News, papers,\nopen source, startups", "zh": "新聞・論文\n開源・新創" }, "detail": { "en": "Signals scattered across news, papers, open-source communities and startup data — gathered by hand before.", "zh": "散落在新聞、論文、開源社群與新創資料裡的訊號，原本只能人工蒐集。" } },
+      { "id": "steep", "at": [1, 1], "icon": "radar", "label": { "en": "STEEP trend map", "zh": "STEEP 趨勢圖譜" }, "note": { "en": "Weak signal to mainstream", "zh": "從弱信號到主流" }, "detail": { "en": "Signals sorted on a STEEP map (social, technological, economic, environmental, political), telling a fresh weak signal from a mainstream trend.", "zh": "以 STEEP（社會、科技、經濟、環境、政治）架構把訊號整理成趨勢圖譜，分辨剛冒出的弱信號與已成主流的趨勢。" }, "tags": ["D3", "Recharts"], "accent": true },
+      { "id": "leaders", "at": [0, 2], "icon": "users", "label": { "en": "Leader radar", "zh": "領袖雷達" }, "detail": { "en": "From a trend to the leaders driving it: a radar of key people and organisations in the field.", "zh": "從趨勢延伸到推動它的人：追蹤各領域關鍵領袖與機構的雷達。" } },
+      { "id": "match", "at": [2, 2], "icon": "handshake", "label": { "en": "Startup matching", "zh": "新創媒合看板" }, "detail": { "en": "A board matching trends with relevant startups.", "zh": "把趨勢對應到相關新創的媒合看板。" } },
+      { "id": "deep", "at": [1, 3], "icon": "sparkles", "label": { "en": "Deep Research", "zh": "Deep Research" }, "note": { "en": "Streamed over SSE", "zh": "SSE 即時串流報告" }, "detail": { "en": "Start a deep research run on a topic; the report streams in through an SSE proxy that injects heartbeats while upstream is idle, so the gateway never drops it.", "zh": "針對題目發起深度研究，報告透過 SSE 串流代理即時呈現；上游閒置時注入 heartbeat，避免閘道斷線。" }, "tags": ["SSE", "Next.js 14", "TanStack Query"], "accent": true },
+      { "id": "portfolio", "at": [0, 4], "icon": "briefcase-business", "label": { "en": "Tech portfolio", "zh": "技術投資組合" }, "note": { "en": "Backcasting, Delphi review", "zh": "魚骨圖回推・Delphi" }, "detail": { "en": "The technology portfolio decision centre: a fishbone chart works back from a goal to the technology it needs, and a Delphi round gathers expert judgement.", "zh": "技術投資組合決策中心：以魚骨圖從目標回推需要的技術，再以 Delphi 法彙整專家評估。" } },
+      { "id": "share", "at": [1, 4], "icon": "share-2", "label": { "en": "Share a report", "zh": "分享報告" }, "note": { "en": "Signed share code", "zh": "簽章分享碼免登入" }, "detail": { "en": "A signed share code opens a read-only report page without sign-in, and the link can't be tampered with.", "zh": "以簽章分享碼產生免登入的報告分享頁，連結無法被竄改。" } },
+      { "id": "newsletter", "at": [2, 4], "icon": "mail", "label": { "en": "Daily AI newsletter", "zh": "每日 AI 電子報" }, "detail": { "en": "A daily AI newsletter delivers what's new.", "zh": "每日 AI 電子報，把新動態主動送到使用者手上。" }, "accent": true }
     ],
     "edges": [
       { "from": "login", "to": "steep" },
@@ -127,16 +134,16 @@
       { "en": "2. Visitor", "zh": "2. 訪客" }
     ],
     "nodes": [
-      { "id": "env", "at": [0, 0], "icon": "file-cog", "label": { "en": "Env config", "zh": "環境變數設定" }, "note": { "en": "Brand, features, API", "zh": "品牌・功能・API" } },
-      { "id": "brands", "at": [0, 1], "icon": "building-2", "label": { "en": "Six venue brands", "zh": "6 個場館品牌" }, "note": { "en": "One codebase", "zh": "同一套程式碼" } },
-      { "id": "kb", "at": [0, 2], "icon": "book-open", "label": { "en": "Knowledge base", "zh": "知識庫" }, "note": { "en": "Editable if enabled", "zh": "依設定開放編輯" } },
-      { "id": "visitor", "at": [2, 0], "icon": "user", "label": { "en": "Visitor arrives", "zh": "訪客進站" }, "note": { "en": "Guest sign-in", "zh": "訪客登入" } },
-      { "id": "ask", "at": [2, 1], "icon": "mic", "label": { "en": "Ask by voice or text", "zh": "語音或文字提問" }, "note": { "en": "Multilingual speech-to-text", "zh": "多語語音轉文字" }, "accent": true },
-      { "id": "chat", "at": [1, 2], "icon": "message-square", "label": { "en": "Chat window", "zh": "聊天介面" }, "note": { "en": "Embeds limited by CSP", "zh": "CSP 控管可嵌入網域" } },
-      { "id": "llm", "at": [1, 3], "icon": "bot", "label": { "en": "LLM answers", "zh": "LLM 回答" }, "note": { "en": "Streamed token by token", "zh": "逐字串流" }, "accent": true },
-      { "id": "cite", "at": [1, 4], "icon": "quote", "label": { "en": "With sources", "zh": "附引用來源" } },
-      { "id": "tts", "at": [2, 5], "icon": "volume-2", "label": { "en": "Read aloud", "zh": "語音朗讀" }, "note": { "en": "Speech synthesis", "zh": "語音合成" }, "accent": true },
-      { "id": "history", "at": [0, 5], "icon": "history", "label": { "en": "Translation history", "zh": "翻譯紀錄" } }
+      { "id": "env", "at": [0, 0], "icon": "file-cog", "label": { "en": "Env config", "zh": "環境變數設定" }, "note": { "en": "Brand, features, API", "zh": "品牌・功能・API" }, "detail": { "en": "Branding, speech-to-text, sign-in, knowledge-base editing and API endpoints are all switched by environment variables.", "zh": "品牌樣式、語音轉文字、登入、知識庫是否可編輯與 API 端點，全部由環境變數控制。" } },
+      { "id": "brands", "at": [0, 1], "icon": "building-2", "label": { "en": "Six venue brands", "zh": "6 個場館品牌" }, "note": { "en": "One codebase", "zh": "同一套程式碼" }, "detail": { "en": "One codebase, live as six venue brands — a planetarium, Lee Teng-hui, the Yongzheng Emperor, Einstein and more — plus a shared contract version.", "zh": "同一套程式碼已上線天文館、李登輝、雍正帝、愛因斯坦等 6 個場館品牌，另有一個共同契約版本。" } },
+      { "id": "kb", "at": [0, 2], "icon": "book-open", "label": { "en": "Knowledge base", "zh": "知識庫" }, "note": { "en": "Editable if enabled", "zh": "依設定開放編輯" }, "detail": { "en": "Each venue's guide knowledge, editable by staff when the settings allow.", "zh": "每個場館的導覽知識庫，依設定決定是否開放管理者編輯。" } },
+      { "id": "visitor", "at": [2, 0], "icon": "user", "label": { "en": "Visitor arrives", "zh": "訪客進站" }, "note": { "en": "Guest sign-in", "zh": "訪客登入" }, "detail": { "en": "Visitors come in with a guest sign-in — no account needed.", "zh": "訪客進站後以訪客身分登入，不需要註冊帳號。" } },
+      { "id": "ask", "at": [2, 1], "icon": "mic", "label": { "en": "Ask by voice or text", "zh": "語音或文字提問" }, "note": { "en": "Multilingual speech-to-text", "zh": "多語語音轉文字" }, "detail": { "en": "Type, or just speak — multilingual speech-to-text turns the voice into a question.", "zh": "可以打字，也可以直接說話；多語語音轉文字把語音轉成提問。" }, "accent": true },
+      { "id": "chat", "at": [1, 2], "icon": "message-square", "label": { "en": "Chat window", "zh": "聊天介面" }, "note": { "en": "Embeds limited by CSP", "zh": "CSP 控管可嵌入網域" }, "detail": { "en": "The chat UI dressed in the venue's brand; CSP headers decide which domains may embed it.", "zh": "依品牌設定套上樣式的聊天介面，以 CSP 標頭控管哪些網域可以嵌入。" }, "tags": ["Next.js", "Redux Toolkit", "MUI"] },
+      { "id": "llm", "at": [1, 3], "icon": "bot", "label": { "en": "LLM answers", "zh": "LLM 回答" }, "note": { "en": "Streamed token by token", "zh": "逐字串流" }, "detail": { "en": "The LLM answers from what it retrieves in the knowledge base, streaming word by word instead of waiting for the whole reply.", "zh": "從知識庫檢索相關內容後由 LLM 回答，逐字串流顯示，不必等整段生成完。" }, "accent": true },
+      { "id": "cite", "at": [1, 4], "icon": "quote", "label": { "en": "With sources", "zh": "附引用來源" }, "detail": { "en": "Every answer cites its sources, so visitors can check where it came from.", "zh": "每則回答附上引用來源，訪客可以確認資訊出處。" } },
+      { "id": "tts", "at": [2, 5], "icon": "volume-2", "label": { "en": "Read aloud", "zh": "語音朗讀" }, "note": { "en": "Speech synthesis", "zh": "語音合成" }, "detail": { "en": "Speech synthesis reads the answer aloud.", "zh": "以語音合成把回答朗讀出來。" }, "accent": true },
+      { "id": "history", "at": [0, 5], "icon": "history", "label": { "en": "Translation history", "zh": "翻譯紀錄" }, "detail": { "en": "Translations are kept so visitors can look back at them.", "zh": "保存翻譯紀錄，方便回頭查看。" } }
     ],
     "edges": [
       { "from": "env", "to": "brands" },
@@ -159,14 +166,14 @@
       null
     ],
     "nodes": [
-      { "id": "crawler", "at": [0, 0], "icon": "download", "label": { "en": "Crawler settings", "zh": "爬蟲設定" }, "note": { "en": "Scheduled fetching", "zh": "排程抓取" } },
-      { "id": "import", "at": [0, 1], "icon": "upload", "label": { "en": "Data import", "zh": "資料匯入" }, "note": { "en": "Registry, OTC, subsidies", "zh": "公司登記・櫃買・補助" } },
-      { "id": "db", "at": [0, 2], "icon": "database", "label": { "en": "Company database", "zh": "企業資料庫" } },
-      { "id": "filter", "at": [2, 1], "icon": "filter", "label": { "en": "Multi-criteria filters", "zh": "多條件篩選" }, "note": { "en": "Capital, headcount, subsidies\nJotai atoms per condition", "zh": "資本額・員工數・補助\nJotai 原子化狀態" } },
-      { "id": "ask", "at": [3, 1], "icon": "message-square", "label": { "en": "Conversational search", "zh": "對話式搜尋" } },
-      { "id": "list", "at": [1, 3], "icon": "list", "label": { "en": "Matching companies", "zh": "符合的企業清單" }, "note": { "en": "By industry area", "zh": "依產業領域分類" } },
-      { "id": "detail", "at": [1, 4], "icon": "building-2", "label": { "en": "Company profile", "zh": "企業詳情" } },
-      { "id": "graph", "at": [1, 5], "icon": "network", "label": { "en": "Ownership graph", "zh": "投資持股關係圖" }, "note": { "en": "Cytoscape.js", "zh": "Cytoscape.js" }, "accent": true }
+      { "id": "crawler", "at": [0, 0], "icon": "download", "label": { "en": "Crawler settings", "zh": "爬蟲設定" }, "note": { "en": "Scheduled fetching", "zh": "排程抓取" }, "detail": { "en": "Crawlers on a schedule pull in public data.", "zh": "設定爬蟲排程，定期抓取外部公開資料。" } },
+      { "id": "import", "at": [0, 1], "icon": "upload", "label": { "en": "Data import", "zh": "資料匯入" }, "note": { "en": "Registry, OTC, subsidies", "zh": "公司登記・櫃買・補助" }, "detail": { "en": "Company registry, TPEx and subsidy data imported in one place — no more cross-checking three sources.", "zh": "匯入公司登記、櫃買中心與補助資料，不必再在三處之間來回比對。" } },
+      { "id": "db", "at": [0, 2], "icon": "database", "label": { "en": "Company database", "zh": "企業資料庫" }, "detail": { "en": "Taiwan's IT service companies, merged with their industry classes and products and services.", "zh": "整合後的台灣資訊服務業企業資料，含產業分類與產品服務。" } },
+      { "id": "filter", "at": [2, 1], "icon": "filter", "label": { "en": "Multi-criteria filters", "zh": "多條件篩選" }, "note": { "en": "Capital, headcount, subsidies\nJotai atoms per condition", "zh": "資本額・員工數・補助\nJotai 原子化狀態" }, "detail": { "en": "Filter by capital, headcount, capability registration, subsidies and product category. Each filter is its own Jotai atom, so changing one doesn't recompute the whole graph.", "zh": "依資本額、員工數、能量登錄、獲補助紀錄、產品類別等條件篩選；狀態以 Jotai 拆成原子，任一條件變動不會重算整張圖。" }, "tags": ["Jotai"] },
+      { "id": "ask", "at": [3, 1], "icon": "message-square", "label": { "en": "Conversational search", "zh": "對話式搜尋" }, "detail": { "en": "Describe what you need in conversation to find companies — another way in besides the filters.", "zh": "用對話描述需求來找企業，是篩選之外的另一條路。" } },
+      { "id": "list", "at": [1, 3], "icon": "list", "label": { "en": "Matching companies", "zh": "符合的企業清單" }, "note": { "en": "By industry area", "zh": "依產業領域分類" }, "detail": { "en": "Matching companies, grouped by industry field.", "zh": "符合條件的企業，依產業領域分類列出。" } },
+      { "id": "detail", "at": [1, 4], "icon": "building-2", "label": { "en": "Company profile", "zh": "企業詳情" }, "detail": { "en": "One company's profile, products and services, and subsidy history.", "zh": "單一企業的基本資料、產品服務與補助紀錄。" } },
+      { "id": "graph", "at": [1, 5], "icon": "network", "label": { "en": "Ownership graph", "zh": "投資持股關係圖" }, "note": { "en": "Cytoscape.js", "zh": "Cytoscape.js" }, "detail": { "en": "Cytoscape.js draws the investment and shareholding ties between companies.", "zh": "以 Cytoscape.js 畫出企業之間的投資與持股關係。" }, "tags": ["Cytoscape.js"], "accent": true }
     ],
     "edges": [
       { "from": "crawler", "to": "import" },
@@ -186,15 +193,15 @@
       { "en": "2. Knowledge & use", "zh": "2. 知識與使用" }
     ],
     "nodes": [
-      { "id": "need", "at": [0, 0], "icon": "pen-line", "label": { "en": "Describe the need", "zh": "輸入需求" }, "note": { "en": "In plain language", "zh": "用白話描述" } },
-      { "id": "architect", "at": [0, 1], "icon": "sparkles", "label": { "en": "Architect", "zh": "架構師" }, "note": { "en": "Generates the agent", "zh": "自動生成 Agent" }, "accent": true },
-      { "id": "upload", "at": [2, 0], "icon": "upload", "label": { "en": "Upload files", "zh": "上傳文件" }, "note": { "en": "Many at once", "zh": "支援多檔上傳" } },
-      { "id": "kb", "at": [2, 1], "icon": "book-open", "label": { "en": "Knowledge base", "zh": "知識庫" }, "note": { "en": "Documents + SQL databases", "zh": "文件＋SQL 資料庫" } },
-      { "id": "agent", "at": [1, 2], "icon": "bot", "label": { "en": "AI agent", "zh": "AI Agent" }, "accent": true },
-      { "id": "studio", "at": [1, 3], "icon": "blocks", "label": { "en": "Studio", "zh": "工作室" }, "note": { "en": "Combine several agents", "zh": "組合多個 Agent" } },
-      { "id": "app", "at": [1, 4], "icon": "app-window", "label": { "en": "AI application", "zh": "AI 應用" } },
-      { "id": "voice", "at": [2, 4], "icon": "mic", "label": { "en": "Voice input", "zh": "語音輸入" } },
-      { "id": "chat", "at": [1, 5], "icon": "message-square", "label": { "en": "Rich chat", "zh": "多媒體對話" }, "note": { "en": "Markdown, code,\nimages, audio, video", "zh": "Markdown・程式碼\n圖片・影音" } }
+      { "id": "need", "at": [0, 0], "icon": "pen-line", "label": { "en": "Describe the need", "zh": "輸入需求" }, "note": { "en": "In plain language", "zh": "用白話描述" }, "detail": { "en": "Describe in plain words what the AI agent should do.", "zh": "用白話描述想要的 AI Agent 要做什麼。" } },
+      { "id": "architect", "at": [0, 1], "icon": "sparkles", "label": { "en": "Architect", "zh": "架構師" }, "note": { "en": "Generates the agent", "zh": "自動生成 Agent" }, "detail": { "en": "The Architect module reads the request and generates the agent's setup.", "zh": "「架構師」模組讀取需求後，自動生成 Agent 的設定。" }, "accent": true },
+      { "id": "upload", "at": [2, 0], "icon": "upload", "label": { "en": "Upload files", "zh": "上傳文件" }, "note": { "en": "Many at once", "zh": "支援多檔上傳" }, "detail": { "en": "Upload several documents to the knowledge base at once.", "zh": "一次上傳多份文件到知識庫。" } },
+      { "id": "kb", "at": [2, 1], "icon": "book-open", "label": { "en": "Knowledge base", "zh": "知識庫" }, "note": { "en": "Documents + SQL databases", "zh": "文件＋SQL 資料庫" }, "detail": { "en": "The knowledge base takes documents and can build a SQL database, wiring agents into a company's own data.", "zh": "知識庫支援文件與建立 SQL 資料庫，讓 Agent 接上自家的資料。" } },
+      { "id": "agent", "at": [1, 2], "icon": "bot", "label": { "en": "AI agent", "zh": "AI Agent" }, "detail": { "en": "A generated agent, now grounded in the knowledge base.", "zh": "生成好、已接上知識的 AI Agent。" }, "accent": true },
+      { "id": "studio", "at": [1, 3], "icon": "blocks", "label": { "en": "Studio", "zh": "工作室" }, "note": { "en": "Combine several agents", "zh": "組合多個 Agent" }, "detail": { "en": "The Studio combines several agents into one application.", "zh": "「工作室」把多個 Agent 組合成一個應用。" }, "tags": ["React Flow"] },
+      { "id": "app", "at": [1, 4], "icon": "app-window", "label": { "en": "AI application", "zh": "AI 應用" }, "detail": { "en": "The assembled AI application, ready to use.", "zh": "組合完成、可以直接使用的 AI 應用。" } },
+      { "id": "voice", "at": [2, 4], "icon": "mic", "label": { "en": "Voice input", "zh": "語音輸入" }, "detail": { "en": "Record a voice message instead of typing.", "zh": "按下錄音，直接用語音輸入。" } },
+      { "id": "chat", "at": [1, 5], "icon": "message-square", "label": { "en": "Rich chat", "zh": "多媒體對話" }, "note": { "en": "Markdown, code,\nimages, audio, video", "zh": "Markdown・程式碼\n圖片・影音" }, "detail": { "en": "Messages render Markdown, highlighted code, images and video. I split the large Chat component into focused sub-components to keep it maintainable.", "zh": "訊息支援 Markdown、程式碼高亮與圖片、影音渲染；我把大型 Chat 元件拆成獨立子元件，維護起來更容易。" }, "tags": ["React 18", "Redux Toolkit", "MUI"] }
     ],
     "edges": [
       { "from": "need", "to": "architect" },
@@ -215,15 +222,15 @@
       { "en": "2. Reports", "zh": "2. 產出報表" }
     ],
     "nodes": [
-      { "id": "scan", "at": [0, 0], "icon": "scan-line", "label": { "en": "Scan timesheets", "zh": "掃描工作表" }, "note": { "en": "Handwritten PDFs", "zh": "手寫表單 PDF" } },
-      { "id": "start", "at": [0, 1], "icon": "mouse-pointer-click", "label": { "en": "Double-click to start", "zh": "點兩下批次檔" } },
-      { "id": "claude", "at": [1, 2], "icon": "bot", "label": { "en": "Claude reads forms", "zh": "Claude 讀表單" }, "note": { "en": "Following a custom skill", "zh": "依自訂 skill 流程" }, "accent": true },
-      { "id": "json", "at": [1, 3], "icon": "file-json", "label": { "en": "One JSON\nper caregiver", "zh": "每位看護員\n一份 JSON" } },
-      { "id": "ids", "at": [2, 3], "icon": "id-card", "label": { "en": "ID lookup", "zh": "身分證對照" }, "note": { "en": "Fixes misread names", "zh": "更正讀錯的姓名" } },
-      { "id": "engine", "at": [1, 4], "icon": "calculator", "label": { "en": "Billing engine", "zh": "計費引擎" }, "note": { "en": "Days, shifts, amounts", "zh": "日／班／節與金額" } },
-      { "id": "confirm", "at": [0, 5], "icon": "clipboard-check", "label": { "en": "To-confirm list", "zh": "待確認清單" }, "note": { "en": "Answered in Chinese", "zh": "用中文回答 Claude" } },
-      { "id": "excel", "at": [2, 5], "icon": "file-spreadsheet", "label": { "en": "Excel report", "zh": "Excel 報表" }, "note": { "en": "Last month's layout", "zh": "沿用上個月格式" } },
-      { "id": "print", "at": [2, 6], "icon": "printer", "label": { "en": "Preview & print", "zh": "預覽與列印" } }
+      { "id": "scan", "at": [0, 0], "icon": "scan-line", "label": { "en": "Scan timesheets", "zh": "掃描工作表" }, "note": { "en": "Handwritten PDFs", "zh": "手寫表單 PDF" }, "detail": { "en": "Each month the accountant scans the carers' handwritten timesheets to PDF.", "zh": "會計每月把照顧服務員的手寫工作表掃描成 PDF。" } },
+      { "id": "start", "at": [0, 1], "icon": "mouse-pointer-click", "label": { "en": "Double-click to start", "zh": "點兩下批次檔" }, "detail": { "en": "The accountant doesn't code — a double-click on a batch file starts everything.", "zh": "會計不會寫程式，只要點兩下批次檔就開始。" } },
+      { "id": "claude", "at": [1, 2], "icon": "bot", "label": { "en": "Claude reads forms", "zh": "Claude 讀表單" }, "note": { "en": "Following a custom skill", "zh": "依自訂 skill 流程" }, "detail": { "en": "Claude reads the scans step by step, following a custom skill.", "zh": "Claude 依自訂 skill 的步驟，逐份讀取掃描檔。" }, "tags": ["Claude Code", "Agent Skills"], "accent": true },
+      { "id": "json", "at": [1, 3], "icon": "file-json", "label": { "en": "One JSON\nper caregiver", "zh": "每位看護員\n一份 JSON" }, "detail": { "en": "Each carer becomes one structured JSON file for the calculation engine.", "zh": "每位看護員整理成一份結構化 JSON，交給計費引擎。" } },
+      { "id": "ids", "at": [2, 3], "icon": "id-card", "label": { "en": "ID lookup", "zh": "身分證對照" }, "note": { "en": "Fixes misread names", "zh": "更正讀錯的姓名" }, "detail": { "en": "An ID-number lookup corrects names the AI misread.", "zh": "以身分證對照表更正 AI 讀錯的姓名。" } },
+      { "id": "engine", "at": [1, 4], "icon": "calculator", "label": { "en": "Billing engine", "zh": "計費引擎" }, "note": { "en": "Days, shifts, amounts", "zh": "日／班／節與金額" }, "detail": { "en": "A Python engine splits shifts by the billing rules into days, shifts and sessions with amounts. Checked against September's hand-made report: 78 rows, every cell matching.", "zh": "Python 計費引擎依規則切時段，算出日／班／節與金額；以 115 年 9 月人工報表驗算，78 筆逐格一致。" }, "tags": ["Python"] },
+      { "id": "confirm", "at": [0, 5], "icon": "clipboard-check", "label": { "en": "To-confirm list", "zh": "待確認清單" }, "note": { "en": "Answered in Chinese", "zh": "用中文回答 Claude" }, "detail": { "en": "What the rules can't settle goes on a to-confirm list; the accountant just answers Claude in Chinese.", "zh": "規則判斷不了的地方列成待確認清單，會計用中文回答 Claude 的問題即可。" } },
+      { "id": "excel", "at": [2, 5], "icon": "file-spreadsheet", "label": { "en": "Excel report", "zh": "Excel 報表" }, "note": { "en": "Last month's layout", "zh": "沿用上個月格式" }, "detail": { "en": "Excel COM copies last month's layout to produce the new month's report.", "zh": "以 Excel COM 複製上個月的格式，產出新月份報表。" }, "tags": ["openpyxl", "pywin32", "Excel COM"] },
+      { "id": "print", "at": [2, 6], "icon": "printer", "label": { "en": "Preview & print", "zh": "預覽與列印" }, "detail": { "en": "A preview PDF to check, then print.", "zh": "產出預覽 PDF，確認後列印。" } }
     ],
     "edges": [
       { "from": "scan", "to": "start" },
@@ -245,14 +252,14 @@
       { "en": "2. Claude", "zh": "2. Claude" }
     ],
     "nodes": [
-      { "id": "audio", "at": [0, 0], "icon": "file-audio", "label": { "en": "Drop in an episode", "zh": "丟入音檔" }, "note": { "en": "Up to 60 min", "zh": "60 分鐘內" } },
-      { "id": "asr", "at": [0, 1], "icon": "audio-waveform", "label": { "en": "Speech recognition", "zh": "語音辨識" }, "note": { "en": "FFmpeg + faster-whisper", "zh": "FFmpeg＋faster-whisper" }, "accent": true },
-      { "id": "speakers", "at": [0, 2], "icon": "users", "label": { "en": "Who's speaking", "zh": "講者分離" }, "note": { "en": "pyannote", "zh": "pyannote" }, "accent": true },
-      { "id": "zh", "at": [0, 3], "icon": "languages", "label": { "en": "Traditional Chinese", "zh": "簡轉繁與校正" }, "note": { "en": "OpenCC + glossary", "zh": "OpenCC＋自訂詞庫" } },
-      { "id": "srt", "at": [0, 4], "icon": "subtitles", "label": { "en": "Subtitles & transcript", "zh": "字幕與逐字稿" }, "note": { "en": ".srt, speakers labelled", "zh": ".srt・標好講者" } },
-      { "id": "copy", "at": [2, 5], "icon": "sparkles", "label": { "en": "Claude writes copy", "zh": "Claude 寫文案" }, "note": { "en": "To the show's own rules", "zh": "依節目規範 skill" }, "accent": true },
-      { "id": "check", "at": [1, 6], "icon": "shield-check", "label": { "en": "Automatic checks", "zh": "自動檢查" }, "note": { "en": "Times, quotes, numbers\nmust match the transcript", "zh": "章節時間・金句・數字\n都要對得上逐字稿" } },
-      { "id": "upload", "at": [0, 6], "icon": "send", "label": { "en": "Publish", "zh": "上架" } }
+      { "id": "audio", "at": [0, 0], "icon": "file-audio", "label": { "en": "Drop in an episode", "zh": "丟入音檔" }, "note": { "en": "Up to 60 min", "zh": "60 分鐘內" }, "detail": { "en": "Drop in an episode of up to 60 minutes. Everything runs locally — the audio never leaves the computer.", "zh": "丟入一集 60 分鐘內的音檔，全程在本機處理，音檔不上傳。" } },
+      { "id": "asr", "at": [0, 1], "icon": "audio-waveform", "label": { "en": "Speech recognition", "zh": "語音辨識" }, "note": { "en": "FFmpeg + faster-whisper", "zh": "FFmpeg＋faster-whisper" }, "detail": { "en": "FFmpeg prepares the audio, then faster-whisper transcribes it.", "zh": "以 FFmpeg 前處理，再用 faster-whisper 做語音辨識。" }, "tags": ["FFmpeg", "faster-whisper"], "accent": true },
+      { "id": "speakers", "at": [0, 2], "icon": "users", "label": { "en": "Who's speaking", "zh": "講者分離" }, "note": { "en": "pyannote", "zh": "pyannote" }, "detail": { "en": "pyannote works out who is speaking, so the transcript is labelled by speaker.", "zh": "以 pyannote 分辨誰在說話，逐字稿標好講者。" }, "tags": ["pyannote"], "accent": true },
+      { "id": "zh", "at": [0, 3], "icon": "languages", "label": { "en": "Traditional Chinese", "zh": "簡轉繁與校正" }, "note": { "en": "OpenCC + glossary", "zh": "OpenCC＋自訂詞庫" }, "detail": { "en": "OpenCC converts to Traditional Chinese, and a custom glossary fixes the show's recurring names and terms.", "zh": "以 OpenCC 簡轉繁，再用自訂詞庫校正節目常用的專有名詞。" }, "tags": ["OpenCC"] },
+      { "id": "srt", "at": [0, 4], "icon": "subtitles", "label": { "en": "Subtitles & transcript", "zh": "字幕與逐字稿" }, "note": { "en": ".srt, speakers labelled", "zh": ".srt・標好講者" }, "detail": { "en": "Out come an .srt subtitle file and a speaker-labelled transcript.", "zh": "產出 .srt 字幕與標好講者的逐字稿。" } },
+      { "id": "copy", "at": [2, 5], "icon": "sparkles", "label": { "en": "Claude writes copy", "zh": "Claude 寫文案" }, "note": { "en": "To the show's own rules", "zh": "依節目規範 skill" }, "detail": { "en": "Only the text goes to Claude, which writes the title, description, chapters and quotes to the show's style guide skill. A side-by-side with a local Qwen model settled on Claude.", "zh": "只把文字交給 Claude，依自訂 skill 寫成的節目規範撰寫標題、描述、章節與金句；曾與本機 Qwen 並排比較，最後統一用 Claude。" }, "tags": ["Claude Code"], "accent": true },
+      { "id": "check", "at": [1, 6], "icon": "shield-check", "label": { "en": "Automatic checks", "zh": "自動檢查" }, "note": { "en": "Times, quotes, numbers\nmust match the transcript", "zh": "章節時間・金句・數字\n都要對得上逐字稿" }, "detail": { "en": "Chapter times, quotes and numbers are checked against the transcript; only a clean pass is output.", "zh": "自動檢查章節時間、金句與數字都對得上逐字稿，全部通過才輸出。" }, "tags": ["pytest"] },
+      { "id": "upload", "at": [0, 6], "icon": "send", "label": { "en": "Publish", "zh": "上架" }, "detail": { "en": "Subtitles, transcript and copy in hand, the episode goes live.", "zh": "字幕、逐字稿與文案齊全，上架節目。" } }
     ],
     "edges": [
       { "from": "audio", "to": "asr" },
@@ -272,17 +279,17 @@
       { "en": "2. Building it", "zh": "2. 開發與上線" }
     ],
     "nodes": [
-      { "id": "visit", "at": [0, 0], "icon": "globe", "label": { "en": "Visit the site", "zh": "進入官網" } },
-      { "id": "quiz", "at": [0, 1], "icon": "list-checks", "label": { "en": "Personality quiz", "zh": "心理測驗" } },
-      { "id": "card", "at": [0, 2], "icon": "image", "label": { "en": "Personal card", "zh": "專屬小卡" }, "note": { "en": "1080×1350, share or save", "zh": "1080×1350 下載分享" } },
-      { "id": "letter", "at": [0, 3], "icon": "mail", "label": { "en": "Letter to the sea", "zh": "大海裡的信" }, "note": { "en": "Stories and messages", "zh": "投稿與留言" } },
-      { "id": "redis", "at": [1, 4], "icon": "database", "label": { "en": "Upstash Redis", "zh": "Upstash Redis" }, "note": { "en": "Rate-limited, honeypot", "zh": "限流・防機器人" } },
-      { "id": "discord", "at": [1, 5], "icon": "send", "label": { "en": "Relayed to Discord", "zh": "推送到 Discord" }, "note": { "en": "Hosts see it at once", "zh": "主持人即時收到" } },
-      { "id": "rules", "at": [2, 0], "icon": "file-text", "label": { "en": "CLAUDE.md", "zh": "CLAUDE.md" }, "note": { "en": "Project conventions", "zh": "開發慣例" } },
-      { "id": "claude", "at": [2, 1], "icon": "bot", "label": { "en": "Built with Claude Code", "zh": "Claude Code 開發" }, "note": { "en": "Layout from measured values", "zh": "依實測值重現版型" }, "accent": true },
-      { "id": "hooks", "at": [2, 2], "icon": "shield-check", "label": { "en": "Hooks guard", "zh": "Hooks 把關" }, "note": { "en": "Commit format, PR branch", "zh": "commit 格式・PR 分支" } },
-      { "id": "deploy", "at": [2, 3], "icon": "rocket", "label": { "en": "Live on Vercel", "zh": "Vercel 上線" } },
-      { "id": "llms", "at": [2, 4], "icon": "sparkles", "label": { "en": "llms.txt", "zh": "llms.txt" }, "note": { "en": "Readable by AI search", "zh": "讓 AI 搜尋讀懂" } }
+      { "id": "visit", "at": [0, 0], "icon": "globe", "label": { "en": "Visit the site", "zh": "進入官網" }, "detail": { "en": "Listeners arrive from the show; the site is built mobile-first.", "zh": "聽眾從節目連結進入官網，以手機版體驗為主。" } },
+      { "id": "quiz", "at": [0, 1], "icon": "list-checks", "label": { "en": "Personality quiz", "zh": "心理測驗" }, "detail": { "en": "A personality quiz whose result depends on the combination of answers.", "zh": "一份心理測驗，結果依作答組合而定。" } },
+      { "id": "card", "at": [0, 2], "icon": "image", "label": { "en": "Personal card", "zh": "專屬小卡" }, "note": { "en": "1080×1350, share or save", "zh": "1080×1350 下載分享" }, "detail": { "en": "Each answer combination gets its own share card, downloadable at 1080×1350 for social media.", "zh": "依作答組合產生專屬分享小卡，可下載 1080×1350 圖片分享到社群。" } },
+      { "id": "letter", "at": [0, 3], "icon": "mail", "label": { "en": "Letter to the sea", "zh": "大海裡的信" }, "note": { "en": "Stories and messages", "zh": "投稿與留言" }, "detail": { "en": "\"Letters in the Sea\" takes listener submissions, alongside a private message box for the podcast.", "zh": "「大海裡的信」讓聽眾投稿，另有不公開的 Podcast 留言箱。" } },
+      { "id": "redis", "at": [1, 4], "icon": "database", "label": { "en": "Upstash Redis", "zh": "Upstash Redis" }, "note": { "en": "Rate-limited, honeypot", "zh": "限流・防機器人" }, "detail": { "en": "Submissions are stored in Upstash Redis, rate-limited and guarded against bots.", "zh": "投稿存進 Upstash Redis，並做限流與防機器人。" }, "tags": ["Upstash Redis"] },
+      { "id": "discord", "at": [1, 5], "icon": "send", "label": { "en": "Relayed to Discord", "zh": "推送到 Discord" }, "note": { "en": "Hosts see it at once", "zh": "主持人即時收到" }, "detail": { "en": "Each new submission is pushed to Discord, so the hosts see it right away.", "zh": "新投稿即時推送到 Discord，主持人馬上收到。" } },
+      { "id": "rules", "at": [2, 0], "icon": "file-text", "label": { "en": "CLAUDE.md", "zh": "CLAUDE.md" }, "note": { "en": "Project conventions", "zh": "開發慣例" }, "detail": { "en": "CLAUDE.md records the project's conventions, so Claude Code starts every session on the same rules.", "zh": "CLAUDE.md 記下開發慣例，Claude Code 每次開工都照同一套規則。" } },
+      { "id": "claude", "at": [2, 1], "icon": "bot", "label": { "en": "Built with Claude Code", "zh": "Claude Code 開發" }, "note": { "en": "Layout from measured values", "zh": "依實測值重現版型" }, "detail": { "en": "Claude Code rebuilt the layout, spacing and interactions from measurements of the reference design.", "zh": "由 Claude Code 依參考設計的實測值，重現版型、間距與互動。" }, "tags": ["Claude Code", "Next.js 16", "Tailwind CSS 4"], "accent": true },
+      { "id": "hooks", "at": [2, 2], "icon": "shield-check", "label": { "en": "Hooks guard", "zh": "Hooks 把關" }, "note": { "en": "Commit format, PR branch", "zh": "commit 格式・PR 分支" }, "detail": { "en": "Claude Code hooks block badly formatted commits and PRs opened from the main branch.", "zh": "Claude Code hooks 擋下格式不符的 commit 與從主分支開的 PR。" } },
+      { "id": "deploy", "at": [2, 3], "icon": "rocket", "label": { "en": "Live on Vercel", "zh": "Vercel 上線" }, "detail": { "en": "Deployed on Vercel.", "zh": "部署在 Vercel 上線。" }, "tags": ["Vercel"] },
+      { "id": "llms", "at": [2, 4], "icon": "sparkles", "label": { "en": "llms.txt", "zh": "llms.txt" }, "note": { "en": "Readable by AI search", "zh": "讓 AI 搜尋讀懂" }, "detail": { "en": "An llms.txt helps AI search understand the site.", "zh": "提供 llms.txt，讓 AI 搜尋讀懂網站內容。" } }
     ],
     "edges": [
       { "from": "visit", "to": "quiz" },
@@ -306,15 +313,15 @@
       { "en": "3. Guard & ship", "zh": "3. 把關與交付" }
     ],
     "nodes": [
-      { "id": "spec", "at": [0, 0], "icon": "pen-line", "label": { "en": "Spec interview", "zh": "規格訪談" }, "note": { "en": "/planning:spec\nrequirement → spec", "zh": "/planning:spec\n需求 → 規格文件" } },
-      { "id": "autopilot", "at": [0, 1], "icon": "sparkles", "label": { "en": "Self-completing spec", "zh": "規格自動補完" }, "note": { "en": "spec-autopilot decides\nevery open question", "zh": "spec-autopilot\n自行決定待定問題" }, "accent": true },
-      { "id": "review", "at": [0, 2], "icon": "clipboard-check", "label": { "en": "Staff-engineer review", "zh": "Staff 工程師審查" }, "note": { "en": "PASS / WARN / FAIL,\nthen apply-review", "zh": "PASS／WARN／FAIL\n再 apply-review 修正" }, "accent": true },
-      { "id": "branch", "at": [2, 3], "icon": "git-branch", "label": { "en": "Branch from main", "zh": "從 main 開分支" }, "note": { "en": "/git:branch", "zh": "/git:branch" } },
-      { "id": "tdd", "at": [2, 4], "icon": "flask-conical", "label": { "en": "Test-first build", "zh": "TDD 實作" }, "note": { "en": "Failing test first,\nthen the code", "zh": "先寫失敗測試\n再寫程式" }, "accent": true },
-      { "id": "rules", "at": [4, 2], "icon": "book-open", "label": { "en": "Standards & skills", "zh": "規範與 skills" }, "note": { "en": "OWASP, design system, API", "zh": "OWASP・設計系統・API" } },
-      { "id": "hooks", "at": [4, 3], "icon": "shield-check", "label": { "en": "Hooks on every edit", "zh": "Hooks 即時把關" }, "note": { "en": "Secrets, commit format,\nPR branch", "zh": "敏感檔・commit 格式\nPR 分支" } },
-      { "id": "verify", "at": [4, 5], "icon": "list-checks", "label": { "en": "Stop-hook check", "zh": "Stop hook 驗證" }, "note": { "en": "Lint, types, tests\nbefore \"done\"", "zh": "lint・型別・測試\n通過才算完成" } },
-      { "id": "pr", "at": [4, 6], "icon": "git-pull-request", "label": { "en": "PR + AI review", "zh": "PR＋AI 審查" }, "note": { "en": "/create-pr → develop,\nClaude Code Review + CI", "zh": "/create-pr → develop\nClaude Code Review＋CI" }, "accent": true }
+      { "id": "spec", "at": [0, 0], "icon": "pen-line", "label": { "en": "Spec interview", "zh": "規格訪談" }, "note": { "en": "/planning:spec\nrequirement → spec", "zh": "/planning:spec\n需求 → 規格文件" }, "detail": { "en": "/planning:spec interviews for requirements and turns them into a spec.", "zh": "以 /planning:spec 訪談需求，整理成規格文件。" } },
+      { "id": "autopilot", "at": [0, 1], "icon": "sparkles", "label": { "en": "Self-completing spec", "zh": "規格自動補完" }, "note": { "en": "spec-autopilot decides\nevery open question", "zh": "spec-autopilot\n自行決定待定問題" }, "detail": { "en": "spec-autopilot makes the AI check its own spec for gaps and settle every open question before handing it over.", "zh": "spec-autopilot 讓 AI 交出規格前先自我檢查缺漏，並自行決定所有待定問題。" }, "tags": ["Agent Skills"], "accent": true },
+      { "id": "review", "at": [0, 2], "icon": "clipboard-check", "label": { "en": "Staff-engineer review", "zh": "Staff 工程師審查" }, "note": { "en": "PASS / WARN / FAIL,\nthen apply-review", "zh": "PASS／WARN／FAIL\n再 apply-review 修正" }, "detail": { "en": "/planning:review reviews the plan as a staff engineer would — PASS, WARN or FAIL — and /planning:apply-review folds in the fixes.", "zh": "/planning:review 以 Staff 工程師的角度審查，給出 PASS／WARN／FAIL，再用 /planning:apply-review 修正，定案計畫。" }, "accent": true },
+      { "id": "branch", "at": [2, 3], "icon": "git-branch", "label": { "en": "Branch from main", "zh": "從 main 開分支" }, "note": { "en": "/git:branch", "zh": "/git:branch" }, "detail": { "en": "/git:branch starts a new branch from main.", "zh": "以 /git:branch 從 main 開新分支。" } },
+      { "id": "tdd", "at": [2, 4], "icon": "flask-conical", "label": { "en": "Test-first build", "zh": "TDD 實作" }, "note": { "en": "Failing test first,\nthen the code", "zh": "先寫失敗測試\n再寫程式" }, "detail": { "en": "Write a failing test first, then the code that passes it.", "zh": "先寫失敗的測試，再寫讓它通過的程式。" }, "tags": ["Jest", "Vitest"], "accent": true },
+      { "id": "rules", "at": [4, 2], "icon": "book-open", "label": { "en": "Standards & skills", "zh": "規範與 skills" }, "note": { "en": "OWASP, design system, API", "zh": "OWASP・設計系統・API" }, "detail": { "en": "OWASP, the design system and API conventions written as skills, so the AI works to the same standard every time.", "zh": "把 OWASP、設計系統與 API 規範寫成 skills，AI 每次都照同一套標準。" }, "tags": ["Agent Skills"] },
+      { "id": "hooks", "at": [4, 3], "icon": "shield-check", "label": { "en": "Hooks on every edit", "zh": "Hooks 即時把關" }, "note": { "en": "Secrets, commit format,\nPR branch", "zh": "敏感檔・commit 格式\nPR 分支" }, "detail": { "en": "Hooks check every write, blocking sensitive files, badly formatted commits and PRs from the wrong branch.", "zh": "每次寫檔都由 hooks 檢查，擋下敏感檔、不合格式的 commit 與從錯誤分支開的 PR。" }, "tags": ["Claude Code Hooks"] },
+      { "id": "verify", "at": [4, 5], "icon": "list-checks", "label": { "en": "Stop-hook check", "zh": "Stop hook 驗證" }, "note": { "en": "Lint, types, tests\nbefore \"done\"", "zh": "lint・型別・測試\n通過才算完成" }, "detail": { "en": "A Stop hook runs lint, type checks and tests; Claude may only call it done when all pass.", "zh": "Stop hook 跑完 lint、型別檢查與測試，全部通過 Claude 才能宣告完成。" } },
+      { "id": "pr", "at": [4, 6], "icon": "git-pull-request", "label": { "en": "PR + AI review", "zh": "PR＋AI 審查" }, "note": { "en": "/create-pr → develop,\nClaude Code Review + CI", "zh": "/create-pr → develop\nClaude Code Review＋CI" }, "detail": { "en": "/create-pr opens a PR to develop, where Claude Code Review checks it in CI.", "zh": "以 /create-pr 開 PR 到 develop，在 CI 由 Claude Code Review 審查。" }, "tags": ["GitHub Actions"], "accent": true }
     ],
     "edges": [
       { "from": "spec", "to": "autopilot" },

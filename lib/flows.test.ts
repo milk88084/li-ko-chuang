@@ -13,7 +13,10 @@ describe("project flows", () => {
       for (const locale of LOCALES) {
         const flow = getFlow(slug, locale)!;
         expect(flow.legend.trim()).not.toBe("");
-        for (const node of flow.nodes) expect(node.label.trim()).not.toBe("");
+        for (const node of flow.nodes) {
+          expect(node.label.trim()).not.toBe("");
+          expect(`${slug}/${node.id}: ${node.detail?.trim() ?? ""}`).not.toBe(`${slug}/${node.id}: `);
+        }
       }
     }
   });
