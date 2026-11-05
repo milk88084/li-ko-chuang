@@ -217,9 +217,7 @@
         "intro": "The order is how I work. What each step does, and every command, comes from Anthropic's official Claude Code docs.",
         "once": "One-time",
         "loop": "Fails → fix again",
-        "hint": "Select a step to see what it does.",
-        "sourcesLabel": "Sources · Anthropic, Claude Code docs",
-        "source": "Source"
+        "hint": "Select a step to see what it does."
       },
       "now": {
         "label": "Now",
@@ -549,9 +547,7 @@
         "intro": "順序是我實際的做法；每一步的內容與指令，都出自 Anthropic 官方的 Claude Code 文件。",
         "once": "一次性",
         "loop": "失敗 → 再改",
-        "hint": "點選步驟查看說明。",
-        "sourcesLabel": "出處 · Anthropic Claude Code 官方文件",
-        "source": "出處"
+        "hint": "點選步驟查看說明。"
       },
       "now": {
         "label": "Now",

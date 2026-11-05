@@ -1,8 +1,6 @@
 import data from "@/data/claude-workflow.json";
 import { getWorkflow } from "./claude-workflow";
 
-const OFFICIAL = /^https:\/\/code\.claude\.com\/docs\/en\//;
-
 describe("claude workflow data", () => {
   it.each(["en", "zh"] as const)("has every string in %s", (locale) => {
     const wf = getWorkflow(locale);
@@ -20,12 +18,6 @@ describe("claude workflow data", () => {
     for (const item of wf.premise.items) expect(item.body).toBeTruthy();
   });
 
-  it("cites only official Claude Code docs", () => {
-    const wf = getWorkflow("en");
-    for (const s of wf.sources) expect(s.url).toMatch(OFFICIAL);
-    for (const step of wf.steps) expect(step.source.url).toMatch(OFFICIAL);
-  });
-
   it("has unique ids and loops back only to an earlier step", () => {
     const ids = data.steps.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);
@@ -35,6 +27,11 @@ describe("claude workflow data", () => {
       expect(target).toBeGreaterThanOrEqual(0);
       expect(target).toBeLessThan(i);
     });
+  });
+
+  it("lists each premise command once", () => {
+    const codes = getWorkflow("en").premise.items.map((i) => i.code);
+    expect(new Set(codes).size).toBe(codes.length);
   });
 
   it("starts with the one-time setup", () => {
