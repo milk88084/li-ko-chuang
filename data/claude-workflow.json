@@ -21,22 +21,12 @@
     },
     "items": [
       {
-        "body": { "en": "Between unrelated tasks", "zh": "不相關的任務之間" },
-        "code": "/clear",
-        "source": "best-practices"
-      },
-      {
         "body": {
-          "en": "Corrected the same thing twice? Clear and write one new prompt",
-          "zh": "同一件事糾正兩次還是錯，就清掉重下一個新 prompt"
+          "en": "Between unrelated tasks — and when the same thing has been corrected twice, clear and write one new prompt",
+          "zh": "不相關的任務之間；同一件事糾正兩次還是錯，也清掉重下一個新 prompt"
         },
         "code": "/clear",
         "source": "best-practices"
-      },
-      {
-        "body": { "en": "Hand research to a subagent", "zh": "研究類工作交給 subagent" },
-        "code": "Explore agent",
-        "source": "common-workflows"
       },
       {
         "body": {

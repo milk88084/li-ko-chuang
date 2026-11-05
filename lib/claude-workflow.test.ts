@@ -37,6 +37,11 @@ describe("claude workflow data", () => {
     });
   });
 
+  it("lists each premise command once", () => {
+    const codes = getWorkflow("en").premise.items.map((i) => i.code);
+    expect(new Set(codes).size).toBe(codes.length);
+  });
+
   it("starts with the one-time setup", () => {
     expect(getWorkflow("en").steps[0].kind).toBe("setup");
   });
