@@ -11,7 +11,7 @@ import {
   type PointerEvent,
 } from "react";
 import gsap from "gsap";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import content from "@/data/content.json";
 import type { Locale } from "@/lib/locale";
 import { getWorkflow } from "@/lib/claude-workflow";
@@ -100,7 +100,7 @@ function loopBack(from: Rect, fromCell: Rect, to: Rect, toCell: Rect): Loop {
 
 export function ClaudeWorkflow({ locale }: { locale: Locale }) {
   const t = content[locale].about.workflow;
-  const { premise, steps, sources } = useMemo(() => getWorkflow(locale), [locale]);
+  const { premise, steps } = useMemo(() => getWorkflow(locale), [locale]);
 
   const blockRef = useRef<HTMLDivElement>(null);
   const flowRef = useRef<HTMLOListElement>(null);
@@ -400,40 +400,12 @@ export function ClaudeWorkflow({ locale }: { locale: Locale }) {
                           </li>
                         ))}
                       </ul>
-                      <a
-                        href={step.source.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-4 inline-flex items-center gap-1 font-mono text-[11px] text-muted hover:text-accent"
-                      >
-                        {t.source} · {step.source.title}
-                        <ArrowUpRight aria-hidden className="size-3" />
-                      </a>
                     </div>
                   </li>
                 );
               })}
             </ol>
           </div>
-        </div>
-
-        <div className="border-t border-line px-6 py-5 md:px-8">
-          <p className="font-mono text-[11px] text-muted">{t.sourcesLabel}</p>
-          <ul className="mt-2 flex flex-wrap gap-x-6 gap-y-1">
-            {sources.map((s) => (
-              <li key={s.url}>
-                <a
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[14px] text-accent hover:underline"
-                >
-                  {s.title}
-                  <ArrowUpRight aria-hidden className="size-3.5" />
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </Section>

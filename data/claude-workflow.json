@@ -1,18 +1,4 @@
 {
-  "sources": {
-    "best-practices": {
-      "url": "https://code.claude.com/docs/en/best-practices",
-      "title": { "en": "Best practices for Claude Code", "zh": "Best practices for Claude Code" }
-    },
-    "permission-modes": {
-      "url": "https://code.claude.com/docs/en/permission-modes",
-      "title": { "en": "Permission modes", "zh": "Permission modes" }
-    },
-    "common-workflows": {
-      "url": "https://code.claude.com/docs/en/common-workflows",
-      "title": { "en": "Common workflows", "zh": "Common workflows" }
-    }
-  },
   "premise": {
     "title": { "en": "Keep the context clean", "zh": "保持 context 乾淨" },
     "body": {
@@ -25,16 +11,14 @@
           "en": "Between unrelated tasks — and when the same thing has been corrected twice, clear and write one new prompt",
           "zh": "不相關的任務之間；同一件事糾正兩次還是錯，也清掉重下一個新 prompt"
         },
-        "code": "/clear",
-        "source": "best-practices"
+        "code": "/clear"
       },
       {
         "body": {
           "en": "Roll the code or conversation back to an earlier prompt",
           "zh": "把程式碼或對話退回先前的某個 prompt"
         },
-        "code": "/rewind",
-        "source": "best-practices"
+        "code": "/rewind"
       }
     ]
   },
@@ -42,12 +26,11 @@
     {
       "id": "setup",
       "kind": "setup",
-      "title": { "en": "Setup", "zh": "一次性設定" },
+      "title": { "en": "Setup", "zh": "初始設定" },
       "summary": {
         "en": "Tell Claude what it can't see, and enforce what can't have exceptions.",
         "zh": "告訴 Claude 它看不到的事，並強制執行不容例外的規則。"
       },
-      "source": "best-practices",
       "items": [
         {
           "label": "CLAUDE.md",
@@ -86,12 +69,11 @@
     {
       "id": "interview",
       "kind": "step",
-      "title": { "en": "Interview → SPEC.md", "zh": "訪談 → SPEC.md" },
+      "title": { "en": "Interview → SPEC.md", "zh": "任務 → SPEC.md" },
       "summary": {
         "en": "When you don't know exactly what you want yet, let Claude ask until the answers add up to a spec — including what's out of scope.",
         "zh": "還不確定要什麼時，讓 Claude 反問到答案能拼成一份 spec，包含不做的範圍。"
       },
-      "source": "best-practices",
       "items": [
         {
           "body": {
@@ -105,12 +87,11 @@
     {
       "id": "explore",
       "kind": "step",
-      "title": { "en": "Explore", "zh": "探索" },
+      "title": { "en": "Explore", "zh": "Claude探索" },
       "summary": {
         "en": "In plan mode Claude reads files and runs commands to explore, but doesn't edit your source.",
         "zh": "在 plan mode 裡，Claude 會讀檔、執行指令來探索，但不改原始碼。"
       },
-      "source": "permission-modes",
       "items": [
         {
           "body": {
@@ -124,12 +105,11 @@
     {
       "id": "plan",
       "kind": "step",
-      "title": { "en": "Plan", "zh": "計畫" },
+      "title": { "en": "Plan", "zh": "提出計畫，人工審核" },
       "summary": {
         "en": "Claude presents a plan; you approve it, or keep planning and say what to change.",
         "zh": "Claude 提出計畫；由你核准，或選擇繼續規劃並說明要改什麼。"
       },
-      "source": "permission-modes",
       "items": [
         {
           "body": {
@@ -143,12 +123,11 @@
     {
       "id": "implement",
       "kind": "step",
-      "title": { "en": "Implement", "zh": "實作" },
+      "title": { "en": "Implement", "zh": "Claude實作" },
       "summary": {
         "en": "Start a fresh session to build from the spec, so the build begins with a clean context.",
         "zh": "開一個新 session 依 spec 實作，讓實作從乾淨的 context 開始。"
       },
-      "source": "best-practices",
       "items": [
         {
           "body": {
@@ -167,7 +146,6 @@
         "en": "Give Claude a check that comes back pass or fail — tests, a typecheck, a linter, a screenshot next to the mockup — and ask for evidence.",
         "zh": "給 Claude 一個會回報通過或失敗的檢查（測試、type-check、linter、截圖對照設計稿），並要它拿出證據。"
       },
-      "source": "best-practices",
       "loopBackTo": "implement",
       "items": [
         {
@@ -187,7 +165,6 @@
         "en": "Review the diff in a fresh subagent that never saw your conversation, against the spec.",
         "zh": "用沒看過這段對話的新 subagent，對照 spec 審查 diff。"
       },
-      "source": "best-practices",
       "items": [
         {
           "body": {
@@ -206,7 +183,6 @@
         "en": "Ask Claude to open the PR, then review it before submitting and have Claude highlight the risks.",
         "zh": "請 Claude 開 PR，送出前先審，並請 Claude 點出潛在風險。"
       },
-      "source": "common-workflows",
       "items": [
         {
           "body": {
