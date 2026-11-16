@@ -331,6 +331,7 @@
       "basedIn": "Based in",
       "email": "Email",
       "elsewhere": "Elsewhere",
+      "visits": "Visitors",
       "sitemap": "Sitemap",
       "backToTop": "Back to top"
     },
@@ -665,6 +666,7 @@
       "basedIn": "所在地",
       "email": "Email",
       "elsewhere": "其他連結",
+      "visits": "造訪人次",
       "sitemap": "網站地圖",
       "backToTop": "回到頂部"
     },

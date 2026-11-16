@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Check, Copy } from "lucide-react";
 
-// The two interactive bits of the footer, split out so SiteFooter itself can
-// stay a server component.
+// The interactive bits of the footer, split out so SiteFooter itself can stay
+// a server component.
 
 /** Copies the address and says so for a moment. */
 export function CopyEmailButton({
@@ -66,6 +66,34 @@ export function TaipeiClock() {
   return (
     <span className="tabular-nums">
       {time ?? "--:--"} <span className="opacity-60">GMT+8</span>
+    </span>
+  );
+}
+
+/**
+ * Total visits so far. Mounting it records this visit — the API counts each
+ * person once a day, so every page carrying the footer can call it freely.
+ * Shows a dash until the number arrives, or for good if no store is set up.
+ */
+export function VisitCounter() {
+  const [count, setCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/visits", { method: "POST" })
+      .then((res) => res.json())
+      .then((data: { count: number | null }) => {
+        if (!cancelled && typeof data.count === "number") setCount(data.count);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return (
+    <span className="tabular-nums">
+      {count === null ? "—" : new Intl.NumberFormat("en-US").format(count)}
     </span>
   );
 }
