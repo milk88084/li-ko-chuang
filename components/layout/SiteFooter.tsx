@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 import { localePath, type Locale } from "@/lib/locale";
 import { GridLines } from "@/components/canvas/GridLines";
 import { Caret } from "@/components/motion/Caret";
-import { CopyEmailButton, TaipeiClock } from "./footer-parts";
+import { CopyEmailButton, TaipeiClock, VisitCounter } from "./footer-parts";
 
 // The last screen of every page and the target of every "Contact" link
 // (#contact). The whole block flips to the accent colour so the page ends on
@@ -54,6 +54,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         </span>
       ),
     },
+    { label: f.visits, value: <VisitCounter /> },
   ];
 
   return (
@@ -96,7 +97,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <dl className="mt-12 grid border-t border-white/25 md:mt-16 md:grid-cols-3">
+        <dl className="mt-12 grid border-t border-white/25 md:mt-16 md:grid-cols-4">
           {inspect.map((row, i) => (
             <div
               key={row.label}

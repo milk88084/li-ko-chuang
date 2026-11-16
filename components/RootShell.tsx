@@ -6,6 +6,7 @@ import {
   Noto_Sans_TC,
   Noto_Serif_TC,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { LanguageProvider } from "@/providers/LanguageProvider";
 import { FaviconSync } from "@/components/FaviconSync";
@@ -118,6 +119,9 @@ export function RootShell({
             {children}
           </LanguageProvider>
         </ThemeProvider>
+        {/* Private page-view stats, read in the Vercel dashboard. Sends
+            nothing outside a Vercel deployment. */}
+        <Analytics />
       </body>
     </html>
   );
