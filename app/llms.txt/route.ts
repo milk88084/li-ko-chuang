@@ -27,8 +27,9 @@ const projectLines = (type: ProjectType) =>
 export function GET() {
   const body = `# ${siteConfig.name}
 
-> AI engineer in Taipei. Works mainly on the frontend (React, Next.js,
-> TypeScript), designs, builds and ships iOS apps alone, and turns other
+> Frontend-first engineer in Taipei who ships full-stack products end to
+> end. Works mainly on the frontend (React, Next.js, TypeScript), designs,
+> builds and ships iOS apps alone, and turns other
 > people's requirements into AI automations and tools. Eight years in
 > marketing, campaigns and event planning before that.
 
@@ -62,8 +63,8 @@ ${projectLines("marketing")}
 
 ## Background
 
-- Frontend engineer at the Institute for Information Industry's Digital
-  Transformation Division since 2024.
+- Frontend engineer at E-Sheng Information since 2024, leading the frontend
+  of AI products for public-sector and enterprise clients.
 - Over eight years in marketing, fundraising campaigns, event planning and
   government-funded programme management before moving into engineering.
 - Works in React, Next.js, TypeScript, React Native and Expo, and builds

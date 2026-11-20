@@ -20,7 +20,7 @@ const person = {
   "@id": PERSON_ID,
   name: siteConfig.name,
   url: siteConfig.siteUrl,
-  jobTitle: "AI Engineer",
+  jobTitle: "Frontend-first Full-Stack Engineer",
   email: `mailto:${siteConfig.social.email}`,
   description: siteConfig.description,
   knowsAbout: [
@@ -42,8 +42,7 @@ const person = {
   knowsLanguage: ["en", "zh-Hant"],
   worksFor: {
     "@type": "Organization",
-    name: "Institute for Information Industry",
-    department: { "@type": "Organization", name: "Digital Transformation" },
+    name: "E-Sheng Information",
   },
   // The three-engineer studio Max is part of; its own JSON-LD lists Max as
   // a member and links back here, so the two sites confirm each other.
