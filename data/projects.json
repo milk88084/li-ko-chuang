@@ -273,17 +273,16 @@
       "summary": "A trend-watching and decision-support platform for the MOEA Department of Industrial Technology, tracking emerging tech and weak signals. I lead the frontend.",
       "category": null,
       "problem": "Policy and investment calls depend on spotting global tech trends early, but the signals are scattered across news, papers, open-source communities and startup data — gathered by hand, with no way to tell a faint new signal from a mainstream one.",
-      "outcome": "Built the whole frontend in Next.js 14. Deep Research streams its reports through an SSE proxy that injects heartbeats while the upstream is idle, so the gateway never drops the connection. Around it: a STEEP trend map, a leader radar, a tech-portfolio decision center with fishbone backcasting and Delphi expert review, a startup match board and a daily AI newsletter. Content is personalized by the user's industry, and signed share codes open selected reports without a login.",
+      "outcome": "Built the whole frontend in Next.js 16. Deep Research streams its reports through an SSE proxy that injects heartbeats while the upstream is idle, so the gateway never drops the connection; every stream event is validated at runtime before it reaches the UI, and the run state lives in a reducer covered by Vitest unit tests. Around it: a STEEP trend map, a leader radar, a tech-portfolio decision center with fishbone backcasting and Delphi expert review, and a daily AI newsletter. Content is personalized by the user's industry, and signed share codes open selected reports without a login.",
       "highlights": [
         "Deep Research streaming",
         "STEEP trend map",
         "Leader radar",
         "Tech portfolio",
-        "Startup matching",
         "Daily newsletter"
       ],
       "tech": [
-        "Next.js 14",
+        "Next.js 16",
         "React",
         "TypeScript",
         "TanStack Query",
@@ -293,6 +292,7 @@
         "shadcn/ui",
         "Recharts",
         "D3",
+        "Vitest",
         "Docker"
       ]
     },
@@ -301,17 +301,16 @@
       "summary": "經濟部技術司的趨勢觀測與決策支援平台，追蹤前瞻技術、產業動態與早期弱信號；我是主要前端開發者。",
       "category": null,
       "problem": "政策與投資判斷需要及早掌握全球技術趨勢，但訊號散落在新聞、論文、開源社群與新創資料裡，只能人工蒐集，也分不出哪些是剛冒出的微光、哪些已是主流。",
-      "outcome": "以 Next.js 14 打造全站前端：Deep Research 以 SSE 串流代理即時呈現研究報告，上游閒置時注入 heartbeat 避免閘道斷線；另有 STEEP 趨勢圖譜、領袖雷達、技術投資組合決策中心（魚骨圖回推與 Delphi 專家評估）、新創媒合看板與每日 AI 電子報。登入後依使用者產業別個人化內容，並以簽章分享碼開放免登入的報告分享頁。",
+      "outcome": "以 Next.js 16 打造全站前端：Deep Research 以 SSE 串流代理即時呈現研究報告，上游閒置時注入 heartbeat 避免閘道斷線；每筆串流事件先經執行期驗證才進入畫面，研究狀態收斂成 reducer，並以 Vitest 撰寫單元測試。另有 STEEP 趨勢圖譜、領袖雷達、技術投資組合決策中心（魚骨圖回推與 Delphi 專家評估）與每日 AI 電子報。登入後依使用者產業別個人化內容，並以簽章分享碼開放免登入的報告分享頁。",
       "highlights": [
         "Deep Research 串流",
         "STEEP 趨勢圖譜",
         "領袖雷達",
         "技術投資組合",
-        "新創媒合",
         "每日電子報"
       ],
       "tech": [
-        "Next.js 14",
+        "Next.js 16",
         "React",
         "TypeScript",
         "TanStack Query",
@@ -321,6 +320,7 @@
         "shadcn/ui",
         "Recharts",
         "D3",
+        "Vitest",
         "Docker"
       ]
     }

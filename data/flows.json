@@ -109,21 +109,19 @@
       { "id": "sources", "at": [2, 0], "icon": "globe", "label": { "en": "Scattered signals", "zh": "分散的訊號" }, "note": { "en": "News, papers,\nopen source, startups", "zh": "新聞・論文\n開源・新創" }, "detail": { "en": "Signals scattered across news, papers, open-source communities and startup data — gathered by hand before.", "zh": "散落在新聞、論文、開源社群與新創資料裡的訊號，原本只能人工蒐集。" } },
       { "id": "steep", "at": [1, 1], "icon": "radar", "label": { "en": "STEEP trend map", "zh": "STEEP 趨勢圖譜" }, "note": { "en": "Weak signal to mainstream", "zh": "從弱信號到主流" }, "detail": { "en": "Signals sorted on a STEEP map (social, technological, economic, environmental, political), telling a fresh weak signal from a mainstream trend.", "zh": "以 STEEP（社會、科技、經濟、環境、政治）架構把訊號整理成趨勢圖譜，分辨剛冒出的弱信號與已成主流的趨勢。" }, "tags": ["D3", "Recharts"], "accent": true },
       { "id": "leaders", "at": [0, 2], "icon": "users", "label": { "en": "Leader radar", "zh": "領袖雷達" }, "detail": { "en": "From a trend to the leaders driving it: a radar of key people and organisations in the field.", "zh": "從趨勢延伸到推動它的人：追蹤各領域關鍵領袖與機構的雷達。" } },
-      { "id": "match", "at": [2, 2], "icon": "handshake", "label": { "en": "Startup matching", "zh": "新創媒合看板" }, "detail": { "en": "A board matching trends with relevant startups.", "zh": "把趨勢對應到相關新創的媒合看板。" } },
-      { "id": "deep", "at": [1, 3], "icon": "sparkles", "label": { "en": "Deep Research", "zh": "Deep Research" }, "note": { "en": "Streamed over SSE", "zh": "SSE 即時串流報告" }, "detail": { "en": "Start a deep research run on a topic; the report streams in through an SSE proxy that injects heartbeats while upstream is idle, so the gateway never drops it.", "zh": "針對題目發起深度研究，報告透過 SSE 串流代理即時呈現；上游閒置時注入 heartbeat，避免閘道斷線。" }, "tags": ["SSE", "Next.js 14", "TanStack Query"], "accent": true },
+      { "id": "deep", "at": [1, 3], "icon": "sparkles", "label": { "en": "Deep Research", "zh": "Deep Research" }, "note": { "en": "Streamed over SSE", "zh": "SSE 即時串流報告" }, "detail": { "en": "Start a deep research run on a topic; the report streams in through an SSE proxy that injects heartbeats while upstream is idle, so the gateway never drops it. Every stream event is validated at runtime, and the run state lives in a reducer covered by Vitest unit tests.", "zh": "針對題目發起深度研究，報告透過 SSE 串流代理即時呈現；上游閒置時注入 heartbeat，避免閘道斷線。每筆串流事件先經執行期驗證，研究狀態收斂成 reducer 並有 Vitest 單元測試。" }, "tags": ["SSE", "Next.js 16", "Vitest"], "accent": true },
       { "id": "portfolio", "at": [0, 4], "icon": "briefcase-business", "label": { "en": "Tech portfolio", "zh": "技術投資組合" }, "note": { "en": "Backcasting, Delphi review", "zh": "魚骨圖回推・Delphi" }, "detail": { "en": "The technology portfolio decision centre: a fishbone chart works back from a goal to the technology it needs, and a Delphi round gathers expert judgement.", "zh": "技術投資組合決策中心：以魚骨圖從目標回推需要的技術，再以 Delphi 法彙整專家評估。" } },
       { "id": "share", "at": [1, 4], "icon": "share-2", "label": { "en": "Share a report", "zh": "分享報告" }, "note": { "en": "Signed share code", "zh": "簽章分享碼免登入" }, "detail": { "en": "A signed share code opens a read-only report page without sign-in, and the link can't be tampered with.", "zh": "以簽章分享碼產生免登入的報告分享頁，連結無法被竄改。" } },
-      { "id": "newsletter", "at": [2, 4], "icon": "mail", "label": { "en": "Daily AI newsletter", "zh": "每日 AI 電子報" }, "detail": { "en": "A daily AI newsletter delivers what's new.", "zh": "每日 AI 電子報，把新動態主動送到使用者手上。" }, "accent": true }
+      { "id": "newsletter", "at": [2, 2], "icon": "mail", "label": { "en": "Daily AI newsletter", "zh": "每日 AI 電子報" }, "detail": { "en": "A daily AI newsletter delivers what's new.", "zh": "每日 AI 電子報，把新動態主動送到使用者手上。" }, "accent": true }
     ],
     "edges": [
       { "from": "login", "to": "steep" },
       { "from": "sources", "to": "steep", "label": { "en": "collected", "zh": "彙整" } },
       { "from": "steep", "to": "leaders" },
-      { "from": "steep", "to": "match" },
       { "from": "steep", "to": "deep", "label": { "en": "dig deeper", "zh": "深入研究" } },
       { "from": "deep", "to": "portfolio", "label": { "en": "decide", "zh": "決策" } },
       { "from": "deep", "to": "share" },
-      { "from": "match", "to": "newsletter", "dashed": true }
+      { "from": "sources", "to": "newsletter", "label": { "en": "daily digest", "zh": "每日彙整" } }
     ]
   },
   "digital-chatroom": {
