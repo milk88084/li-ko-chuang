@@ -4,7 +4,7 @@
       "name": "Max",
       "fullName": "Li Ko Chuan",
       "location": "Taipei, Taiwan",
-      "role": "AI Engineer · Frontend · Automation"
+      "role": "Frontend-first Full-Stack Engineer · Automation"
     },
     "nav": {
       "work": "Projects",
@@ -23,7 +23,7 @@
       "hero": {
         "line1": "Building with AI,",
         "line2": "doing more with less.",
-        "intro": "I'm Max, an AI engineer in Taipei. Frontend is my core — React and Next.js — and I ship my own iOS apps solo. I also turn other people's needs into AI automations and tools that get the work done in half the effort.",
+        "intro": "I'm Max, a frontend-first engineer in Taipei who ships full-stack products end to end. Frontend is my core — React and Next.js — and I ship my own iOS apps solo. I also turn other people's needs into AI automations and tools that get the work done in half the effort.",
         "frameLabel": "Frame · Col 9–12",
         "imageAlt": "Max at work"
       },
@@ -61,7 +61,7 @@
         ],
         "featured": {
           "key": "hybrid",
-          "title": "An AI engineer",
+          "title": "A frontend-first engineer who ships full-stack products",
           "body": "AI is how I work, not a feature I bolt on. With it I build web frontends, ship iOS apps on my own, and translate a team's needs into automations and tools. Eight years of marketing and project management behind me make sure what I build is what people actually needed.",
           "tags": [
             "Frontend",
@@ -135,7 +135,7 @@
     "about": {
       "label": "About",
       "scrollHero": {
-        "intro": "AI engineer, Taipei. Frontend first — React, Next.js, TypeScript. My own apps, built and shipped alone.",
+        "intro": "Frontend-first engineer in Taipei who ships full-stack products end to end. React, Next.js, TypeScript. My own apps, built and shipped alone.",
         "ctaText": "See the work",
         "statement": "Eight years in marketing and project management taught me what people need. AI is how I build it.",
         "spec": [
@@ -180,7 +180,7 @@
           {
             "period": "2024/07 — Present",
             "role": "Frontend Engineer",
-            "company": "E-Sheng Information (Assigned to III Digital Transformation Dept.)",
+            "company": "E-Sheng Information",
             "description": "Lead the frontend of products including AI Research, Agent Fabric and LandScape, from clarifying requirements and assessing feasibility to production launch, for public-sector and enterprise clients. Built SSE streaming that renders Deep Research reports as they arrive, split state with Jotai so the relationship graph no longer recomputes in full, and set up an AI workflow with Claude Code: brief → spec → review → build → test → commit."
           },
           {
@@ -319,7 +319,7 @@
       "mediumUrl": "https://medium.com/@dearno.3"
     },
     "footer": {
-      "blurb": "An AI engineer who speaks marketing. I turn what people need into frontends, apps and automations that do more with less.",
+      "blurb": "A frontend-first engineer who speaks marketing and ships full-stack products. I turn what people need into frontends, apps and automations that do more with less.",
       "rights": "All rights reserved.",
       "label": "Contact",
       "line1": "Have an idea?",
@@ -345,7 +345,7 @@
       "name": "Max",
       "fullName": "Li Ko Chuan",
       "location": "台北，台灣",
-      "role": "AI 工程師 · 前端 · 自動化"
+      "role": "以前端為主的全端工程師 · 自動化"
     },
     "nav": {
       "work": "作品",
@@ -364,7 +364,7 @@
       "hero": {
         "line1": "用 AI 打造產品，",
         "line2": "讓工作事半功倍。",
-        "intro": "我是 Max，台北的 AI 工程師。以前端開發為主，用 React、Next.js 打造產品，也獨立開發並上架 iOS App，更能把別人的需求轉譯成 AI 自動化流程與工具，讓工作事半功倍。",
+        "intro": "我是 Max，台北一位以前端為主、能獨立交付全端產品的工程師。用 React、Next.js 打造產品，也獨立開發並上架 iOS App，更能把別人的需求轉譯成 AI 自動化流程與工具，讓工作事半功倍。",
         "frameLabel": "Frame · Col 9–12",
         "imageAlt": "工作中的 Max"
       },
@@ -402,7 +402,7 @@
         ],
         "featured": {
           "key": "hybrid",
-          "title": "AI 工程師",
+          "title": "以前端為主、能獨立交付全端產品的工程師",
           "body": "AI 是我的工作方式，不只是加上去的功能。我用它開發網頁前端、獨立上架 iOS App，也把團隊的需求轉譯成自動化流程與工具；八年的行銷與專案管理經驗，讓我做出來的東西就是對方真正需要的。",
           "tags": ["前端開發", "App 上架", "AI 自動化", "需求轉譯", "專案管理"]
         }
@@ -470,7 +470,7 @@
     "about": {
       "label": "About",
       "scrollHero": {
-        "intro": "AI 工程師，在台北。以前端為主：React、Next.js、TypeScript。自己的 App，一個人從頭做到上架。",
+        "intro": "以前端為主、能獨立交付全端產品的工程師，在台北。React、Next.js、TypeScript；自己的 App，一個人從頭做到上架。",
         "ctaText": "看看作品",
         "statement": "八年的行銷與專案管理，讓我懂得別人需要什麼；AI，讓我把它做出來。",
         "spec": [
@@ -515,7 +515,7 @@
           {
             "period": "2024/07 — 至今",
             "role": "前端工程師",
-            "company": "易勝資訊 (委派至資策會數位轉型部門)",
+            "company": "易勝資訊",
             "description": "主導 AI 快研究、Agent Fabric、LandScape 等產品的前端，從需求釐清、技術評估到正式上線，客戶為公部門與企業。實作 Deep Research 的 SSE 串流即時呈現研究報告，以 Jotai 拆分狀態避免關係圖整張重算，並用 Claude Code 建立「需求 → spec → 檢視 → 開發 → 測試 → commit」的 AI 協作流程。"
           },
           {
@@ -654,7 +654,7 @@
       "mediumUrl": "https://medium.com/@dearno.3"
     },
     "footer": {
-      "blurb": "懂行銷的 AI 工程師。把別人的需求變成網頁、App 與自動化流程，讓工作事半功倍。",
+      "blurb": "懂行銷、以前端為主、能獨立交付全端產品的工程師。把別人的需求變成網頁、App 與自動化流程，讓工作事半功倍。",
       "rights": "版權所有。",
       "label": "Contact",
       "line1": "有想法嗎？",
