@@ -26,10 +26,10 @@
     {
       "id": "setup",
       "kind": "setup",
-      "title": { "en": "Setup", "zh": "初始設定" },
+      "title": { "en": "Coding standards", "zh": "開發規範" },
       "summary": {
-        "en": "Tell Claude what it can't see, and enforce what can't have exceptions.",
-        "zh": "告訴 Claude 它看不到的事，並強制執行不容例外的規則。"
+        "en": "Write down the team's standards — project structure, design patterns, code security, database design — and wire them into the AI workflow so generated code meets them.",
+        "zh": "建立專案架構、設計模式、程式碼安全與資料庫設計的開發規範，並整合進 AI 工作流程，讓 AI 產生的程式碼符合團隊標準。"
       },
       "items": [
         {
@@ -43,8 +43,8 @@
         {
           "label": "Skills",
           "body": {
-            "en": "Procedures and team knowledge, read in full only when a task calls for it.",
-            "zh": "流程與團隊知識，任務需要時才讀取全文。"
+            "en": "Standards and procedures, read in full only when a task calls for it.",
+            "zh": "規範與流程，任務需要時才讀取全文。"
           },
           "code": ".claude/skills/<name>/SKILL.md"
         },
@@ -67,109 +67,100 @@
       ]
     },
     {
-      "id": "interview",
+      "id": "brainstorm",
       "kind": "step",
-      "title": { "en": "Interview → SPEC.md", "zh": "任務 → SPEC.md" },
+      "title": { "en": "Brainstorm → Spec", "zh": "需求釐清 → Spec" },
       "summary": {
-        "en": "When you don't know exactly what you want yet, let Claude ask until the answers add up to a spec — including what's out of scope.",
-        "zh": "還不確定要什麼時，讓 Claude 反問到答案能拼成一份 spec，包含不做的範圍。"
+        "en": "Claude asks questions until the requirements, system design and implementation approach add up to a spec — including what's out of scope. Every feature gets one, and together they become the agent's project knowledge base.",
+        "zh": "讓 Claude 反問，直到需求、系統設計與實作規劃能拼成一份 spec，包含不做的範圍。每個功能都有一份，累積成 Coding Agent 的專案知識庫。"
       },
       "items": [
         {
           "body": {
-            "en": "The spec becomes a written definition of done.",
-            "zh": "這份 spec 就是寫下來的完成定義。"
+            "en": "The spec is written to the repo and reviewed before anything else happens.",
+            "zh": "Spec 寫進 repo，經我確認後才進入下一步。"
           },
-          "code": "Interview me until you could write the spec, then write it to SPEC.md."
+          "code": "docs/superpowers/specs/"
         }
       ]
     },
     {
-      "id": "explore",
+      "id": "worktree",
       "kind": "step",
-      "title": { "en": "Explore", "zh": "Claude探索" },
+      "title": { "en": "Git worktree", "zh": "Git Worktree 隔離" },
       "summary": {
-        "en": "In plan mode Claude reads files and runs commands to explore, but doesn't edit your source.",
-        "zh": "在 plan mode 裡，Claude 會讀檔、執行指令來探索，但不改原始碼。"
+        "en": "Each feature is built in its own worktree and branch, so AI changes never touch the main checkout until they're reviewed.",
+        "zh": "每個功能在獨立的 worktree 與分支開發，AI 的修改在審查通過前都碰不到主要工作目錄。"
       },
       "items": [
         {
           "body": {
-            "en": "Cycle into plan mode mid-session, or start in it.",
-            "zh": "在 session 中切換進 plan mode，或一開始就用它啟動。"
+            "en": "A separate working directory per branch, sharing one repo.",
+            "zh": "同一個 repo，每個分支一個獨立的工作目錄。"
           },
-          "code": "Shift+Tab"
+          "code": "git worktree add"
         }
       ]
     },
     {
       "id": "plan",
       "kind": "step",
-      "title": { "en": "Plan", "zh": "提出計畫，人工審核" },
+      "title": { "en": "Write the plan", "zh": "任務規劃，人工審核" },
       "summary": {
-        "en": "Claude presents a plan; you approve it, or keep planning and say what to change.",
-        "zh": "Claude 提出計畫；由你核准，或選擇繼續規劃並說明要改什麼。"
+        "en": "The spec is broken into small tasks, each with the files it touches and how it will be tested. I approve the plan before any code is written.",
+        "zh": "把 spec 拆成小任務，每項寫明要改的檔案與測試方式。我核准計畫後才開始寫程式。"
       },
       "items": [
         {
           "body": {
-            "en": "Open the proposed plan in your editor and edit it directly.",
-            "zh": "在編輯器打開提出的計畫，直接修改。"
+            "en": "The plan lives next to the spec it came from.",
+            "zh": "計畫與對應的 spec 放在一起。"
           },
-          "code": "Ctrl+G"
+          "code": "docs/superpowers/plans/"
         }
       ]
     },
     {
-      "id": "implement",
+      "id": "execute",
       "kind": "step",
-      "title": { "en": "Implement", "zh": "Claude實作" },
+      "title": { "en": "Subagents × TDD", "zh": "Subagent 執行 × TDD" },
       "summary": {
-        "en": "Start a fresh session to build from the spec, so the build begins with a clean context.",
-        "zh": "開一個新 session 依 spec 實作，讓實作從乾淨的 context 開始。"
+        "en": "Each task goes to a fresh subagent with a clean context. Inside every task: write a failing test first, then the code that makes it pass.",
+        "zh": "每個任務交給 context 乾淨的新 subagent。每個任務內都先寫會失敗的測試，再寫讓它通過的程式碼。"
       },
       "items": [
         {
+          "label": "Subagents",
           "body": {
-            "en": "Clear first, then point Claude at the spec.",
-            "zh": "先清空，再讓 Claude 依 SPEC.md 實作。"
+            "en": "One task per subagent, checked before the next one starts.",
+            "zh": "一個 subagent 負責一個任務，檢查過才進下一項。"
           },
-          "code": "/clear"
-        }
-      ]
-    },
-    {
-      "id": "verify",
-      "kind": "step",
-      "title": { "en": "Verify", "zh": "驗證" },
-      "summary": {
-        "en": "Give Claude a check that comes back pass or fail — tests, a typecheck, a linter, a screenshot next to the mockup — and ask for evidence.",
-        "zh": "給 Claude 一個會回報通過或失敗的檢查（測試、type-check、linter、截圖對照設計稿），並要它拿出證據。"
-      },
-      "loopBackTo": "implement",
-      "items": [
+          "code": "subagent-driven-development"
+        },
         {
+          "label": "TDD",
           "body": {
-            "en": "Keep going until the check passes.",
-            "zh": "一直做到檢查通過為止。"
+            "en": "Red → green → refactor; no code without a test that failed first.",
+            "zh": "紅 → 綠 → 重構；沒有先失敗過的測試，就不寫程式碼。"
           },
-          "code": "/goal all tests pass and lint is clean"
+          "code": "test-driven-development"
         }
       ]
     },
     {
       "id": "review",
       "kind": "step",
-      "title": { "en": "Independent review", "zh": "獨立審查" },
+      "title": { "en": "Code review", "zh": "Code Review" },
       "summary": {
-        "en": "Review the diff in a fresh subagent that never saw your conversation, against the spec.",
-        "zh": "用沒看過這段對話的新 subagent，對照 spec 審查 diff。"
+        "en": "Each task is reviewed as it lands, then the whole diff is reviewed against the spec by a reviewer that never saw the conversation.",
+        "zh": "每個任務完成時逐項審查，最後由沒看過這段對話的 reviewer 對照 spec 審查整份 diff。"
       },
+      "loopBackTo": "execute",
       "items": [
         {
           "body": {
-            "en": "Or ask a subagent to check every requirement in SPEC.md — and skip style.",
-            "zh": "或請 subagent 逐條檢查 SPEC.md 的需求，並略過風格問題。"
+            "en": "Check every requirement in the spec — and skip style.",
+            "zh": "逐條檢查 spec 的需求，並略過風格問題。"
           },
           "code": "/code-review"
         }
@@ -178,16 +169,16 @@
     {
       "id": "ship",
       "kind": "step",
-      "title": { "en": "Commit / PR", "zh": "Commit / PR" },
+      "title": { "en": "Merge / PR", "zh": "分支整合（Merge / PR）" },
       "summary": {
-        "en": "Ask Claude to open the PR, then review it before submitting and have Claude highlight the risks.",
-        "zh": "請 Claude 開 PR，送出前先審，並請 Claude 點出潛在風險。"
+        "en": "With tests green, the branch is merged or opened as a PR — I review it before submitting and have Claude highlight the risks.",
+        "zh": "測試全數通過後，合併分支或開 PR；送出前我會先審，並請 Claude 點出潛在風險。"
       },
       "items": [
         {
           "body": {
-            "en": "Ask for it directly, or step by step.",
-            "zh": "可以直接要求，也可以一步步引導。"
+            "en": "Then the worktree is cleaned up.",
+            "zh": "最後清掉 worktree。"
           },
           "code": "create a pr for my changes"
         }
