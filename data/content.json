@@ -181,7 +181,7 @@
             "period": "2024/07 — Present",
             "role": "Frontend Engineer",
             "company": "E-Sheng Information",
-            "description": "Lead the frontend of products including AI Research, Agent Fabric and LandScape, from clarifying requirements and assessing feasibility to production launch, for public-sector and enterprise clients. Built SSE streaming that renders Deep Research reports as they arrive, split state with Jotai so the relationship graph no longer recomputes in full, and set up an AI workflow with Claude Code: brief → spec → review → build → test → commit."
+            "description": "Lead the frontend of products including AI Research, Agent Fabric and LandScape, from clarifying requirements and assessing feasibility to production launch, for public-sector and enterprise clients. Built SSE streaming that renders Deep Research reports as they arrive, split state with Jotai so the relationship graph no longer recomputes in full, and set up an AI workflow with Claude Code: coding standards → spec → git worktree → plan → subagents × TDD → code review → PR."
           },
           {
             "period": "2024/01 — 2024/06",
@@ -516,7 +516,7 @@
             "period": "2024/07 — 至今",
             "role": "前端工程師",
             "company": "易勝資訊",
-            "description": "主導 AI 快研究、Agent Fabric、LandScape 等產品的前端，從需求釐清、技術評估到正式上線，客戶為公部門與企業。實作 Deep Research 的 SSE 串流即時呈現研究報告，以 Jotai 拆分狀態避免關係圖整張重算，並用 Claude Code 建立「需求 → spec → 檢視 → 開發 → 測試 → commit」的 AI 協作流程。"
+            "description": "主導 AI 快研究、Agent Fabric、LandScape 等產品的前端，從需求釐清、技術評估到正式上線，客戶為公部門與企業。實作 Deep Research 的 SSE 串流即時呈現研究報告，以 Jotai 拆分狀態避免關係圖整張重算，並用 Claude Code 建立「開發規範 → Spec → Worktree 隔離 → 任務規劃 → Subagent × TDD → Code Review → PR」的 AI 協作流程。"
           },
           {
             "period": "2024/01 — 2024/06",
